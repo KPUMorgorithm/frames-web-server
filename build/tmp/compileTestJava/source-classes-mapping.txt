@@ -1,0 +1,8 @@
+org/morgorithm/frames/repository/MemberRepositoryTests.java
+ org.morgorithm.frames.repository.MemberRepositoryTests
+org/morgorithm/frames/FramesApplicationTests.java
+ org.morgorithm.frames.FramesApplicationTests
+org/morgorithm/frames/repository/FacilityRepositoryTests.java
+ org.morgorithm.frames.repository.FacilityRepositoryTests
+org/morgorithm/frames/repository/StatusRepositoryTests.java
+ org.morgorithm.frames.repository.StatusRepositoryTests
