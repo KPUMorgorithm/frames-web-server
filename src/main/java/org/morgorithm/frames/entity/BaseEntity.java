@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 //setter와 Builder는 테스트 데이터 용으로 넣었다.
 @Setter
 abstract class BaseEntity {
-    @CreatedDate
+   // @CreatedDate
     //testData를 만들기 위해서 CreatDate 주석처리 해놓음
     @Column(name="regdate",updatable=false)
     private LocalDateTime regDate;
