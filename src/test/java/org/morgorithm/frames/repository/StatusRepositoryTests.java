@@ -36,6 +36,9 @@ public class StatusRepositoryTests {
     데이터베이스에 테스트 데이터를 넣는 것이다. 무작위 mno를 추출해서 무작위 건물을 순서대로 in 하고 out하는 것을
     구현한다. out를 먼저하고 in를 먼저 할 수는 없다.
      */
+    //********************참고 사항*****
+    //Status 테이블에 테스트 데이터 넣을 때는 BaseEntity 클래스에서 @CreatedDate 주석 처리해야함!!
+    // 이것은 만들어지는 시간을 기록하기 때문이다 여기서는 내가 임의로 랜덤 시간을 배정한다.
     @Test
     public void insertStatusData(){
         List<Status> totalData=new ArrayList<>();
@@ -45,7 +48,7 @@ public class StatusRepositoryTests {
         Arrays.fill(arr,false);
         Arrays.fill(barr,0);
 
-        IntStream.rangeClosed(1,cnt*3).forEach(i->{
+        IntStream.rangeClosed(1,cnt*2).forEach(i->{
             List<Status> data=new ArrayList<>();
             Long mno=Long.valueOf((int)(Math.random()*cnt)+1);
             Member member=Member.builder().mno(mno).build();
@@ -145,10 +148,10 @@ public class StatusRepositoryTests {
 
     @Test
     void testGetRegtDate(){
-        List<Object> result=statusRepository.getRegDate(80L);
+        List<Object[]> result=statusRepository.getRegDateAndState(80L);
         for(Object a:result){
             System.out.println(a.toString());
-            System.out.println("bno:"+((LocalDateTime) a).toString());
+            System.out.println("regDate:"+((LocalDateTime) a).toString());
         }
     }
 
@@ -157,14 +160,18 @@ public class StatusRepositoryTests {
         int cnt=(int)(memberRepository.count());
         Long bno=0L;
 
-
         for(int i=0;i<100;i++){
+            double rangeMin=34.5;
+            double rangeMax=37.6;
+            Random r = new Random();
+
+            double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             LocalDateTime now=LocalDateTime.now();
             Long mno=Long.valueOf((int)(Math.random()*cnt)+1);
             bno=((long)(Math.random()*10)+1);
             Member member=Member.builder().mno(mno).build();
             Facility facility= Facility.builder().bno(bno).building("building"+bno).build();
-            Status status=Status.builder().member(member).facility(facility).state(true).temperature(36.6).build();
+            Status status=Status.builder().member(member).facility(facility).state(true).temperature(Double.valueOf(String.format("%.1f",+randomValue))).build();
             status.setRegDate(now);
             statusRepository.save(status);
             Thread.sleep(3000);

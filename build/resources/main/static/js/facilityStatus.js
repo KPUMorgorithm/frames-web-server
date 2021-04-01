@@ -143,7 +143,14 @@ function onMessageReceived(payload) {
     //실질적인 메시지 내용이 들어감
     for(var i=0;i<bName.length;i++){
         var textElement = document.createElement('p');
-        //var horizontalElement=document.createElement('hr');
+
+        if(tem[i]>=37){
+            textElement.style.color="#ff0000";
+        }else if(tem[i]<=35){
+            textElement.style.color="#feb301";
+        }else
+            textElement.style.color="#007f00";
+
         var s;
         if(entranceState[i])
             s="입장";
