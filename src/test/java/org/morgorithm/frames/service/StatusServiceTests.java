@@ -1,18 +1,19 @@
 package org.morgorithm.frames.service;
 
 
-
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Test;
-import org.morgorithm.frames.dto.*;
+import org.morgorithm.frames.dto.PageRequestDTO;
+import org.morgorithm.frames.dto.PageResultDTO;
+import org.morgorithm.frames.dto.RealTimeStatusDTO;
+import org.morgorithm.frames.dto.StatusDTO;
 import org.morgorithm.frames.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.HashMap;
-import java.util.List;
 
 @SpringBootTest
 public class StatusServiceTests {

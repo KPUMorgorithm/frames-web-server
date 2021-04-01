@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.morgorithm.frames.dto.MemberDTO;
 import org.morgorithm.frames.dto.PageRequestDTO;
 import org.morgorithm.frames.dto.PageResultDTO;
-
 import org.morgorithm.frames.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

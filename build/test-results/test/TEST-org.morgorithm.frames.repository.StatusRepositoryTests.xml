@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.morgorithm.frames.repository.StatusRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-01T08:44:26" hostname="DESKTOP-KCDHFKO" time="304.501">
+  <properties/>
+  <testcase name="testAddTestDataForRealTimeStatusUpdate()" classname="org.morgorithm.frames.repository.StatusRepositoryTests" time="304.501"/>
+  <system-out><![CDATA[17:44:14.227 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+17:44:14.260 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+17:44:14.336 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [org.morgorithm.frames.repository.StatusRepositoryTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+17:44:14.371 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.morgorithm.frames.repository.StatusRepositoryTests], using SpringBootContextLoader
+17:44:14.381 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: class path resource [org/morgorithm/frames/repository/StatusRepositoryTests-context.xml] does not exist
+17:44:14.382 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: class path resource [org/morgorithm/frames/repository/StatusRepositoryTestsContext.groovy] does not exist
+17:44:14.383 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+17:44:14.384 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: StatusRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:44:14.485 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [org.morgorithm.frames.repository.StatusRepositoryTests]
+17:44:14.678 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\nick1\framesWeb-master\build\classes\java\main\org\morgorithm\frames\FramesApplication.class]
+17:44:14.681 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration org.morgorithm.frames.FramesApplication for test class org.morgorithm.frames.repository.StatusRepositoryTests
+17:44:14.916 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [org.morgorithm.frames.repository.StatusRepositoryTests]: using defaults.
+17:44:14.917 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+17:44:14.963 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@17da8d76, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3e37f737, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1784d461, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1be44489, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5816dbbe, org.springframework.test.context.support.DirtiesContextTestExecutionListener@591901c4, org.springframework.test.context.transaction.TransactionalTestExecutionListener@680ff15a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@517630de, org.springframework.test.context.event.EventPublishingTestExecutionListener@3fd3ca65, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2e55eb7a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@39c74acb, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@59577ded, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@78f61440, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@79792e1f, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7aebb2e9]
+17:44:14.978 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@52a72347 testClass = StatusRepositoryTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2cc500f0 testClass = StatusRepositoryTests, locations = '{}', classes = '{class org.morgorithm.frames.FramesApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@c27753e, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@3f595303, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@78e8bbc5, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@46b0c746, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@39ee31a9, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@11d6dc05], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+17:44:15.045 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.2)
+
+2021-04-01 17:44:15.616  INFO 22596 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : Starting StatusRepositoryTests using Java 11.0.9 on DESKTOP-KCDHFKO with PID 22596 (started by nick1 in C:\Users\nick1\framesWeb-master)
+2021-04-01 17:44:15.620  INFO 22596 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : No active profile set, falling back to default profiles: default
+2021-04-01 17:44:17.287  INFO 22596 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-01 17:44:17.498  INFO 22596 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 195 ms. Found 4 JPA repository interfaces.
+2021-04-01 17:44:18.918  INFO 22596 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-01 17:44:19.058  INFO 22596 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.27.Final
+2021-04-01 17:44:19.404  INFO 22596 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-01 17:44:19.672  INFO 22596 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-01 17:44:20.212  INFO 22596 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-01 17:44:20.315  INFO 22596 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-04-01 17:44:22.266  INFO 22596 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-01 17:44:22.284  INFO 22596 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-01 17:44:24.375  INFO 22596 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2021-04-01 17:44:24.404  INFO 22596 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+confiureMessageBroker 연동!!**
+2021-04-01 17:44:24.410  INFO 22596 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2021-04-01 17:44:24.510  INFO 22596 --- [    Test worker] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+end point 연결!!!***
+2021-04-01 17:44:24.836  WARN 22596 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-01 17:44:26.046  INFO 22596 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2021-04-01 17:44:26.885  INFO 22596 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2021-04-01 17:44:26.886  INFO 22596 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@684eaaa0]]
+2021-04-01 17:44:26.886  INFO 22596 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2021-04-01 17:44:26.906  INFO 22596 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : Started StatusRepositoryTests in 11.846 seconds (JVM running for 16.343)
+Hibernate: 
+    select
+        count(*) as col_0_0_ 
+    from
+        member member0_
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+2021-04-01 17:45:24.750  INFO 22596 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 1, completed tasks = 0]
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        status
+        (regdate, facility_bno, member_mno, state, temperature) 
+    values
+        (?, ?, ?, ?, ?)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

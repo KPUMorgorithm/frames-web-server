@@ -1,26 +1,20 @@
 package org.morgorithm.frames.repository;
 
 import org.junit.jupiter.api.Test;
-import org.morgorithm.frames.dto.MemberDTO;
-import org.morgorithm.frames.dto.PageRequestDTO;
-import org.morgorithm.frames.dto.PageResultDTO;
 import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.entity.Member;
 import org.morgorithm.frames.entity.MemberImage;
 import org.morgorithm.frames.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.IntStream;
+
 @SpringBootTest
 public class MemberRepositoryTests {
     @Autowired
