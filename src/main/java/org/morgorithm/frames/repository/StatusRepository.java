@@ -16,8 +16,9 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Query("select s.facility from Status s where s.member.mno=:mno")
     List<Object> getMemberFacility(Long mno);
 
-    @Query("select s.regDate from Status s where s.member.mno=:mno")
-    List<Object> getRegDate(Long mno);
+    @Query("select s.regDate, s.state from Status s where s.member.mno=:mno")
+    List<Object[]> getRegDateAndState(Long mno);
+
 
 
 
