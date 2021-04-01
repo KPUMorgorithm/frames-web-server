@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--datetimepicker bootstrap-->
+
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+        <h1 class="mt-4">Search List Page</h1>
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"
+              rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/bootstrap-datetimepicker.min.css}">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript"
+                src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
+        <form action="/status/list" method="get" id="searchForm">
+            <div class="input-group">
+                <input type="hidden" name="page" value="1">
+
+                <!--th:value는 input에 ${}값을 넣어준다 keyword로 String형태로 들어가니 주의하기-->
+                <!--  <input type="hidden" class="form-control-keyword" name="keyword" th:value="${pageRequestDTO.keyword}">
+                  <input type="hidden" class="form-control-from" name="from" th:value="${pageRequestDTO.from}">
+                  <input type="hidden" class="form-control-to" name="to" th:value="${pageRequestDTO.to}">-->
+
+
+                <span class="container" id="date-span-id"  style="margin:0px; text-align: left;">
+                    <div class="input-group-prepend" >
+                        <select class="custom-select" name="type" style="width: 200px;">
+                            <option th:selected="${pageRequestDTO.type == null}">-------</option>
+                            <option value="d" th:selected="${pageRequestDTO.type =='d'}">날짜</option>
+                            <option value="b" th:selected="${pageRequestDTO.type =='b'}">건물</option>
+                            <option value="db" th:selected="${pageRequestDTO.type =='db'}">건물+날짜</option>
+                            <option value="m" th:selected="${pageRequestDTO.type =='m'}">확진자 번호</option>
+                            <option value="md" th:selected="${pageRequestDTO.type =='md'}">확진자 번호+날짜</option>
+                            <option value="c" th:selected="${pageRequestDTO.type =='c'}">밀접 접촉자 찾기</option>
+                        </select>
+                    </div>
+                    <div class="well" style="width: 280px;" id="frame">
+                        <div id="datetimepicker1" class="input-append date1" >
+                            <input data-format="yyyy-MM-dd hh:mm:ss" name="from" type="text" th:value="${pageRequestDTO.from} " style="height: 30px;" placeholder="from"></input>
+                            <span class="add-on" style="height: 30px;" >
+                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar" ></i>
+                             </span>
+                        </div>
+                        <div id="datetimepicker2" class="input-append date2" >
+                            <input data-format="yyyy-MM-dd hh:mm:ss" name="to" type="text" th:value="${pageRequestDTO.to}" style="height: 30px;" placeholder="to"></input>
+                            <span class="add-on" style="height: 30px;">
+                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar" ></i>
+                             </span>
+                        </div>
+                        <input class="input-append-keyword" style="width: 100px;" id="key-input" name="keyword" th:value="${pageRequestDTO.keyword}" placeholder="건물번호">
+                        <input class="input-append-keyword" style="width: 100px;" id="mno-input" name="mno" th:value="${pageRequestDTO.mno}" placeholder="확진자번호" >
+                         <input id="close-contact" data-format="mm:ss" name="closeContact" type="text" th:value="${pageRequestDTO.closeContact}" style="width: 200px; height: 30px;" placeholder="시간 간격 ±mm:ss">
+                    </div>
+
+
+                    <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
+                    <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
+
+                </span>
+            </div>
+        </form>
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sno</th>
+                <th scope="col">Mno</th>
+                <th scope="col">Building</th>
+                <th scope="col">DateTime</th>
+                <th scope="col">Temperature</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="dto : ${result.dtoList}">
+                <th scope="row">
+                    <a th:href="@{/status/read(statusnum = ${dto.statusnum},
+                    page= ${result.page},
+                    type=${pageRequestDTO.type} ,
+                    from=${pageRequestDTO.from},
+                    to=${pageRequestDTO.to},
+                    keyword = ${pageRequestDTO.keyword},
+                    mno = ${pageRequestDTO.mno},
+                    closeContact=${pageRequestDTO.closeContact})}">
+
+                    </a>
+                </th>
+                <td>[[${dto.statusnum}]]</td>
+                <td>[[${dto.member.mno}]]</td>
+                <td>[[${dto.facility.bno}]]</td>
+                <td>[[${dto.regDate}]]</td>
+                <td>[[${dto.temperature}]]</td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+        <ul class="pagination h-100 justify-content-center align-items-center">
+
+            <li class="page-item " th:if="${result.prev}">
+                <a class="page-link" th:href="@{/status/list(page= ${result.start -1},
+                    type=${pageRequestDTO.type} ,
+                    from=${pageRequestDTO.from},
+                    to=${pageRequestDTO.to},
+                    keyword = ${pageRequestDTO.keyword},
+                    mno = ${pageRequestDTO.mno},
+                    closeContact=${pageRequestDTO.closeContact})}" tabindex="-1">Previous</a>
+            </li>
+
+            <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
+                <a class="page-link" th:href="@{/status/list(page = ${page} ,
+                   type=${pageRequestDTO.type} ,
+                    from=${pageRequestDTO.from},
+                    to=${pageRequestDTO.to},
+                    keyword = ${pageRequestDTO.keyword},
+                    mno = ${pageRequestDTO.mno},
+                    closeContact=${pageRequestDTO.closeContact})}">
+                    [[${page}]]
+                </a>
+            </li>
+
+            <li class="page-item" th:if="${result.next}">
+                <a class="page-link" th:href="@{/status/list(page= ${result.end + 1} ,
+                    type=${pageRequestDTO.type} ,
+                    from=${pageRequestDTO.from},
+                    to=${pageRequestDTO.to},
+                    keyword = ${pageRequestDTO.keyword},
+                    mno = ${pageRequestDTO.mno},
+                    closeContact=${pageRequestDTO.closeContact})}">Next</a>
+            </li>
+        </ul>
+        <script th:inline="javascript">
+
+            var searchForm = $("#searchForm");
+            var value = $('.custom-select').val();
+
+
+             //   $('#datetimepicker1').html().//캘린터 아이콘만 없어짐
+
+
+
+            if (value === 'b') {
+                $('#datetimepicker1').hide();
+                $('#datetimepicker2').hide(); //성공
+                $('#key-input').show();
+                $('#frame').show();
+                $('#mno-input').hide();
+                $('#close-contact').hide();
+            } else if (value === 'd') {
+                $('#datetimepicker1').show();
+                $('#datetimepicker2').show(); //성공
+                $('#key-input').hide();
+                $('#frame').show();
+                $('#mno-input').hide();
+                $('#close-contact').hide();
+            } else if (value === 'db') {
+                $('#datetimepicker1').show();
+                $('#datetimepicker2').show(); //성공
+                $('#key-input').show();
+                $('#frame').show();
+                $('#mno-input').hide();
+                $('#close-contact').hide();
+            } else if(value==='m'){
+                $('#datetimepicker1').hide();
+                $('#datetimepicker2').hide(); //성공
+                $('#key-input').hide();
+                $('#frame').show();
+                $('#mno-input').show();
+                $('#close-contact').hide();
+            }else if(value==='md'){
+                $('#datetimepicker1').show();
+                $('#datetimepicker2').show(); //성공
+                $('#key-input').hide();
+                $('#frame').show();
+                $('#mno-input').show();
+                $('#close-contact').hide();
+            }else if(value==='c'){
+                $('#datetimepicker1').hide();
+                $('#datetimepicker2').hide(); //성공
+                $('#key-input').hide();
+                $('#frame').show();
+                $('#mno-input').show();
+                $('#close-contact').show();
+            }else {
+                $('#datetimepicker1').hide();
+                $('#datetimepicker2').hide(); //성공
+                $('#key-input').hide();
+                $('#frame').hide();
+                $('#mno-input').hide();
+                $('#close-contact').hide();
+            }
+
+            $('.btn-search').click(function (e) {
+
+                searchForm.submit();
+
+            });
+
+            $('.btn-clear').click(function (e) {
+
+                searchForm.empty().submit();
+
+            });
+
+            $('.custom-select').on("change", function () {
+                var value = $('.custom-select').val();
+
+                if (value === 'b') {
+                    $('#datetimepicker1').hide();
+                    $('#datetimepicker2').hide(); //성공
+                    $('#key-input').show();
+                    $('#frame').show();
+                    $('#mno-input').hide();
+                    $('#close-contact').hide();
+                } else if (value === 'd') {
+                    $('#datetimepicker1').show();
+                    $('#datetimepicker2').show(); //성공
+                    $('#key-input').hide();
+                    $('#frame').show();
+                    $('#mno-input').hide();
+                    $('#close-contact').hide();
+                } else if (value === 'db') {
+                    $('#datetimepicker1').show();
+                    $('#datetimepicker2').show(); //성공
+                    $('#key-input').show();
+                    $('#frame').show();
+                    $('#mno-input').hide();
+                    $('#close-contact').hide();
+                } else if(value==='m'){
+                    $('#datetimepicker1').hide();
+                    $('#datetimepicker2').hide(); //성공
+                    $('#key-input').hide();
+                    $('#frame').show();
+                    $('#mno-input').show();
+                    $('#close-contact').hide();
+                }else if(value==='md'){
+                    $('#datetimepicker1').show();
+                    $('#datetimepicker2').show(); //성공
+                    $('#key-input').hide();
+                    $('#frame').show();
+                    $('#mno-input').show();
+                    $('#close-contact').hide();
+                }else if(value==='c'){
+                    $('#datetimepicker1').hide();
+                    $('#datetimepicker2').hide(); //성공
+                    $('#key-input').hide();
+                    $('#frame').show();
+                    $('#mno-input').show();
+                    $('#close-contact').show();
+                }else {
+                    $('#datetimepicker1').hide();
+                    $('#datetimepicker2').hide(); //성공
+                    $('#key-input').hide();
+                    $('#frame').hide();
+                    $('#mno-input').hide();
+                    $('#close-contact').hide();
+                }
+            })
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    collapse: false
+                });
+            });
+            $(function () {
+                $('#datetimepicker2').datetimepicker({
+                    collapse: false
+                });
+            });
+
+        </script>
+
+    </th:block>
+
+</th:block>
