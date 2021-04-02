@@ -144,13 +144,12 @@
             var value = $('.custom-select').val();
 
 
-             //   $('#datetimepicker1').html().//캘린터 아이콘만 없어짐
-
-
+            var mno=[[${pageRequestDTO.mno}]];
             $(".sendSnsBtn").click(function(){
-                console.log("****************Send button Click!!!**************");
-                $.ajax({url: "/status/sendSns", success: function(result){
 
+                $.ajax({url: "/status/sendSns?page="+[[${pageRequestDTO.page}]]+"&type="+[[${pageRequestDTO.type}]]+
+                        "&from="+[[${pageRequestDTO.from}]]+"&to="+[[${pageRequestDTO.to}]]+
+                        "&keyword="+[[${pageRequestDTO.keyword}]]+"&mno="+[[${pageRequestDTO.mno}]]+"&closeContact="+[[${pageRequestDTO.closeContact}]], success: function(result){
                     }});
             });
             if (value === 'b') {
