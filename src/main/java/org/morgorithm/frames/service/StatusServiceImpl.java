@@ -23,10 +23,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 import java.util.function.Function;
 
 @Service
@@ -118,10 +115,33 @@ public class StatusServiceImpl implements StatusService {
     }
 
     @Override
-    public void sendSns() {
-        String[] phoneNum = new String[2];
-        phoneNum[0] = "01036461294";
-        phoneNum[1] = "01030588541";
+    public void sendSns(PageRequestDTO requestDTO) {
+        List<String> confirmedPath=new ArrayList<>();
+        List<String> contactPath=new ArrayList<>();
+        HashSet<Long> mnos=new HashSet<>();
+
+
+
+        //배열 초기화
+        Pageable pageable = requestDTO.getPageable(Sort.by("regDate").descending());
+        BooleanBuilder booleanBuilder = getSearch(requestDTO);
+        Page<Status> result = statusRepository.findAll(booleanBuilder, pageable);
+        for(Status p:result){
+            if(p.getMember().getMno().equals(Long.valueOf(requestDTO.getMno()))){
+               confirmedPath.add("건물: "+p.getFacility().getBuilding()+" 출입여부: "+(p.getState()?"입장":"퇴장")+" 시간: "+p.getRegDate());
+            }else{
+                contactPath.add("건물: "+p.getFacility().getBuilding()+" 출입여부: "+(p.getState()?"입장":"퇴장")+" 시간: "+p.getRegDate());
+                mnos.add(p.getMember().getMno());
+            }
+        }
+        for(Long m:mnos){
+            System.out.println("MNOS:"+m);
+        }
+       /* for(String s:confirmedPath){
+            System.out.println(s);
+        }*/
+
+
         System.out.println("Sending SNS Message");
         String api_key = "NCSJBLIL70QSO6P9";
         //사이트에서 발급 받은 API KEY
@@ -131,17 +151,77 @@ public class StatusServiceImpl implements StatusService {
 
         HashMap<String, String> params = new HashMap<String, String>();
 
+
         params.put("from", "01096588541");
 
+
+
+        params.put("type", "LMS");
+        String s="";
         //여럿한테 보낼때
-        /*
-        for(int i=0;i<2;i++){
-            params.put("to", phoneNum[i]);
+        for(Long mno:mnos){
+            s+="한국산업기술대학교 코로나 비상대책본부에서 알려드립니다.\n" +
+                    "교내에 확진자 발생에 의한 정보를 알려드리겠습니다.\n" +
+                    "해당 문자 수신자께서는 확진자와 동선이 겹침을 알립니다.\n"+
+                    "확진자 동선을 공개합니다.\n\n";
+            s+="<확진자 동선>\n\n";
+            //확진자 동선 적는 부분
+            for(Status p:result){
+                if(p.getMember().getMno().equals(Long.valueOf(requestDTO.getMno()))){
+                    String dateTime=p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    s+=     "건물: "+p.getFacility().getBuilding()+"\n"+
+                            "시간: "+dateTime+"\n"+
+                            "출입여부: "+(p.getState()?"입장\n\n":"퇴장\n\n");
+                }
+            }
 
-            params.put("type", "SMS");
-            params.put("text", "안녕하세요");
+            s+="<수신자 동선>\n\n";
+            String phoneNum="";
+            //수신자 동선 적는 부분
+            for(Status p:result){
+                if(mno==p.getMember().getMno()){
+                    String dateTime=p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    s+=     "건물: "+p.getFacility().getBuilding()+"\n"+
+                            "시간: "+dateTime+"\n"+
+                            "출입여부: "+(p.getState()?"입장\n\n":"퇴장\n\n");
+                    phoneNum=p.getMember().getPhone();
+                }
+            }
+            s+="임으로 확진자와 동선이 겹칩니다.\n"+
+                    "가까운 보건소를 방문하여 검사를 받으시기 바랍니다.\n";
 
+            System.out.println("phoneNum:"+phoneNum);
+            params.put("text",s);
             params.put("app_version", "test app 1.2");
+
+            //*******************
+            //*******************
+            //테스트 용 번호
+            //*******************
+            //*******************
+            params.put("to", "01030588541");
+            //*******************
+            //*******************
+            //테스트 용 번호
+            //*******************
+            //*******************
+
+            //%%%%%%%%%%%%%%%%%%경계선%%%%%%%%%%%%%%%%%%%%%%%
+
+            //*******************
+            //*******************
+            //실제 데모용
+            //*******************
+            //*******************
+           // params.put("to", phoneNum);
+            //*******************
+            //*******************
+            //실제 데모용
+            //*******************
+            //*******************
+
+
+
             try {
                 JSONObject obj = (JSONObject) coolsms.send(params);
                 System.out.println(obj.toString());
@@ -150,22 +230,11 @@ public class StatusServiceImpl implements StatusService {
                 System.out.println(e.getMessage());
                 System.out.println(e.getCode());
             }
-        }*/
-        //한명한테만 보내기
-        params.put("to", "01030588541");
-        //사전에 사이트에서 번호를 인증하고 등록하여야 함
-        params.put("type", "SMS");
-        params.put("text", "안녕하세요\n 유영균입니다.\n 이름이 뭔가요?.\n 나이는 어떻게 되시나요");
-        //메시지 내용
-        params.put("app_version", "test app 1.2");
-        try {
-            JSONObject obj = (JSONObject) coolsms.send(params);
-            System.out.println(obj.toString());
-            //전송 결과 출력
-        } catch (CoolsmsException e) {
-            System.out.println(e.getMessage());
-            System.out.println(e.getCode());
+            s="";
+            phoneNum="";
         }
+
+
 
     }
 
