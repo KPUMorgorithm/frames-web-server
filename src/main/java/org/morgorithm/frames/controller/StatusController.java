@@ -25,10 +25,9 @@ public class StatusController {
         return "status/list";
     }
     @GetMapping("/sendSns")
-    public String sendSns() {
+    public String sendSns(PageRequestDTO pageRequestDTO) {
 
-        System.out.println("***************SnS SEND CONTROLLER*************");
-        statusService.sendSns();
+        statusService.sendSns(pageRequestDTO);
         return "redirect:/status/list";
 
     }
