@@ -24,7 +24,7 @@ public class StatusController {
         model.addAttribute("result", statusService.getStatusList(pageRequestDTO));
         return "status/list";
     }
-    @GetMapping("/sendSns")
+    @GetMapping("/sendSms")
     public String sendSns(PageRequestDTO pageRequestDTO) {
 
         statusService.sendSns(pageRequestDTO);

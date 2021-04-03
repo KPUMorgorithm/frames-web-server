@@ -57,6 +57,7 @@
 
                     <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
                     <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
+                    <button type="button" class="btn btn-outline-secondary sendSmsBtn" id="sendSMS">Send Message</button>
 
                 </span>
             </div>
@@ -137,7 +138,7 @@
                     closeContact=${pageRequestDTO.closeContact})}">Next</a>
             </li>
         </ul>
-        <button type="button" class="sendSnsBtn" >SNS MESSAGE</button>
+
         <script th:inline="javascript">
 
             var searchForm = $("#searchForm");
@@ -145,9 +146,9 @@
 
 
             var mno=[[${pageRequestDTO.mno}]];
-            $(".sendSnsBtn").click(function(){
+            $(".sendSmsBtn").click(function(){
 
-                $.ajax({url: "/status/sendSns?page="+[[${pageRequestDTO.page}]]+"&type="+[[${pageRequestDTO.type}]]+
+                $.ajax({url: "/status/sendSms?page="+[[${pageRequestDTO.page}]]+"&type="+[[${pageRequestDTO.type}]]+
                         "&from="+[[${pageRequestDTO.from}]]+"&to="+[[${pageRequestDTO.to}]]+
                         "&keyword="+[[${pageRequestDTO.keyword}]]+"&mno="+[[${pageRequestDTO.mno}]]+"&closeContact="+[[${pageRequestDTO.closeContact}]], success: function(result){
                     }});
@@ -158,6 +159,7 @@
                 $('#key-input').show();
                 $('#frame').show();
                 $('#mno-input').hide();
+                $('#sendSMS').hide();
                 $('#close-contact').hide();
             } else if (value === 'd') {
                 $('#datetimepicker1').show();
@@ -165,6 +167,7 @@
                 $('#key-input').hide();
                 $('#frame').show();
                 $('#mno-input').hide();
+                $('#sendSMS').hide();
                 $('#close-contact').hide();
             } else if (value === 'db') {
                 $('#datetimepicker1').show();
@@ -172,6 +175,7 @@
                 $('#key-input').show();
                 $('#frame').show();
                 $('#mno-input').hide();
+                $('#sendSMS').hide();
                 $('#close-contact').hide();
             } else if(value==='m'){
                 $('#datetimepicker1').hide();
@@ -179,6 +183,7 @@
                 $('#key-input').hide();
                 $('#frame').show();
                 $('#mno-input').show();
+                $('#sendSMS').hide();
                 $('#close-contact').hide();
             }else if(value==='md'){
                 $('#datetimepicker1').show();
@@ -186,6 +191,7 @@
                 $('#key-input').hide();
                 $('#frame').show();
                 $('#mno-input').show();
+                $('#sendSMS').hide();
                 $('#close-contact').hide();
             }else if(value==='c'){
                 $('#datetimepicker1').hide();
@@ -193,6 +199,7 @@
                 $('#key-input').hide();
                 $('#frame').show();
                 $('#mno-input').show();
+                $('#sendSMS').show();
                 $('#close-contact').show();
             }else {
                 $('#datetimepicker1').hide();
@@ -200,6 +207,7 @@
                 $('#key-input').hide();
                 $('#frame').hide();
                 $('#mno-input').hide();
+                $('#sendSMS').hide();
                 $('#close-contact').hide();
             }
 
@@ -224,6 +232,7 @@
                     $('#key-input').show();
                     $('#frame').show();
                     $('#mno-input').hide();
+                    $('#sendSMS').hide();
                     $('#close-contact').hide();
                 } else if (value === 'd') {
                     $('#datetimepicker1').show();
@@ -231,6 +240,7 @@
                     $('#key-input').hide();
                     $('#frame').show();
                     $('#mno-input').hide();
+                    $('#sendSMS').hide();
                     $('#close-contact').hide();
                 } else if (value === 'db') {
                     $('#datetimepicker1').show();
@@ -238,6 +248,7 @@
                     $('#key-input').show();
                     $('#frame').show();
                     $('#mno-input').hide();
+                    $('#sendSMS').hide();
                     $('#close-contact').hide();
                 } else if(value==='m'){
                     $('#datetimepicker1').hide();
@@ -245,6 +256,7 @@
                     $('#key-input').hide();
                     $('#frame').show();
                     $('#mno-input').show();
+                    $('#sendSMS').hide();
                     $('#close-contact').hide();
                 }else if(value==='md'){
                     $('#datetimepicker1').show();
@@ -252,6 +264,7 @@
                     $('#key-input').hide();
                     $('#frame').show();
                     $('#mno-input').show();
+                    $('#sendSMS').hide();
                     $('#close-contact').hide();
                 }else if(value==='c'){
                     $('#datetimepicker1').hide();
@@ -259,6 +272,7 @@
                     $('#key-input').hide();
                     $('#frame').show();
                     $('#mno-input').show();
+                    $('#sendSMS').show();
                     $('#close-contact').show();
                 }else {
                     $('#datetimepicker1').hide();
@@ -266,6 +280,7 @@
                     $('#key-input').hide();
                     $('#frame').hide();
                     $('#mno-input').hide();
+                    $('#sendSMS').hide();
                     $('#close-contact').hide();
                 }
             })
