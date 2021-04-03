@@ -146,8 +146,16 @@
 
 
             var mno=[[${pageRequestDTO.mno}]];
-            $(".sendSmsBtn").click(function(){
 
+            $(".sendSmsBtn").click(function(){
+                if (!(document.location.href.indexOf('&mno') > -1)) {
+                    confirm("환진자와 시간 간격을 먼저 입력해주세요");
+                    return ;
+                }
+                if(!confirm("밀접 접촉자에게 문자를 보내시겠습니까?")){
+
+                    return ;
+                }
                 $.ajax({url: "/status/sendSms?page="+[[${pageRequestDTO.page}]]+"&type="+[[${pageRequestDTO.type}]]+
                         "&from="+[[${pageRequestDTO.from}]]+"&to="+[[${pageRequestDTO.to}]]+
                         "&keyword="+[[${pageRequestDTO.keyword}]]+"&mno="+[[${pageRequestDTO.mno}]]+"&closeContact="+[[${pageRequestDTO.closeContact}]], success: function(result){
@@ -215,6 +223,7 @@
 
                 searchForm.submit();
 
+
             });
 
             $('.btn-clear').click(function (e) {
@@ -222,6 +231,7 @@
                 searchForm.empty().submit();
 
             });
+
 
             $('.custom-select').on("change", function () {
                 var value = $('.custom-select').val();
