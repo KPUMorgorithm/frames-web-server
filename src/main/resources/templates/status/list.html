@@ -147,8 +147,15 @@
 
             var mno=[[${pageRequestDTO.mno}]];
 
+
+            var mnoURL = getUrlParam('mno');
+
+            function getUrlParam(name) {
+                var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                return (results && results[1]) || undefined;
+            }
             $(".sendSmsBtn").click(function(){
-                if (!(document.location.href.indexOf('&mno') > -1)) {
+                if (!(document.location.href.indexOf('&mno') > -1) || !(mnoURL>"")) {
                     confirm("확진자와 시간 간격을 먼저 입력해주세요");
                     return ;
                 }

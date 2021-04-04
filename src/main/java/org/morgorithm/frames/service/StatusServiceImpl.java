@@ -115,7 +115,7 @@ public class StatusServiceImpl implements StatusService {
     }
 
     @Override
-    public void sendSns(PageRequestDTO requestDTO) {
+    public void sendSms(PageRequestDTO requestDTO) {
         List<String> confirmedPath=new ArrayList<>();
         List<String> contactPath=new ArrayList<>();
         HashSet<Long> mnos=new HashSet<>();

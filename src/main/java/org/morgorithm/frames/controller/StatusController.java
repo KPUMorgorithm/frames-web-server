@@ -27,7 +27,7 @@ public class StatusController {
     @GetMapping("/sendSms")
     public String sendSns(PageRequestDTO pageRequestDTO) {
 
-        statusService.sendSns(pageRequestDTO);
+        statusService.sendSms(pageRequestDTO);
         return "redirect:/status/list";
 
     }
