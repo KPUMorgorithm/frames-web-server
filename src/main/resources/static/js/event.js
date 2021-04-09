@@ -56,5 +56,5 @@ function sendMessage() {
 function onMessageReceived(payload) {
 
 }
-
+//이걸 풀어야 websocket 시작
 connect();

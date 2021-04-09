@@ -141,6 +141,27 @@
 
         </html>
         <script th:inline="javascript">
+            var totalDanger=[[${result.dangerScanNum}]];
+            var totalNormal=[[${result.normalScanNum}]];
+            var totalWarning=[[${result.warningScanNum}]];
+            console.log("####value:"+totalDanger);
+            console.log("####value:"+totalNormal);
+            console.log("####value:"+totalWarning);
+            var set1=[{
+                "name": "Danger",
+                "color": "#fe460e",
+                "y":totalDanger
+            }, {
+
+                "name": "Warning",
+                "y":totalWarning,
+                "color": "#ffa600"
+            }, {
+
+                "name": "Normal",
+                "y":totalNormal,
+                "color": "#01ff4a"
+            }]
             $(function () {
                 $(document).ready(function () {
                     Highcharts.setOptions({
@@ -149,15 +170,27 @@
                         }
                     });
 
+
                     $('#container').highcharts({
                         chart: {
                             plotBackgroundColor: null,
                             plotBorderWidth: null,
                             plotShadow: false,
-                            type: 'pie'
+                            type: 'pie',
+                            events: {
+                                load: function () {
+                                    // set up the updating of the chart each second
+                                    var series1 = this.series[0];
+
+
+                                    setInterval(function () {
+                                        series1.setData(set1);
+                                    }, 1000);
+                                }
+                            }
                         },
                         title: {
-                            text: 'Browser market shares in January, 2018'
+                            text: 'Real-Time Events'
                         },
                         tooltip: {
                             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -178,37 +211,19 @@
                             }
                         },
                         series: [{
-                            name: 'Brands',
+                            name: 'Events',
                             colorByPoint: true,
                             data: [{
-                                name: 'Chrome',
-                                y: 61.41,
+                                name: 'Danger',
+                                y: 30,
+                            }, {
+                                name: 'Warning',
+                                y: 30
+                            }, {
+                                name: 'Normal',
+                                y: 30,
                                 sliced: true,
                                 selected: true
-                            }, {
-                                name: 'Internet Explorer',
-                                y: 11.84
-                            }, {
-                                name: 'Firefox',
-                                y: 10.85
-                            }, {
-                                name: 'Edge',
-                                y: 4.67
-                            }, {
-                                name: 'Safari',
-                                y: 4.18
-                            }, {
-                                name: 'Sogou Explorer',
-                                y: 1.64
-                            }, {
-                                name: 'Opera',
-                                y: 1.6
-                            }, {
-                                name: 'QQ',
-                                y: 1.2
-                            }, {
-                                name: 'Other',
-                                y: 2.61
                             }]
                         }]
                     });
