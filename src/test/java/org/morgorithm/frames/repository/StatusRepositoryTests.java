@@ -264,6 +264,11 @@ public class StatusRepositoryTests {
             System.out.println("status:"+s.getState());
             System.out.println("temperature"+s.getTemperature());
             statusRepository.save(s);
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

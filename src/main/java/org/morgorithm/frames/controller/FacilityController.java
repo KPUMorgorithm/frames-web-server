@@ -1,6 +1,7 @@
 package org.morgorithm.frames.controller;
 
 
+import org.morgorithm.frames.dto.EventDTO;
 import org.morgorithm.frames.dto.RealTimeStatusDTO;
 
 import org.morgorithm.frames.service.StatusService;
@@ -26,6 +27,15 @@ public class FacilityController {
     public RealTimeStatusDTO sendMessage(@Payload RealTimeStatusDTO realTimeStatusDTO){
       //  System.out.println("sendMessage method!!!***");
         RealTimeStatusDTO dto=statusService.getFacilityStatus();
+        System.out.println("FacilityController");
+        return dto;
+    }
+    @MessageMapping("/status.sendMessage2")
+    @SendTo("/topic/public2")
+    public EventDTO sendMessage2(@Payload EventDTO eventDTO){
+        //  System.out.println("sendMessage method!!!***");
+        EventDTO dto=statusService.getEventInfo();
+        System.out.println("FacilityController2");
         return dto;
     }
 

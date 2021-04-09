@@ -50,8 +50,8 @@ org/morgorithm/frames/entity/MemberImage.java
 org/morgorithm/frames/dto/MemberDTO.java
  org.morgorithm.frames.dto.MemberDTO
  org.morgorithm.frames.dto.MemberDTO$MemberDTOBuilder
-org/morgorithm/frames/controller/FacilityController.java
- org.morgorithm.frames.controller.FacilityController
+org/morgorithm/frames/controller/EventController.java
+ org.morgorithm.frames.controller.EventController
 org/morgorithm/frames/service/MemberServiceImpl.java
  org.morgorithm.frames.service.MemberServiceImpl
 org/morgorithm/frames/repository/FacilityRepository.java
@@ -85,5 +85,5 @@ org/morgorithm/frames/configuration/WebSocketConfig.java
  org.morgorithm.frames.configuration.WebSocketConfig
 org/morgorithm/frames/FramesApplication.java
  org.morgorithm.frames.FramesApplication
-org/morgorithm/frames/controller/EventController.java
- org.morgorithm.frames.controller.EventController
+org/morgorithm/frames/controller/FacilityController.java
+ org.morgorithm.frames.controller.FacilityController
