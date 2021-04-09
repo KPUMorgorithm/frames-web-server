@@ -5,30 +5,25 @@ import lombok.extern.log4j.Log4j2;
 import org.morgorithm.frames.dto.PageRequestDTO;
 import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.service.StatusService;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequiredArgsConstructor
-@RequestMapping("/status")
+@RequestMapping("/events")
 @Controller
 @Log4j2
-public class StatusController {
+public class EventController {
     private final StatusService statusService;
 
     @GetMapping("/list")
-    public String register(PageRequestDTO pageRequestDTO,  Model model){
-        model.addAttribute("result", statusService.getStatusList(pageRequestDTO));
-        return "status/list";
+    public String register(Model model){
+        model.addAttribute("result", statusService.getEventInfo());
+        System.out.println("WebSOCKET!!!!!");
+        return "events/list";
     }
-    @GetMapping("/sendSms")
-    public String sendSns(PageRequestDTO pageRequestDTO) {
 
-        statusService.sendSms(pageRequestDTO);
-        return "redirect:/status/list";
-
-    }
 }

@@ -15,13 +15,17 @@ import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.entity.Member;
 import org.morgorithm.frames.entity.QStatus;
 import org.morgorithm.frames.entity.Status;
+import org.morgorithm.frames.repository.FacilityRepository;
+import org.morgorithm.frames.repository.MemberRepository;
 import org.morgorithm.frames.repository.StatusRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Function;
@@ -33,7 +37,156 @@ public class StatusServiceImpl implements StatusService {
 
     static final int BUILDING_NUM = 10;
     private final StatusRepository statusRepository;
+    private final MemberRepository memberRepository;
+    private final FacilityRepository facilityRepository;
 
+    @Override
+    public EventDTO getEventInfo(){
+        EventDTO eventDTO=new EventDTO();
+        PageRequestDTO requestDTO=new PageRequestDTO();
+        Pageable pageable = requestDTO.getPageable(Sort.by("regDate").descending());
+
+
+        //위험군 온도 숫자 초기화
+        BooleanBuilder booleanBuilder1 = getDangerEventCondition();
+        Page<Status> resultDanger = statusRepository.findAll(booleanBuilder1, pageable);
+        eventDTO.setDangerScanNum((int)resultDanger.getTotalElements());
+
+        //경고군 온도 숫자 초기화
+        BooleanBuilder booleanBuilder2 =  getWarningEventCondition();
+        Page<Status> resultWarning = statusRepository.findAll(booleanBuilder2, pageable);
+        eventDTO.setWarningScanNum((int)resultWarning.getTotalElements());
+
+        //정상군 온도 숫자 초기화
+        BooleanBuilder booleanBuilder3 =  getNormalEventCondition();
+        Page<Status> resultNormal = statusRepository.findAll(booleanBuilder3, pageable);
+        eventDTO.setNormalScanNum((int)resultNormal.getTotalElements());
+
+        //하루 전체 검사 숫자 초기화
+        eventDTO.setTotalScanNum(eventDTO.getDangerScanNum()+eventDTO.getNormalScanNum()+eventDTO.getWarningScanNum());
+
+        //전체 멤버 수
+        eventDTO.setTotalMember(memberRepository.getMemberNum());
+
+        //전체 건물 수
+        eventDTO.setNumOfFacility(facilityRepository.getFacilityNum());
+
+        //오늘 날짜
+        String date=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd"));
+        eventDTO.setTodayDate(date);
+
+        //오늘 캠퍼스 내에 입장한 사람들 수 초기화
+        List<Object> result = statusRepository.getAllMemberMno();
+        HashSet<Long> hashSet=new HashSet<>();
+        for(Object a:result){
+            hashSet.add((Long)a);
+        }
+        eventDTO.setInMember(hashSet.size());
+
+
+        /*System.out.println("####danger: "+eventDTO.getDangerScanNum());
+        System.out.println("####warning: "+eventDTO.getWarningScanNum());
+        System.out.println("####normal: "+eventDTO.getNormalScanNum());
+        System.out.println("####total: "+eventDTO.getTotalScanNum());
+        System.out.println("####InMember: "+eventDTO.getInMember());
+        System.out.println("####Today's Date: "+eventDTO.getTodayDate());
+        System.out.println("####Facility Num: "+eventDTO.getNumOfFacility());
+        System.out.println("####Number of Member: "+eventDTO.getTotalMember());*/
+        return eventDTO;
+    }
+    BooleanBuilder getDangerEventCondition(){
+
+        //오늘 날짜
+        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime to = LocalDateTime.now();
+
+
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+        QStatus qStatus = QStatus.status;
+
+
+        BooleanExpression expression = qStatus.statusnum.gt(0L);// gno > 0 조건만 생성
+
+        booleanBuilder.and(expression);
+
+        //검색 조건을 작성하기
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+
+        //범위:오늘동안
+        conditionBuilder.and(qStatus.regDate.between(from,to));
+        //위험 온도 37.2
+        conditionBuilder.and(qStatus.temperature.between(37.3,40));
+
+        booleanBuilder.and(conditionBuilder);
+
+
+
+        return booleanBuilder;
+    }
+    BooleanBuilder getNormalEventCondition(){
+
+        //오늘 날짜
+        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime to = LocalDateTime.now();
+
+
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+        QStatus qStatus = QStatus.status;
+
+
+        BooleanExpression expression = qStatus.statusnum.gt(0L);// gno > 0 조건만 생성
+
+        booleanBuilder.and(expression);
+
+        //검색 조건을 작성하기
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+
+        //범위:오늘동안
+        conditionBuilder.and(qStatus.regDate.between(from,to));
+        //위험 온도 37.2
+        conditionBuilder.and(qStatus.temperature.between(30,36.8));
+
+        booleanBuilder.and(conditionBuilder);
+
+
+
+        return booleanBuilder;
+    }
+    BooleanBuilder getWarningEventCondition(){
+
+        //오늘 날짜
+        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime to = LocalDateTime.now();
+
+
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+        QStatus qStatus = QStatus.status;
+
+
+        BooleanExpression expression = qStatus.statusnum.gt(0L);// gno > 0 조건만 생성
+
+        booleanBuilder.and(expression);
+
+        //검색 조건을 작성하기
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+
+        //범위:오늘동안
+        conditionBuilder.and(qStatus.regDate.between(from,to));
+        //위험 온도 37.2
+        conditionBuilder.and(qStatus.temperature.between(36.9,37.2));
+
+        booleanBuilder.and(conditionBuilder);
+
+
+
+        return booleanBuilder;
+    }
     @Override
     public RealTimeStatusDTO getFacilityStatus() {
         RealTimeStatusDTO realTimeStatusDTO = new RealTimeStatusDTO();

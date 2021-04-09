@@ -11,6 +11,9 @@ org/morgorithm/frames/entity/QBaseEntity.java
 org/morgorithm/frames/dto/StatusDTO.java
  org.morgorithm.frames.dto.StatusDTO
  org.morgorithm.frames.dto.StatusDTO$StatusDTOBuilder
+org/morgorithm/frames/dto/EventDTO.java
+ org.morgorithm.frames.dto.EventDTO
+ org.morgorithm.frames.dto.EventDTO$EventDTOBuilder
 org/morgorithm/frames/entity/Facility.java
  org.morgorithm.frames.entity.Facility
  org.morgorithm.frames.entity.Facility$FacilityBuilder
@@ -49,8 +52,8 @@ org/morgorithm/frames/dto/MemberDTO.java
  org.morgorithm.frames.dto.MemberDTO$MemberDTOBuilder
 org/morgorithm/frames/controller/FacilityController.java
  org.morgorithm.frames.controller.FacilityController
-org/morgorithm/frames/controller/CoronaVirusUpdateController.java
- org.morgorithm.frames.controller.CoronaVirusUpdateController
+org/morgorithm/frames/service/MemberServiceImpl.java
+ org.morgorithm.frames.service.MemberServiceImpl
 org/morgorithm/frames/repository/FacilityRepository.java
  org.morgorithm.frames.repository.FacilityRepository
 org/morgorithm/frames/service/StatusService.java
@@ -70,6 +73,8 @@ org/morgorithm/frames/dto/PageResultDTO.java
  org.morgorithm.frames.dto.PageResultDTO
 org/morgorithm/frames/entity/BaseEntity.java
  org.morgorithm.frames.entity.BaseEntity
+org/morgorithm/frames/controller/CoronaVirusUpdateController.java
+ org.morgorithm.frames.controller.CoronaVirusUpdateController
 org/morgorithm/frames/controller/StatusController.java
  org.morgorithm.frames.controller.StatusController
 org/morgorithm/frames/dto/UploadResultDTO.java
@@ -80,5 +85,5 @@ org/morgorithm/frames/configuration/WebSocketConfig.java
  org.morgorithm.frames.configuration.WebSocketConfig
 org/morgorithm/frames/FramesApplication.java
  org.morgorithm.frames.FramesApplication
-org/morgorithm/frames/service/MemberServiceImpl.java
- org.morgorithm.frames.service.MemberServiceImpl
+org/morgorithm/frames/controller/EventController.java
+ org.morgorithm.frames.controller.EventController

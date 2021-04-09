@@ -12,6 +12,7 @@ public interface StatusService {
     RealTimeStatusDTO getFacilityStatus();
     PageResultDTO<StatusDTO, Status> getStatusList(PageRequestDTO requestDTO);
     void sendSms(PageRequestDTO requestDTO);
+    EventDTO getEventInfo();
     default Status statusDtoToEntity(StatusDTO dto){
 
         Status entity=modelMapper.map(dto,Status.class);

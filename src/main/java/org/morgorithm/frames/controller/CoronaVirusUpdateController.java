@@ -24,7 +24,7 @@ public class CoronaVirusUpdateController {
 
 
 
-    //@Scheduled(fixedRate = 5000)
+
     @GetMapping("/")
     public String getData(Model model){
         model.addAttribute("dates",coronaVirusDataService.getDateList());
@@ -35,6 +35,7 @@ public class CoronaVirusUpdateController {
         model.addAttribute("totalConfirmed",coronaVirusDataService.getTotalConfirmed());
         model.addAttribute("totalClear",coronaVirusDataService.getTotalClear());
         model.addAttribute("statusDTO", statusService.getFacilityStatus());
+
 
         return "daily/dailyUpdate";
     }

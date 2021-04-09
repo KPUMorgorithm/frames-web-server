@@ -25,6 +25,9 @@ public class PageResultDTO<DTO, EN> {
         totalPage=result.getTotalPages();
         makePageList(result.getPageable());
     }
+    public PageResultDTO(Page result){
+        makePageList(result.getPageable());
+    }
 
     private void makePageList(Pageable pageable){
         this.page=pageable.getPageNumber()+1;

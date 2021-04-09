@@ -1,8 +1,10 @@
 package org.morgorithm.frames.service;
 
 
+import net.nurigo.java_sdk.Coolsms;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
+import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.morgorithm.frames.dto.PageRequestDTO;
@@ -125,7 +127,10 @@ public class StatusServiceTests {
             System.out.println(e.getCode());
         }
     }
-
+    @Test
+    void testMethodPrint(){
+        service.getEventInfo();
+    }
 
 
 }

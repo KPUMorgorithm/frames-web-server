@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--datetimepicker bootstrap-->
+
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+        <script src="/js/event.js"></script>
+
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link
+                    rel="stylesheet"
+                    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+                    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+                    crossorigin="anonymous"
+            />
+            <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/event.css}">
+            <title>CSS GRID DASHBOARD</title>
+        </head>
+
+
+        <main>
+            <div class="main__container">
+                <!-- MAIN TITLE STARTS HERE -->
+
+                <div class="main__title">
+                    <img src="assets/hello.svg" alt=""/>
+                    <div class="main__greeting">
+                        <h1>Events</h1>
+                        <p>Real-Time Monitoring</p>
+                    </div>
+                </div>
+
+                <!-- MAIN TITLE ENDS HERE -->
+
+                <!-- MAIN CARDS STARTS HERE -->
+                <div class="main__cards">
+                    <div class="card">
+                        <i
+                                class="fa fa-user-o fa-2x text-lightblue"
+                                aria-hidden="true"
+                        ></i>
+                        <div class="card_inner">
+                            <p class="text-primary-p">Total Member</p>
+                            <span class="font-bold text-title">[[${result.totalMember}]]</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <i class="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
+                        <div class="card_inner">
+                            <p class="text-primary-p">Today's Date</p>
+                            <span class="font-bold text-title">[[${result.todayDate}]]</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <i
+                                class="fa fa-video-camera fa-2x text-yellow"
+                                aria-hidden="true"
+                        ></i>
+                        <div class="card_inner">
+                            <p class="text-primary-p">Members in the Campus</p>
+                            <span class="font-bold text-title">[[${result.inMember}]]</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <i class="fa fa-building fa-2x"></i>
+                        <div class="card_inner">
+                            <p class="text-primary-p">Facilities being Checked</p>
+                            <span class="font-bold text-title">[[${result.numOfFacility}]]</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- MAIN CARDS ENDS HERE -->
+
+                <!-- CHARTS STARTS HERE -->
+                <div class="charts">
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Daily Reports</h1>
+                                <p>KPU</p>
+                            </div>
+
+                            <div id="container"></div>
+                        </div>
+                        <div id="apex1"></div>
+                    </div>
+
+                    <div class="charts__right">
+                        <div class="charts__right__title">
+                            <div>
+                                <h1>Stats Reports</h1>
+                                <p>Korea Polytechnic University</p>
+                            </div>
+
+                        </div>
+
+                        <div class="charts__right__cards">
+                            <div class="card3">
+                                <h1>Total</h1>
+                                <p style="font-size:40px">[[${result.totalScanNum}]]</p>
+                            </div>
+
+                            <div class="card4">
+                                <h1>Danger</h1>
+                                <p style="font-size:40px">[[${result.dangerScanNum}]]</p>
+                            </div>
+
+                            <div class="card2">
+                                <h1>Normal</h1>
+                                <p style="font-size:40px">[[${result.normalScanNum}]]</p>
+                            </div>
+
+                            <div class="card1" style="background-color: #FFD119; color: #fd7e14">
+                                <h1>Warning</h1>
+                                <p style="font-size:40px">[[${result.warningScanNum}]]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CHARTS ENDS HERE -->
+            </div>
+        </main>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+        </html>
+        <script th:inline="javascript">
+            $(function () {
+                $(document).ready(function () {
+                    Highcharts.setOptions({
+                        global: {
+                            useUTC: false
+                        }
+                    });
+
+                    $('#container').highcharts({
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie'
+                        },
+                        title: {
+                            text: 'Browser market shares in January, 2018'
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        accessibility: {
+                            point: {
+                                valueSuffix: '%'
+                            }
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Brands',
+                            colorByPoint: true,
+                            data: [{
+                                name: 'Chrome',
+                                y: 61.41,
+                                sliced: true,
+                                selected: true
+                            }, {
+                                name: 'Internet Explorer',
+                                y: 11.84
+                            }, {
+                                name: 'Firefox',
+                                y: 10.85
+                            }, {
+                                name: 'Edge',
+                                y: 4.67
+                            }, {
+                                name: 'Safari',
+                                y: 4.18
+                            }, {
+                                name: 'Sogou Explorer',
+                                y: 1.64
+                            }, {
+                                name: 'Opera',
+                                y: 1.6
+                            }, {
+                                name: 'QQ',
+                                y: 1.2
+                            }, {
+                                name: 'Other',
+                                y: 2.61
+                            }]
+                        }]
+                    });
+                });
+            });
+        </script>
+    </th:block>
+
+</th:block>

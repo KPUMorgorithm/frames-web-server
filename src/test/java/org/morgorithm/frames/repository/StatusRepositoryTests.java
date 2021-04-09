@@ -178,5 +178,93 @@ public class StatusRepositoryTests {
         }
 
     }
+    @Test
+    void testEventNowBooleanBuilderInsertDummyData(){
+        List<Status> totalData=new ArrayList<>();
+        int cnt=(int)(memberRepository.count());
+        Boolean arr[]=new Boolean[1000];
+        int barr[]=new int[1000];
+        Arrays.fill(arr,false);
+        Arrays.fill(barr,0);
+
+        IntStream.rangeClosed(1,cnt*2).forEach(i->{
+            List<Status> data=new ArrayList<>();
+            Long mno=Long.valueOf((int)(Math.random()*cnt)+1);
+            Member member=Member.builder().mno(mno).build();
+
+            Long bno=0L;
+
+            if(arr[mno.intValue()]==false){
+                bno=((long)(Math.random()*10)+1);
+                barr[mno.intValue()]=bno.intValue();
+                arr[mno.intValue()]=true;
+            }else{
+                bno=Long.valueOf(barr[mno.intValue()]);
+                arr[mno.intValue()]=false;
+            }
+            Facility facility= Facility.builder().bno(bno).building("building"+bno).build();
+
+            //온도 데이터 생성
+            double rangeMin=35;
+            double rangeMax=37.3;
+            Random r = new Random();
+
+            double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+
+
+            //LocalDatetime Random****************************
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+            // Save current LocalDateTime into a variable
+            LocalDateTime localDateTime = LocalDateTime.now();
+
+            // Format LocalDateTime into a String variable and print
+            String formattedLocalDateTime = localDateTime.format(dateTimeFormatter);
+            System.out.println("Current Date: " + formattedLocalDateTime);
+
+            //Get random amount of days 오늘 당일
+            Random random = new Random();
+            int randomAmountOfDays = random.nextInt(1);
+            randomAmountOfDays*=-1;
+            System.out.println("Random amount of days: " + randomAmountOfDays);
+
+            //현재 시간 기준으로 7시간 전 후로 랜덤 시간 min, max가 있으면 nextInt(max+min+1)-min
+            int randomAmountOfHours=random.nextInt(7)-7;
+            System.out.println("Random amount of hours: " + randomAmountOfHours);
+
+            //현재 시간 기준으로 60분 전후 min, max가 있으면 nextInt(max+min+1)-min
+            int randomAmountOfMinute=random.nextInt(121)-60;
+            System.out.println("Random amount of minutes: " + randomAmountOfMinute);
+
+
+            // Add randomAmountOfDays to LocalDateTime variable we defined earlier and store it into a new variable
+            LocalDateTime futureLocalDateTime = localDateTime.plusDays(randomAmountOfDays).plusHours(randomAmountOfHours).plusMinutes(randomAmountOfMinute);
+
+
+            // Format new LocalDateTime variable into a String variable and print
+            String formattedFutureLocalDateTime = String.format(futureLocalDateTime.format(dateTimeFormatter));
+            System.out.println("Date " + randomAmountOfDays + " days in future: " + formattedFutureLocalDateTime);
+            System.out.println();
+            //******************************************************
+
+            //모든 데이터 넣기
+            //온도는 소수 자리수 1자리만 출력하게 하고 Double클래스를 이용해서 String to Double 해줌
+            Status status=Status.builder().member(member).facility(facility).state(arr[mno.intValue()]).temperature(Double.valueOf(String.format("%.1f",+randomValue))).build();
+            status.setRegDate(futureLocalDateTime);
+
+            data.add(status);
+            totalData.addAll(data);
+
+        });
+
+        for(Status s:totalData){
+
+            System.out.println("mno:"+s.getMember());
+            System.out.println("building:"+s.getFacility());
+            System.out.println("status:"+s.getState());
+            System.out.println("temperature"+s.getTemperature());
+            statusRepository.save(s);
+        }
+    }
 
 }
