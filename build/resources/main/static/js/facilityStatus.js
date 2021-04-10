@@ -144,21 +144,27 @@ function onMessageReceived(payload) {
     for(var i=0;i<bName.length;i++){
         var textElement = document.createElement('p');
 
+
         if(tem[i]>=37){
             textElement.style.color="#ff0000";
+            textElement.className ="list-group-item list-group-item-danger";
         }else if(tem[i]<=35){
             textElement.style.color="#feb301";
-        }else
+            textElement.className ="list-group-item list-group-item-warning";
+        }else{
             textElement.style.color="#007f00";
+            textElement.className ="list-group-item list-group-item-success";
+        }
+
 
         var s;
         if(entranceState[i])
             s="입장";
         else
             s="퇴장";
-
+        console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         var messageText = document.createTextNode("건물:"+bName[i]+" 아이디:"+mno[i]+" 온도:"+tem[i]+" 시간:"+regDate[i]+" "+s);
-
+        console.log("############test:"+"건물:"+bName[i]+" 아이디:"+mno[i]+" 온도:"+tem[i]+" 시간:"+regDate[i]+" "+s);
         textElement.appendChild(messageText);
 
       //  messageElement.appendChild(horizontalElement);
