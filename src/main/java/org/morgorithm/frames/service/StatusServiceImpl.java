@@ -193,14 +193,20 @@ public class StatusServiceImpl implements StatusService {
         int[] in = new int[BUILDING_NUM];
         int[] out = new int[BUILDING_NUM];
         String[] bName = new String[BUILDING_NUM];
-        int iidx = 0;
-        int oidx = 0;
+        //초기화
+        for(int i=0;i<BUILDING_NUM;i++){
+            in[i]=0;
+            out[i]=0;
+            bName[i]="building"+(i+1);
+        }
+
         int total = 0;
-        Boolean s = true;
+
         List<Object[]> result = statusRepository.getFacilityInInfo();
         Iterable<Status> statusResult = statusRepository.findAll(getStatusSearch());
         List<Status> statusList = Lists.newArrayList(statusResult);
-
+        System.out.println("#####statusList########: "+statusList.toString());
+        System.out.println("#####result########: "+result.toString());
         //**********dummy test data
         /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime ran=LocalDateTime.parse("2021-03-16 12:30:22",formatter);
@@ -227,16 +233,22 @@ public class StatusServiceImpl implements StatusService {
         statusList.add(s3);*/
         //************dummy test data
 
-        System.out.println("test");
+        System.out.println("test getFacilityStatus result.size():"+result.size());
         for (int i = 0; i < result.size(); i++) {
-            if (s) {
-                in[iidx] = ((Long) (result.get(i)[1])).intValue();
+           // System.out.println("test getFacilityStatus inside for loop"+result.size());
+            //bno를 index 삼어서 in과 out배열의 인덱스로 씀
+            int idx=((Long) (result.get(i)[2])).intValue();
+            System.out.println("index:"+(idx-1));
+            System.out.println("bno:"+((Long) (result.get(i)[2])).intValue());
+            System.out.println("result.get(i):"+Arrays.toString(result.get(i)));
+            System.out.println("result state:"+(Boolean)result.get(i)[3]);
+            if ((Boolean)result.get(i)[3]) {
+                in[(idx-1)] = ((Long) (result.get(i)[1])).intValue();
                 Facility facility = (Facility) result.get(i)[0];
-                bName[iidx++] = facility.getBuilding();
+                bName[(idx-1)] = facility.getBuilding();
             } else
-                out[oidx++] = ((Long) (result.get(i)[1])).intValue();
+                out[(idx-1)] = ((Long) (result.get(i)[1])).intValue();
             total += ((Long) (result.get(i)[1])).intValue();
-            s = !s;
         }
         realTimeStatusDTO = realTimeStatusDTO.builder().in(in).out(out).total(total).bName(bName).statusList(statusList).build();
 
