@@ -145,10 +145,10 @@ function onMessageReceived(payload) {
         var textElement = document.createElement('p');
 
 
-        if(tem[i]>=37){
+        if(tem[i]>=37.3){
             textElement.style.color="#ff0000";
             textElement.className ="list-group-item list-group-item-danger";
-        }else if(tem[i]<=35){
+        }else if(tem[i]<=37.2 && tem[i]>=36.9){
             textElement.style.color="#feb301";
             textElement.className ="list-group-item list-group-item-warning";
         }else{

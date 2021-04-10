@@ -6,6 +6,8 @@ import org.morgorithm.frames.configuration.ModelMapperUtil;
 import org.morgorithm.frames.dto.*;
 import org.morgorithm.frames.entity.Status;
 
+import java.util.List;
+
 public interface StatusService {
     @Builder.Default
     ModelMapper modelMapper= ModelMapperUtil.getModelMapper();
@@ -13,6 +15,11 @@ public interface StatusService {
     PageResultDTO<StatusDTO, Status> getStatusList(PageRequestDTO requestDTO);
     void sendSms(PageRequestDTO requestDTO);
     EventDTO getEventInfo();
+    List<Status> getDangerStatus();
+    List<Status> getWarningStatus();
+    List<Status> getNormalStatus();
+    List<Status> getTotalStatus();
+
     default Status statusDtoToEntity(StatusDTO dto){
 
         Status entity=modelMapper.map(dto,Status.class);

@@ -73,8 +73,8 @@ org/morgorithm/frames/dto/PageResultDTO.java
  org.morgorithm.frames.dto.PageResultDTO
 org/morgorithm/frames/entity/BaseEntity.java
  org.morgorithm.frames.entity.BaseEntity
-org/morgorithm/frames/controller/EventController.java
- org.morgorithm.frames.controller.EventController
+org/morgorithm/frames/service/MemberServiceImpl.java
+ org.morgorithm.frames.service.MemberServiceImpl
 org/morgorithm/frames/controller/StatusController.java
  org.morgorithm.frames.controller.StatusController
 org/morgorithm/frames/dto/UploadResultDTO.java
@@ -85,5 +85,5 @@ org/morgorithm/frames/configuration/WebSocketConfig.java
  org.morgorithm.frames.configuration.WebSocketConfig
 org/morgorithm/frames/FramesApplication.java
  org.morgorithm.frames.FramesApplication
-org/morgorithm/frames/service/MemberServiceImpl.java
- org.morgorithm.frames.service.MemberServiceImpl
+org/morgorithm/frames/controller/EventController.java
+ org.morgorithm.frames.controller.EventController

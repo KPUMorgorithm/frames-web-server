@@ -12,7 +12,7 @@
         <script src="https://code.highcharts.com/modules/accessibility.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-     <!--   <script src="/js/event.js"></script> -->
+        <!--   <script src="/js/event.js"></script> -->
 
         <html lang="en">
         <head>
@@ -25,6 +25,7 @@
                     crossorigin="anonymous"
             />
             <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/event.css}">
+            <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/modal.scss}">
             <title>CSS GRID DASHBOARD</title>
         </head>
 
@@ -110,30 +111,230 @@
 
                         <div class="charts__right__cards">
                             <div class="card3">
-                                <h1>Total</h1>
+                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down4">Total</h1>
                                 <p style="font-size:40px" id="total"></p>
                             </div>
 
                             <div class="card4">
-                                <h1>Danger</h1>
+
+                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down">
+                                    Danger</h1>
                                 <p style="font-size:40px" id="danger"></p>
                             </div>
 
                             <div class="card2">
-                                <h1>Normal</h1>
+                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down3">Normal</h1>
                                 <p style="font-size:40px" id="normal"></p>
                             </div>
 
                             <div class="card1" style="background-color: #FFD119; color: #fd7e14">
-                                <h1>Warning</h1>
+                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down2">Warning</h1>
                                 <p style="font-size:40px" id="warning"></p>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
                 <!-- CHARTS ENDS HERE -->
             </div>
         </main>
+        <!-- Buttons -->
+
+
+        <!-- Modal Danger -->
+        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:900px; overflow-y: scroll;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sno</th>
+                                <th scope="col">Mno</th>
+                                <th scope="col">Building</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">Temperature</th>
+                                <th scope="col">Access Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="dto : ${dangerList}">
+                                <th scope="row">
+                                </th>
+                                <td>[[${dto.getStatusnum}]]</td>
+                                <td>[[${dto.getMember.getMno}]]</td>
+                                <td>[[${dto.getFacility.getBno}]]</td>
+                                <td>[[${dto.getRegDate}]]</td>
+                                <td>[[${dto.getTemperature}]]</td>
+                                <td th:text="${dto.getState} ? 'Enter':'Leave'"></td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Warning -->
+        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down2" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:900px; overflow-y: scroll;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sno</th>
+                                <th scope="col">Mno</th>
+                                <th scope="col">Building</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">Temperature</th>
+                                <th scope="col">Access Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="dto : ${warningList}">
+                                <th scope="row">
+                                </th>
+                                <td>[[${dto.getStatusnum}]]</td>
+                                <td>[[${dto.getMember.getMno}]]</td>
+                                <td>[[${dto.getFacility.getBno}]]</td>
+                                <td>[[${dto.getRegDate}]]</td>
+                                <td>[[${dto.getTemperature}]]</td>
+                                <td th:text="${dto.getState} ? 'Enter':'Leave'"></td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Warning -->
+        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down3" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:900px; overflow-y: scroll;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sno</th>
+                                <th scope="col">Mno</th>
+                                <th scope="col">Building</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">Temperature</th>
+                                <th scope="col">Access Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="dto : ${normalList}">
+                                <th scope="row">
+                                </th>
+                                <td>[[${dto.statusnum}]]</td>
+                                <td>[[${dto.member.mno}]]</td>
+                                <td>[[${dto.facility.bno}]]</td>
+                                <td>[[${dto.regDate}]]</td>
+                                <td>[[${dto.temperature}]]</td>
+                                <td th:text="${dto.state} ? 'Enter':'Leave'"></td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Warning -->
+        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down4" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:900px; overflow-y: scroll;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sno</th>
+                                <th scope="col">Mno</th>
+                                <th scope="col">Building</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">Temperature</th>
+                                <th scope="col">Access Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="dto : ${totalList}">
+                                <th scope="row">
+                                </th>
+                                <td>[[${dto.statusnum}]]</td>
+                                <td>[[${dto.member.mno}]]</td>
+                                <td>[[${dto.facility.bno}]]</td>
+                                <td>[[${dto.regDate}]]</td>
+                                <td>[[${dto.temperature}]]</td>
+                                <td th:text="${dto.state} ? 'Enter':'Leave'"></td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -141,6 +342,8 @@
 
         </html>
         <script th:inline="javascript">
+
+
             // This is for able to see chart. We are using Apex Chart. U can check the documentation of Apex Charts too..
             var stompClient = null;
             var username = null;
@@ -149,13 +352,13 @@
             var totalWarning;
             var set1;
 
-            var totalMember=$('#totalMember');
-            var memberIn=$('#memberIn');
-            var facility=$('#facility');
-            var numDanger=$('#danger');
-            var numNormal=$('#normal');
-            var numWarning=$('#warning');
-            var numTotal=$('#total');
+            var totalMember = $('#totalMember');
+            var memberIn = $('#memberIn');
+            var facility = $('#facility');
+            var numDanger = $('#danger');
+            var numNormal = $('#normal');
+            var numWarning = $('#warning');
+            var numTotal = $('#total');
             'use strict';
             var connectingElement = document.querySelector('.connecting');
 
@@ -184,7 +387,6 @@
             }
 
 
-
             function onError(error) {
                 console.log("error");
                 connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
@@ -209,11 +411,9 @@
 
             function onMessageReceived(payload) {
                 var message = JSON.parse(payload.body);
-                totalDanger=message.dangerScanNum;
-                totalWarning=message.warningScanNum;
-                totalNormal=message.normalScanNum;
-
-
+                totalDanger = message.dangerScanNum;
+                totalWarning = message.warningScanNum;
+                totalNormal = message.normalScanNum;
 
 
                 totalMember.text(message.totalMember.toString());
@@ -225,26 +425,27 @@
                 numWarning.text(message.warningScanNum.toString());
                 numTotal.text(message.totalScanNum.toString());
 
-                set1=[{
+                set1 = [{
                     "name": "Danger",
                     "color": "#fe460e",
-                    "y":totalDanger
+                    "y": totalDanger
                 }, {
 
                     "name": "Warning",
-                    "y":totalWarning,
+                    "y": totalWarning,
                     "color": "#ffa600"
                 }, {
 
                     "name": "Normal",
-                    "y":totalNormal,
+                    "y": totalNormal,
                     "color": "#01ff4a"
                 }]
 
-                console.log("####value:"+totalDanger);
-                console.log("####value:"+totalNormal);
-                console.log("####value:"+totalWarning);
+                console.log("####value:" + totalDanger);
+                console.log("####value:" + totalNormal);
+                console.log("####value:" + totalWarning);
             }
+
             //이걸 풀어야 websocket 시작
             connect();
 

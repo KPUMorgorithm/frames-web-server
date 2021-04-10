@@ -94,6 +94,58 @@ public class StatusServiceImpl implements StatusService {
         System.out.println("####Number of Member: "+eventDTO.getTotalMember());*/
         return eventDTO;
     }
+
+    @Override
+    public List<Status> getDangerStatus() {
+        BooleanBuilder booleanBuilder=getDangerEventCondition();
+        Iterable<Status> result=statusRepository.findAll(booleanBuilder);
+        List<Status> dangerList = Lists.newArrayList(result);
+        return dangerList;
+    }
+
+    @Override
+    public List<Status> getWarningStatus() {
+        BooleanBuilder booleanBuilder=getWarningEventCondition();
+        Iterable<Status> result=statusRepository.findAll(booleanBuilder);
+        List<Status> warningList = Lists.newArrayList(result);
+        return warningList;
+    }
+
+    @Override
+    public List<Status> getNormalStatus() {
+        BooleanBuilder booleanBuilder=getNormalEventCondition();
+        Iterable<Status> result=statusRepository.findAll(booleanBuilder);
+        List<Status> normalList = Lists.newArrayList(result);
+        return normalList;
+    }
+
+    @Override
+    public List<Status> getTotalStatus() {
+        //오늘 날짜
+        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime to = LocalDateTime.now();
+        BooleanBuilder booleanBuilder=new BooleanBuilder();
+        QStatus qStatus = QStatus.status;
+
+
+        BooleanExpression expression = qStatus.statusnum.gt(0L);// gno > 0 조건만 생성
+
+        booleanBuilder.and(expression);
+
+        //검색 조건을 작성하기
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+
+        //범위:오늘동안
+        conditionBuilder.and(qStatus.regDate.between(from,to));
+
+
+        booleanBuilder.and(conditionBuilder);
+        Iterable<Status> result=statusRepository.findAll(booleanBuilder);
+        List<Status> totalList = Lists.newArrayList(result);
+
+        return totalList;
+    }
+
     BooleanBuilder getDangerEventCondition(){
 
         //오늘 날짜
