@@ -10,7 +10,7 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import java.util.List;
 
 public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPredicateExecutor<Status> {
-    @Query("select s.facility, count(s.state) from Status s  group by s.facility, s.state")
+    @Query("select s.facility, count(s.state), s.facility.bno, s.state from Status s  group by s.facility, s.state")
     List<Object[]> getFacilityInInfo();
 
     @Query("select s.facility from Status s where s.member.mno=:mno")
