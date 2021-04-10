@@ -39,6 +39,7 @@ public class StatusRepositoryTests {
     //********************참고 사항*****
     //Status 테이블에 테스트 데이터 넣을 때는 BaseEntity 클래스에서 @CreatedDate 주석 처리해야함!!
     // 이것은 만들어지는 시간을 기록하기 때문이다 여기서는 내가 임의로 랜덤 시간을 배정한다.
+    //dashboard의 실시간 출입현황 테스트용으로 사용할 수 없음 왜냐면 저건 현재 시간 기준으로 polling하기 때문
     @Test
     public void insertStatusData(){
         List<Status> totalData=new ArrayList<>();
@@ -155,6 +156,8 @@ public class StatusRepositoryTests {
         }
     }
 
+    //dashboard의 실시간 출입현황 테스트용이다
+    //
     @Test
     void testAddTestDataForRealTimeStatusUpdate() throws InterruptedException {
         int cnt=(int)(memberRepository.count());
@@ -164,20 +167,26 @@ public class StatusRepositoryTests {
             double rangeMin=34.5;
             double rangeMax=37.6;
             Random r = new Random();
-
+            Boolean stat;
+            int s=(int)Math.round( Math.random() );
+            if(s==1)
+                stat=true;
+            else
+                stat=false;
             double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             LocalDateTime now=LocalDateTime.now();
             Long mno=Long.valueOf((int)(Math.random()*cnt)+1);
             bno=((long)(Math.random()*10)+1);
             Member member=Member.builder().mno(mno).build();
             Facility facility= Facility.builder().bno(bno).building("building"+bno).build();
-            Status status=Status.builder().member(member).facility(facility).state(true).temperature(Double.valueOf(String.format("%.1f",+randomValue))).build();
+            Status status=Status.builder().member(member).facility(facility).state(stat).temperature(Double.valueOf(String.format("%.1f",+randomValue))).build();
             status.setRegDate(now);
             statusRepository.save(status);
             Thread.sleep(3000);
         }
 
     }
+    //dashboard의 실시간 출입현황 테스트용으로 사용할 수 없음 왜냐면 저건 현재 시간 기준으로 polling하기 때문
     @Test
     void testEventNowBooleanBuilderInsertDummyData(){
         List<Status> totalData=new ArrayList<>();
