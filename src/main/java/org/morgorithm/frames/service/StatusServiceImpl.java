@@ -269,12 +269,13 @@ public class StatusServiceImpl implements StatusService {
         }
 
         int total = 0;
-
-        List<Object[]> result = statusRepository.getFacilityInInfo();
+        LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(0,0,0)); //어제 00:00:00
+        LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59));
+        List<Object[]> result = statusRepository.getFacilityInInfoOneDay(startDatetime,endDatetime);
         Iterable<Status> statusResult = statusRepository.findAll(getStatusSearch());
         List<Status> statusList = Lists.newArrayList(statusResult);
-        System.out.println("#####statusList########: "+statusList.toString());
-        System.out.println("#####result########: "+result.toString());
+       // System.out.println("#####statusList########: "+statusList.toString());
+       // System.out.println("#####result########: "+result.toString());
         //**********dummy test data
         /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime ran=LocalDateTime.parse("2021-03-16 12:30:22",formatter);
@@ -306,10 +307,11 @@ public class StatusServiceImpl implements StatusService {
            // System.out.println("test getFacilityStatus inside for loop"+result.size());
             //bno를 index 삼어서 in과 out배열의 인덱스로 씀
             int idx=((Long) (result.get(i)[2])).intValue();
+            /*
             System.out.println("index:"+(idx-1));
             System.out.println("bno:"+((Long) (result.get(i)[2])).intValue());
             System.out.println("result.get(i):"+Arrays.toString(result.get(i)));
-            System.out.println("result state:"+(Boolean)result.get(i)[3]);
+            System.out.println("result state:"+(Boolean)result.get(i)[3]);*/
             if ((Boolean)result.get(i)[3]) {
                 in[(idx-1)] = ((Long) (result.get(i)[1])).intValue();
                 Facility facility = (Facility) result.get(i)[0];
