@@ -7,7 +7,10 @@ import org.morgorithm.frames.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -278,6 +281,19 @@ public class StatusRepositoryTests {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+    @Test
+    void getFacilityInInfoOneDay(){
+        //오늘 날짜
+        LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(0,0,0)); //어제 00:00:00
+        LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59));
+        System.out.println("######from: "+startDatetime);
+        System.out.println("######to: "+endDatetime);
+        List<Object[]> result=statusRepository.getFacilityInInfoOneDay(startDatetime,endDatetime);
+        for(Object a[]:result){
+            System.out.println(a.toString());
+            System.out.println(Arrays.toString(a));
         }
     }
 
