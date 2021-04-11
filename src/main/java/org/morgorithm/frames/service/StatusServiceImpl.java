@@ -76,10 +76,10 @@ public class StatusServiceImpl implements StatusService {
         eventDTO.setTodayDate(date);
 
         //오늘 캠퍼스 내에 입장한 사람들 수 초기화
-        List<Object> result = statusRepository.getAllMemberMno();
+        Iterable<Status> result = statusRepository.findAll(dataCollectTime());
         HashSet<Long> hashSet=new HashSet<>();
         for(Object a:result){
-            hashSet.add((Long)a);
+            hashSet.add(((Status)a).getMember().getMno());
         }
         eventDTO.setInMember(hashSet.size());
 
@@ -118,7 +118,23 @@ public class StatusServiceImpl implements StatusService {
         List<Status> normalList = Lists.newArrayList(result);
         return normalList;
     }
+    public BooleanBuilder dataCollectTime(){
+        //오늘 날짜
+        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime to = LocalDateTime.now();
+        QStatus qStatus = QStatus.status;
 
+
+
+        //검색 조건을 작성하기
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+
+        //범위:오늘동안
+        conditionBuilder.and(qStatus.regDate.between(from,to));
+        return conditionBuilder;
+
+
+    }
     @Override
     public List<Status> getTotalStatus() {
         //오늘 날짜

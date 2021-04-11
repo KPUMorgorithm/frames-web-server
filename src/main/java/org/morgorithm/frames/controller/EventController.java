@@ -33,7 +33,7 @@ public class EventController {
         model.addAttribute("normalList", statusService.getNormalStatus());
         model.addAttribute("totalList", statusService.getTotalStatus());
         List<Status> s=statusService.getDangerStatus();
-       s.get(0).getStatusnum();
+
         return "events/list";
     }
 
