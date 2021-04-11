@@ -81,6 +81,8 @@ org/morgorithm/frames/dto/UploadResultDTO.java
  org.morgorithm.frames.dto.UploadResultDTO
 org/morgorithm/frames/entity/QMember.java
  org.morgorithm.frames.entity.QMember
+org/morgorithm/frames/configuration/LocalDateTimeAttributeConverter.java
+ org.morgorithm.frames.configuration.LocalDateTimeAttributeConverter
 org/morgorithm/frames/configuration/WebSocketConfig.java
  org.morgorithm.frames.configuration.WebSocketConfig
 org/morgorithm/frames/FramesApplication.java
