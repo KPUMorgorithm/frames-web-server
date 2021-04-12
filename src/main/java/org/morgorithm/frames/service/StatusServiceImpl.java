@@ -269,8 +269,8 @@ public class StatusServiceImpl implements StatusService {
         }
 
         int total = 0;
-        LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(0,0,0)); //어제 00:00:00
-        LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59));
+        LocalDateTime startDatetime=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime endDatetime = LocalDateTime.now();
         List<Object[]> result = statusRepository.getFacilityInInfoOneDay(startDatetime,endDatetime);
         Iterable<Status> statusResult = statusRepository.findAll(getStatusSearch());
         List<Status> statusList = Lists.newArrayList(statusResult);
