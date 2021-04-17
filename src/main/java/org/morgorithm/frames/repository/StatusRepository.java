@@ -5,10 +5,12 @@ import org.apache.tomcat.jni.Local;
 import org.morgorithm.frames.entity.Member;
 import org.morgorithm.frames.entity.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.sql.Timestamp;
@@ -30,7 +32,27 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     List<Object> getAllMemberMno();
 
 
+    @Modifying
+    @Transactional
+    @Query(value="SET SQL_SAFE_UPDATES = 0", nativeQuery = true)
+    void setSafeUpdate();
 
+
+    @Modifying
+    @Transactional
+    @Query(value="set @cnt=0", nativeQuery = true)
+    void initialCnt();
+
+
+    @Modifying
+    @Transactional
+    @Query(value="update status set status.statusnum=@cnt\\:=@cnt+1",nativeQuery = true)
+    void reorderKeyId();
+
+    @Modifying
+    @Transactional
+    @Query(value="ALTER TABLE status AUTO_INCREMENT = 1", nativeQuery = true)
+    void initialAutoIncrementToTheLatest();
 
 
 }

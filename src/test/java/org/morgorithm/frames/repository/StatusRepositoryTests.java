@@ -296,5 +296,32 @@ public class StatusRepositoryTests {
             System.out.println(Arrays.toString(a));
         }
     }
+    //데이터 유효기간 2주 검사 더미 데이터 삽입
+    @Test
+    void makeDummyDataFromTweoWeeksBefore(){
+        int cnt=(int)(memberRepository.count());
+        Long bno=0L;
 
+        for(int i=0;i<100;i++){
+            double rangeMin=34.5;
+            double rangeMax=37.6;
+            Random r = new Random();
+            Boolean stat;
+            int s=(int)Math.round( Math.random() );
+            if(s==1)
+                stat=true;
+            else
+                stat=false;
+            double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+            LocalDateTime now=LocalDateTime.now().minusDays(20L);
+            Long mno=Long.valueOf((int)(Math.random()*cnt)+1);
+            bno=((long)(Math.random()*10)+1);
+            Member member=Member.builder().mno(mno).build();
+            Facility facility= Facility.builder().bno(bno).building("building"+bno).build();
+            Status status=Status.builder().member(member).facility(facility).state(stat).temperature(Double.valueOf(String.format("%.1f",+randomValue))).build();
+            status.setRegDate(now);
+            statusRepository.save(status);
+
+        }
+    }
 }

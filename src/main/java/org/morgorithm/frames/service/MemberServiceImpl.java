@@ -60,6 +60,7 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.setSafeUpdate();
         memberRepository.initialCnt();
         memberRepository.reorderKeyId();
+        memberRepository.initialAutoIncrementToTheLatest();
 
     }
     @Override

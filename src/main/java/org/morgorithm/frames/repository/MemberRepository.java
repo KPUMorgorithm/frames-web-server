@@ -47,6 +47,10 @@ public interface MemberRepository extends JpaRepository<Member,Long>, QuerydslPr
     void reorderKeyId();
 
 
+    @Modifying
+    @Transactional
+    @Query(value="ALTER TABLE member AUTO_INCREMENT = 1", nativeQuery = true)
+    void initialAutoIncrementToTheLatest();
 
 
 
