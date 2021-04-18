@@ -296,6 +296,7 @@ public class StatusRepositoryTests {
             System.out.println(Arrays.toString(a));
         }
     }
+
     //데이터 유효기간 2주 검사 더미 데이터 삽입
     @Test
     void makeDummyDataFromTweoWeeksBefore(){

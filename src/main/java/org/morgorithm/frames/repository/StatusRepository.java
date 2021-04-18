@@ -31,7 +31,6 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Query("select s.member.mno from Status s")
     List<Object> getAllMemberMno();
 
-
     @Modifying
     @Transactional
     @Query(value="SET SQL_SAFE_UPDATES = 0", nativeQuery = true)
@@ -53,6 +52,8 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Transactional
     @Query(value="ALTER TABLE status AUTO_INCREMENT = 1", nativeQuery = true)
     void initialAutoIncrementToTheLatest();
+
+
 
 
 }

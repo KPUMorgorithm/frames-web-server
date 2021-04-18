@@ -1,9 +1,9 @@
+org/morgorithm/frames/repository/FacilityRepositoryTests.java
+ org.morgorithm.frames.repository.FacilityRepositoryTests
 org/morgorithm/frames/service/MemberServiceTests.java
  org.morgorithm.frames.service.MemberServiceTests
 org/morgorithm/frames/FramesApplicationTests.java
  org.morgorithm.frames.FramesApplicationTests
-org/morgorithm/frames/repository/FacilityRepositoryTests.java
- org.morgorithm.frames.repository.FacilityRepositoryTests
 org/morgorithm/frames/service/StatusServiceTests.java
  org.morgorithm.frames.service.StatusServiceTests
 org/morgorithm/frames/repository/MemberRepositoryTests.java
