@@ -131,6 +131,7 @@ public class StatusServiceImpl implements StatusService {
 
         //범위:오늘동안
         conditionBuilder.and(qStatus.regDate.between(from,to));
+
         return conditionBuilder;
 
 

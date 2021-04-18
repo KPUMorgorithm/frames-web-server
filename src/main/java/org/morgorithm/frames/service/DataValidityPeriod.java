@@ -1,6 +1,8 @@
 package org.morgorithm.frames.service;
 
+import com.google.common.collect.Lists;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import org.morgorithm.frames.entity.QStatus;
 import org.morgorithm.frames.entity.Status;
 import org.morgorithm.frames.repository.StatusRepository;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
 
 @Service
 public class DataValidityPeriod {
