@@ -31,6 +31,12 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Query("select s.member.mno from Status s")
     List<Object> getAllMemberMno();
 
+    @Query("select MAX(s.statusnum) from Status s ")
+    List<Object> getMaxStatusNum();
+
+    @Query("select MAX(s.regDate) from Status s")
+    List<Object> getLatestDate();
+
     @Modifying
     @Transactional
     @Query(value="SET SQL_SAFE_UPDATES = 0", nativeQuery = true)

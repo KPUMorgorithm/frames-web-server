@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @Setter
 abstract class BaseEntity {
     @Convert(converter = LocalDateTimeAttributeConverter.class)
-   // @CreatedDate
+    @CreatedDate
     //testData를 만들기 위해서 CreatDate 주석처리 해놓음
     @Column(name="regdate",updatable=false)
     private LocalDateTime regDate;
