@@ -325,4 +325,38 @@ public class StatusRepositoryTests {
 
         }
     }
+    @Test
+    void getLatestDateTest(){
+        List<Object> result=statusRepository.getLatestDate();
+        LocalDateTime localDateTime=(LocalDateTime)result.get(0);
+        for(Object r:result){
+            System.out.println("Date:"+r.toString());
+            System.out.println("LocalDateTime:"+localDateTime);
+        }
+    }
+    //LocalDateTime의 시간에서 1 밀리세컨드 빼주는 테스트
+    @Test
+    void testLocalDateTime(){
+        List<Object> result = statusRepository.getLatestDate();
+        LocalDateTime latestDateTime;
+        latestDateTime = (LocalDateTime) result.get(0);
+        String temp=latestDateTime.toString();
+
+        String modifyTime="";
+        int minusMillisecond;
+        //s의 마지막 인덱스 character를 제외한 string 받아오기
+        modifyTime=temp.substring(0,temp.length()-1);
+
+        //minusMillisecond s의 마지막 인덱스에 해당하는character를 받아와서 int로 변환
+        minusMillisecond=Integer.parseInt(String.valueOf(temp.charAt(temp.length()-1)));
+
+        //1 깍아줌
+        minusMillisecond--;
+
+        modifyTime+=Integer.toString(minusMillisecond);
+
+        latestDateTime=LocalDateTime.parse(modifyTime);
+        System.out.println("test localdatetime version:"+latestDateTime.toString());
+
+    }
 }
