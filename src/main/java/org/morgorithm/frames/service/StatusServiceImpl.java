@@ -39,6 +39,9 @@ public class StatusServiceImpl implements StatusService {
     private final StatusRepository statusRepository;
     private final MemberRepository memberRepository;
     private final FacilityRepository facilityRepository;
+    private int flag=1;
+    private LocalDateTime latestDateTime;
+    LocalDateTime temporary=null;
 
     @Override
     public EventDTO getEventInfo(){
@@ -330,10 +333,55 @@ public class StatusServiceImpl implements StatusService {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         BooleanBuilder conditionBuilder = new BooleanBuilder();
         QStatus qStatus = QStatus.status;
+        Long maxStatusNum=0L;
 
-        //브라우저가 3초마다 업데이트되기 때문에 3초로 설정해 둔다.
-        LocalDateTime latestUpdate = LocalDateTime.now().minusSeconds(3L);
-        conditionBuilder.and(qStatus.regDate.between(latestUpdate, LocalDateTime.now()));
+        List<Object> result = statusRepository.getLatestDate();
+        latestDateTime = (LocalDateTime) result.get(0);
+
+
+        //***
+        if(flag==1){
+            String temp=latestDateTime.toString();
+            String modifyTime="";
+            int minusMillisecond;
+            int idx=0;
+            for (int i = temp.length() - 1; i >= 0; i--) {
+                idx=i;
+                if (temp.charAt(i) != '9')
+                    break;
+            }
+            String subString="";
+            if(temp.length()-idx==1)
+                subString+=temp.charAt(temp.length()-1);
+            else
+                subString+=temp.substring(idx,temp.length()-1);
+            if(subString.length()==7)
+                latestDateTime.plusSeconds(1L);
+
+            modifyTime=temp.substring(0,idx);
+            System.out.println("idx:"+idx);
+            System.out.println("modifyTime:"+modifyTime);
+            System.out.println("temp.substring(idx,temp.length()-1:"+subString);
+            System.out.println("temp.length:"+temp.length());
+            minusMillisecond=Integer.parseInt(String.valueOf(subString));
+            minusMillisecond++;
+            modifyTime+=Integer.toString(minusMillisecond);
+            latestDateTime=LocalDateTime.parse(modifyTime);
+
+            if(temporary==null){
+                temporary=latestDateTime;
+            }
+            System.out.println("temporary:"+temporary);
+            System.out.println("latestDateTime:"+latestDateTime);
+            if(!temporary.equals(latestDateTime))
+                flag=0;
+
+        }
+        //***
+
+
+        conditionBuilder.and(qStatus.regDate.between(latestDateTime,LocalDateTime.now()));
+
         return conditionBuilder;
 
     }
