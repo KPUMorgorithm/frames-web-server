@@ -40,7 +40,7 @@ public class StatusServiceImpl implements StatusService {
     private final MemberRepository memberRepository;
     private final FacilityRepository facilityRepository;
     private int flag=1;
-    private LocalDateTime latestDateTime;
+    private LocalDateTime latestDateTime=null;
     LocalDateTime temporary=null;
 
     @Override
@@ -335,12 +335,13 @@ public class StatusServiceImpl implements StatusService {
         QStatus qStatus = QStatus.status;
         Long maxStatusNum=0L;
 
-        List<Object> result = statusRepository.getLatestDate();
-        latestDateTime = (LocalDateTime) result.get(0);
+       // List<Object> result = statusRepository.getLatestDate();
+       // latestDateTime = (LocalDateTime) result.get(0);
+
 
 
         //***
-        if(flag==1){
+        if(latestDateTime!=null){
             String temp=latestDateTime.toString();
             String modifyTime="";
             int minusMillisecond;
@@ -381,7 +382,8 @@ public class StatusServiceImpl implements StatusService {
 
 
         conditionBuilder.and(qStatus.regDate.between(latestDateTime,LocalDateTime.now()));
-
+        List<Object> result = statusRepository.getLatestDate();
+        latestDateTime = (LocalDateTime) result.get(0);
         return conditionBuilder;
 
     }
