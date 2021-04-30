@@ -237,7 +237,7 @@ $(function () {
                             series2.setData(arrOut);
                             series2.setName("Out");
                             cate.setCategories(arrBName);
-                        }, 1000);
+                        }, 3000);
                     }
                 }
             },

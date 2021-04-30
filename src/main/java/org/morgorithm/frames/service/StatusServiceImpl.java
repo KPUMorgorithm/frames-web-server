@@ -39,7 +39,8 @@ public class StatusServiceImpl implements StatusService {
     private final StatusRepository statusRepository;
     private final MemberRepository memberRepository;
     private final FacilityRepository facilityRepository;
-
+    private int flag=1;
+    Long latestStatusNum=null;
     @Override
     public EventDTO getEventInfo(){
         EventDTO eventDTO=new EventDTO();
@@ -274,6 +275,9 @@ public class StatusServiceImpl implements StatusService {
         LocalDateTime endDatetime = LocalDateTime.now();
         List<Object[]> result = statusRepository.getFacilityInInfoOneDay(startDatetime,endDatetime);
         Iterable<Status> statusResult = statusRepository.findAll(getStatusSearch());
+
+
+
         List<Status> statusList = Lists.newArrayList(statusResult);
        // System.out.println("#####statusList########: "+statusList.toString());
        // System.out.println("#####result########: "+result.toString());
@@ -330,10 +334,33 @@ public class StatusServiceImpl implements StatusService {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         BooleanBuilder conditionBuilder = new BooleanBuilder();
         QStatus qStatus = QStatus.status;
+        Long infiniteStatusNum=10000000L;
+        Status status;
 
-        //브라우저가 3초마다 업데이트되기 때문에 3초로 설정해 둔다.
-        LocalDateTime latestUpdate = LocalDateTime.now().minusSeconds(3L);
-        conditionBuilder.and(qStatus.regDate.between(latestUpdate, LocalDateTime.now()));
+        if(latestStatusNum!=null){
+
+           // status=statusRepository.findTopByOrderByStatusnumDesc();
+          //  latestStatusNum=status.getStatusnum();
+            System.out.println("latestStatusNum before:"+latestStatusNum);
+            latestStatusNum+=1;
+            flag=0;
+        }
+        System.out.println("latestStatusNum after:"+latestStatusNum);
+
+
+
+
+        conditionBuilder.and(qStatus.statusnum.between(latestStatusNum,infiniteStatusNum));
+
+        status = statusRepository.findTopByOrderByStatusnumDesc();
+        latestStatusNum = status.getStatusnum();
+        System.out.println("***********************************");
+        System.out.println("print:"+status.toString());
+        System.out.println("***********************************");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
         return conditionBuilder;
 
     }
