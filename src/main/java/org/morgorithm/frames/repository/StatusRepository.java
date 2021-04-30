@@ -31,11 +31,13 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Query("select s.member.mno from Status s")
     List<Object> getAllMemberMno();
 
-    @Query("select MAX(s.statusnum) from Status s ")
+    @Query("select s.statusnum from Status s ORDER BY s.statusnum DESC")
     List<Object> getMaxStatusNum();
 
     @Query("select MAX(s.regDate) from Status s")
     List<Object> getLatestDate();
+
+    Status findTopByOrderByStatusnumDesc();
 
     @Modifying
     @Transactional
