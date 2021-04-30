@@ -185,7 +185,7 @@ public class StatusRepositoryTests {
             Status status=Status.builder().member(member).facility(facility).state(stat).temperature(Double.valueOf(String.format("%.1f",+randomValue))).build();
             status.setRegDate(now);
             statusRepository.save(status);
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         }
 
     }
