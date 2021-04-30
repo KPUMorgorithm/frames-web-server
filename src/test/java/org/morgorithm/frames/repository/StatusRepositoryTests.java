@@ -186,6 +186,7 @@ public class StatusRepositoryTests {
             status.setRegDate(now);
             statusRepository.save(status);
             Thread.sleep(1000);
+            System.out.println("데이터 삽입");
         }
 
     }
@@ -357,6 +358,13 @@ public class StatusRepositoryTests {
 
         latestDateTime=LocalDateTime.parse(modifyTime);
         System.out.println("test localdatetime version:"+latestDateTime.toString());
+
+    }
+    @Test
+    void testGetMaxStatusNum(){
+        Status result=statusRepository.findTopByOrderByStatusnumDesc();
+        Long num=result.getStatusnum();
+        System.out.println("result:"+result.toString());
 
     }
 }
