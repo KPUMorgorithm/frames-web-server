@@ -40,9 +40,7 @@ public class StatusServiceImpl implements StatusService {
     private final MemberRepository memberRepository;
     private final FacilityRepository facilityRepository;
     private int flag=1;
-    private LocalDateTime latestDateTime=null;
-    LocalDateTime temporary=null;
-
+    Long latestStatusNum=null;
     @Override
     public EventDTO getEventInfo(){
         EventDTO eventDTO=new EventDTO();
@@ -277,6 +275,9 @@ public class StatusServiceImpl implements StatusService {
         LocalDateTime endDatetime = LocalDateTime.now();
         List<Object[]> result = statusRepository.getFacilityInInfoOneDay(startDatetime,endDatetime);
         Iterable<Status> statusResult = statusRepository.findAll(getStatusSearch());
+
+
+
         List<Status> statusList = Lists.newArrayList(statusResult);
        // System.out.println("#####statusList########: "+statusList.toString());
        // System.out.println("#####result########: "+result.toString());
@@ -333,57 +334,33 @@ public class StatusServiceImpl implements StatusService {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         BooleanBuilder conditionBuilder = new BooleanBuilder();
         QStatus qStatus = QStatus.status;
-        Long maxStatusNum=0L;
+        Long infiniteStatusNum=10000000L;
+        Status status;
 
-       // List<Object> result = statusRepository.getLatestDate();
-       // latestDateTime = (LocalDateTime) result.get(0);
+        if(latestStatusNum!=null){
 
-
-
-        //***
-        if(latestDateTime!=null){
-            String temp=latestDateTime.toString();
-            String modifyTime="";
-            int minusMillisecond;
-            int idx=0;
-            for (int i = temp.length() - 1; i >= 0; i--) {
-                idx=i;
-                if (temp.charAt(i) != '9')
-                    break;
-            }
-            String subString="";
-            if(temp.length()-idx==1)
-                subString+=temp.charAt(temp.length()-1);
-            else
-                subString+=temp.substring(idx,temp.length()-1);
-            if(subString.length()==7)
-                latestDateTime.plusSeconds(1L);
-
-            modifyTime=temp.substring(0,idx);
-            System.out.println("idx:"+idx);
-            System.out.println("modifyTime:"+modifyTime);
-            System.out.println("temp.substring(idx,temp.length()-1:"+subString);
-            System.out.println("temp.length:"+temp.length());
-            minusMillisecond=Integer.parseInt(String.valueOf(subString));
-            minusMillisecond++;
-            modifyTime+=Integer.toString(minusMillisecond);
-            latestDateTime=LocalDateTime.parse(modifyTime);
-
-            if(temporary==null){
-                temporary=latestDateTime;
-            }
-            System.out.println("temporary:"+temporary);
-            System.out.println("latestDateTime:"+latestDateTime);
-            if(!temporary.equals(latestDateTime))
-                flag=0;
-
+           // status=statusRepository.findTopByOrderByStatusnumDesc();
+          //  latestStatusNum=status.getStatusnum();
+            System.out.println("latestStatusNum before:"+latestStatusNum);
+            latestStatusNum+=1;
+            flag=0;
         }
-        //***
+        System.out.println("latestStatusNum after:"+latestStatusNum);
 
 
-        conditionBuilder.and(qStatus.regDate.between(latestDateTime,LocalDateTime.now()));
-        List<Object> result = statusRepository.getLatestDate();
-        latestDateTime = (LocalDateTime) result.get(0);
+
+
+        conditionBuilder.and(qStatus.statusnum.between(latestStatusNum,infiniteStatusNum));
+
+        status = statusRepository.findTopByOrderByStatusnumDesc();
+        latestStatusNum = status.getStatusnum();
+        System.out.println("***********************************");
+        System.out.println("print:"+status.toString());
+        System.out.println("***********************************");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
         return conditionBuilder;
 
     }
