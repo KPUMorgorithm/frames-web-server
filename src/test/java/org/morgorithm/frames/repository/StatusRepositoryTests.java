@@ -12,10 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.IntStream;
 
 
@@ -52,7 +49,8 @@ public class StatusRepositoryTests {
         Arrays.fill(arr,false);
         Arrays.fill(barr,0);
 
-        IntStream.rangeClosed(1,cnt*2).forEach(i->{
+        //memeber 의 수 곱하기 5만큼 status를 만들어냄
+        IntStream.rangeClosed(1,cnt*5).forEach(i->{
             List<Status> data=new ArrayList<>();
             Long mno=Long.valueOf((int)(Math.random()*cnt)+1);
             Member member=Member.builder().mno(mno).build();
@@ -87,10 +85,10 @@ public class StatusRepositoryTests {
             String formattedLocalDateTime = localDateTime.format(dateTimeFormatter);
             System.out.println("Current Date: " + formattedLocalDateTime);
 
-            //Get random amount of days between -3~0
+            //Get random amount of days between -9~0
             Random random = new Random();
-            int randomAmountOfDays = random.nextInt(4);
-            randomAmountOfDays*=-1;
+            int randomAmountOfDays = random.nextInt(10);
+
             System.out.println("Random amount of days: " + randomAmountOfDays);
 
             //현재 시간 기준으로 3시간 전 후로 랜덤 시간 min, max가 있으면 nextInt(max+min+1)-min
@@ -103,7 +101,7 @@ public class StatusRepositoryTests {
 
 
             // Add randomAmountOfDays to LocalDateTime variable we defined earlier and store it into a new variable
-            LocalDateTime futureLocalDateTime = localDateTime.plusDays(randomAmountOfDays).plusHours(randomAmountOfHours).plusMinutes(randomAmountOfMinute);
+            LocalDateTime futureLocalDateTime = localDateTime.minusDays(randomAmountOfDays).plusHours(randomAmountOfHours).plusMinutes(randomAmountOfMinute);
 
 
             // Format new LocalDateTime variable into a String variable and print
@@ -365,6 +363,28 @@ public class StatusRepositoryTests {
         Status result=statusRepository.findTopByOrderByStatusnumDesc();
         Long num=result.getStatusnum();
         System.out.println("result:"+result.toString());
+
+    }
+
+    @Test
+    void testGetMemberDailyTemperatureStatus(){
+        List<Object[]> result=statusRepository.getMemberDailyTemperatureStatus(1L);
+        HashMap<String,Double> temperature=new HashMap<String, Double>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM-dd");
+
+
+        for(Object[] a:result){
+            System.out.println(Arrays.toString(a));
+            System.out.println("temperature"+a[1]);
+            System.out.println("regDate:"+a[0]);
+            LocalDateTime temp=(LocalDateTime)a[0];
+            System.out.println();
+            temperature.put(temp.format(formatter),(double)a[1]);
+        }
+        temperature.forEach((key,value)
+            ->System.out.println("key: "+key+", value: "+value));
+
+
 
     }
 }
