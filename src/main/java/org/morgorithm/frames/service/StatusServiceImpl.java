@@ -40,7 +40,30 @@ public class StatusServiceImpl implements StatusService {
     private final MemberRepository memberRepository;
     private final FacilityRepository facilityRepository;
     private int flag=1;
+    private List<Long> bnos=new ArrayList<>();
+    private List<String> dates=new ArrayList<>();
+    private List<String> bName=new ArrayList<>();
     Long latestStatusNum=null;
+
+    @Override
+    public HashMap<String, Double> getList(Long mno) {
+        List<Object[]> result=statusRepository.getMemberDailyTemperatureStatus(mno);
+        HashMap<String,Double> dailyStatus=new HashMap<String, Double>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM-dd");
+
+
+        for(Object[] a:result){
+          /*  System.out.println(Arrays.toString(a));
+            System.out.println("temperature"+a[1]);
+            System.out.println("regDate:"+a[0]);*/
+            LocalDateTime temp=(LocalDateTime)a[0];
+            dailyStatus.put(temp.format(formatter),(double)a[1]);
+        }
+        dailyStatus.forEach((key,value)
+                ->System.out.println("key: "+key+", value: "+value));
+
+        return dailyStatus;
+    }
     @Override
     public EventDTO getEventInfo(){
         EventDTO eventDTO=new EventDTO();
@@ -61,6 +84,7 @@ public class StatusServiceImpl implements StatusService {
         //정상군 온도 숫자 초기화
         BooleanBuilder booleanBuilder3 =  getNormalEventCondition();
         Page<Status> resultNormal = statusRepository.findAll(booleanBuilder3, pageable);
+
         eventDTO.setNormalScanNum((int)resultNormal.getTotalElements());
 
         //하루 전체 검사 숫자 초기화
@@ -164,6 +188,8 @@ public class StatusServiceImpl implements StatusService {
         return totalList;
     }
 
+
+
     BooleanBuilder getDangerEventCondition(){
 
         //오늘 날짜
@@ -259,6 +285,8 @@ public class StatusServiceImpl implements StatusService {
     }
     @Override
     public RealTimeStatusDTO getFacilityStatus() {
+        int fidx=0;
+        List<Object[]> facilityNames=facilityRepository.getFacilityNames();
         RealTimeStatusDTO realTimeStatusDTO = new RealTimeStatusDTO();
         int[] in = new int[BUILDING_NUM];
         int[] out = new int[BUILDING_NUM];
@@ -267,7 +295,9 @@ public class StatusServiceImpl implements StatusService {
         for(int i=0;i<BUILDING_NUM;i++){
             in[i]=0;
             out[i]=0;
-            bName[i]="building"+(i+1);
+        }
+        for(Object[] a:facilityNames){
+            bName[fidx++]=(String)a[0];
         }
 
         int total = 0;
@@ -376,6 +406,48 @@ public class StatusServiceImpl implements StatusService {
 
         return new PageResultDTO<>(result, fn);
     }
+
+    @Override
+    public TrackerInfoDTO getMapInfo(TrackerInfoDTO trackerInfoDTO) {
+        int bidx=0;
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+        String hhmmss=" 00:00:00";
+        QStatus qStatus = QStatus.status;
+        String date=trackerInfoDTO.getDate();
+        TrackerInfoDTO infoDTO=new TrackerInfoDTO();
+        // MM/dd/yyyy 포맷에서 MM/dd/yyyy 00:00:00 더해줌
+        List<Object[]> nameResult=facilityRepository.getFacilityNames();
+        for(Object[] a:nameResult)
+            bName.add((String)a[0]);
+
+        if(date!=null){
+            date+=hhmmss;
+            //LocalDateTime으로 파싱
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+            LocalDateTime from=LocalDateTime.parse(date, formatter);
+            // 하룻동안
+            from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+            LocalDateTime to = LocalDateTime.now();
+            conditionBuilder.and(qStatus.regDate.between(from,to));
+            conditionBuilder.and(qStatus.member.mno.eq(trackerInfoDTO.getMno()));
+            Iterable<Status> result=statusRepository.findAll(conditionBuilder);
+            List<Status> mapInfoList = Lists.newArrayList(result);
+            System.out.println("*********************");
+            System.out.println("mno:"+trackerInfoDTO.getMno());
+            for(Status s:mapInfoList){
+                bnos.add(s.getFacility().getBno());
+                dates.add(s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss")));
+                System.out.println("bnos:"+s.getFacility().getBno());
+                System.out.println("date:"+s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss")));
+            }
+            infoDTO.setBno(bnos);
+            infoDTO.setDates(dates);
+        }
+        infoDTO.setBName(bName);
+
+        return infoDTO;
+    }
+
 
     @Override
     public void sendSms(PageRequestDTO requestDTO) {
