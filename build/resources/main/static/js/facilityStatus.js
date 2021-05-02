@@ -237,12 +237,17 @@ $(function () {
                             series2.setData(arrOut);
                             series2.setName("Out");
                             cate.setCategories(arrBName);
+
                         }, 3000);
                     }
                 }
             },
             title: {
-                text: '건물 출입 현황'
+                text: '건물 출입 현황',
+                style: {
+                    color: '#800000',
+                    fontWeight: 'bold'
+                }
             },
             yAxis: {
                 title: {

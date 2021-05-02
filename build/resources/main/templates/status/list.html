@@ -15,6 +15,7 @@
         <script type="text/javascript"
                 src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
+
         <form action="/status/list" method="get" id="searchForm">
             <div class="input-group">
                 <input type="hidden" name="page" value="1">
@@ -93,7 +94,16 @@
                 </th>
                 <td>[[${dto.statusnum}]]</td>
                 <td>[[${dto.member.mno}]]</td>
-                <td>[[${dto.facility.bno}]]</td>
+                <td th:if="${dto.facility.bno}=='1'" th:text="${buildingName[0]}"></td>
+                <td th:if="${dto.facility.bno}=='2'" th:text="${buildingName[1]}"></td>
+                <td th:if="${dto.facility.bno}=='3'" th:text="${buildingName[2]}"></td>
+                <td th:if="${dto.facility.bno}=='4'" th:text="${buildingName[3]}"></td>
+                <td th:if="${dto.facility.bno}=='5'" th:text="${buildingName[4]}"></td>
+                <td th:if="${dto.facility.bno}=='6'" th:text="${buildingName[5]}"></td>
+                <td th:if="${dto.facility.bno}=='7'" th:text="${buildingName[6]}"></td>
+                <td th:if="${dto.facility.bno}=='8'" th:text="${buildingName[7]}"></td>
+                <td th:if="${dto.facility.bno}=='9'" th:text="${buildingName[8]}"></td>
+                <td th:if="${dto.facility.bno}=='10'" th:text="${buildingName[9]}"></td>
                 <td>[[${dto.regDate}]]</td>
                 <td>[[${dto.temperature}]]</td>
                 <td th:text="${dto.state} ? 'Enter':'Leave'"></td>
@@ -145,10 +155,10 @@
             var value = $('.custom-select').val();
 
 
-            var mno=[[${pageRequestDTO.mno}]];
-
-
             var mnoURL = getUrlParam('mno');
+
+
+
 
             function getUrlParam(name) {
                 var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -168,6 +178,7 @@
                         "&keyword="+[[${pageRequestDTO.keyword}]]+"&mno="+[[${pageRequestDTO.mno}]]+"&closeContact="+[[${pageRequestDTO.closeContact}]], success: function(result){
                     }});
             });
+
             if (value === 'b') {
                 $('#datetimepicker1').hide();
                 $('#datetimepicker2').hide(); //성공
