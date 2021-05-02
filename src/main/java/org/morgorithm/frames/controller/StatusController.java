@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.morgorithm.frames.dto.PageRequestDTO;
 import org.morgorithm.frames.entity.Facility;
+import org.morgorithm.frames.service.FacilityService;
 import org.morgorithm.frames.service.StatusService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +19,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Log4j2
 public class StatusController {
     private final StatusService statusService;
+    private final FacilityService facilityService;
 
     @GetMapping("/list")
     public String register(PageRequestDTO pageRequestDTO,  Model model){
         model.addAttribute("result", statusService.getStatusList(pageRequestDTO));
+        System.out.println("All to String:"+pageRequestDTO.toString());
+        model.addAttribute("buildingName",facilityService.getFacilityNames() );
         return "status/list";
     }
     @GetMapping("/sendSms")
