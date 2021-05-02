@@ -108,7 +108,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
             <script src="js/facilityStatus.js"></script>
-            <script src="js/coronaStatus.js"></script>
+
 
 
 
@@ -129,18 +129,33 @@
             Highcharts.chart('container', {
 
                 title: {
-                    text: '일일 확진자와 사망자 수'
+                    text: '일일 확진자와 사망자 수',
+                    style: {
+                        color: '#1E90FF',
+                        fontWeight: 'bold'
+                    }
                 },
                 subtitle: {
-                    text: '전체 확진자 수: '+listTotalConfirmed
+                    text: '전체 확진자 수: '+listTotalConfirmed,
+                    style: {
+                        color: '#4169E1'
+                    }
                 },
 
                 xAxis: {
                     // categories: category
                     categories: listDates,
+                    labels: {
+                        style: {
+                            color: '#FF4500'
+                        }
+                    },
 
                     title: {
-                        text: '날짜'
+                        text: '날짜',
+                        style: {
+                            color: '#CD5C5C'
+                        }
                     }
 
                 },
@@ -217,10 +232,15 @@
                 }
 
             });
+
             Highcharts.chart('container2', {
 
                 title: {
-                    text: '일일 격리해제와 검사 수'
+                    text: '일일 격리해제와 검사 수',
+                    style: {
+                        color: '#2E8B57',
+                        fontWeight: 'bold'
+                    }
                 },
                 subtitle: {
                     text: '전체 격리해제 수: '+totalClear,
@@ -232,10 +252,17 @@
                 xAxis: {
                     // categories: category
                     categories: listDates,
+                    labels: {
+                        style: {
+                            color: '#FF4500'
+                        }
+                    },
 
                     title: {
-                        text: '날짜'
-
+                        text: '날짜',
+                        style: {
+                            color: '#CD5C5C'
+                        }
                     }
 
                 },

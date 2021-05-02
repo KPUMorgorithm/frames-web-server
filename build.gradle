@@ -28,6 +28,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
     implementation 'com.querydsl:querydsl-jpa'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.1.RELEASE'
+    implementation group: 'org.json', name: 'json', version: '20210307'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
@@ -38,6 +39,7 @@ dependencies {
     compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.12'
     compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.0'
     compile group: 'net.nurigo', name: 'javaSDK', version: '2.2'
+
 
 }
 

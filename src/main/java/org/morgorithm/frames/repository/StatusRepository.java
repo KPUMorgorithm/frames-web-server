@@ -37,6 +37,10 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Query("select MAX(s.regDate) from Status s")
     List<Object> getLatestDate();
 
+    @Query("select s.regDate, s.temperature from Status s where s.member.mno=:mno order by s.regDate ASC, s.temperature ASC")
+    List<Object[]> getMemberDailyTemperatureStatus(Long mno);
+
+
     Status findTopByOrderByStatusnumDesc();
 
     @Modifying

@@ -1,0 +1,210 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $( function() {
+                $( "#datepicker" ).datepicker();
+            } );
+        </script>
+        <html>
+        <head>
+            <meta charset="utf-8">
+
+            <style>
+                /* Always set the map height explicitly to define the size of the div
+                 * element that contains the map. */
+                #map {
+                    height: 100%;
+                }
+
+                /* Optional: Makes the sample page fill the window. */
+                html, body {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                }
+
+
+            </style>
+
+        </head>
+        <body>
+
+        <form action="/map/tracker" method="get" id="searchForm">
+        <span>
+             <p>
+                 <b>Date: </b> <input type="text" id="datepicker" name="date"th:value="${trackerInfoDTO.date}">
+                 <b>Member ID: </b><input name="mno" th:value="${trackerInfoDTO.mno}"></input>
+                 <button class="btn btn-outline-secondary btn-search" type="button" th:href="@{/map/tracker(date=${trackerInfoDTO.date},
+                 mno = ${trackerInfoDTO.mno})}">Search</button>
+             </p>
+
+
+        </span>
+        </form>
+
+
+        <!-- 지도를 표시할 div 입니다 -->
+        <div id="map"></div>
+
+        <script type="text/javascript"
+                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=27318fd9ee3426317ec44ef5a3995084"></script>
+        <script th:inline="javascript">
+            var searchForm = $("#searchForm");
+            var bnoLength=[[${result.length}]];
+            var resultBno=[[${result.bno}]];
+            var bNames=[[${bName}]]
+
+
+
+
+            var buildingLat=[37.340451559678414,37.3403622339662,37.340025850128924,37.33971081625848,37.33971260779223,37.340246171837386,37.33943912861469,37.338637482492715,37.34144799913755,37.341106606280135];
+            var buildingLng=[126.73296906647658,126.73331357367792,126.73398057213083,126.7341255651304,126.73492396209339,126.73479231012293,126.73552019703162,126.73463433858562,126.73232792966488,126.73276925866197];
+            $('.btn-search').click(function (e) {
+
+                searchForm.submit();
+
+
+            });
+
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                mapOption = {
+                    center: new kakao.maps.LatLng(37.34036426555652, 126.73421636243914), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+
+            // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+            var map = new kakao.maps.Map(mapContainer, mapOption);
+            // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다
+            var positions = [
+                {
+                    //공학관 A동
+                    content: '',
+                    latlng: null
+                },
+                {
+                    //공학관 B동
+                    content: '',
+                    latlng: null
+                },
+                {
+                    //공학관 C동
+                    content: '',
+                    latlng: null
+                },
+                {
+                    //공학관 D동
+                    content: '',
+                    latlng: null
+                },
+                {
+                    //공학관 E동
+                    content: '',
+                    latlng: null
+                },
+                {
+                    //공학관 G동
+                    content: '',
+                    latlng: null
+                },
+                {
+                    //공학관 P동
+                    content: '',
+                    latlng: null
+                },
+                {
+                    //산학융합본부
+                    content: '',
+                    latlng: null
+                },
+                {
+                    //TIP
+                    content: '',
+                    latlng: null
+                },
+                {
+                    //제2기숙사
+                    content: '',
+                    latlng: null
+                },
+
+            ];
+            //positions[0]["content"]+="<div>테스트</div>"
+            for(var i=0;i<5;i++){
+                positions[i]["content"]="<div>";
+                positions[i]["content"]+=bNames[i];
+                positions[i]["content"]+="</div>";
+                positions[i]["latlng"]=new kakao.maps.LatLng(buildingLat[i], buildingLng[i] );
+            }
+
+            for (var i = 0; i < positions.length; i++) {
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: positions[i].latlng // 마커의 위치
+                });
+
+                // 마커에 표시할 인포윈도우를 생성합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: positions[i].content // 인포윈도우에 표시할 내용
+                });
+
+                // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+                // 이벤트 리스너로는 클로저를 만들어 등록합니다
+                // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+                kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+            }
+
+
+            // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+            function makeOverListener(map, marker, infowindow) {
+                return function () {
+                    infowindow.open(map, marker);
+                };
+            }
+
+            // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+            function makeOutListener(infowindow) {
+                return function () {
+                    infowindow.close();
+                };
+            }
+
+            // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
+            var linePath = [
+                new kakao.maps.LatLng(37.340451559678414, 126.73296906647658),
+                new kakao.maps.LatLng(37.3403622339662, 126.73331357367792),
+                new kakao.maps.LatLng(37.340025850128924, 126.73398057213083),
+                new kakao.maps.LatLng(37.339985850128924, 126.73398057213083),
+                new kakao.maps.LatLng(37.3403222339662, 126.7333135736779),
+            ];
+
+            // 지도에 표시할 선을 생성합니다
+            var polyline = new kakao.maps.Polyline({
+                path: linePath, // 선을 구성하는 좌표배열 입니다
+                strokeWeight: 5, // 선의 두께 입니다
+                strokeColor: '#FF0000', // 선의 색깔입니다
+                strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                strokeStyle: 'solid', // 선의 스타일입니다
+                endArrow: 1
+            });
+
+            // 지도에 선을 표시합니다
+            polyline.setMap(map);
+
+        </script>
+        </body>
+        </html>
+    </th:block>
+
+</th:block>

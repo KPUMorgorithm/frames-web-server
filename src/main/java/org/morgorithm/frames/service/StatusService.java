@@ -6,20 +6,24 @@ import org.morgorithm.frames.configuration.ModelMapperUtil;
 import org.morgorithm.frames.dto.*;
 import org.morgorithm.frames.entity.Status;
 
+import javax.sound.midi.Track;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface StatusService {
     @Builder.Default
     ModelMapper modelMapper= ModelMapperUtil.getModelMapper();
     RealTimeStatusDTO getFacilityStatus();
     PageResultDTO<StatusDTO, Status> getStatusList(PageRequestDTO requestDTO);
+    TrackerInfoDTO getMapInfo(TrackerInfoDTO trackerInfoDTO);
     void sendSms(PageRequestDTO requestDTO);
     EventDTO getEventInfo();
     List<Status> getDangerStatus();
     List<Status> getWarningStatus();
     List<Status> getNormalStatus();
     List<Status> getTotalStatus();
-
+    HashMap<String,Double> getList(Long mno);
     default Status statusDtoToEntity(StatusDTO dto){
 
         Status entity=modelMapper.map(dto,Status.class);

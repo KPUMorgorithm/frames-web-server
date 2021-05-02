@@ -1,6 +1,7 @@
 package org.morgorithm.frames.service;
 
 
+import com.querydsl.core.BooleanBuilder;
 import net.nurigo.java_sdk.Coolsms;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -11,10 +12,13 @@ import org.morgorithm.frames.dto.PageRequestDTO;
 import org.morgorithm.frames.dto.PageResultDTO;
 import org.morgorithm.frames.dto.RealTimeStatusDTO;
 import org.morgorithm.frames.dto.StatusDTO;
+import org.morgorithm.frames.entity.QStatus;
 import org.morgorithm.frames.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 @SpringBootTest
@@ -130,6 +134,19 @@ public class StatusServiceTests {
     @Test
     void testMethodPrint(){
         service.getEventInfo();
+    }
+    @Test
+    void testGetMapInfo(){
+
+        String date="05/29/2021 00:00:00";
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+
+        LocalDateTime dateTime=LocalDateTime.parse(date, formatter);
+
+        System.out.println("date:"+dateTime);
+
     }
 
 

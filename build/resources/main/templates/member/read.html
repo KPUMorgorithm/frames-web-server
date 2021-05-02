@@ -34,6 +34,109 @@
             <button type="button" class="btn btn-info">List</button>
         </a>
 
+        <div id="container"></div>
+        <script th:inline="javascript">
+            const hash = [[${mdto}]];
+            var dateData=[];
+            var tempData=[];
+            var i = 0;
+
+            Object.keys(hash).forEach(function(key) {
+
+                tempData[i] = hash[key];
+                dateData[i++]=key;
+            });
+            console.log(tempData);
+            console.log(dateData);
+            Highcharts.chart('container', {
+
+                title: {
+                    text: 'Temperature Status',
+                    style: {
+                        color: '#FF4500',
+                        fontWeight: 'bold'
+                    }
+                },
+                subtitle: {
+                    text: 'Highest Temperature in Each Day ',
+                    style: {
+                        color: '#FFA07A',
+                        fontWeight: 'bold'
+                    }
+
+                },
+
+                xAxis: {
+                    // categories: category
+                    categories: dateData,
+                    labels: {
+                        style: {
+                            color: 'red'
+                        }
+                    },
+
+                    title: {
+                        text: 'Date'
+                    }
+
+                },
+                yAxis:[{
+                    labels:{
+                        style: {
+                            color: "#9400D3"
+                        }
+                    },
+                    title: {
+                        text: 'Temperature',
+                        style: {
+                            color: "#9370DB"
+                        }
+                    }
+                }],
+
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                    },
+
+                },
+
+                series: [{
+                    name: '온도',
+                    data: tempData,
+                    color: '#C71585'
+                }],
+                //highchart.com 안나오게 하기
+                credits:{
+                    enabled:false
+                },
+
+
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+
+            });
+        </script>
     </th:block>
 
 </th:block>
