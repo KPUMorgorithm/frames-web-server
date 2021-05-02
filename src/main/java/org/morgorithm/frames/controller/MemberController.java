@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.HashMap;
+
 @RequiredArgsConstructor
 @RequestMapping("/member")
 @Controller
 @Log4j2
 public class MemberController {
     private final MemberService memberService;
+    private final StatusService statusService;
 
 
 
@@ -48,14 +51,15 @@ public class MemberController {
 
     }
     @GetMapping({"/read", "/modify"})
-    public void read(long mno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
+    public void read(Long mno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
 
         log.info("mno: " + mno);
 
         MemberDTO dto = memberService.read(mno);
 
+        HashMap<String,Double> statusDTO=statusService.getList(mno);
         model.addAttribute("dto", dto);
-
+        model.addAttribute("mdto",statusDTO);
     }
     @PostMapping("/remove")
     public String remove(long mno, RedirectAttributes redirectAttributes) {
