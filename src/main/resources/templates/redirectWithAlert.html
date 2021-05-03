@@ -8,7 +8,7 @@
         /*<![CDATA[*/
         var redirect = /*[[${redirect}]]*/ "/";
         var msg = /*[[${alert}]]*/ "";
-        if (msg != "") {
+        if (msg != null && msg != "") {
             alert(msg);
         }
         window.location.href = redirect;

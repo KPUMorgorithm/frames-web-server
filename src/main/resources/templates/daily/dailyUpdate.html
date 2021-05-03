@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+<th:block th:replace="~{/layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
         <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/main.css}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
 
         <div class="container">
 
