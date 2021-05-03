@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+        <section class="content">
+            <div class="error-page">
+                <h2 class="headline text-danger"> 500</h2>
+
+                <div class="error-content">
+                    <h3><i class="fas fa-exclamation-triangle text-danger"></i> 무언가 잘못되었습니다.</h3>
+
+                    <p>
+                        <a href="/">메인화면</a>으로 돌아가서 다시 시도해보세요!
+                        계속해서 문제가 발생할 경우 관리자에게 문의해주세요.
+                    </p>
+
+                    <!-- error info -->
+                    <div>
+                        <h1>ERROR DEBUG</h1>
+                        <p th:text="${'path: ' + path}"></p>
+                        <p th:text="${'status: ' + status}"></p>
+                        <p th:text="${'timestamp: ' + timestamp}"></p>
+                        <p th:text="${'error: ' + error}"></p>
+                        <p th:text="${'errors: ' + errors}"></p>
+                        <p th:text="${'exception: ' + exception}"></p>
+                        <p th:text="${'message: ' + message}"></p>
+                        <p th:text="${'trace: ' + trace}"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            $.widget.bridge('uibutton', $.ui.button)
+        </script>
+    </th:block>
+</th:block>
