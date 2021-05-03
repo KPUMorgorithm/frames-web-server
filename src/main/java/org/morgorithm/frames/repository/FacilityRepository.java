@@ -11,4 +11,6 @@ public interface FacilityRepository extends JpaRepository<Facility,Long> {
     int getFacilityNum();
     @Query("select f.building from Facility f")
     List<Object[]> getFacilityNames();
+    @Query("select count(f) from Facility f")
+    List<Object[]> getFacilityBno();
 }

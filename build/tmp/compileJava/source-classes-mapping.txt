@@ -56,8 +56,8 @@ org/morgorithm/frames/service/FacilityServiceImpl.java
 org/morgorithm/frames/dto/MemberDTO.java
  org.morgorithm.frames.dto.MemberDTO
  org.morgorithm.frames.dto.MemberDTO$MemberDTOBuilder
-org/morgorithm/frames/service/MemberServiceImpl.java
- org.morgorithm.frames.service.MemberServiceImpl
+org/morgorithm/frames/controller/TrackerController.java
+ org.morgorithm.frames.controller.TrackerController
 org/morgorithm/frames/controller/FacilityController.java
  org.morgorithm.frames.controller.FacilityController
 org/morgorithm/frames/controller/CoronaVirusUpdateController.java
@@ -98,5 +98,5 @@ org/morgorithm/frames/configuration/WebSocketConfig.java
  org.morgorithm.frames.configuration.WebSocketConfig
 org/morgorithm/frames/FramesApplication.java
  org.morgorithm.frames.FramesApplication
-org/morgorithm/frames/controller/TrackerController.java
- org.morgorithm.frames.controller.TrackerController
+org/morgorithm/frames/service/MemberServiceImpl.java
+ org.morgorithm.frames.service.MemberServiceImpl

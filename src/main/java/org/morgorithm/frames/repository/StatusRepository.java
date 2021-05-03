@@ -15,6 +15,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.sql.Timestamp;
 public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPredicateExecutor<Status> {
+    @Query("select s.state from Status s where s.member.mno=:mno")
+    List<Object> getFacilityState(Long mno);
+
+
     @Query("select s.facility, count(s.state), s.facility.bno, s.state from Status s  group by s.facility, s.state")
     List<Object[]> getFacilityInInfo();
 
