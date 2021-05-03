@@ -183,7 +183,7 @@ public class StatusRepositoryTests {
             Status status=Status.builder().member(member).facility(facility).state(stat).temperature(Double.valueOf(String.format("%.1f",+randomValue))).build();
             status.setRegDate(now);
             statusRepository.save(status);
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             System.out.println("데이터 삽입");
         }
 
@@ -198,7 +198,7 @@ public class StatusRepositoryTests {
         Arrays.fill(arr,false);
         Arrays.fill(barr,0);
 
-        IntStream.rangeClosed(1,cnt*2).forEach(i->{
+        IntStream.rangeClosed(1,cnt*4).forEach(i->{
             List<Status> data=new ArrayList<>();
             Long mno=Long.valueOf((int)(Math.random()*cnt)+1);
             Member member=Member.builder().mno(mno).build();
@@ -275,11 +275,7 @@ public class StatusRepositoryTests {
             System.out.println("status:"+s.getState());
             System.out.println("temperature"+s.getTemperature());
             statusRepository.save(s);
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
         }
     }
     @Test

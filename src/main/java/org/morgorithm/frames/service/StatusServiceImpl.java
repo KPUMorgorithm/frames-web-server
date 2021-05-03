@@ -39,56 +39,55 @@ public class StatusServiceImpl implements StatusService {
     private final StatusRepository statusRepository;
     private final MemberRepository memberRepository;
     private final FacilityRepository facilityRepository;
-    private int flag=1;
-    private List<Long> bnos=new ArrayList<>();
-    private List<String> dates=new ArrayList<>();
-    private List<String> bName=new ArrayList<>();
-    Long latestStatusNum=null;
+    private int flag = 1;
+
+    Long latestStatusNum = null;
 
     @Override
     public HashMap<String, Double> getList(Long mno) {
-        List<Object[]> result=statusRepository.getMemberDailyTemperatureStatus(mno);
-        HashMap<String,Double> dailyStatus=new HashMap<String, Double>();
+        List<Object[]> result = statusRepository.getMemberDailyTemperatureStatus(mno);
+        HashMap<String, Double> dailyStatus = new HashMap<String, Double>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM-dd");
 
 
-        for(Object[] a:result){
+        for (Object[] a : result) {
           /*  System.out.println(Arrays.toString(a));
             System.out.println("temperature"+a[1]);
             System.out.println("regDate:"+a[0]);*/
-            LocalDateTime temp=(LocalDateTime)a[0];
-            dailyStatus.put(temp.format(formatter),(double)a[1]);
+            LocalDateTime temp = (LocalDateTime) a[0];
+            dailyStatus.put(temp.format(formatter), (double) a[1]);
         }
-        dailyStatus.forEach((key,value)
-                ->System.out.println("key: "+key+", value: "+value));
+        dailyStatus.forEach((key, value)
+                -> System.out.println("key: " + key + ", value: " + value));
 
         return dailyStatus;
     }
+
     @Override
-    public EventDTO getEventInfo(){
-        EventDTO eventDTO=new EventDTO();
-        PageRequestDTO requestDTO=new PageRequestDTO();
+    public EventDTO getEventInfo() {
+        EventDTO eventDTO = new EventDTO();
+        PageRequestDTO requestDTO = new PageRequestDTO();
         Pageable pageable = requestDTO.getPageable(Sort.by("regDate").descending());
 
 
         //위험군 온도 숫자 초기화
         BooleanBuilder booleanBuilder1 = getDangerEventCondition();
         Page<Status> resultDanger = statusRepository.findAll(booleanBuilder1, pageable);
-        eventDTO.setDangerScanNum((int)resultDanger.getTotalElements());
+        eventDTO.setDangerScanNum((int) resultDanger.getTotalElements());
 
         //경고군 온도 숫자 초기화
-        BooleanBuilder booleanBuilder2 =  getWarningEventCondition();
+        BooleanBuilder booleanBuilder2 = getWarningEventCondition();
         Page<Status> resultWarning = statusRepository.findAll(booleanBuilder2, pageable);
-        eventDTO.setWarningScanNum((int)resultWarning.getTotalElements());
+        eventDTO.setWarningScanNum((int) resultWarning.getTotalElements());
 
         //정상군 온도 숫자 초기화
-        BooleanBuilder booleanBuilder3 =  getNormalEventCondition();
+        BooleanBuilder booleanBuilder3 = getNormalEventCondition();
         Page<Status> resultNormal = statusRepository.findAll(booleanBuilder3, pageable);
 
-        eventDTO.setNormalScanNum((int)resultNormal.getTotalElements());
+        eventDTO.setNormalScanNum((int) resultNormal.getTotalElements());
 
         //하루 전체 검사 숫자 초기화
-        eventDTO.setTotalScanNum(eventDTO.getDangerScanNum()+eventDTO.getNormalScanNum()+eventDTO.getWarningScanNum());
+        eventDTO.setTotalScanNum(eventDTO.getDangerScanNum() + eventDTO.getNormalScanNum() + eventDTO.getWarningScanNum());
 
         //전체 멤버 수
         eventDTO.setTotalMember(memberRepository.getMemberNum());
@@ -97,14 +96,14 @@ public class StatusServiceImpl implements StatusService {
         eventDTO.setNumOfFacility(facilityRepository.getFacilityNum());
 
         //오늘 날짜
-        String date=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd"));
+        String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd"));
         eventDTO.setTodayDate(date);
 
         //오늘 캠퍼스 내에 입장한 사람들 수 초기화
         Iterable<Status> result = statusRepository.findAll(dataCollectTime());
-        HashSet<Long> hashSet=new HashSet<>();
-        for(Object a:result){
-            hashSet.add(((Status)a).getMember().getMno());
+        HashSet<Long> hashSet = new HashSet<>();
+        for (Object a : result) {
+            hashSet.add(((Status) a).getMember().getMno());
         }
         eventDTO.setInMember(hashSet.size());
 
@@ -122,51 +121,52 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public List<Status> getDangerStatus() {
-        BooleanBuilder booleanBuilder=getDangerEventCondition();
-        Iterable<Status> result=statusRepository.findAll(booleanBuilder);
+        BooleanBuilder booleanBuilder = getDangerEventCondition();
+        Iterable<Status> result = statusRepository.findAll(booleanBuilder);
         List<Status> dangerList = Lists.newArrayList(result);
         return dangerList;
     }
 
     @Override
     public List<Status> getWarningStatus() {
-        BooleanBuilder booleanBuilder=getWarningEventCondition();
-        Iterable<Status> result=statusRepository.findAll(booleanBuilder);
+        BooleanBuilder booleanBuilder = getWarningEventCondition();
+        Iterable<Status> result = statusRepository.findAll(booleanBuilder);
         List<Status> warningList = Lists.newArrayList(result);
         return warningList;
     }
 
     @Override
     public List<Status> getNormalStatus() {
-        BooleanBuilder booleanBuilder=getNormalEventCondition();
-        Iterable<Status> result=statusRepository.findAll(booleanBuilder);
+        BooleanBuilder booleanBuilder = getNormalEventCondition();
+        Iterable<Status> result = statusRepository.findAll(booleanBuilder);
         List<Status> normalList = Lists.newArrayList(result);
         return normalList;
     }
-    public BooleanBuilder dataCollectTime(){
+
+    public BooleanBuilder dataCollectTime() {
         //오늘 날짜
-        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime from = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime to = LocalDateTime.now();
         QStatus qStatus = QStatus.status;
-
 
 
         //검색 조건을 작성하기
         BooleanBuilder conditionBuilder = new BooleanBuilder();
 
         //범위:오늘동안
-        conditionBuilder.and(qStatus.regDate.between(from,to));
+        conditionBuilder.and(qStatus.regDate.between(from, to));
 
         return conditionBuilder;
 
 
     }
+
     @Override
     public List<Status> getTotalStatus() {
         //오늘 날짜
-        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime from = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime to = LocalDateTime.now();
-        BooleanBuilder booleanBuilder=new BooleanBuilder();
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
         QStatus qStatus = QStatus.status;
 
 
@@ -178,24 +178,22 @@ public class StatusServiceImpl implements StatusService {
         BooleanBuilder conditionBuilder = new BooleanBuilder();
 
         //범위:오늘동안
-        conditionBuilder.and(qStatus.regDate.between(from,to));
+        conditionBuilder.and(qStatus.regDate.between(from, to));
 
 
         booleanBuilder.and(conditionBuilder);
-        Iterable<Status> result=statusRepository.findAll(booleanBuilder);
+        Iterable<Status> result = statusRepository.findAll(booleanBuilder);
         List<Status> totalList = Lists.newArrayList(result);
 
         return totalList;
     }
 
 
-
-    BooleanBuilder getDangerEventCondition(){
+    BooleanBuilder getDangerEventCondition() {
 
         //오늘 날짜
-        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime from = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime to = LocalDateTime.now();
-
 
 
         BooleanBuilder booleanBuilder = new BooleanBuilder();
@@ -211,22 +209,21 @@ public class StatusServiceImpl implements StatusService {
         BooleanBuilder conditionBuilder = new BooleanBuilder();
 
         //범위:오늘동안
-        conditionBuilder.and(qStatus.regDate.between(from,to));
+        conditionBuilder.and(qStatus.regDate.between(from, to));
         //위험 온도 37.2
-        conditionBuilder.and(qStatus.temperature.between(37.3,40));
+        conditionBuilder.and(qStatus.temperature.between(37.3, 40));
 
         booleanBuilder.and(conditionBuilder);
 
 
-
         return booleanBuilder;
     }
-    BooleanBuilder getNormalEventCondition(){
+
+    BooleanBuilder getNormalEventCondition() {
 
         //오늘 날짜
-        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime from = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime to = LocalDateTime.now();
-
 
 
         BooleanBuilder booleanBuilder = new BooleanBuilder();
@@ -242,22 +239,21 @@ public class StatusServiceImpl implements StatusService {
         BooleanBuilder conditionBuilder = new BooleanBuilder();
 
         //범위:오늘동안
-        conditionBuilder.and(qStatus.regDate.between(from,to));
+        conditionBuilder.and(qStatus.regDate.between(from, to));
         //위험 온도 37.2
-        conditionBuilder.and(qStatus.temperature.between(30,36.8));
+        conditionBuilder.and(qStatus.temperature.between(30, 36.8));
 
         booleanBuilder.and(conditionBuilder);
 
 
-
         return booleanBuilder;
     }
-    BooleanBuilder getWarningEventCondition(){
+
+    BooleanBuilder getWarningEventCondition() {
 
         //오늘 날짜
-        LocalDateTime from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime from = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime to = LocalDateTime.now();
-
 
 
         BooleanBuilder booleanBuilder = new BooleanBuilder();
@@ -273,44 +269,44 @@ public class StatusServiceImpl implements StatusService {
         BooleanBuilder conditionBuilder = new BooleanBuilder();
 
         //범위:오늘동안
-        conditionBuilder.and(qStatus.regDate.between(from,to));
+        conditionBuilder.and(qStatus.regDate.between(from, to));
         //위험 온도 37.2
-        conditionBuilder.and(qStatus.temperature.between(36.9,37.2));
+        conditionBuilder.and(qStatus.temperature.between(36.9, 37.2));
 
         booleanBuilder.and(conditionBuilder);
 
 
-
         return booleanBuilder;
     }
+
     @Override
     public RealTimeStatusDTO getFacilityStatus() {
-        int fidx=0;
-        List<Object[]> facilityNames=facilityRepository.getFacilityNames();
+        int fidx = 0;
+        List<Object[]> facilityNames = facilityRepository.getFacilityNames();
         RealTimeStatusDTO realTimeStatusDTO = new RealTimeStatusDTO();
         int[] in = new int[BUILDING_NUM];
         int[] out = new int[BUILDING_NUM];
         String[] bName = new String[BUILDING_NUM];
+
         //초기화
-        for(int i=0;i<BUILDING_NUM;i++){
-            in[i]=0;
-            out[i]=0;
+        for (int i = 0; i < BUILDING_NUM; i++) {
+            in[i] = 0;
+            out[i] = 0;
         }
-        for(Object[] a:facilityNames){
-            bName[fidx++]=(String)a[0];
+        for (Object[] a : facilityNames) {
+            bName[fidx++] = (String) a[0];
         }
 
         int total = 0;
-        LocalDateTime startDatetime=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
+        LocalDateTime startDatetime = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime endDatetime = LocalDateTime.now();
-        List<Object[]> result = statusRepository.getFacilityInInfoOneDay(startDatetime,endDatetime);
+        List<Object[]> result = statusRepository.getFacilityInInfoOneDay(startDatetime, endDatetime);
         Iterable<Status> statusResult = statusRepository.findAll(getStatusSearch());
 
 
-
         List<Status> statusList = Lists.newArrayList(statusResult);
-       // System.out.println("#####statusList########: "+statusList.toString());
-       // System.out.println("#####result########: "+result.toString());
+        // System.out.println("#####statusList########: "+statusList.toString());
+        // System.out.println("#####result########: "+result.toString());
         //**********dummy test data
         /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime ran=LocalDateTime.parse("2021-03-16 12:30:22",formatter);
@@ -337,22 +333,22 @@ public class StatusServiceImpl implements StatusService {
         statusList.add(s3);*/
         //************dummy test data
 
-        System.out.println("test getFacilityStatus result.size():"+result.size());
+        System.out.println("test getFacilityStatus result.size():" + result.size());
         for (int i = 0; i < result.size(); i++) {
-           // System.out.println("test getFacilityStatus inside for loop"+result.size());
+            // System.out.println("test getFacilityStatus inside for loop"+result.size());
             //bno를 index 삼어서 in과 out배열의 인덱스로 씀
-            int idx=((Long) (result.get(i)[2])).intValue();
+            int idx = ((Long) (result.get(i)[2])).intValue();
             /*
             System.out.println("index:"+(idx-1));
             System.out.println("bno:"+((Long) (result.get(i)[2])).intValue());
             System.out.println("result.get(i):"+Arrays.toString(result.get(i)));
             System.out.println("result state:"+(Boolean)result.get(i)[3]);*/
-            if ((Boolean)result.get(i)[3]) {
-                in[(idx-1)] = ((Long) (result.get(i)[1])).intValue();
+            if ((Boolean) result.get(i)[3]) {
+                in[(idx - 1)] = ((Long) (result.get(i)[1])).intValue();
                 Facility facility = (Facility) result.get(i)[0];
-                bName[(idx-1)] = facility.getBuilding();
+                bName[(idx - 1)] = facility.getBuilding();
             } else
-                out[(idx-1)] = ((Long) (result.get(i)[1])).intValue();
+                out[(idx - 1)] = ((Long) (result.get(i)[1])).intValue();
             total += ((Long) (result.get(i)[1])).intValue();
         }
         realTimeStatusDTO = realTimeStatusDTO.builder().in(in).out(out).total(total).bName(bName).statusList(statusList).build();
@@ -364,28 +360,26 @@ public class StatusServiceImpl implements StatusService {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         BooleanBuilder conditionBuilder = new BooleanBuilder();
         QStatus qStatus = QStatus.status;
-        Long infiniteStatusNum=10000000L;
+        Long infiniteStatusNum = 10000000L;
         Status status;
 
-        if(latestStatusNum!=null){
+        if (latestStatusNum != null) {
 
-           // status=statusRepository.findTopByOrderByStatusnumDesc();
-          //  latestStatusNum=status.getStatusnum();
-            System.out.println("latestStatusNum before:"+latestStatusNum);
-            latestStatusNum+=1;
-            flag=0;
+            // status=statusRepository.findTopByOrderByStatusnumDesc();
+            //  latestStatusNum=status.getStatusnum();
+            System.out.println("latestStatusNum before:" + latestStatusNum);
+            latestStatusNum += 1;
+            flag = 0;
         }
-        System.out.println("latestStatusNum after:"+latestStatusNum);
+        System.out.println("latestStatusNum after:" + latestStatusNum);
 
 
-
-
-        conditionBuilder.and(qStatus.statusnum.between(latestStatusNum,infiniteStatusNum));
+        conditionBuilder.and(qStatus.statusnum.between(latestStatusNum, infiniteStatusNum));
 
         status = statusRepository.findTopByOrderByStatusnumDesc();
         latestStatusNum = status.getStatusnum();
         System.out.println("***********************************");
-        System.out.println("print:"+status.toString());
+        System.out.println("print:" + status.toString());
         System.out.println("***********************************");
         System.out.println();
         System.out.println();
@@ -409,41 +403,64 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public TrackerInfoDTO getMapInfo(TrackerInfoDTO trackerInfoDTO) {
-        int bidx=0;
+        List<Long> bnos = new ArrayList<>();
+        List<String> dates = new ArrayList<>();
+        List<String> bName = new ArrayList<>();
+        List<Long> bno = new ArrayList<>();
+        List<Boolean> state=new ArrayList<>();
+        int len;
+        int bidx = 0;
         BooleanBuilder conditionBuilder = new BooleanBuilder();
-        String hhmmss=" 00:00:00";
+        String hhmmss = " 00:00:00";
         QStatus qStatus = QStatus.status;
-        String date=trackerInfoDTO.getDate();
-        TrackerInfoDTO infoDTO=new TrackerInfoDTO();
+        String date = trackerInfoDTO.getDate();
+        TrackerInfoDTO infoDTO = new TrackerInfoDTO();
         // MM/dd/yyyy 포맷에서 MM/dd/yyyy 00:00:00 더해줌
-        List<Object[]> nameResult=facilityRepository.getFacilityNames();
-        for(Object[] a:nameResult)
-            bName.add((String)a[0]);
+        List<Object[]> nameResult = facilityRepository.getFacilityNames();
+        List<Object[]> bnoResult = facilityRepository.getFacilityBno();
 
-        if(date!=null){
-            date+=hhmmss;
+        for (Object[] a : nameResult)
+            bName.add((String) a[0]);
+        for (Object[] a : bnoResult)
+            bno.add((Long) a[0]);
+        len=bName.size();
+        if (date != null) {
+            date += hhmmss;
             //LocalDateTime으로 파싱
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
-            LocalDateTime from=LocalDateTime.parse(date, formatter);
+            LocalDateTime from = LocalDateTime.parse(date, formatter);
+            LocalDateTime to = from.with(LocalTime.of(23,59));
             // 하룻동안
-            from=LocalDateTime.now().minusDays(1L).with(LocalTime.of(23,59));
-            LocalDateTime to = LocalDateTime.now();
-            conditionBuilder.and(qStatus.regDate.between(from,to));
+            from = from.with(LocalTime.of(00, 00));
+            System.out.println("from:"+from );
+            System.out.println("to:"+to );
+            conditionBuilder.and(qStatus.regDate.between(from, to));
             conditionBuilder.and(qStatus.member.mno.eq(trackerInfoDTO.getMno()));
-            Iterable<Status> result=statusRepository.findAll(conditionBuilder);
+            Iterable<Status> result = statusRepository.findAll(conditionBuilder);
+            Iterable<Status> stateResult=statusRepository.findAll(conditionBuilder);
             List<Status> mapInfoList = Lists.newArrayList(result);
-            System.out.println("*********************");
-            System.out.println("mno:"+trackerInfoDTO.getMno());
-            for(Status s:mapInfoList){
+            List<Status> stateInfoList=Lists.newArrayList(stateResult);
+          //  System.out.println("*********************");
+          //  System.out.println("info:" + mapInfoList.toString());
+            for(Status s:stateInfoList){
+                state.add(s.getState());
+            }
+            for (Status s : mapInfoList) {
                 bnos.add(s.getFacility().getBno());
                 dates.add(s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss")));
-                System.out.println("bnos:"+s.getFacility().getBno());
-                System.out.println("date:"+s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss")));
+                // System.out.println("bnos:"+s.getFacility().getBno());
+                //  System.out.println("date:"+s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss")));
             }
-            infoDTO.setBno(bnos);
+            infoDTO.setTrackingBno(bnos);
             infoDTO.setDates(dates);
+            len=mapInfoList.size();
+            infoDTO.setEntranceStatus(state);
         }
+        infoDTO.setLength(len);
+        System.out.println("length:"+len);
         infoDTO.setBName(bName);
+        infoDTO.setBno(bno);
+
 
         return infoDTO;
     }
@@ -451,26 +468,25 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public void sendSms(PageRequestDTO requestDTO) {
-        List<String> confirmedPath=new ArrayList<>();
-        List<String> contactPath=new ArrayList<>();
-        HashSet<Long> mnos=new HashSet<>();
-
+        List<String> confirmedPath = new ArrayList<>();
+        List<String> contactPath = new ArrayList<>();
+        HashSet<Long> mnos = new HashSet<>();
 
 
         //배열 초기화
         Pageable pageable = requestDTO.getPageable(Sort.by("regDate").descending());
         BooleanBuilder booleanBuilder = getSearch(requestDTO);
         Page<Status> result = statusRepository.findAll(booleanBuilder, pageable);
-        for(Status p:result){
-            if(p.getMember().getMno().equals(Long.valueOf(requestDTO.getMno()))){
-               confirmedPath.add("건물: "+p.getFacility().getBuilding()+" 출입여부: "+(p.getState()?"입장":"퇴장")+" 시간: "+p.getRegDate());
-            }else{
-                contactPath.add("건물: "+p.getFacility().getBuilding()+" 출입여부: "+(p.getState()?"입장":"퇴장")+" 시간: "+p.getRegDate());
+        for (Status p : result) {
+            if (p.getMember().getMno().equals(Long.valueOf(requestDTO.getMno()))) {
+                confirmedPath.add("건물: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
+            } else {
+                contactPath.add("건물: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
                 mnos.add(p.getMember().getMno());
             }
         }
-        for(Long m:mnos){
-            System.out.println("MNOS:"+m);
+        for (Long m : mnos) {
+            System.out.println("MNOS:" + m);
         }
        /* for(String s:confirmedPath){
             System.out.println(s);
@@ -490,43 +506,42 @@ public class StatusServiceImpl implements StatusService {
         params.put("from", "01096588541");
 
 
-
         params.put("type", "LMS");
-        String s="";
+        String s = "";
         //여럿한테 보낼때
-        for(Long mno:mnos){
-            s+="한국산업기술대학교 코로나 비상대책본부에서 알려드립니다.\n" +
+        for (Long mno : mnos) {
+            s += "한국산업기술대학교 코로나 비상대책본부에서 알려드립니다.\n" +
                     "교내에 확진자 발생에 의한 정보를 알려드리겠습니다.\n" +
-                    "해당 문자 수신자께서는 확진자와 동선이 겹침을 알립니다.\n"+
+                    "해당 문자 수신자께서는 확진자와 동선이 겹침을 알립니다.\n" +
                     "확진자 동선을 공개합니다.\n\n";
-            s+="<확진자 동선>\n\n";
+            s += "<확진자 동선>\n\n";
             //확진자 동선 적는 부분
-            for(Status p:result){
-                if(p.getMember().getMno().equals(Long.valueOf(requestDTO.getMno()))){
-                    String dateTime=p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                    s+=     "건물: "+p.getFacility().getBuilding()+"\n"+
-                            "시간: "+dateTime+"\n"+
-                            "출입여부: "+(p.getState()?"입장\n\n":"퇴장\n\n");
+            for (Status p : result) {
+                if (p.getMember().getMno().equals(Long.valueOf(requestDTO.getMno()))) {
+                    String dateTime = p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    s += "건물: " + p.getFacility().getBuilding() + "\n" +
+                            "시간: " + dateTime + "\n" +
+                            "출입여부: " + (p.getState() ? "입장\n\n" : "퇴장\n\n");
                 }
             }
 
-            s+="<수신자 동선>\n\n";
-            String phoneNum="";
+            s += "<수신자 동선>\n\n";
+            String phoneNum = "";
             //수신자 동선 적는 부분
-            for(Status p:result){
-                if(mno==p.getMember().getMno()){
-                    String dateTime=p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                    s+=     "건물: "+p.getFacility().getBuilding()+"\n"+
-                            "시간: "+dateTime+"\n"+
-                            "출입여부: "+(p.getState()?"입장\n\n":"퇴장\n\n");
-                    phoneNum=p.getMember().getPhone();
+            for (Status p : result) {
+                if (mno == p.getMember().getMno()) {
+                    String dateTime = p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    s += "건물: " + p.getFacility().getBuilding() + "\n" +
+                            "시간: " + dateTime + "\n" +
+                            "출입여부: " + (p.getState() ? "입장\n\n" : "퇴장\n\n");
+                    phoneNum = p.getMember().getPhone();
                 }
             }
-            s+="임으로 확진자와 동선이 겹칩니다.\n"+
+            s += "임으로 확진자와 동선이 겹칩니다.\n" +
                     "가까운 보건소를 방문하여 검사를 받으시기 바랍니다.\n";
 
-            System.out.println("phoneNum:"+phoneNum);
-            params.put("text",s);
+            System.out.println("phoneNum:" + phoneNum);
+            params.put("text", s);
             params.put("app_version", "test app 1.2");
 
             //*******************
@@ -548,7 +563,7 @@ public class StatusServiceImpl implements StatusService {
             //실제 데모용
             //*******************
             //*******************
-           // params.put("to", phoneNum);
+            // params.put("to", phoneNum);
             //*******************
             //*******************
             //실제 데모용
@@ -556,19 +571,17 @@ public class StatusServiceImpl implements StatusService {
             //*******************
 
 
-
             try {
                 JSONObject obj = (JSONObject) coolsms.send(params);
                 System.out.println(obj.toString());
 
-            }catch (CoolsmsException e){
+            } catch (CoolsmsException e) {
                 System.out.println(e.getMessage());
                 System.out.println(e.getCode());
             }
-            s="";
-            phoneNum="";
+            s = "";
+            phoneNum = "";
         }
-
 
 
     }
@@ -704,11 +717,11 @@ public class StatusServiceImpl implements StatusService {
 
                 tempTo = ((LocalDateTime) a[0]).plusMinutes(Long.valueOf(min)).plusSeconds(Long.valueOf(sec));
                 Boolean flag = ((Boolean) a[1]).booleanValue();
-                System.out.println("********BooleanValue(): "+flag);
-                System.out.println("확진자  Original Time: "+((LocalDateTime) a[0]).toString());
-                System.out.println("확진자  minus Time: "+tempFrom);
-                System.out.println("확진자  plus Time: "+tempTo);
-                System.out.println("확진자  State: "+flag);
+                System.out.println("********BooleanValue(): " + flag);
+                System.out.println("확진자  Original Time: " + ((LocalDateTime) a[0]).toString());
+                System.out.println("확진자  minus Time: " + tempFrom);
+                System.out.println("확진자  plus Time: " + tempTo);
+                System.out.println("확진자  State: " + flag);
                 //여기서는 flag가 true니까 확진자와 같이 입장한 사람들 질의
                 closeContactCondition1.and(qStatus.facility.bno.eq(bnoList.get(idx++)));
                 closeContactCondition1.and(qStatus.regDate.between(tempFrom, tempTo));
@@ -716,11 +729,7 @@ public class StatusServiceImpl implements StatusService {
                 connectCondition.or(closeContactCondition1);
 
 
-
-
             }
-
-
 
 
             conditionBuilder.and(connectCondition);

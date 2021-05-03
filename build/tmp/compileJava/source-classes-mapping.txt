@@ -41,8 +41,19 @@ org/morgorithm/frames/service/FacilityServiceImpl.java
  org.morgorithm.frames.service.FacilityServiceImpl
 org/morgorithm/frames/domain/Role.java
  org.morgorithm.frames.domain.Role
+org/morgorithm/frames/dto/MemberDTO.java
+ org.morgorithm.frames.dto.MemberDTO
+ org.morgorithm.frames.dto.MemberDTO$MemberDTOBuilder
 org/morgorithm/frames/controller/TrackerController.java
  org.morgorithm.frames.controller.TrackerController
+org/morgorithm/frames/controller/FacilityController.java
+ org.morgorithm.frames.controller.FacilityController
+org/morgorithm/frames/controller/CoronaVirusUpdateController.java
+ org.morgorithm.frames.controller.CoronaVirusUpdateController
+org/morgorithm/frames/repository/FacilityRepository.java
+ org.morgorithm.frames.repository.FacilityRepository
+org/morgorithm/frames/service/StatusService.java
+ org.morgorithm.frames.service.StatusService
 org/morgorithm/frames/controller/MemberController.java
  org.morgorithm.frames.controller.MemberController
 org/morgorithm/frames/configuration/ModelMapperUtil.java
@@ -122,3 +133,5 @@ org/morgorithm/frames/configuration/SecurityConfig.java
  org.morgorithm.frames.configuration.SecurityConfig
 org/morgorithm/frames/controller/AdminController.java
  org.morgorithm.frames.controller.AdminController
+org/morgorithm/frames/service/MemberServiceImpl.java
+ org.morgorithm.frames.service.MemberServiceImpl
