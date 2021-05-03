@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <title>로그인 - KNJOY PMS</title>
+    <title>로그인</title>
 </head>
-<body>
-    <th:block th:replace="loginForm"></th:block>
-</body>
-</html>
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+    <th:block th:fragment="content">
+        <th:block th:replace="admin/loginForm"></th:block>
+    </th:block>
+</th:block>

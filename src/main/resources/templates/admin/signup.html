@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>회원가입</title>
 </head>
-<body>
-    <th:block th:replace="signupForm"></th:block>
-</body>
-</html>
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+    <th:block th:fragment="content">
+        <th:block th:replace="admin/signupForm"></th:block>
+    </th:block>
+</th:block>

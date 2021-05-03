@@ -29,7 +29,7 @@ public class AdminController {
 
     @GetMapping("/admin/login")
     public String showLogin() {
-        return "login";
+        return "admin/login";
     }
 
     @GetMapping("/admin/login/result")
