@@ -7,5 +7,14 @@
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
     <th:block th:fragment="content">
         <th:block th:replace="admin/signupForm"></th:block>
+
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var error = /*[[${error}]]*/ "";
+            if (error != "") {
+                alert(error);
+            }
+            /*]]>*/
+        </script>
     </th:block>
 </th:block>
