@@ -9,7 +9,7 @@ import org.springframework.data.domain.Sort;
 
 import java.time.LocalDateTime;
 
-@Builder
+@Builder(toBuilder = true)
 @AllArgsConstructor
 @Data//getter setter 다 만들어줌 non-final에 대해
 public class PageRequestDTO {
@@ -33,5 +33,15 @@ public class PageRequestDTO {
 
         return PageRequest.of(page -1, size, sort);
 
+    }
+
+    public boolean isEmpty() {
+        return page == 0 && size == 0
+                && (type == null || "".equals(type))
+                && (keyword == null || "".equals(keyword))
+                && (from == null || "".equals(from))
+                && (to == null || "".equals(to))
+                && (mno == null || "".equals(mno))
+                && (closeContact == null || "".equals(closeContact));
     }
 }

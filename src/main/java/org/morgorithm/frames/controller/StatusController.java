@@ -23,7 +23,14 @@ public class StatusController {
 
     @GetMapping("/list")
     public String register(PageRequestDTO pageRequestDTO,  Model model){
-        model.addAttribute("result", statusService.getStatusList(pageRequestDTO));
+        PageRequestDTO pageRequestDTOClone = pageRequestDTO.toBuilder().build();
+        if (pageRequestDTOClone.getFrom() != null && pageRequestDTOClone.getFrom().length() == 10) { // yyyy-mm-dd
+            pageRequestDTOClone.setFrom(pageRequestDTOClone.getFrom() + " 00:00:00");
+        }
+        if (pageRequestDTOClone.getTo() != null && pageRequestDTOClone.getTo().length() == 10) { // yyyy-mm-dd
+            pageRequestDTOClone.setTo(pageRequestDTOClone.getTo() + " 23:59:59");
+        }
+        model.addAttribute("result", statusService.getStatusList(pageRequestDTOClone));
         System.out.println("All to String:"+pageRequestDTO.toString());
         model.addAttribute("buildingName",facilityService.getFacilityNames() );
         return "status/list";
