@@ -35,7 +35,7 @@ public class AdminServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Admin> memberEntityWrapper = adminRepository.findByUsername(username);
-        if (!memberEntityWrapper.isPresent()) return null;
+        if (!memberEntityWrapper.isPresent()) throw new UsernameNotFoundException("존재하지 않는 계정입니다.");
         Admin member = memberEntityWrapper.get();
 
         List<GrantedAuthority> authorities = new ArrayList<>();
