@@ -1,17 +1,12 @@
 org/morgorithm/frames/service/FacilityService.java
  org.morgorithm.frames.service.FacilityService
-org/morgorithm/frames/entity/Status.java
- org.morgorithm.frames.entity.Status
- org.morgorithm.frames.entity.Status$StatusBuilder
-org/morgorithm/frames/entity/QMemberImage.java
- org.morgorithm.frames.entity.QMemberImage
+org/morgorithm/frames/repository/AdminRepository.java
+ org.morgorithm.frames.repository.AdminRepository
 org/morgorithm/frames/entity/Member.java
  org.morgorithm.frames.entity.Member
  org.morgorithm.frames.entity.Member$MemberBuilder
 org/morgorithm/frames/service/DataValidityPeriod.java
  org.morgorithm.frames.service.DataValidityPeriod
-org/morgorithm/frames/entity/QBaseEntity.java
- org.morgorithm.frames.entity.QBaseEntity
 org/morgorithm/frames/dto/StatusDTO.java
  org.morgorithm.frames.dto.StatusDTO
  org.morgorithm.frames.dto.StatusDTO$StatusDTOBuilder
@@ -21,17 +16,13 @@ org/morgorithm/frames/dto/EventDTO.java
 org/morgorithm/frames/entity/Facility.java
  org.morgorithm.frames.entity.Facility
  org.morgorithm.frames.entity.Facility$FacilityBuilder
-org/morgorithm/frames/entity/QStatus.java
- org.morgorithm.frames.entity.QStatus
-org/morgorithm/frames/service/StatusServiceImpl.java
- org.morgorithm.frames.service.StatusServiceImpl
+org/morgorithm/frames/entity/QMember.java
+ org.morgorithm.frames.entity.QMember
 org/morgorithm/frames/dto/RealTimeStatusDTO.java
  org.morgorithm.frames.dto.RealTimeStatusDTO
  org.morgorithm.frames.dto.RealTimeStatusDTO$RealTimeStatusDTOBuilder
 org/morgorithm/frames/controller/WebSocketEventListener.java
  org.morgorithm.frames.controller.WebSocketEventListener
-org/morgorithm/frames/service/MemberService.java
- org.morgorithm.frames.service.MemberService
 org/morgorithm/frames/dto/PageRequestDTO.java
  org.morgorithm.frames.dto.PageRequestDTO
  org.morgorithm.frames.dto.PageRequestDTO$PageRequestDTOBuilder
@@ -39,13 +30,8 @@ org/morgorithm/frames/service/CoronaVirusDataService.java
  org.morgorithm.frames.service.CoronaVirusDataService
 org/morgorithm/frames/entity/QFacility.java
  org.morgorithm.frames.entity.QFacility
-org/morgorithm/frames/controller/UploadController.java
- org.morgorithm.frames.controller.UploadController
 org/morgorithm/frames/repository/MemberRepository.java
  org.morgorithm.frames.repository.MemberRepository
-org/morgorithm/frames/dto/FacilityDTO.java
- org.morgorithm.frames.dto.FacilityDTO
- org.morgorithm.frames.dto.FacilityDTO$FacilityDTOBuilder
 org/morgorithm/frames/repository/MemberImageRepository.java
  org.morgorithm.frames.repository.MemberImageRepository
 org/morgorithm/frames/entity/MemberImage.java
@@ -53,42 +39,24 @@ org/morgorithm/frames/entity/MemberImage.java
  org.morgorithm.frames.entity.MemberImage$MemberImageBuilder
 org/morgorithm/frames/service/FacilityServiceImpl.java
  org.morgorithm.frames.service.FacilityServiceImpl
-org/morgorithm/frames/dto/MemberDTO.java
- org.morgorithm.frames.dto.MemberDTO
- org.morgorithm.frames.dto.MemberDTO$MemberDTOBuilder
-org/morgorithm/frames/service/MemberServiceImpl.java
- org.morgorithm.frames.service.MemberServiceImpl
-org/morgorithm/frames/controller/FacilityController.java
- org.morgorithm.frames.controller.FacilityController
-org/morgorithm/frames/controller/CoronaVirusUpdateController.java
- org.morgorithm.frames.controller.CoronaVirusUpdateController
-org/morgorithm/frames/repository/FacilityRepository.java
- org.morgorithm.frames.repository.FacilityRepository
-org/morgorithm/frames/service/StatusService.java
- org.morgorithm.frames.service.StatusService
+org/morgorithm/frames/domain/Role.java
+ org.morgorithm.frames.domain.Role
+org/morgorithm/frames/controller/TrackerController.java
+ org.morgorithm.frames.controller.TrackerController
 org/morgorithm/frames/controller/MemberController.java
  org.morgorithm.frames.controller.MemberController
-org/morgorithm/frames/dto/MemberImageDTO.java
- org.morgorithm.frames.dto.MemberImageDTO
- org.morgorithm.frames.dto.MemberImageDTO$MemberImageDTOBuilder
 org/morgorithm/frames/configuration/ModelMapperUtil.java
  org.morgorithm.frames.configuration.ModelMapperUtil
 org/morgorithm/frames/repository/StatusRepository.java
  org.morgorithm.frames.repository.StatusRepository
 org/morgorithm/frames/ServletInitializer.java
  org.morgorithm.frames.ServletInitializer
+org/morgorithm/frames/entity/QAdmin.java
+ org.morgorithm.frames.entity.QAdmin
 org/morgorithm/frames/dto/PageResultDTO.java
  org.morgorithm.frames.dto.PageResultDTO
 org/morgorithm/frames/entity/BaseEntity.java
  org.morgorithm.frames.entity.BaseEntity
-org/morgorithm/frames/controller/EventController.java
- org.morgorithm.frames.controller.EventController
-org/morgorithm/frames/controller/StatusController.java
- org.morgorithm.frames.controller.StatusController
-org/morgorithm/frames/dto/UploadResultDTO.java
- org.morgorithm.frames.dto.UploadResultDTO
-org/morgorithm/frames/entity/QMember.java
- org.morgorithm.frames.entity.QMember
 org/morgorithm/frames/configuration/LocalDateTimeAttributeConverter.java
  org.morgorithm.frames.configuration.LocalDateTimeAttributeConverter
 org/morgorithm/frames/dto/TrackerInfoDTO.java
@@ -98,5 +66,59 @@ org/morgorithm/frames/configuration/WebSocketConfig.java
  org.morgorithm.frames.configuration.WebSocketConfig
 org/morgorithm/frames/FramesApplication.java
  org.morgorithm.frames.FramesApplication
-org/morgorithm/frames/controller/TrackerController.java
- org.morgorithm.frames.controller.TrackerController
+org/morgorithm/frames/entity/Status.java
+ org.morgorithm.frames.entity.Status
+ org.morgorithm.frames.entity.Status$StatusBuilder
+org/morgorithm/frames/entity/QMemberImage.java
+ org.morgorithm.frames.entity.QMemberImage
+org/morgorithm/frames/entity/QBaseEntity.java
+ org.morgorithm.frames.entity.QBaseEntity
+org/morgorithm/frames/controller/ImageController.java
+ org.morgorithm.frames.controller.ImageController
+org/morgorithm/frames/entity/QStatus.java
+ org.morgorithm.frames.entity.QStatus
+org/morgorithm/frames/service/StatusServiceImpl.java
+ org.morgorithm.frames.service.StatusServiceImpl
+org/morgorithm/frames/service/MemberService.java
+ org.morgorithm.frames.service.MemberService
+org/morgorithm/frames/controller/UploadController.java
+ org.morgorithm.frames.controller.UploadController
+org/morgorithm/frames/dto/FacilityDTO.java
+ org.morgorithm.frames.dto.FacilityDTO
+ org.morgorithm.frames.dto.FacilityDTO$FacilityDTOBuilder
+org/morgorithm/frames/dto/UploadResultDTO.java
+ org.morgorithm.frames.dto.UploadResultDTO
+org/morgorithm/frames/dto/MemberDTO.java
+ org.morgorithm.frames.dto.MemberDTO
+ org.morgorithm.frames.dto.MemberDTO$MemberDTOBuilder
+org/morgorithm/frames/entity/Admin.java
+ org.morgorithm.frames.entity.Admin
+ org.morgorithm.frames.entity.Admin$AdminBuilder
+org/morgorithm/frames/controller/FacilityController.java
+ org.morgorithm.frames.controller.FacilityController
+org/morgorithm/frames/controller/CoronaVirusUpdateController.java
+ org.morgorithm.frames.controller.CoronaVirusUpdateController
+org/morgorithm/frames/repository/FacilityRepository.java
+ org.morgorithm.frames.repository.FacilityRepository
+org/morgorithm/frames/service/StatusService.java
+ org.morgorithm.frames.service.StatusService
+org/morgorithm/frames/dto/MemberImageDTO.java
+ org.morgorithm.frames.dto.MemberImageDTO
+ org.morgorithm.frames.dto.MemberImageDTO$MemberImageDTOBuilder
+org/morgorithm/frames/util/FileUtils.java
+ org.morgorithm.frames.util.FileUtils
+org/morgorithm/frames/service/MemberServiceImpl.java
+ org.morgorithm.frames.service.MemberServiceImpl
+org/morgorithm/frames/controller/EventController.java
+ org.morgorithm.frames.controller.EventController
+org/morgorithm/frames/dto/AdminDto.java
+ org.morgorithm.frames.dto.AdminDto
+ org.morgorithm.frames.dto.AdminDto$AdminDtoBuilder
+org/morgorithm/frames/controller/StatusController.java
+ org.morgorithm.frames.controller.StatusController
+org/morgorithm/frames/service/AdminServiceImpl.java
+ org.morgorithm.frames.service.AdminServiceImpl
+org/morgorithm/frames/configuration/SecurityConfig.java
+ org.morgorithm.frames.configuration.SecurityConfig
+org/morgorithm/frames/controller/AdminController.java
+ org.morgorithm.frames.controller.AdminController

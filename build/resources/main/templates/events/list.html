@@ -3,7 +3,7 @@
 <!--datetimepicker bootstrap-->
 
 
-<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+<th:block th:replace="~{/layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
         <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -18,12 +18,6 @@
         <head>
             <meta charset="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <link
-                    rel="stylesheet"
-                    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-                    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-                    crossorigin="anonymous"
-            />
             <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/event.css}">
             <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/modal.scss}">
             <title>CSS GRID DASHBOARD</title>

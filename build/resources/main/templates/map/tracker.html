@@ -2,13 +2,9 @@
 
 
 
-<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+<th:block th:replace="~{/layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script>
             $( function() {
                 $( "#datepicker" ).datepicker();
@@ -139,7 +135,7 @@
 
             ];
             //positions[0]["content"]+="<div>테스트</div>"
-            for(var i=0;i<5;i++){
+            for(var i=0;i<bnoLength;i++){
                 positions[i]["content"]="<div>";
                 positions[i]["content"]+=bNames[i];
                 positions[i]["content"]+="</div>";
