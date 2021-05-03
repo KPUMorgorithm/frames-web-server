@@ -11,7 +11,7 @@
         <script th:inline="javascript">
             /*<![CDATA[*/
             var error = /*[[${error}]]*/ "";
-            if (error != "") {
+            if (error != null && error != "") {
                 alert(error);
             }
             /*]]>*/
