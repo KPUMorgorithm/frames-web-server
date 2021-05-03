@@ -40,7 +40,7 @@ public class AdminServiceImpl implements UserDetailsService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        if (("admin").equals(username)) {
+        if (("templates/admin").equals(username)) {
             authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
         }
         else {
