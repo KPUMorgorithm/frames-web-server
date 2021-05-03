@@ -13,21 +13,19 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class TrackerInfoDTO {
-    private final static int MAX_BUILDING=10;
     private String date;
     private Long mno;
     private List<Long> bno;
     private List<String> dates;
     private int length;
     private List<String> bName;
+    private List<Long> trackingBno;
+    private List<Boolean> entranceStatus;
     public TrackerInfoDTO(){
         mno=null;
         date=null;
         bno=new ArrayList<>();
         dates=new ArrayList<>();
-        for(int i=0;i<MAX_BUILDING;i++){
-            bno.add(Long.valueOf(i+1));
-        }
-        length= MAX_BUILDING;
+
     }
 }
