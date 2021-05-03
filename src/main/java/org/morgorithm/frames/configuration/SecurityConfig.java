@@ -1,7 +1,7 @@
-package com.outstandingboy.knjoy.config;
+package org.morgorithm.frames.configuration;
 
-import com.outstandingboy.knjoy.service.MemberService;
 import lombok.AllArgsConstructor;
+import org.morgorithm.frames.service.AdminServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private MemberService memberService;
+    private AdminServiceImpl adminService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -32,26 +32,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/info").hasRole("MEMBER")
-//                .antMatchers("/product/*").hasAnyRole("MEMBER", "ADMIN")
+//                .antMatchers("/user/info").hasRole("MEMBER")
+//                .antMatchers("/user/*").hasAnyRole("MEMBER", "ADMIN")
                 .antMatchers("/**").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/user/login")
-                .defaultSuccessUrl("/user/login/result")
+                .loginPage("/admin/login")
+                .defaultSuccessUrl("/admin/login/result")
                 .permitAll()
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                .logoutSuccessUrl("/user/logout/result")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
+                .logoutSuccessUrl("/admin/logout/result")
                 .invalidateHttpSession(true)
                 .and()
-                .exceptionHandling().accessDeniedPage("/user/denined");
+                .exceptionHandling().accessDeniedPage("/error");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(adminService).passwordEncoder(passwordEncoder());
     }
 }
