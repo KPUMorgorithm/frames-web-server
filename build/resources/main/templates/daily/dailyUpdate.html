@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:with="preloader=true,requireLogin=true">
 
 <th:block th:replace="~{/layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
         <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/main.css}">
+
         <div class="container">
 
             <div id="container"
