@@ -1,4 +1,4 @@
-package com.outstandingboy.knjoy.domain;
+package org.morgorithm.frames.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
