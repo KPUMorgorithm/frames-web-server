@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">8.331s</div>
+<div class="counter">34.446s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,8 +78,8 @@
 </tr>
 </thead>
 <tr>
-<td class="success">testAddTestDataForRealTimeStatusUpdate()</td>
-<td class="success">8.331s</td>
+<td class="success">testEventNowBooleanBuilderInsertDummyData()</td>
+<td class="success">34.446s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,22 +87,22 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>11:14:08.969 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-11:14:09.010 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-11:14:09.103 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [org.morgorithm.frames.repository.StatusRepositoryTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-11:14:09.142 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.morgorithm.frames.repository.StatusRepositoryTests], using SpringBootContextLoader
-11:14:09.157 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: class path resource [org/morgorithm/frames/repository/StatusRepositoryTests-context.xml] does not exist
-11:14:09.160 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: class path resource [org/morgorithm/frames/repository/StatusRepositoryTestsContext.groovy] does not exist
-11:14:09.160 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-11:14:09.162 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: StatusRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-11:14:09.274 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [org.morgorithm.frames.repository.StatusRepositoryTests]
-11:14:09.455 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\nick1\kpu\frames-web-server\build\classes\java\main\org\morgorithm\frames\FramesApplication.class]
-11:14:09.459 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration org.morgorithm.frames.FramesApplication for test class org.morgorithm.frames.repository.StatusRepositoryTests
-11:14:09.813 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [org.morgorithm.frames.repository.StatusRepositoryTests]: using defaults.
-11:14:09.814 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-11:14:09.869 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1b902cc0, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2044234, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@417e253c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@78642977, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6208fc97, org.springframework.test.context.support.DirtiesContextTestExecutionListener@42bd1700, org.springframework.test.context.transaction.TransactionalTestExecutionListener@72da8dae, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2bac3d13, org.springframework.test.context.event.EventPublishingTestExecutionListener@ee590b5, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@244a937e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@25bdda4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@48552c59, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6a976dde, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1a36d291, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@46dc9a8e]
-11:14:09.880 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@7ee731fb testClass = StatusRepositoryTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2c9af7a5 testClass = StatusRepositoryTests, locations = '{}', classes = '{class org.morgorithm.frames.FramesApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@767d3fd7, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@16cd5c3b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2cfac34, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@60fec9f0, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@a7bd819, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@11d6dc05], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
-11:14:09.958 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+<pre>23:05:49.014 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+23:05:49.043 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+23:05:49.125 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [org.morgorithm.frames.repository.StatusRepositoryTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+23:05:49.160 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.morgorithm.frames.repository.StatusRepositoryTests], using SpringBootContextLoader
+23:05:49.171 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: class path resource [org/morgorithm/frames/repository/StatusRepositoryTests-context.xml] does not exist
+23:05:49.172 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: class path resource [org/morgorithm/frames/repository/StatusRepositoryTestsContext.groovy] does not exist
+23:05:49.173 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+23:05:49.174 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: StatusRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:05:49.299 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [org.morgorithm.frames.repository.StatusRepositoryTests]
+23:05:49.522 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\nick1\kpu\frames-web-server\build\classes\java\main\org\morgorithm\frames\FramesApplication.class]
+23:05:49.526 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration org.morgorithm.frames.FramesApplication for test class org.morgorithm.frames.repository.StatusRepositoryTests
+23:05:49.940 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [org.morgorithm.frames.repository.StatusRepositoryTests]: using defaults.
+23:05:49.943 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+23:05:49.995 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@b226979, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@36797ea9, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@52de29e2, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2c7534f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1a369bcf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@67c73216, org.springframework.test.context.transaction.TransactionalTestExecutionListener@44758635, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7c10e8df, org.springframework.test.context.event.EventPublishingTestExecutionListener@52d6fc71, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@c5f33bf, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6473582f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1f5e126e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7a0e5080, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@f3956b5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7175d55d]
+23:05:50.002 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@11934b3b testClass = StatusRepositoryTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@952e265 testClass = StatusRepositoryTests, locations = '{}', classes = '{class org.morgorithm.frames.FramesApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@4bae66ca, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@12c4c091, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@628adcec, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@5430d2b6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4e345ac2, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@8dd133d], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+23:05:50.066 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -112,2466 +112,3883 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.4.2)
 
-2021-05-02 11:14:10.698  INFO 343456 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : Starting StatusRepositoryTests using Java 11.0.9 on DESKTOP-KCDHFKO with PID 343456 (started by nick1 in C:\Users\nick1\kpu\frames-web-server)
-2021-05-02 11:14:10.706  INFO 343456 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : No active profile set, falling back to default profiles: default
-2021-05-02 11:14:15.701  INFO 343456 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-05-02 11:14:15.985  INFO 343456 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 262 ms. Found 4 JPA repository interfaces.
-2021-05-02 11:14:16.733  INFO 343456 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#46a67bc6' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-05-02 11:14:16.760  INFO 343456 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#711c1513' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-05-02 11:14:16.778  INFO 343456 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-05-02 11:14:16.778  INFO 343456 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-05-02 11:14:17.697  INFO 343456 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-05-02 11:14:17.877  INFO 343456 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.27.Final
-2021-05-02 11:14:18.358  INFO 343456 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-05-02 11:14:18.817  INFO 343456 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2021-05-02 11:14:19.560  INFO 343456 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2021-05-02 11:14:19.659  INFO 343456 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2021-05-02 11:14:22.147  INFO 343456 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-05-02 11:14:22.171  INFO 343456 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-05-02 11:14:25.098  INFO 343456 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
-2021-05-02 11:14:25.143  INFO 343456 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2021-05-02 23:05:50.654  WARN 328632 --- [    Test worker] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/nick1/.gradle/caches/modules-2/files-2.1/org.json/json/20210307/528c8df3757e8bcf151817b1d7b9b434f6aa08d5/json-20210307.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/nick1/.gradle/caches/modules-2/files-2.1/com.vaadin.external.google/android-json/0.0.20131108.vaadin1/fa26d351fe62a6a17f5cda1287c1c6110dec413f/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2021-05-02 23:05:50.696  INFO 328632 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : Starting StatusRepositoryTests using Java 11.0.9 on DESKTOP-KCDHFKO with PID 328632 (started by nick1 in C:\Users\nick1\kpu\frames-web-server)
+2021-05-02 23:05:50.699  INFO 328632 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : No active profile set, falling back to default profiles: default
+2021-05-02 23:05:55.631  INFO 328632 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-02 23:05:55.901  INFO 328632 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 252 ms. Found 4 JPA repository interfaces.
+2021-05-02 23:05:56.708  INFO 328632 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#1afbec03' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-02 23:05:56.736  INFO 328632 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#35777a65' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-02 23:05:56.757  INFO 328632 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-02 23:05:56.757  INFO 328632 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-02 23:05:57.611  INFO 328632 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-02 23:05:57.782  INFO 328632 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.27.Final
+2021-05-02 23:05:58.157  INFO 328632 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-02 23:05:58.535  INFO 328632 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-02 23:05:59.369  INFO 328632 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-02 23:05:59.455  INFO 328632 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-02 23:06:01.867  INFO 328632 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-02 23:06:01.887  INFO 328632 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-02 23:06:04.575  INFO 328632 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2021-05-02 23:06:04.605  INFO 328632 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
 confiureMessageBroker 연동!!**
-2021-05-02 11:14:25.150  INFO 343456 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
-Hibernate: 
-    select
-        status0_.statusnum as statusnu1_3_,
-        status0_.regdate as regdate2_3_,
-        status0_.facility_bno as facility5_3_,
-        status0_.member_mno as member_m6_3_,
-        status0_.state as state3_3_,
-        status0_.temperature as temperat4_3_ 
-    from
-        status status0_ 
-    where
-        status0_.regdate not between ? and ?
-Hibernate: 
-    
-SET
-    SQL_SAFE_UPDATES = 0
-Hibernate: 
-    
-set
-    @cnt=0
-Hibernate: 
-    update
-        status 
-    set
-        status.statusnum=@cnt:=@cnt+1
-Hibernate: 
-    ALTER TABLE status AUTO_INCREMENT = 1
-2021-05-02 11:14:25.944  INFO 343456 --- [    Test worker] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2021-05-02 23:06:04.610  INFO 328632 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2021-05-02 23:06:05.441  INFO 328632 --- [    Test worker] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
 end point 연결!!!***
-2021-05-02 11:14:26.311  WARN 343456 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-05-02 11:14:27.739  INFO 343456 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2021-05-02 11:14:30.260  INFO 343456 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2021-05-02 11:14:30.261  INFO 343456 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@19c2acfd]]
-2021-05-02 11:14:30.261  INFO 343456 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2021-05-02 11:14:30.292  INFO 343456 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : Started StatusRepositoryTests in 20.316 seconds (JVM running for 24.535)
-Hibernate: 
-    select
-        count(*) as col_0_0_ 
-    from
-        member member0_
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
-Hibernate: 
-    insert 
-    into
-        status
-        (regdate, facility_bno, member_mno, state, temperature) 
-    values
-        (?, ?, ?, ?, ?)
-데이터 삽입
+2021-05-02 23:06:05.773  WARN 328632 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-02 23:06:07.159  INFO 328632 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2021-05-02 23:06:09.461  INFO 328632 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2021-05-02 23:06:09.461  INFO 328632 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6cca3572]]
+2021-05-02 23:06:09.462  INFO 328632 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2021-05-02 23:06:09.481  INFO 328632 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : Started StatusRepositoryTests in 19.402 seconds (JVM running for 23.819)
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -20
+Date 0 days in future: 2021/05/02 20:46:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -18
+Date 0 days in future: 2021/05/02 19:48:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 17
+Date 0 days in future: 2021/05/02 19:23:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 27
+Date 0 days in future: 2021/05/02 17:33:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -23
+Date 0 days in future: 2021/05/02 16:43:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -26
+Date 0 days in future: 2021/05/02 18:40:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -5
+Date 0 days in future: 2021/05/02 16:01:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 43
+Date 0 days in future: 2021/05/02 20:49:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -14
+Date 0 days in future: 2021/05/02 18:52:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 17
+Date 0 days in future: 2021/05/02 20:23:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -19
+Date 0 days in future: 2021/05/02 19:47:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -3
+Date 0 days in future: 2021/05/02 22:03:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 58
+Date 0 days in future: 2021/05/02 22:04:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 20
+Date 0 days in future: 2021/05/02 22:26:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -20
+Date 0 days in future: 2021/05/02 20:46:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 59
+Date 0 days in future: 2021/05/02 17:05:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -54
+Date 0 days in future: 2021/05/02 15:12:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -7
+Date 0 days in future: 2021/05/02 16:59:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 10
+Date 0 days in future: 2021/05/02 19:16:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 8
+Date 0 days in future: 2021/05/02 18:14:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -41
+Date 0 days in future: 2021/05/02 21:25:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 0
+Date 0 days in future: 2021/05/02 19:06:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -5
+Date 0 days in future: 2021/05/02 20:01:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 9
+Date 0 days in future: 2021/05/02 19:15:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 2
+Date 0 days in future: 2021/05/02 21:08:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 46
+Date 0 days in future: 2021/05/02 21:52:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 28
+Date 0 days in future: 2021/05/02 22:34:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 3
+Date 0 days in future: 2021/05/02 16:09:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 45
+Date 0 days in future: 2021/05/02 20:51:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 60
+Date 0 days in future: 2021/05/02 23:06:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -44
+Date 0 days in future: 2021/05/02 16:22:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -8
+Date 0 days in future: 2021/05/02 20:58:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 31
+Date 0 days in future: 2021/05/02 21:37:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -25
+Date 0 days in future: 2021/05/02 16:41:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 46
+Date 0 days in future: 2021/05/02 22:52:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -60
+Date 0 days in future: 2021/05/02 21:06:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 22
+Date 0 days in future: 2021/05/02 16:28:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 16
+Date 0 days in future: 2021/05/02 19:22:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -9
+Date 0 days in future: 2021/05/02 17:57:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 28
+Date 0 days in future: 2021/05/02 18:34:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -15
+Date 0 days in future: 2021/05/02 17:51:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -19
+Date 0 days in future: 2021/05/02 19:47:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 4
+Date 0 days in future: 2021/05/02 22:10:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 50
+Date 0 days in future: 2021/05/02 17:56:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -50
+Date 0 days in future: 2021/05/02 17:16:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -7
+Date 0 days in future: 2021/05/02 16:59:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 41
+Date 0 days in future: 2021/05/02 18:47:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 34
+Date 0 days in future: 2021/05/02 16:40:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 49
+Date 0 days in future: 2021/05/02 21:55:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -57
+Date 0 days in future: 2021/05/02 21:09:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -28
+Date 0 days in future: 2021/05/02 18:38:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -59
+Date 0 days in future: 2021/05/02 20:07:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 11
+Date 0 days in future: 2021/05/02 17:17:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 54
+Date 0 days in future: 2021/05/02 20:00:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -10
+Date 0 days in future: 2021/05/02 20:56:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 32
+Date 0 days in future: 2021/05/02 22:38:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 38
+Date 0 days in future: 2021/05/02 20:44:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 50
+Date 0 days in future: 2021/05/02 18:56:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 24
+Date 0 days in future: 2021/05/02 17:30:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -23
+Date 0 days in future: 2021/05/02 17:43:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -40
+Date 0 days in future: 2021/05/02 17:26:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -58
+Date 0 days in future: 2021/05/02 20:08:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 23
+Date 0 days in future: 2021/05/02 20:29:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -12
+Date 0 days in future: 2021/05/02 15:54:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 6
+Date 0 days in future: 2021/05/02 21:12:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 0
+Date 0 days in future: 2021/05/02 17:06:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 20
+Date 0 days in future: 2021/05/02 20:26:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 52
+Date 0 days in future: 2021/05/02 16:58:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 15
+Date 0 days in future: 2021/05/02 21:21:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -38
+Date 0 days in future: 2021/05/02 20:28:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 7
+Date 0 days in future: 2021/05/02 18:13:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -54
+Date 0 days in future: 2021/05/02 16:12:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 11
+Date 0 days in future: 2021/05/02 21:17:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 60
+Date 0 days in future: 2021/05/02 22:06:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -32
+Date 0 days in future: 2021/05/02 17:34:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -30
+Date 0 days in future: 2021/05/02 18:36:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -32
+Date 0 days in future: 2021/05/02 15:34:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -17
+Date 0 days in future: 2021/05/02 16:49:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 30
+Date 0 days in future: 2021/05/02 19:36:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 59
+Date 0 days in future: 2021/05/02 18:05:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -22
+Date 0 days in future: 2021/05/02 19:44:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 3
+Date 0 days in future: 2021/05/02 19:09:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -16
+Date 0 days in future: 2021/05/02 15:50:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -54
+Date 0 days in future: 2021/05/02 15:12:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -51
+Date 0 days in future: 2021/05/02 18:15:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 46
+Date 0 days in future: 2021/05/02 16:52:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 49
+Date 0 days in future: 2021/05/02 21:55:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -60
+Date 0 days in future: 2021/05/02 19:06:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -58
+Date 0 days in future: 2021/05/02 20:08:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 32
+Date 0 days in future: 2021/05/02 17:38:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -43
+Date 0 days in future: 2021/05/02 19:23:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -46
+Date 0 days in future: 2021/05/02 18:20:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -46
+Date 0 days in future: 2021/05/02 17:20:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -29
+Date 0 days in future: 2021/05/02 17:37:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -42
+Date 0 days in future: 2021/05/02 16:24:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -17
+Date 0 days in future: 2021/05/02 16:49:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 40
+Date 0 days in future: 2021/05/02 16:46:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -11
+Date 0 days in future: 2021/05/02 21:55:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 6
+Date 0 days in future: 2021/05/02 21:12:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 54
+Date 0 days in future: 2021/05/02 17:00:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 7
+Date 0 days in future: 2021/05/02 21:13:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -45
+Date 0 days in future: 2021/05/02 17:21:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -4
+Date 0 days in future: 2021/05/02 16:02:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -22
+Date 0 days in future: 2021/05/02 18:44:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 45
+Date 0 days in future: 2021/05/02 16:51:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 9
+Date 0 days in future: 2021/05/02 22:15:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 28
+Date 0 days in future: 2021/05/02 17:34:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 42
+Date 0 days in future: 2021/05/02 19:48:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 8
+Date 0 days in future: 2021/05/02 17:14:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 59
+Date 0 days in future: 2021/05/02 23:05:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -22
+Date 0 days in future: 2021/05/02 15:44:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 46
+Date 0 days in future: 2021/05/02 18:52:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 35
+Date 0 days in future: 2021/05/02 17:41:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -39
+Date 0 days in future: 2021/05/02 17:27:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -31
+Date 0 days in future: 2021/05/02 19:35:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 28
+Date 0 days in future: 2021/05/02 18:34:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -31
+Date 0 days in future: 2021/05/02 15:35:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -48
+Date 0 days in future: 2021/05/02 17:18:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -10
+Date 0 days in future: 2021/05/02 19:56:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 22
+Date 0 days in future: 2021/05/02 22:28:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -1
+Date 0 days in future: 2021/05/02 20:05:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 54
+Date 0 days in future: 2021/05/02 20:00:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -27
+Date 0 days in future: 2021/05/02 16:39:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 57
+Date 0 days in future: 2021/05/02 23:03:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 50
+Date 0 days in future: 2021/05/02 19:56:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 56
+Date 0 days in future: 2021/05/02 17:02:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 20
+Date 0 days in future: 2021/05/02 17:26:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -16
+Date 0 days in future: 2021/05/02 16:50:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 47
+Date 0 days in future: 2021/05/02 18:53:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -14
+Date 0 days in future: 2021/05/02 17:52:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 5
+Date 0 days in future: 2021/05/02 21:11:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -32
+Date 0 days in future: 2021/05/02 17:34:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -6
+Date 0 days in future: 2021/05/02 17:00:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -39
+Date 0 days in future: 2021/05/02 16:27:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -43
+Date 0 days in future: 2021/05/02 21:23:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -45
+Date 0 days in future: 2021/05/02 15:21:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -39
+Date 0 days in future: 2021/05/02 16:27:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -55
+Date 0 days in future: 2021/05/02 18:11:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 41
+Date 0 days in future: 2021/05/02 18:47:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -11
+Date 0 days in future: 2021/05/02 20:55:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -14
+Date 0 days in future: 2021/05/02 17:52:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 56
+Date 0 days in future: 2021/05/02 22:02:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 32
+Date 0 days in future: 2021/05/02 16:38:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 44
+Date 0 days in future: 2021/05/02 20:50:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 21
+Date 0 days in future: 2021/05/02 19:27:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -54
+Date 0 days in future: 2021/05/02 16:12:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 26
+Date 0 days in future: 2021/05/02 20:32:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 42
+Date 0 days in future: 2021/05/02 22:48:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 44
+Date 0 days in future: 2021/05/02 21:50:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -44
+Date 0 days in future: 2021/05/02 15:22:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -9
+Date 0 days in future: 2021/05/02 21:57:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -47
+Date 0 days in future: 2021/05/02 19:19:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 26
+Date 0 days in future: 2021/05/02 21:32:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -37
+Date 0 days in future: 2021/05/02 19:29:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -22
+Date 0 days in future: 2021/05/02 17:44:09
+
+Current Date: 2021/05/02 23:06:09
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -35
+Date 0 days in future: 2021/05/02 15:31:09
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -43
+Date 0 days in future: 2021/05/02 15:23:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 49
+Date 0 days in future: 2021/05/02 22:55:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -12
+Date 0 days in future: 2021/05/02 18:54:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 3
+Date 0 days in future: 2021/05/02 19:09:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -42
+Date 0 days in future: 2021/05/02 15:24:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -2
+Date 0 days in future: 2021/05/02 20:04:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -29
+Date 0 days in future: 2021/05/02 15:37:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -35
+Date 0 days in future: 2021/05/02 16:31:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 0
+Date 0 days in future: 2021/05/02 21:06:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -27
+Date 0 days in future: 2021/05/02 20:39:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -20
+Date 0 days in future: 2021/05/02 17:46:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 40
+Date 0 days in future: 2021/05/02 17:46:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 40
+Date 0 days in future: 2021/05/02 17:46:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -37
+Date 0 days in future: 2021/05/02 20:29:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -56
+Date 0 days in future: 2021/05/02 21:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 15
+Date 0 days in future: 2021/05/02 20:21:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 33
+Date 0 days in future: 2021/05/02 17:39:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -56
+Date 0 days in future: 2021/05/02 17:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -47
+Date 0 days in future: 2021/05/02 17:19:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -58
+Date 0 days in future: 2021/05/02 20:08:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -16
+Date 0 days in future: 2021/05/02 15:50:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 9
+Date 0 days in future: 2021/05/02 22:15:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -4
+Date 0 days in future: 2021/05/02 19:02:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 14
+Date 0 days in future: 2021/05/02 22:20:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 2
+Date 0 days in future: 2021/05/02 16:08:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 4
+Date 0 days in future: 2021/05/02 21:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 4
+Date 0 days in future: 2021/05/02 21:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -46
+Date 0 days in future: 2021/05/02 19:20:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 53
+Date 0 days in future: 2021/05/02 16:59:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -8
+Date 0 days in future: 2021/05/02 16:58:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -50
+Date 0 days in future: 2021/05/02 21:16:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 37
+Date 0 days in future: 2021/05/02 19:43:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -26
+Date 0 days in future: 2021/05/02 16:40:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -20
+Date 0 days in future: 2021/05/02 19:46:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -35
+Date 0 days in future: 2021/05/02 17:31:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -31
+Date 0 days in future: 2021/05/02 20:35:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 2
+Date 0 days in future: 2021/05/02 17:08:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -29
+Date 0 days in future: 2021/05/02 21:37:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -12
+Date 0 days in future: 2021/05/02 17:54:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 2
+Date 0 days in future: 2021/05/02 18:08:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 32
+Date 0 days in future: 2021/05/02 16:38:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 27
+Date 0 days in future: 2021/05/02 18:33:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -4
+Date 0 days in future: 2021/05/02 18:02:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -59
+Date 0 days in future: 2021/05/02 20:07:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -45
+Date 0 days in future: 2021/05/02 17:21:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -45
+Date 0 days in future: 2021/05/02 20:21:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -11
+Date 0 days in future: 2021/05/02 20:55:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 46
+Date 0 days in future: 2021/05/02 16:52:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -55
+Date 0 days in future: 2021/05/02 18:11:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 25
+Date 0 days in future: 2021/05/02 16:31:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -48
+Date 0 days in future: 2021/05/02 21:18:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -25
+Date 0 days in future: 2021/05/02 19:41:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 26
+Date 0 days in future: 2021/05/02 18:32:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -52
+Date 0 days in future: 2021/05/02 19:14:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 30
+Date 0 days in future: 2021/05/02 18:36:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 58
+Date 0 days in future: 2021/05/02 23:04:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 42
+Date 0 days in future: 2021/05/02 18:48:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -45
+Date 0 days in future: 2021/05/02 19:21:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 6
+Date 0 days in future: 2021/05/02 21:12:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 3
+Date 0 days in future: 2021/05/02 18:09:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -12
+Date 0 days in future: 2021/05/02 20:54:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -48
+Date 0 days in future: 2021/05/02 17:18:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -18
+Date 0 days in future: 2021/05/02 21:48:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 37
+Date 0 days in future: 2021/05/02 20:43:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 38
+Date 0 days in future: 2021/05/02 18:44:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 7
+Date 0 days in future: 2021/05/02 17:13:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 24
+Date 0 days in future: 2021/05/02 16:30:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 30
+Date 0 days in future: 2021/05/02 16:36:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 11
+Date 0 days in future: 2021/05/02 21:17:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 25
+Date 0 days in future: 2021/05/02 20:31:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -41
+Date 0 days in future: 2021/05/02 20:25:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -28
+Date 0 days in future: 2021/05/02 18:38:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 52
+Date 0 days in future: 2021/05/02 18:58:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 34
+Date 0 days in future: 2021/05/02 22:40:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 24
+Date 0 days in future: 2021/05/02 21:30:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -16
+Date 0 days in future: 2021/05/02 16:50:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 29
+Date 0 days in future: 2021/05/02 22:35:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 23
+Date 0 days in future: 2021/05/02 22:29:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 47
+Date 0 days in future: 2021/05/02 22:53:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -49
+Date 0 days in future: 2021/05/02 15:17:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -42
+Date 0 days in future: 2021/05/02 16:24:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -23
+Date 0 days in future: 2021/05/02 20:43:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -56
+Date 0 days in future: 2021/05/02 21:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 2
+Date 0 days in future: 2021/05/02 22:08:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -6
+Date 0 days in future: 2021/05/02 16:00:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 15
+Date 0 days in future: 2021/05/02 22:21:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -53
+Date 0 days in future: 2021/05/02 21:13:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 16
+Date 0 days in future: 2021/05/02 17:22:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -9
+Date 0 days in future: 2021/05/02 15:57:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 16
+Date 0 days in future: 2021/05/02 22:22:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 58
+Date 0 days in future: 2021/05/02 22:04:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 37
+Date 0 days in future: 2021/05/02 20:43:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 57
+Date 0 days in future: 2021/05/02 22:03:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 38
+Date 0 days in future: 2021/05/02 18:44:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -55
+Date 0 days in future: 2021/05/02 15:11:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -26
+Date 0 days in future: 2021/05/02 21:40:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 30
+Date 0 days in future: 2021/05/02 17:36:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 19
+Date 0 days in future: 2021/05/02 20:25:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 19
+Date 0 days in future: 2021/05/02 19:25:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -46
+Date 0 days in future: 2021/05/02 16:20:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 16
+Date 0 days in future: 2021/05/02 21:22:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -11
+Date 0 days in future: 2021/05/02 15:55:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 39
+Date 0 days in future: 2021/05/02 19:45:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 44
+Date 0 days in future: 2021/05/02 19:50:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 60
+Date 0 days in future: 2021/05/02 22:06:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 11
+Date 0 days in future: 2021/05/02 16:17:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 10
+Date 0 days in future: 2021/05/02 20:16:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -22
+Date 0 days in future: 2021/05/02 19:44:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -2
+Date 0 days in future: 2021/05/02 20:04:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -38
+Date 0 days in future: 2021/05/02 18:28:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 51
+Date 0 days in future: 2021/05/02 18:57:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -56
+Date 0 days in future: 2021/05/02 21:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 20
+Date 0 days in future: 2021/05/02 21:26:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 24
+Date 0 days in future: 2021/05/02 21:30:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -24
+Date 0 days in future: 2021/05/02 15:42:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -43
+Date 0 days in future: 2021/05/02 18:23:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -25
+Date 0 days in future: 2021/05/02 19:41:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 7
+Date 0 days in future: 2021/05/02 19:13:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -50
+Date 0 days in future: 2021/05/02 15:16:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -48
+Date 0 days in future: 2021/05/02 19:18:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -14
+Date 0 days in future: 2021/05/02 21:52:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -46
+Date 0 days in future: 2021/05/02 18:20:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 43
+Date 0 days in future: 2021/05/02 17:49:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 28
+Date 0 days in future: 2021/05/02 17:34:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -48
+Date 0 days in future: 2021/05/02 18:18:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -28
+Date 0 days in future: 2021/05/02 20:38:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 15
+Date 0 days in future: 2021/05/02 18:21:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 58
+Date 0 days in future: 2021/05/02 17:04:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -21
+Date 0 days in future: 2021/05/02 15:45:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 22
+Date 0 days in future: 2021/05/02 16:28:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 49
+Date 0 days in future: 2021/05/02 19:55:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 13
+Date 0 days in future: 2021/05/02 20:19:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 36
+Date 0 days in future: 2021/05/02 22:42:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 38
+Date 0 days in future: 2021/05/02 16:44:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 6
+Date 0 days in future: 2021/05/02 18:12:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -36
+Date 0 days in future: 2021/05/02 16:30:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 50
+Date 0 days in future: 2021/05/02 17:56:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 27
+Date 0 days in future: 2021/05/02 17:33:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -49
+Date 0 days in future: 2021/05/02 17:17:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 6
+Date 0 days in future: 2021/05/02 17:12:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 8
+Date 0 days in future: 2021/05/02 16:14:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 11
+Date 0 days in future: 2021/05/02 18:17:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -9
+Date 0 days in future: 2021/05/02 19:57:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 27
+Date 0 days in future: 2021/05/02 22:33:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -2
+Date 0 days in future: 2021/05/02 17:04:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 55
+Date 0 days in future: 2021/05/02 21:01:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 4
+Date 0 days in future: 2021/05/02 17:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -51
+Date 0 days in future: 2021/05/02 15:15:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 53
+Date 0 days in future: 2021/05/02 21:59:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 47
+Date 0 days in future: 2021/05/02 22:53:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -57
+Date 0 days in future: 2021/05/02 18:09:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -58
+Date 0 days in future: 2021/05/02 17:08:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -36
+Date 0 days in future: 2021/05/02 18:30:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 29
+Date 0 days in future: 2021/05/02 17:35:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 29
+Date 0 days in future: 2021/05/02 21:35:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 12
+Date 0 days in future: 2021/05/02 20:18:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 50
+Date 0 days in future: 2021/05/02 17:56:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 37
+Date 0 days in future: 2021/05/02 18:43:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 32
+Date 0 days in future: 2021/05/02 18:38:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -9
+Date 0 days in future: 2021/05/02 20:57:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 33
+Date 0 days in future: 2021/05/02 20:39:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -8
+Date 0 days in future: 2021/05/02 17:58:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -28
+Date 0 days in future: 2021/05/02 16:38:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -56
+Date 0 days in future: 2021/05/02 16:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -41
+Date 0 days in future: 2021/05/02 16:25:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 41
+Date 0 days in future: 2021/05/02 19:47:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -47
+Date 0 days in future: 2021/05/02 19:19:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -42
+Date 0 days in future: 2021/05/02 15:24:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -26
+Date 0 days in future: 2021/05/02 20:40:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 51
+Date 0 days in future: 2021/05/02 18:57:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 58
+Date 0 days in future: 2021/05/02 17:04:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 33
+Date 0 days in future: 2021/05/02 20:39:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 35
+Date 0 days in future: 2021/05/02 18:41:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 17
+Date 0 days in future: 2021/05/02 18:23:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 50
+Date 0 days in future: 2021/05/02 16:56:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 54
+Date 0 days in future: 2021/05/02 19:00:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -52
+Date 0 days in future: 2021/05/02 16:14:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -54
+Date 0 days in future: 2021/05/02 19:12:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 56
+Date 0 days in future: 2021/05/02 22:02:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -32
+Date 0 days in future: 2021/05/02 19:34:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 48
+Date 0 days in future: 2021/05/02 16:54:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -31
+Date 0 days in future: 2021/05/02 21:35:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 35
+Date 0 days in future: 2021/05/02 18:41:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -52
+Date 0 days in future: 2021/05/02 18:14:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 26
+Date 0 days in future: 2021/05/02 18:32:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -46
+Date 0 days in future: 2021/05/02 15:20:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -15
+Date 0 days in future: 2021/05/02 18:51:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -32
+Date 0 days in future: 2021/05/02 16:34:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -56
+Date 0 days in future: 2021/05/02 19:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -17
+Date 0 days in future: 2021/05/02 21:49:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 33
+Date 0 days in future: 2021/05/02 22:39:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 40
+Date 0 days in future: 2021/05/02 19:46:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: -18
+Date 0 days in future: 2021/05/02 20:48:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 47
+Date 0 days in future: 2021/05/02 19:53:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 12
+Date 0 days in future: 2021/05/02 19:18:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -56
+Date 0 days in future: 2021/05/02 17:10:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 8
+Date 0 days in future: 2021/05/02 16:14:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -31
+Date 0 days in future: 2021/05/02 16:35:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 42
+Date 0 days in future: 2021/05/02 18:48:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: -13
+Date 0 days in future: 2021/05/02 17:53:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -27
+Date 0 days in future: 2021/05/02 19:39:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: -30
+Date 0 days in future: 2021/05/02 15:36:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 11
+Date 0 days in future: 2021/05/02 19:17:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 39
+Date 0 days in future: 2021/05/02 22:45:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 12
+Date 0 days in future: 2021/05/02 16:18:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -23
+Date 0 days in future: 2021/05/02 16:43:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 48
+Date 0 days in future: 2021/05/02 18:54:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -28
+Date 0 days in future: 2021/05/02 18:38:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 36
+Date 0 days in future: 2021/05/02 20:42:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -59
+Date 0 days in future: 2021/05/02 16:07:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 30
+Date 0 days in future: 2021/05/02 22:36:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -53
+Date 0 days in future: 2021/05/02 19:13:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -47
+Date 0 days in future: 2021/05/02 16:19:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -4
+Date 0 days in future: 2021/05/02 22:02:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: -34
+Date 0 days in future: 2021/05/02 19:32:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 25
+Date 0 days in future: 2021/05/02 22:31:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 33
+Date 0 days in future: 2021/05/02 17:39:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -5
+Random amount of minutes: 39
+Date 0 days in future: 2021/05/02 18:45:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: -30
+Date 0 days in future: 2021/05/02 21:36:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: 43
+Date 0 days in future: 2021/05/02 17:49:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: -11
+Date 0 days in future: 2021/05/02 18:55:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -2
+Random amount of minutes: 18
+Date 0 days in future: 2021/05/02 21:24:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 30
+Date 0 days in future: 2021/05/02 19:36:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 19
+Date 0 days in future: 2021/05/02 20:25:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -7
+Random amount of minutes: 38
+Date 0 days in future: 2021/05/02 16:44:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -1
+Random amount of minutes: 37
+Date 0 days in future: 2021/05/02 22:43:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -6
+Random amount of minutes: -45
+Date 0 days in future: 2021/05/02 16:21:10
+
+Current Date: 2021/05/02 23:06:10
+Random amount of days: 0
+Random amount of hours: -4
+Random amount of minutes: 33
+Date 0 days in future: 2021/05/02 19:39:10
+
+mno:Member(mno=90, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature36.7
+mno:Member(mno=3, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.3
+mno:Member(mno=94, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.5
+mno:Member(mno=70, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.1
+mno:Member(mno=25, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature35.1
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.3
+mno:Member(mno=82, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.1
+mno:Member(mno=49, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.3
+mno:Member(mno=35, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.1
+mno:Member(mno=89, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature35.1
+mno:Member(mno=46, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.4
+mno:Member(mno=93, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature36.2
+mno:Member(mno=49, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature35.3
+mno:Member(mno=23, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature37.1
+mno:Member(mno=24, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.5
+mno:Member(mno=15, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.3
+mno:Member(mno=50, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature35.9
+mno:Member(mno=60, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature35.6
+mno:Member(mno=33, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature37.0
+mno:Member(mno=2, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature37.3
+mno:Member(mno=89, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature36.3
+mno:Member(mno=37, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.6
+mno:Member(mno=2, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature37.2
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.5
+mno:Member(mno=48, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature36.3
+mno:Member(mno=69, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature35.6
+mno:Member(mno=25, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature37.0
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.2
+mno:Member(mno=23, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature35.5
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature37.0
+mno:Member(mno=70, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature36.1
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.9
+mno:Member(mno=95, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.2
+mno:Member(mno=67, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature36.6
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature35.0
+mno:Member(mno=35, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.4
+mno:Member(mno=78, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature36.9
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.1
+mno:Member(mno=61, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.3
+mno:Member(mno=24, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.1
+mno:Member(mno=28, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.6
+mno:Member(mno=74, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.9
+mno:Member(mno=43, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature37.2
+mno:Member(mno=28, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.8
+mno:Member(mno=11, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.9
+mno:Member(mno=86, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature36.4
+mno:Member(mno=39, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.7
+mno:Member(mno=50, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature37.0
+mno:Member(mno=27, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.5
+mno:Member(mno=90, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature35.8
+mno:Member(mno=47, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.6
+mno:Member(mno=86, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.2
+mno:Member(mno=70, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.0
+mno:Member(mno=71, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.8
+mno:Member(mno=44, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature36.2
+mno:Member(mno=22, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature37.2
+mno:Member(mno=65, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature37.1
+mno:Member(mno=4, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature35.2
+mno:Member(mno=39, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.4
+mno:Member(mno=22, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature37.3
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.9
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature37.1
+mno:Member(mno=95, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.4
+mno:Member(mno=52, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.0
+mno:Member(mno=57, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature37.1
+mno:Member(mno=33, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature35.9
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature36.9
+mno:Member(mno=39, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature37.1
+mno:Member(mno=61, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature35.2
+mno:Member(mno=75, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature35.3
+mno:Member(mno=30, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.6
+mno:Member(mno=67, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature35.5
+mno:Member(mno=84, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature37.1
+mno:Member(mno=39, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature36.8
+mno:Member(mno=44, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.5
+mno:Member(mno=17, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature35.6
+mno:Member(mno=8, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.3
+mno:Member(mno=45, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.3
+mno:Member(mno=79, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature37.2
+mno:Member(mno=67, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.3
+mno:Member(mno=90, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature36.3
+mno:Member(mno=39, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.2
+mno:Member(mno=86, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature36.8
+mno:Member(mno=8, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature36.0
+mno:Member(mno=33, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.8
+mno:Member(mno=3, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature36.0
+mno:Member(mno=65, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.2
+mno:Member(mno=48, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature37.2
+mno:Member(mno=6, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.2
+mno:Member(mno=1, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature35.0
+mno:Member(mno=88, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.8
+mno:Member(mno=95, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.5
+mno:Member(mno=63, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature35.0
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature35.1
+mno:Member(mno=75, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature35.4
+mno:Member(mno=4, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature36.2
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature36.3
+mno:Member(mno=59, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.5
+mno:Member(mno=33, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature35.9
+mno:Member(mno=81, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature35.4
+mno:Member(mno=44, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.6
+mno:Member(mno=24, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.4
+mno:Member(mno=54, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.8
+mno:Member(mno=40, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.2
+mno:Member(mno=94, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature36.4
+mno:Member(mno=52, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature36.2
+mno:Member(mno=89, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.1
+mno:Member(mno=40, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.0
+mno:Member(mno=8, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature35.2
+mno:Member(mno=15, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.5
+mno:Member(mno=34, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature35.5
+mno:Member(mno=50, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature36.4
+mno:Member(mno=13, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature37.2
+mno:Member(mno=51, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.7
+mno:Member(mno=47, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.3
+mno:Member(mno=46, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.9
+mno:Member(mno=4, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature36.9
+mno:Member(mno=68, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature36.3
+mno:Member(mno=55, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature37.1
+mno:Member(mno=76, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.4
+mno:Member(mno=9, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.7
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature35.2
+mno:Member(mno=39, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature37.0
+mno:Member(mno=23, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature36.2
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature35.9
+mno:Member(mno=20, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.1
+mno:Member(mno=46, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature36.6
+mno:Member(mno=52, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature37.2
+mno:Member(mno=54, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.2
+mno:Member(mno=16, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature37.1
+mno:Member(mno=83, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature37.0
+mno:Member(mno=73, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.0
+mno:Member(mno=85, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature37.1
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature37.2
+mno:Member(mno=3, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.7
+mno:Member(mno=72, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.9
+mno:Member(mno=9, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.2
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.1
+mno:Member(mno=46, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature36.6
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.7
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.0
+mno:Member(mno=6, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.3
+mno:Member(mno=75, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature35.0
+mno:Member(mno=69, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature35.3
+mno:Member(mno=35, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.5
+mno:Member(mno=60, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature36.0
+mno:Member(mno=17, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature37.1
+mno:Member(mno=74, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.6
+mno:Member(mno=28, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature37.2
+mno:Member(mno=74, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.7
+mno:Member(mno=6, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.1
+mno:Member(mno=92, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature35.2
+mno:Member(mno=44, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.8
+mno:Member(mno=75, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature35.8
+mno:Member(mno=12, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.2
+mno:Member(mno=28, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature37.0
+mno:Member(mno=26, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature37.0
+mno:Member(mno=44, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.0
+mno:Member(mno=65, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.9
+mno:Member(mno=22, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature36.7
+mno:Member(mno=29, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature37.2
+mno:Member(mno=72, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.7
+mno:Member(mno=36, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.0
+mno:Member(mno=3, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.4
+mno:Member(mno=69, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature37.2
+mno:Member(mno=81, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.2
+mno:Member(mno=34, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.3
+mno:Member(mno=75, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature35.9
+mno:Member(mno=39, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature36.3
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.9
+mno:Member(mno=87, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature35.7
+mno:Member(mno=18, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.7
+mno:Member(mno=15, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature35.5
+mno:Member(mno=78, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature36.9
+mno:Member(mno=17, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.4
+mno:Member(mno=13, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.1
+mno:Member(mno=27, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.2
+mno:Member(mno=65, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature37.2
+mno:Member(mno=34, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.2
+mno:Member(mno=67, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature35.6
+mno:Member(mno=67, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.9
+mno:Member(mno=56, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature36.2
+mno:Member(mno=92, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature37.2
+mno:Member(mno=78, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature35.3
+mno:Member(mno=12, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.9
+mno:Member(mno=73, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature36.7
+mno:Member(mno=55, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature37.1
+mno:Member(mno=82, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.5
+mno:Member(mno=9, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.5
+mno:Member(mno=12, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature37.0
+mno:Member(mno=86, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature35.1
+mno:Member(mno=26, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature35.5
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.9
+mno:Member(mno=68, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature36.9
+mno:Member(mno=54, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature37.2
+mno:Member(mno=88, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.0
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.8
+mno:Member(mno=64, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature36.7
+mno:Member(mno=1, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature35.4
+mno:Member(mno=76, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.2
+mno:Member(mno=58, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature36.0
+mno:Member(mno=33, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature36.7
+mno:Member(mno=69, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature37.1
+mno:Member(mno=27, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.9
+mno:Member(mno=96, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.4
+mno:Member(mno=12, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature36.9
+mno:Member(mno=40, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.6
+mno:Member(mno=87, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature35.2
+mno:Member(mno=40, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature35.7
+mno:Member(mno=83, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.4
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature37.0
+mno:Member(mno=13, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.6
+mno:Member(mno=51, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature35.5
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature36.5
+mno:Member(mno=88, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.8
+mno:Member(mno=67, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.2
+mno:Member(mno=56, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature37.0
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature35.4
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature35.7
+mno:Member(mno=18, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature36.8
+mno:Member(mno=11, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.8
+mno:Member(mno=47, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.8
+mno:Member(mno=82, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature35.5
+mno:Member(mno=72, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.4
+mno:Member(mno=26, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.2
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.8
+mno:Member(mno=54, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.0
+mno:Member(mno=65, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.8
+mno:Member(mno=28, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature37.1
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature37.2
+mno:Member(mno=92, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.0
+mno:Member(mno=20, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.9
+mno:Member(mno=85, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.4
+mno:Member(mno=10, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature37.0
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature35.9
+mno:Member(mno=35, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature37.3
+mno:Member(mno=60, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.1
+mno:Member(mno=56, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature37.1
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.3
+mno:Member(mno=86, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature36.1
+mno:Member(mno=12, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.6
+mno:Member(mno=67, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.8
+mno:Member(mno=56, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature35.6
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.0
+mno:Member(mno=39, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.7
+mno:Member(mno=9, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature35.1
+mno:Member(mno=96, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.2
+mno:Member(mno=11, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.6
+mno:Member(mno=70, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature37.0
+mno:Member(mno=4, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.8
+mno:Member(mno=10, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.3
+mno:Member(mno=85, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.5
+mno:Member(mno=82, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature36.0
+mno:Member(mno=62, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.2
+mno:Member(mno=52, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature35.4
+mno:Member(mno=41, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.4
+mno:Member(mno=59, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.0
+mno:Member(mno=58, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature37.0
+mno:Member(mno=76, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.4
+mno:Member(mno=27, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.5
+mno:Member(mno=55, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.2
+mno:Member(mno=87, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature35.5
+mno:Member(mno=84, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature36.2
+mno:Member(mno=44, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.0
+mno:Member(mno=66, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.2
+mno:Member(mno=89, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.4
+mno:Member(mno=58, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.1
+mno:Member(mno=25, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.1
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature35.5
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.3
+mno:Member(mno=25, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.8
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.5
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature37.0
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.2
+mno:Member(mno=91, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature37.1
+mno:Member(mno=77, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature37.1
+mno:Member(mno=74, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.1
+mno:Member(mno=28, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.7
+mno:Member(mno=93, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.7
+mno:Member(mno=15, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature36.3
+mno:Member(mno=30, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature37.3
+mno:Member(mno=81, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.9
+mno:Member(mno=34, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature36.0
+mno:Member(mno=37, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.4
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature35.4
+mno:Member(mno=29, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature35.8
+mno:Member(mno=91, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature35.3
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.3
+mno:Member(mno=68, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature37.1
+mno:Member(mno=11, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.7
+mno:Member(mno=77, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.8
+mno:Member(mno=57, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature35.5
+mno:Member(mno=70, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature36.9
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature36.4
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.1
+mno:Member(mno=64, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.1
+mno:Member(mno=54, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.4
+mno:Member(mno=95, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.9
+mno:Member(mno=71, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.2
+mno:Member(mno=25, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature36.5
+mno:Member(mno=49, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.8
+mno:Member(mno=4, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.5
+mno:Member(mno=16, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.0
+mno:Member(mno=46, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature35.4
+mno:Member(mno=35, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.6
+mno:Member(mno=67, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.1
+mno:Member(mno=34, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.8
+mno:Member(mno=6, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.9
+mno:Member(mno=15, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.3
+mno:Member(mno=44, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.6
+mno:Member(mno=71, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature36.6
+mno:Member(mno=12, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.3
+mno:Member(mno=61, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature35.7
+mno:Member(mno=88, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.2
+mno:Member(mno=71, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.6
+mno:Member(mno=54, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.4
+mno:Member(mno=64, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature35.9
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature35.9
+mno:Member(mno=59, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature36.6
+mno:Member(mno=55, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.5
+mno:Member(mno=65, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.9
+mno:Member(mno=76, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature37.0
+mno:Member(mno=94, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature36.6
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature37.0
+mno:Member(mno=45, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.4
+mno:Member(mno=39, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.1
+mno:Member(mno=81, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature35.8
+mno:Member(mno=16, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.9
+mno:Member(mno=29, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature36.5
+mno:Member(mno=5, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature36.2
+mno:Member(mno=8, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature35.6
+mno:Member(mno=50, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.8
+mno:Member(mno=79, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature35.7
+mno:Member(mno=44, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature37.2
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature35.8
+mno:Member(mno=70, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature36.3
+mno:Member(mno=85, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.7
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature35.8
+mno:Member(mno=46, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature36.4
+mno:Member(mno=59, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature35.1
+mno:Member(mno=75, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature35.5
+mno:Member(mno=67, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.1
+mno:Member(mno=76, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature35.2
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature36.6
+mno:Member(mno=51, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature37.1
+mno:Member(mno=11, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature37.1
+mno:Member(mno=24, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature37.1
+mno:Member(mno=55, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.8
+mno:Member(mno=90, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature35.2
+mno:Member(mno=80, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature37.0
+mno:Member(mno=86, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature35.8
+mno:Member(mno=4, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.1
+mno:Member(mno=42, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature36.2
+mno:Member(mno=53, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.1
+mno:Member(mno=20, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.4
+mno:Member(mno=29, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature36.2
+mno:Member(mno=37, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature35.4
+mno:Member(mno=37, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature36.3
+mno:Member(mno=88, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature36.6
+mno:Member(mno=54, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.6
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature35.4
+mno:Member(mno=10, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.6
+mno:Member(mno=90, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.8
+mno:Member(mno=58, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature37.2
+mno:Member(mno=61, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:false
+temperature35.7
+mno:Member(mno=86, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature35.2
+mno:Member(mno=69, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.2
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature35.5
+mno:Member(mno=33, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature36.4
+mno:Member(mno=62, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.6
+mno:Member(mno=85, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature36.8
+mno:Member(mno=88, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.4
+mno:Member(mno=6, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.0
+mno:Member(mno=89, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature35.9
+mno:Member(mno=81, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.4
+mno:Member(mno=89, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:false
+temperature36.4
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.3
+mno:Member(mno=4, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.5
+mno:Member(mno=10, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature37.2
+mno:Member(mno=13, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.0
+mno:Member(mno=20, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature35.1
+mno:Member(mno=96, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.3
+mno:Member(mno=15, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.1
+mno:Member(mno=68, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature35.5
 </pre>
 </span>
 </div>
@@ -2583,7 +4000,7 @@ Hibernate:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.7.1</a> at 2021. 5. 2. 오전 11:14:38</p>
+<a href="http://www.gradle.org">Gradle 6.7.1</a> at 2021. 5. 2. 오후 11:06:44</p>
 </div>
 </div>
 </body>
