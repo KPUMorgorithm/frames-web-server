@@ -2,7 +2,9 @@ package org.morgorithm.frames.store;
 
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Value;
 
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,6 +16,9 @@ public class RegisterURLStore {
     private HashMap<String, Integer> remain = new HashMap<>();
     private HashMap<String, String> to = new HashMap<>();
     private static RegisterURLStore instance;
+
+    @Value("org.zerock.upload.path")
+    private String uploadPath;
 
     public static RegisterURLStore getInstance() {
         if (instance == null) instance = new RegisterURLStore();
@@ -29,6 +34,8 @@ public class RegisterURLStore {
                 log.info("remove url: " + url);
                 remain.remove(url);
                 to.remove(url);
+                File img = new File(uploadPath, "register"+File.separator+url+".jpg");
+                img.deleteOnExit();
                 continue;
             }
             remain.put(url, val-1);
