@@ -15,27 +15,25 @@ public class MemberServiceTests {
     private MemberService service;
 
 
-    @Test
-    public void testList(){
-        PageRequestDTO pageRequestDTO=PageRequestDTO.builder().page(1).size(10).build();
-        PageResultDTO<MemberDTO, Object[]> resultDTO=service.getList(pageRequestDTO);
-        System.out.println("-----------------------------------------");
-        System.out.println("PREV: "+resultDTO.isPrev());
-        System.out.println("NEXT: "+resultDTO.isNext());
-        System.out.println("TOTAL: "+resultDTO.getTotalPage());
-        System.out.println("start: "+resultDTO.getStart());
-        System.out.println("tempEnd: "+resultDTO.getEnd());
-        System.out.println("page: "+resultDTO.getPage());
-        System.out.println("-----------------------------------------");
-        //이 dtoList는 우리가 함수형 인터페이스로 변환한 리스트
-        for(MemberDTO memberDTO : resultDTO.getDtoList()){
-            System.out.println(memberDTO);
-        }
-
-        resultDTO.getPageList().forEach(i->System.out.println(i));
-
-
-    }
+//    @Test
+//    public void testList(){
+//        PageRequestDTO pageRequestDTO=PageRequestDTO.builder().page(1).size(10).build();
+//        PageResultDTO<MemberDTO, Object[]> resultDTO=service.getList(pageRequestDTO);
+//        System.out.println("-----------------------------------------");
+//        System.out.println("PREV: "+resultDTO.isPrev());
+//        System.out.println("NEXT: "+resultDTO.isNext());
+//        System.out.println("TOTAL: "+resultDTO.getTotalPage());
+//        System.out.println("start: "+resultDTO.getStart());
+//        System.out.println("tempEnd: "+resultDTO.getEnd());
+//        System.out.println("page: "+resultDTO.getPage());
+//        System.out.println("-----------------------------------------");
+//        //이 dtoList는 우리가 함수형 인터페이스로 변환한 리스트
+//        for(MemberDTO memberDTO : resultDTO.getDtoList()){
+//            System.out.println(memberDTO);
+//        }
+//
+//        resultDTO.getPageList().forEach(i->System.out.println(i));
+//    }
 
     @Test
     public void testSearch(){
