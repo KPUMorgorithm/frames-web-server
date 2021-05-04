@@ -2,9 +2,12 @@ package org.morgorithm.frames.util;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.*;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class FileUtils {
     public static String createDirIfNotExists(String path) {
@@ -33,6 +36,16 @@ public class FileUtils {
         return null;
     }
 
+    public static boolean isBase64(String url) {
+        return url.contains("base64,");
+    }
+
+    public static byte[] base64ToBytes(String base64) {
+        if (isBase64(base64)) base64 = base64.split("base64,")[1];
+        byte[] data = Base64.decodeBase64(base64);
+        return data;
+    }
+
     public static void downloadFromByte(String path, byte imageBytes[]) throws IOException {
         File test =  new File(path);
         FileOutputStream fos = new FileOutputStream(test);
@@ -40,7 +53,7 @@ public class FileUtils {
         fos.close();
     }
 
-    public static byte[] toByte(String imageUrl) {
+    public static byte[] httpToByte(String imageUrl) {
         URL url = null;
         InputStream is = null;
         byte[] imageBytes = null;
@@ -65,6 +78,29 @@ public class FileUtils {
         return imageBytes;
     }
 
+    public static String getFileExtension(String url) {
+        String ext;
+        if (FileUtils.isBase64(url)) {
+            ext = url.split("image/")[1].split(";")[0];
+            if (ext.equals("jpeg")) ext = "jpg";
+        }
+        else {
+            ext = url.substring(url.lastIndexOf(".")+1);
+        }
+        return ext;
+    }
+
+    public static byte[] urlToByte(String url) {
+        byte bytes[];
+        if (FileUtils.isBase64(url)) {
+            bytes = FileUtils.base64ToBytes(url);
+        }
+        else {
+            bytes = FileUtils.httpToByte(url);
+        }
+        return bytes;
+    }
+
     public static String getBase64EncodedImage(String imageURL) throws IOException {
         URL url = new URL(imageURL);
         InputStream is = url.openStream();
@@ -73,4 +109,13 @@ public class FileUtils {
         return Base64.encodeBase64String(bytes);
     }
 
+    public static String generatedImagePath(String uploadPath) {
+        String str = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+        String folderPath = str.replace("/",File.separator);
+        File uploadPathFolder = new File(uploadPath, folderPath);
+        if(!uploadPathFolder.exists()){
+            uploadPathFolder.mkdirs();
+        }
+        return folderPath;
+    }
 }

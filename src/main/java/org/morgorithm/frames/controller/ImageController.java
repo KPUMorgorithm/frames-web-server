@@ -34,4 +34,15 @@ public class ImageController {
         imageStream.close();
         return new ResponseEntity<>(imageByteArray, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/image/{url}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]> getRegisterImage(
+            @PathVariable String url) throws IOException {
+        String path = FileUtils.createDirIfNotExists(uploadPath + File.separator + "register");
+        File file = new File(path + File.separator + url + ".jpg");
+        InputStream imageStream = new FileInputStream(file);
+        byte[] imageByteArray = IOUtils.toByteArray(imageStream);
+        imageStream.close();
+        return new ResponseEntity<>(imageByteArray, HttpStatus.OK);
+    }
 }
