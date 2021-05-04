@@ -66,6 +66,8 @@ org/morgorithm/frames/configuration/WebSocketConfig.java
  org.morgorithm.frames.configuration.WebSocketConfig
 org/morgorithm/frames/FramesApplication.java
  org.morgorithm.frames.FramesApplication
+org/morgorithm/frames/scheduler/RegisterURLScheduler.java
+ org.morgorithm.frames.scheduler.RegisterURLScheduler
 org/morgorithm/frames/entity/Status.java
  org.morgorithm.frames.entity.Status
  org.morgorithm.frames.entity.Status$StatusBuilder
@@ -79,6 +81,8 @@ org/morgorithm/frames/entity/QStatus.java
  org.morgorithm.frames.entity.QStatus
 org/morgorithm/frames/service/StatusServiceImpl.java
  org.morgorithm.frames.service.StatusServiceImpl
+org/morgorithm/frames/store/RegisterURLStore.java
+ org.morgorithm.frames.store.RegisterURLStore
 org/morgorithm/frames/service/MemberService.java
  org.morgorithm.frames.service.MemberService
 org/morgorithm/frames/controller/UploadController.java
