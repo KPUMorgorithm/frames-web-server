@@ -37,9 +37,6 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    implementation 'org.springframework.boot:spring-boot-starter-batch'
-    implementation 'org.springframework.boot:spring-boot-starter-quartz'
-
     compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
     compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.12'
