@@ -51,8 +51,8 @@ public class StatusServiceTests {
                 .page(1)
                 .size(10)
                 .type("d")
-                .from("2021-03-12 05:22:10")
-                .to("2021-03-14 12:22:10")
+                .from("2021-01-02 00:00:00")
+                .to("2021-06-04 12:22:10")
                 //.keyword("3")
                 .build();
 
@@ -60,48 +60,21 @@ public class StatusServiceTests {
 
         System.out.println("PREV: "+resultDTO.isPrev());
         System.out.println("NEXT: "+resultDTO.isNext());
+        //Total이 전체 페이지 수
         System.out.println("TOTAL: "+resultDTO.getTotalPage());
-
-        System.out.println("-----------------------------------");
-        for(StatusDTO statusDTO:resultDTO.getDtoList()){
-            System.out.println(statusDTO);
+        int total=resultDTO.getTotalPage();
+        for(int i=0;i<total;i++){
+            System.out.println("-----------------------------------");
+            pageRequestDTO.setPage(i+1);
+            resultDTO= service.getStatusList(pageRequestDTO);
+            for(StatusDTO statusDTO:resultDTO.getDtoList()){
+                System.out.println(statusDTO);
+            }
+            System.out.println("-----------------------------------");
+            System.out.println("");
         }
-        System.out.println("===================================");
-
-        pageRequestDTO.setPage(2);
-        resultDTO= service.getStatusList(pageRequestDTO);
-        System.out.println("-----------------------------------");
-        for(StatusDTO statusDTO:resultDTO.getDtoList()){
-            System.out.println(statusDTO);
-        }
-        System.out.println("===================================");
-
-        pageRequestDTO.setPage(10);
-        resultDTO= service.getStatusList(pageRequestDTO);
-        System.out.println("-----------------------------------");
-        for(StatusDTO statusDTO:resultDTO.getDtoList()){
-            System.out.println(statusDTO);
-        }
-        System.out.println("===================================");
-
-        pageRequestDTO.setPage(15);
-        resultDTO= service.getStatusList(pageRequestDTO);
-        resultDTO.setPage(15);
-        System.out.println("-----------------------------------");
-        for(StatusDTO statusDTO:resultDTO.getDtoList()){
-            System.out.println(statusDTO);
-        }
-        System.out.println("===================================");
 
 
-        pageRequestDTO.setPage(17);
-        resultDTO= service.getStatusList(pageRequestDTO);
-        resultDTO.setPage(17);
-        System.out.println("-----------------------------------");
-        for(StatusDTO statusDTO:resultDTO.getDtoList()){
-            System.out.println(statusDTO);
-        }
-        System.out.println("===================================");
     }
 
     //문자 보낼때 주의사항 일단 확진자에게 문자가 가면 안 된다.
