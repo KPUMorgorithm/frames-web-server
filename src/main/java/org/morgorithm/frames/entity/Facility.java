@@ -2,10 +2,10 @@ package org.morgorithm.frames.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Builder
 @AllArgsConstructor
@@ -18,4 +18,8 @@ public class Facility {
     private Long bno;
 
     private String building;
+
+    @OneToMany(mappedBy = "facility", cascade = CascadeType.ALL, orphanRemoval=true)
+    @Builder.Default
+    private List<Device> devices = new ArrayList<>();
 }
