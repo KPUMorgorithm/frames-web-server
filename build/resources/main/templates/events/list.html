@@ -12,6 +12,8 @@
         <script src="https://code.highcharts.com/modules/accessibility.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+        <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+        <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
         <!--   <script src="/js/event.js"></script> -->
 
         <html lang="en">
@@ -404,6 +406,7 @@
 
             function onMessageReceived(payload) {
                 var message = JSON.parse(payload.body);
+
                 totalDanger = message.dangerScanNum;
                 totalWarning = message.warningScanNum;
                 totalNormal = message.normalScanNum;
