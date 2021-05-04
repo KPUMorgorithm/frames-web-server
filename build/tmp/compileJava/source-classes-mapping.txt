@@ -23,6 +23,8 @@ org/morgorithm/frames/dto/RealTimeStatusDTO.java
  org.morgorithm.frames.dto.RealTimeStatusDTO$RealTimeStatusDTOBuilder
 org/morgorithm/frames/controller/WebSocketEventListener.java
  org.morgorithm.frames.controller.WebSocketEventListener
+org/morgorithm/frames/controller/APIController.java
+ org.morgorithm.frames.controller.APIController
 org/morgorithm/frames/dto/PageRequestDTO.java
  org.morgorithm.frames.dto.PageRequestDTO
  org.morgorithm.frames.dto.PageRequestDTO$PageRequestDTOBuilder
@@ -106,6 +108,8 @@ org/morgorithm/frames/repository/FacilityRepository.java
  org.morgorithm.frames.repository.FacilityRepository
 org/morgorithm/frames/service/StatusService.java
  org.morgorithm.frames.service.StatusService
+org/morgorithm/frames/controller/URLMappingController.java
+ org.morgorithm.frames.controller.URLMappingController
 org/morgorithm/frames/dto/MemberImageDTO.java
  org.morgorithm.frames.dto.MemberImageDTO
  org.morgorithm.frames.dto.MemberImageDTO$MemberImageDTOBuilder
