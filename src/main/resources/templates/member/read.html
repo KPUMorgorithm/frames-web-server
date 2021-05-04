@@ -21,7 +21,10 @@
             <textarea class="form-control" rows="5" name="phone" readonly>[[${dto.phone}]]</textarea>
         </div>
         <div class="form-group">
-            <label >Image Count</label>
+            <label >Image</label>
+            <th:block th:each="img: ${dto.imageDTOList}">
+                <img th:src="@{${'/image/'+img.path+'/'+img.imgName}}">
+            </th:block>
             <input type="text" class="form-control" name="imgCnt" th:value="${dto.imgCnt}" readonly>
         </div>
 
