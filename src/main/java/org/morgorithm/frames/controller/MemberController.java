@@ -4,18 +4,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.morgorithm.frames.dto.MemberDTO;
 import org.morgorithm.frames.dto.PageRequestDTO;
-import org.morgorithm.frames.dto.PageResultDTO;
 import org.morgorithm.frames.service.MemberService;
 import org.morgorithm.frames.service.StatusService;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 @RequiredArgsConstructor
@@ -26,22 +22,40 @@ public class MemberController {
     private final MemberService memberService;
     private final StatusService statusService;
 
-
-
-
-
-
     @GetMapping("/register")
-    public void register(){
-
+    public String register(Model model, @RequestParam(required = false) String url){
+        if (url != null) {
+            model.addAttribute("url", url);
+//            return "member/register_api";
+        }
+        return "member/register";
     }
-    @PostMapping("/register")
-    public String register(MemberDTO memberDTO, RedirectAttributes redirectAttributes){
 
-        Long mno=memberService.register(memberDTO);
+    @PostMapping("/register")
+    public String register(
+            @RequestParam String name
+            , @RequestParam String phone
+            , @RequestParam String imgurl[]
+    ) throws IOException {
+
+        MemberDTO memberDTO = MemberDTO.builder()
+                .name(name)
+                .phone(phone)
+                .build();
+
+        Long mno=memberService.register(memberDTO, imgurl);
 
         return "redirect:/";
     }
+
+//    @PostMapping("/register")
+//    public String register(MemberDTO memberDTO, RedirectAttributes redirectAttributes){
+//
+//        Long mno=memberService.register(memberDTO);
+//
+//        return "redirect:/";
+//    }
+
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
 
@@ -56,7 +70,7 @@ public class MemberController {
         log.info("mno: " + mno);
 
         MemberDTO dto = memberService.read(mno);
-
+        System.out.println(dto.toString());
         HashMap<String,Double> statusDTO=statusService.getList(mno);
         model.addAttribute("dto", dto);
         model.addAttribute("mdto",statusDTO);
