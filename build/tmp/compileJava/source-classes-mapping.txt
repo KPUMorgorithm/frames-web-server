@@ -28,6 +28,8 @@ org/morgorithm/frames/controller/APIController.java
 org/morgorithm/frames/dto/PageRequestDTO.java
  org.morgorithm.frames.dto.PageRequestDTO
  org.morgorithm.frames.dto.PageRequestDTO$PageRequestDTOBuilder
+org/morgorithm/frames/service/DeviceServiceImpl.java
+ org.morgorithm.frames.service.DeviceServiceImpl
 org/morgorithm/frames/service/CoronaVirusDataService.java
  org.morgorithm.frames.service.CoronaVirusDataService
 org/morgorithm/frames/entity/QFacility.java
@@ -51,6 +53,8 @@ org/morgorithm/frames/configuration/ModelMapperUtil.java
  org.morgorithm.frames.configuration.ModelMapperUtil
 org/morgorithm/frames/repository/StatusRepository.java
  org.morgorithm.frames.repository.StatusRepository
+org/morgorithm/frames/repository/DeviceRepository.java
+ org.morgorithm.frames.repository.DeviceRepository
 org/morgorithm/frames/ServletInitializer.java
  org.morgorithm.frames.ServletInitializer
 org/morgorithm/frames/entity/QAdmin.java
@@ -59,6 +63,8 @@ org/morgorithm/frames/dto/PageResultDTO.java
  org.morgorithm.frames.dto.PageResultDTO
 org/morgorithm/frames/entity/BaseEntity.java
  org.morgorithm.frames.entity.BaseEntity
+org/morgorithm/frames/service/DeviceService.java
+ org.morgorithm.frames.service.DeviceService
 org/morgorithm/frames/configuration/LocalDateTimeAttributeConverter.java
  org.morgorithm.frames.configuration.LocalDateTimeAttributeConverter
 org/morgorithm/frames/dto/TrackerInfoDTO.java
@@ -70,6 +76,8 @@ org/morgorithm/frames/FramesApplication.java
  org.morgorithm.frames.FramesApplication
 org/morgorithm/frames/scheduler/RegisterURLScheduler.java
  org.morgorithm.frames.scheduler.RegisterURLScheduler
+org/morgorithm/frames/controller/DeviceController.java
+ org.morgorithm.frames.controller.DeviceController
 org/morgorithm/frames/entity/Status.java
  org.morgorithm.frames.entity.Status
  org.morgorithm.frames.entity.Status$StatusBuilder
@@ -81,6 +89,8 @@ org/morgorithm/frames/controller/ImageController.java
  org.morgorithm.frames.controller.ImageController
 org/morgorithm/frames/entity/QStatus.java
  org.morgorithm.frames.entity.QStatus
+org/morgorithm/frames/entity/QDevice.java
+ org.morgorithm.frames.entity.QDevice
 org/morgorithm/frames/service/StatusServiceImpl.java
  org.morgorithm.frames.service.StatusServiceImpl
 org/morgorithm/frames/store/RegisterURLStore.java
@@ -119,6 +129,9 @@ org/morgorithm/frames/controller/AdminController.java
  org.morgorithm.frames.controller.AdminController
 org/morgorithm/frames/controller/EventController.java
  org.morgorithm.frames.controller.EventController
+org/morgorithm/frames/entity/Device.java
+ org.morgorithm.frames.entity.Device
+ org.morgorithm.frames.entity.Device$DeviceBuilder
 org/morgorithm/frames/dto/AdminDto.java
  org.morgorithm.frames.dto.AdminDto
  org.morgorithm.frames.dto.AdminDto$AdminDtoBuilder

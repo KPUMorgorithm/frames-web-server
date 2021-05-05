@@ -8,7 +8,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Test;
-import org.morgorithm.frames.dto.PageRequestDTO;
+//import org.morgorithm.frames.dto.PageRequestDTO;
 import org.morgorithm.frames.dto.PageResultDTO;
 import org.morgorithm.frames.dto.RealTimeStatusDTO;
 import org.morgorithm.frames.dto.StatusDTO;
@@ -45,7 +45,7 @@ public class StatusServiceTests {
         }
     }
 
-    @Test
+  /*  @Test
     public void testSearch(){
         PageRequestDTO pageRequestDTO=PageRequestDTO.builder()
                 .page(1)
@@ -75,7 +75,7 @@ public class StatusServiceTests {
         }
 
 
-    }
+    }*/
 
     //문자 보낼때 주의사항 일단 확진자에게 문자가 가면 안 된다.
     //특정 밀접 접촉자에게 메시지를 보낼때 밀접 접촉 횟수만큼 보내지 않게 조심하기
