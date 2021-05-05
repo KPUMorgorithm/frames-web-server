@@ -8,7 +8,7 @@
         <h1 class="mt-4">Member Modify Page</h1>
 
         <form action="/member/modify" method="post">
-
+            <input type="hidden" th:name="${ _csrf.parameterName }" th:value="${ _csrf.token }">
             <!--페이지 번호  -->
             <input type="hidden" name="page" th:value="${requestDTO.page}">
             <input type="hidden" name="type" th:value="${requestDTO.type}" >
