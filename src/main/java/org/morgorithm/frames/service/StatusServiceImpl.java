@@ -471,12 +471,19 @@ public class StatusServiceImpl implements StatusService {
         List<String> confirmedPath = new ArrayList<>();
         List<String> contactPath = new ArrayList<>();
         HashSet<Long> mnos = new HashSet<>();
+        int pageIdx=0;
 
 
         //배열 초기화
+        requestDTO.setSize(100000);
         Pageable pageable = requestDTO.getPageable(Sort.by("regDate").descending());
         BooleanBuilder booleanBuilder = getSearch(requestDTO);
         Page<Status> result = statusRepository.findAll(booleanBuilder, pageable);
+
+
+        for(Status p: result){
+            System.out.println("건물: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
+        }
         for (Status p : result) {
             if (p.getMember().getMno().equals(Long.valueOf(requestDTO.getMno()))) {
                 confirmedPath.add("건물: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
@@ -675,6 +682,7 @@ public class StatusServiceImpl implements StatusService {
                         //확진자가 다녀갔던 건물들을 리스트에 넣는다.
                         bnoList.add(((Facility) a).getBno());
                         System.out.println("mno bno!!!:" + ((Facility) a).getBno());
+                        System.out.println("mno bname!!!:" + ((Facility) a).getBuilding());
                     }
                 }
 
