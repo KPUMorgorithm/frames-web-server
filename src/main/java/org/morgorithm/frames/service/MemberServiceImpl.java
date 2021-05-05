@@ -118,17 +118,18 @@ public class MemberServiceImpl implements MemberService {
     public void uploadAndSaveMemberImages(Member member, String imgurl[]) throws IOException {
         for (int i=0; i<imgurl.length; i++) {
             String url = imgurl[i];
+//            System.out.println("1  --  "+url);
             byte bytes[] = FileUtils.urlToByte(url);
             String pathDetail = FileUtils.generatedImagePath(uploadPath);
             String ext = FileUtils.getFileExtension(url);
             String uuid = UUID.randomUUID().toString();
             String filename = i+"."+ext;
-            System.out.println(uploadPath);
-            System.out.println(pathDetail);
-            System.out.println(uploadPath + File.separator + pathDetail);
+//            System.out.println(uploadPath);
+//            System.out.println(pathDetail);
+//            System.out.println(uploadPath + File.separator + pathDetail);
             File image = new File(uploadPath + File.separator + pathDetail, uuid+"_"+filename);
-            System.out.println(image.getAbsolutePath());
-            System.out.println(image.getPath());
+//            System.out.println(image.getAbsolutePath());
+//            System.out.println(image.getPath());
             FileUtils.downloadFromByte(image.getAbsolutePath(), bytes);
 
             MemberImage memberImage = MemberImage.builder()
