@@ -161,4 +161,7 @@ gradle-app.setting
 ### Gradle Patch ###
 **/build/
 
+### resource
+/uploadImage
+
 # End of https://www.gitignore.io/api/java,macos,gradle,intellij
