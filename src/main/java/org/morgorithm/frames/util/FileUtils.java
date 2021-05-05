@@ -37,11 +37,14 @@ public class FileUtils {
     }
 
     public static boolean isBase64(String url) {
-        return url.contains("base64,");
+        return url.contains("base64");
     }
 
     public static byte[] base64ToBytes(String base64) {
-        if (isBase64(base64)) base64 = base64.split("base64,")[1];
+        if (isBase64(base64)) {
+            base64 = base64.split("base64")[1];
+            if (base64.startsWith(",")) base64 = base64.substring(1);
+        }
         byte[] data = Base64.decodeBase64(base64);
         return data;
     }
@@ -81,7 +84,7 @@ public class FileUtils {
     public static String getFileExtension(String url) {
         String ext;
         if (FileUtils.isBase64(url)) {
-            ext = url.split("image/")[1].split(";")[0];
+            ext = url.substring("data:image/".length(), url.indexOf(";base64"));
             if (ext.equals("jpeg")) ext = "jpg";
         }
         else {
@@ -111,7 +114,7 @@ public class FileUtils {
 
     public static String generatedImagePath(String uploadPath) {
         String str = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-        String folderPath = str.replace("/",File.separator);
+        String folderPath = str.replace("/", File.separator);
         File uploadPathFolder = new File(uploadPath, folderPath);
         if(!uploadPathFolder.exists()){
             uploadPathFolder.mkdirs();
