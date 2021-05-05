@@ -48,14 +48,15 @@ public class StatusServiceImpl implements StatusService {
         List<Object[]> result = statusRepository.getMemberDailyTemperatureStatus(mno);
         HashMap<String, Double> dailyStatus = new HashMap<String, Double>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM-dd");
-
-
+        LocalDateTime temp;
         for (Object[] a : result) {
           /*  System.out.println(Arrays.toString(a));
             System.out.println("temperature"+a[1]);
             System.out.println("regDate:"+a[0]);*/
-            LocalDateTime temp = (LocalDateTime) a[0];
-            dailyStatus.put(temp.format(formatter), (double) a[1]);
+            if(a[0]!=null){
+                temp = (LocalDateTime) a[0];
+                dailyStatus.put(temp.format(formatter), (double) a[1]);
+            }
         }
         dailyStatus.forEach((key, value)
                 -> System.out.println("key: " + key + ", value: " + value));
@@ -699,9 +700,11 @@ public class StatusServiceImpl implements StatusService {
                 else { // bno 안주어짐
                     if (from != null & to != null) {
                         result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()), from, to); // from to 주어짐
+                        System.out.println("from to 주어짐");
                     }
                     else {
                         result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()));
+                        System.out.println("from to 안 주어짐");
                     }
                 }
 
@@ -717,6 +720,7 @@ public class StatusServiceImpl implements StatusService {
                     LocalDateTime tempFrom;
                     LocalDateTime tempTo;
                     LocalDateTime regDate = (LocalDateTime) a[0];
+                    System.out.println("regDate Null test:"+regDate);
                     boolean state = (Boolean) a[1];
                     tempFrom = regDate.minusMinutes(Long.valueOf(min)).minusSeconds(Long.valueOf(sec));
 
