@@ -110,7 +110,7 @@
                             clearFormImgs();
                             let str = ""
                             for (const img of imgs) {
-                                str += '<input type="hidden" name="imgurl" value="'+img+'">';
+                                str += '<input type="hidden" name="imgurl" value="'+img.replace(',', '')+'">';
                             }
                             $("#imgs").html(str);
                         }
