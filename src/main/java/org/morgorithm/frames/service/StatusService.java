@@ -23,7 +23,7 @@ public interface StatusService {
     List<Status> getWarningStatus();
     List<Status> getNormalStatus();
     List<Status> getTotalStatus();
-    HashMap<String,Double> getList(Long mno);
+    List<StatusServiceImpl.Data> getList(Long mno);
     default Status statusDtoToEntity(StatusDTO dto){
 
         Status entity=modelMapper.map(dto,Status.class);
