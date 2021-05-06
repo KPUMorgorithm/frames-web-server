@@ -71,9 +71,8 @@ public class MemberController {
 
         MemberDTO dto = memberService.read(mno);
         System.out.println(dto.toString());
-        HashMap<String,Double> statusDTO=statusService.getList(mno);
         model.addAttribute("dto", dto);
-        model.addAttribute("mdto",statusDTO);
+        model.addAttribute("mdto",statusService.getList(mno));
     }
     @PostMapping("/remove")
     public String remove(long mno, RedirectAttributes redirectAttributes) {

@@ -14,24 +14,31 @@ import org.morgorithm.frames.dto.RealTimeStatusDTO;
 import org.morgorithm.frames.dto.StatusDTO;
 import org.morgorithm.frames.entity.QStatus;
 import org.morgorithm.frames.entity.Status;
+import org.morgorithm.frames.repository.FacilityRepository;
+import org.morgorithm.frames.repository.MemberRepository;
+import org.morgorithm.frames.repository.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 @SpringBootTest
 public class StatusServiceTests {
 
     @Autowired
     private StatusService service;
-
+    @Autowired
+    private StatusRepository statusRepository;
 
 
     @Test
-    void testGetFacilityStatus(){
-       RealTimeStatusDTO realTimeStatusDTO =service.getFacilityStatus();
+    void testGetFacilityStatus() {
+        RealTimeStatusDTO realTimeStatusDTO = service.getFacilityStatus();
         for (int x : realTimeStatusDTO.getIn()) {
             System.out.print(x + " ");
         }
@@ -40,8 +47,8 @@ public class StatusServiceTests {
             System.out.print(x + " ");
         }
         System.out.println();
-        for(String str: realTimeStatusDTO.getBName()){
-            System.out.print(str+" ");
+        for (String str : realTimeStatusDTO.getBName()) {
+            System.out.print(str + " ");
         }
     }
 
@@ -84,12 +91,13 @@ public class StatusServiceTests {
     public void testSend() {
         String api_key = "NCSJBLIL70QSO6P9";
         //사이트에서 발급 받은 API KEY
-         String api_secret = "4BDRU03ULDUDLOY9BZ7AZIOLXAALBSUW";
+        String api_secret = "4BDRU03ULDUDLOY9BZ7AZIOLXAALBSUW";
         // 사이트에서 발급 받은 API SECRET KEY
         Message coolsms = new Message(api_key, api_secret);
 
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put("to", "01036461294"); params.put("from", "01096588541");
+        params.put("to", "01036461294");
+        params.put("from", "01096588541");
         //사전에 사이트에서 번호를 인증하고 등록하여야 함
         params.put("type", "SMS");
         params.put("text", "");
@@ -99,29 +107,110 @@ public class StatusServiceTests {
             JSONObject obj = (JSONObject) coolsms.send(params);
             System.out.println(obj.toString());
             //전송 결과 출력
-        }catch (CoolsmsException e){
+        } catch (CoolsmsException e) {
             System.out.println(e.getMessage());
             System.out.println(e.getCode());
         }
     }
+
     @Test
-    void testMethodPrint(){
+    void testMethodPrint() {
         service.getEventInfo();
     }
-    @Test
-    void testGetMapInfo(){
 
-        String date="05/29/2021 00:00:00";
+    @Test
+    void testGetMapInfo() {
+
+        String date = "05/29/2021 00:00:00";
 
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
 
-        LocalDateTime dateTime=LocalDateTime.parse(date, formatter);
+        LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
 
-        System.out.println("date:"+dateTime);
+        System.out.println("date:" + dateTime);
 
     }
 
+    @Test
+    void testGetList() {
 
+        Long latestStatusNum = null;
+        class Pair implements Comparable<Pair> {
+
+            private LocalDateTime ldt;
+            private Double temperature;
+
+            public Pair(LocalDateTime x, double y) {
+                this.ldt = x;
+                this.temperature = y;
+            }
+
+            public LocalDateTime getX() {
+                return ldt;
+            }
+
+            public double getY() {
+                return temperature;
+            }
+
+            @Override
+            public int compareTo(Pair o) {
+                boolean isAfter= this.ldt.isAfter(o.getX());
+
+
+                if(isAfter){
+                    return 1;
+                }else if(this.ldt.isEqual(o.getX())){
+                    if(this.temperature>o.temperature)
+                        return 1;
+                }
+                return -1;
+            }
+
+        }
+
+        List<Object[]> result = statusRepository.getMemberDailyTemperatureStatus(33L);
+        HashMap<String, Double> dailyStatus = new HashMap<String, Double>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM-dd");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss");
+        String hhMMSS = " 00:00:00";
+        List<Pair> pairList = new ArrayList<>();
+        LocalDateTime stringToLdt;
+        for (Object[] a : result) {
+
+            if (a[0] != null) {
+                String temp = ((LocalDateTime) a[0]).format(formatter);
+                temp += hhMMSS;
+                stringToLdt = LocalDateTime.parse(temp, formatter2);
+                Pair pair = new Pair(stringToLdt, (double) a[1]);
+                pairList.add(pair);
+                // dailyStatus.put(temp.format(formatter), (double) a[1]);
+            }
+        }
+        Collections.sort(pairList);
+        for (Pair p : pairList) {
+            System.out.println("date:" + p.getX() + ", temperature:" + p.getY());
+        }
+        //    dailyStatus.forEach((key, value)
+        //            -> System.out.println("key: " + key + ", value: " + value));
+
+    }
+    @Test
+    void doubleSortTest(){
+        List<Object[]> result = statusRepository.getMemberDailyTemperatureStatus(33L);
+        List<Double> list=new ArrayList<>();
+        for (Object[] a : result) {
+
+            if (a[0] != null) {
+                list.add((double)a[1]);
+                // dailyStatus.put(temp.format(formatter), (double) a[1]);
+            }
+        }
+        Collections.sort(list);
+        for(Double e:list){
+            System.out.println(e+" ");
+        }
+    }
 
 }
