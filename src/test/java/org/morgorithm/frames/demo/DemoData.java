@@ -48,7 +48,7 @@ public class DemoData {
         Arrays.fill(barr, 0);
 
         //각 member에 대해서 현재 날짜 기준으로 3일간 4~6건물을 랜덤 온도로 돌아다니게끔 넣는다.
-        IntStream.rangeClosed(1, cnt-3).forEach(i -> {
+        IntStream.rangeClosed(1, cnt - 3).forEach(i -> {
             List<Status> data = new ArrayList<>();
             Long mno = Long.valueOf(i);
             Member member = Member.builder().mno(mno).build();
@@ -70,22 +70,22 @@ public class DemoData {
 
                     // Format LocalDateTime into a String variable and print
                     String formattedLocalDateTime = localDateTime.format(dateTimeFormatter);
-                  //  System.out.println("Current Date: " + formattedLocalDateTime);
+                    //  System.out.println("Current Date: " + formattedLocalDateTime);
 
                     //Get random amount of days between -7~0
 
                     Random random = new Random();
                     int randomAmountOfDays = k;
 
-                 //   System.out.println("Random amount of days: " + randomAmountOfDays);
+                    //   System.out.println("Random amount of days: " + randomAmountOfDays);
 
                     //현재 시간 기준으로 3시간 전 후로 랜덤 시간 min, max가 있으면 nextInt(max+min+1)-min
                     int randomAmountOfHours = random.nextInt(7) - 3;
-                  //  System.out.println("Random amount of hours: " + randomAmountOfHours);
+                    //  System.out.println("Random amount of hours: " + randomAmountOfHours);
 
                     //현재 시간 기준으로 60분 전후 min, max가 있으면 nextInt(max+min+1)-min
                     int randomAmountOfMinute = random.nextInt(121) - 60;
-                 //   System.out.println("Random amount of minutes: " + randomAmountOfMinute);
+                    //   System.out.println("Random amount of minutes: " + randomAmountOfMinute);
 
 
                     // Add randomAmountOfDays to LocalDateTime variable we defined earlier and store it into a new variable
@@ -94,8 +94,8 @@ public class DemoData {
 
                     // Format new LocalDateTime variable into a String variable and print
                     String formattedFutureLocalDateTime = String.format(futureLocalDateTime.format(dateTimeFormatter));
-                 //   System.out.println("Date " + randomAmountOfDays + " days in future: " + formattedFutureLocalDateTime);
-                 //   System.out.println();
+                    //   System.out.println("Date " + randomAmountOfDays + " days in future: " + formattedFutureLocalDateTime);
+                    //   System.out.println();
                     //******************************************************
                     if (arr[mno.intValue()] == false) {
                         bno = ((long) (Math.random() * 10) + 1);
@@ -127,7 +127,6 @@ public class DemoData {
             }
 
         });
-
 
 
         for (Status s : totalData) {
@@ -191,15 +190,15 @@ public class DemoData {
     //여기서는 송인걸을 확진자로 두고 나머지 두명은 밀접 접촉자로 분류한다.
     //출입로그에서 검색할 땐 <확진 번호:33 시간 간격: 1~3초로 두고 한다>
     @Test
-    void contactTestData(){
+    void contactTestData() {
         Long bno = 0L;
-        List<Long> bnoList=new ArrayList<>();
-        int songMno=33;
+        List<Long> bnoList = new ArrayList<>();
+        int songMno = 33;
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime insertDate;
         Boolean arr[] = new Boolean[1000];
         int barr[] = new int[1000];
-        Member member=Member.builder().mno(33L).build();
+        Member member = Member.builder().mno(33L).build();
         Arrays.fill(arr, false);
         Arrays.fill(barr, 0);
         //온도 데이터 생성
@@ -219,8 +218,8 @@ public class DemoData {
         //온도는 랜덤으로 한다.
         //날짜는 오늘 (데이터를 삽입하는 날)
 
-        for(int i=0;i<7;i++){
-            insertDate=now.minusHours(1).minusMinutes(30+i);
+        for (int i = 0; i < 7; i++) {
+            insertDate = now.minusHours(1).minusMinutes(30 + i);
             Random r = new Random();
             double temperature = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             if (arr[songMno] == false) {
@@ -258,8 +257,8 @@ public class DemoData {
         Arrays.fill(barr, 0);
 
 
-        for(int i=0;i<9;i++){
-            insertDate=now.minusHours(1).minusMinutes(30-i).minusDays(1);
+        for (int i = 0; i < 9; i++) {
+            insertDate = now.minusHours(1).minusMinutes(30 - i).minusDays(1);
             Random r = new Random();
             double temperature = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             if (arr[songMno] == false) {
@@ -278,13 +277,12 @@ public class DemoData {
         }
 
 
-
         //조성욱 데이터 삽입
         //접촉 경로는 데이터 삽입 기준날 P동
         //온도는 랜덤으로 한다.
         //날짜는 오늘 (데이터를 삽입하는 날 전날)
         //이건 오늘 P동에서 겹치게 한다.
-        Member member2=Member.builder().mno(31L).build();
+        Member member2 = Member.builder().mno(31L).build();
         bnoList.removeAll(bnoList);
         bnoList.add(7L);//P동
         bnoList.add(7L);
@@ -298,9 +296,9 @@ public class DemoData {
         Arrays.fill(barr, 0);
 
 
-        int joMno=31;
-        for(int i=0;i<8;i++){
-            insertDate=now.minusHours(1).minusMinutes(32-i);
+        int joMno = 31;
+        for (int i = 0; i < 8; i++) {
+            insertDate = now.minusHours(1).minusMinutes(32 - i);
             Random r = new Random();
             double temperature = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             if (arr[joMno] == false) {
@@ -310,7 +308,7 @@ public class DemoData {
             } else {
                 bno = Long.valueOf(barr[joMno]);
                 arr[joMno] = false;
-                insertDate=insertDate.plusHours(1);
+                insertDate = insertDate.plusHours(1);
             }
             Facility facility = Facility.builder().bno(bno).building("building" + bno).build();
             Status status = Status.builder().member(member2).facility(facility).state(arr[joMno]).temperature(Double.valueOf(String.format("%.1f", +temperature))).build();
@@ -337,8 +335,8 @@ public class DemoData {
         Arrays.fill(barr, 0);
 
 
-        for(int i=0;i<8;i++){
-            insertDate=now.minusHours(1).minusMinutes(24+i).minusDays(1);
+        for (int i = 0; i < 8; i++) {
+            insertDate = now.minusHours(1).minusMinutes(24 + i).minusDays(1);
             Random r = new Random();
             double temperature = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             if (arr[joMno] == false) {
@@ -348,7 +346,7 @@ public class DemoData {
             } else {
                 bno = Long.valueOf(barr[joMno]);
                 arr[joMno] = false;
-                insertDate=insertDate.plusHours(1);
+                insertDate = insertDate.plusHours(1);
             }
             Facility facility = Facility.builder().bno(bno).building("building" + bno).build();
             Status status = Status.builder().member(member2).facility(facility).state(arr[joMno]).temperature(Double.valueOf(String.format("%.1f", +temperature))).build();
@@ -358,13 +356,12 @@ public class DemoData {
         }
 
 
-
         //유영균 데이터 삽입
         //접촉 경로는 데이터 삽입 기준날 P동
         //온도는 랜덤으로 한다.
         //날짜는 오늘 (데이터를 삽입하는 날 전날)
         //이건 오늘 D동에서 겹치게 한다.
-        Member member3=Member.builder().mno(32L).build();
+        Member member3 = Member.builder().mno(32L).build();
         bnoList.removeAll(bnoList);
         bnoList.add(4L);//P동
         bnoList.add(4L);
@@ -378,9 +375,9 @@ public class DemoData {
         Arrays.fill(barr, 0);
 
 
-        int youMno=32;
-        for(int i=0;i<8;i++){
-            insertDate=now.minusHours(1).minusMinutes(30-i);
+        int youMno = 32;
+        for (int i = 0; i < 8; i++) {
+            insertDate = now.minusHours(1).minusMinutes(30 - i);
             Random r = new Random();
             double temperature = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             if (arr[youMno] == false) {
@@ -390,7 +387,7 @@ public class DemoData {
             } else {
                 bno = Long.valueOf(barr[youMno]);
                 arr[youMno] = false;
-                insertDate=insertDate.plusHours(1);
+                insertDate = insertDate.plusHours(1);
             }
             Facility facility = Facility.builder().bno(bno).building("building" + bno).build();
             Status status = Status.builder().member(member3).facility(facility).state(arr[youMno]).temperature(Double.valueOf(String.format("%.1f", +temperature))).build();
@@ -417,8 +414,8 @@ public class DemoData {
         Arrays.fill(barr, 0);
 
 
-        for(int i=0;i<8;i++){
-            insertDate=now.minusHours(1).minusMinutes(26+i).minusDays(1);
+        for (int i = 0; i < 8; i++) {
+            insertDate = now.minusHours(1).minusMinutes(26 + i).minusDays(1);
             Random r = new Random();
             double temperature = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             if (arr[youMno] == false) {
@@ -428,7 +425,7 @@ public class DemoData {
             } else {
                 bno = Long.valueOf(barr[youMno]);
                 arr[youMno] = false;
-                insertDate=insertDate.plusHours(1);
+                insertDate = insertDate.plusHours(1);
             }
             Facility facility = Facility.builder().bno(bno).building("building" + bno).build();
             Status status = Status.builder().member(member3).facility(facility).state(arr[youMno]).temperature(Double.valueOf(String.format("%.1f", +temperature))).build();
@@ -439,7 +436,41 @@ public class DemoData {
 
     }
 
+    //dashboard와 실시간 현황 테스트용이다
+    @Test
+    void realtimeTestData() throws InterruptedException {
 
+
+        int cnt = (int) (memberRepository.count());
+        //송인걸, 유영균, 조성욱을 제외한 테스트 데이터 삽입
+        cnt-=3;
+        Long bno = 0L;
+
+        for (int i = 0; i < 1000; i++) {
+            double rangeMin = 34.5;
+            double rangeMax = 37.6;
+            Random r = new Random();
+            Boolean stat;
+            int s = (int) Math.round(Math.random());
+            if (s == 1)
+                stat = true;
+            else
+                stat = false;
+            double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+            LocalDateTime now = LocalDateTime.now();
+            Long mno = Long.valueOf((int) (Math.random() * cnt) + 1);
+            bno = ((long) (Math.random() * 10) + 1);
+            Member member = Member.builder().mno(mno).build();
+            Facility facility = Facility.builder().bno(bno).building("building" + bno).build();
+            Status status = Status.builder().member(member).facility(facility).state(stat).temperature(Double.valueOf(String.format("%.1f", +randomValue))).build();
+            status.setRegDate(now);
+            statusRepository.save(status);
+            Thread.sleep(3000);
+            System.out.println("데이터 삽입");
+        }
+
+
+    }
 }
 
 
