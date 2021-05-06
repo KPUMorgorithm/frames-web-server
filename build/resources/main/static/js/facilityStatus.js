@@ -59,7 +59,7 @@ function sendMessage() {
     var chatMessage = {
         sender: "username",
         content: "messageInput.value",
-        type: 'CHAT'
+        type: 'Info'
     };
     stompClient.send("/app/status.sendMessage", {}, JSON.stringify(chatMessage));
 
