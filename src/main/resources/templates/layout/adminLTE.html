@@ -25,10 +25,10 @@
             <div class="content-wrapper">
 
                 <th:block sec:authorize="isAnonymous()">
-                    <th:block th:if="${requiredLogin}">
+                    <th:block th:if="${requireLogin == true}">
                         <th:block th:replace="admin/loginForm"></th:block>
                     </th:block>
-                    <th:block th:if="!${requiredLogin}">
+                    <th:block th:if="${requireLogin == false}">
                         <th:block th:replace = "${content}"></th:block>
                     </th:block>
                 </th:block>

@@ -43,9 +43,10 @@ public class AdminController {
         return "admin/login";
     }
 
-    @RequestMapping("/admin/login/result")
+    @GetMapping("/admin/login/result")
     public String showLoginResult() {
-        return "redirect:/";
+        System.out.println("success!");
+        return "";
     }
 
     @RequestMapping("/admin/login/denied")
@@ -55,7 +56,7 @@ public class AdminController {
         return "redirectWithAlert";
     }
 
-    @RequestMapping("/admin/logout/result")
+    @GetMapping("/admin/logout/result")
     public String showLogout() {
         return "redirect:/";
     }
