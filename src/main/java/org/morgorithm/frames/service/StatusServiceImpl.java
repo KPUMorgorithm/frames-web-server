@@ -22,6 +22,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -41,7 +42,7 @@ public class StatusServiceImpl implements StatusService {
     private final FacilityRepository facilityRepository;
     private int flag = 1;
 
-    Long latestStatusNum = null;
+    private Long latestStatusNum = 0L; // 마지막으로 읽어온 로그 넘버
     class Pair implements Comparable<Pair>{
 
         private LocalDateTime ldt;
@@ -380,39 +381,13 @@ public class StatusServiceImpl implements StatusService {
         LocalDateTime startDatetime = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime endDatetime = LocalDateTime.now();
         List<Object[]> result = statusRepository.getFacilityInInfoOneDay(startDatetime, endDatetime);
-        Iterable<Status> statusResult = statusRepository.findAll(getStatusSearch());
+        List<Status> statusList = statusRepository.findRecentStatusList(latestStatusNum); // 실시간 출입현황 가져오기
+        if (statusList.size() > 0)
+            latestStatusNum = statusList.get(0).getStatusnum();
 
+//        System.out.println("test getFacilityStatus result.size():" + result.size());
+//        System.out.println(statusList);
 
-        List<Status> statusList = Lists.newArrayList(statusResult);
-        // System.out.println("#####statusList########: "+statusList.toString());
-        // System.out.println("#####result########: "+result.toString());
-        //**********dummy test data
-        /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime ran=LocalDateTime.parse("2021-03-16 12:30:22",formatter);
-
-
-        Member m=Member.builder().mno(5L).build();
-        Facility f= Facility.builder().bno(2L).building("building"+2L).build();
-        Status s1=Status.builder().member(m).facility(f).state(true).temperature(36.6).build();
-        s1.setRegDate(ran);
-        statusList.add(s1);
-
-
-        Member m2=Member.builder().mno(6L).build();
-        Facility f2= Facility.builder().bno(3L).building("building"+3L).build();
-        Status s2=Status.builder().member(m2).facility(f2).state(false).temperature(37.3).build();
-        s2.setRegDate(ran);
-        statusList.add(s2);
-
-        Member m3=Member.builder().mno(10L).build();
-        Facility f3= Facility.builder().bno(5L).building("building"+5L).build();
-
-        Status s3=Status.builder().member(m3).facility(f3).state(true).temperature(36.1).build();
-        s3.setRegDate(ran);
-        statusList.add(s3);*/
-        //************dummy test data
-
-        System.out.println("test getFacilityStatus result.size():" + result.size());
         for (int i = 0; i < result.size(); i++) {
             // System.out.println("test getFacilityStatus inside for loop"+result.size());
             //bno를 index 삼어서 in과 out배열의 인덱스로 씀
@@ -431,10 +406,10 @@ public class StatusServiceImpl implements StatusService {
             total += ((Long) (result.get(i)[1])).intValue();
         }
         realTimeStatusDTO = realTimeStatusDTO.builder().in(in).out(out).total(total).bName(bName).statusList(statusList).build();
-
         return realTimeStatusDTO;
     }
 
+    @Deprecated(forRemoval = true)
     private BooleanBuilder getStatusSearch() {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         BooleanBuilder conditionBuilder = new BooleanBuilder();

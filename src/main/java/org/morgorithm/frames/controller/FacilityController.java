@@ -27,7 +27,7 @@ public class FacilityController {
     public RealTimeStatusDTO sendMessage(@Payload RealTimeStatusDTO realTimeStatusDTO){
       //  System.out.println("sendMessage method!!!***");
         RealTimeStatusDTO dto=statusService.getFacilityStatus();
-        System.out.println("FacilityController");
+//        System.out.println("FacilityController");
         return dto;
     }
     @MessageMapping("/status.sendMessage2")
@@ -35,7 +35,7 @@ public class FacilityController {
     public EventDTO sendMessage2(@Payload EventDTO eventDTO){
         //  System.out.println("sendMessage method!!!***");
         EventDTO dto=statusService.getEventInfo();
-        System.out.println("FacilityController2");
+//        System.out.println("FacilityController2");
         return dto;
     }
 

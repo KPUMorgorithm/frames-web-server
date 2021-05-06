@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString
+@ToString(exclude = {"devices"})
 public class Facility {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Facility {
 
     private String building;
 
-    @OneToMany(mappedBy = "facility", cascade = CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "facility", cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
     @Builder.Default
     private List<Device> devices = new ArrayList<>();
 }
