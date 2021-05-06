@@ -57,7 +57,7 @@
                             <div id="contactDiv" class="filter-group" th:classappend="${#strings.isEmpty(pageRequestDTO.closeContact)} ? 'd-none' : ''">
                                 <label>시간간격(분:초)</label>
                                 <input name="closeContact" id="closeContact" class="form-control" value="00:00" th:value="${pageRequestDTO.closeContact}"
-                                       type="text" placeholder="시간 간격 (분:초)">
+                                       type="text" placeholder="00:00 (분:초)">
                             </div>
                         </div>
                         <div class="table-filter-group">
@@ -215,7 +215,7 @@
             };
 
             var oldVal = "";
-            $("#closeContact").on("propertychange change keyup paste input", function() {
+            /*$("#closeContact").on("propertychange change keyup paste input", function() {
                 let currentVal = $(this).val();
                 if(currentVal == oldVal) {
                     return;
@@ -271,7 +271,7 @@
                     if (changedIndex == 2) $(this).selectRange(changedIndex - 1, changedIndex - 1);
                     else $(this).selectRange(changedIndex, changedIndex);
                 }
-            });
+            });*/
 
         </script>
 
