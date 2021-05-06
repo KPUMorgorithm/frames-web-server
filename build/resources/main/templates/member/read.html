@@ -61,13 +61,17 @@
             var didx=0;
             var tidx=0;
             for(var j=0;j<tempData.length;j++){
-                if(j%2===0){
-                    temperatureData[tidx++]=tempData[j];
-                    console.log("홀수:"+tempData[j]);
+                console.log("test:"+tempData[j].length);
+            }
+            //tempData는 날짜와 그 날짜의 제일 높은 온도를 가지고 있는데
+            //자꾸 그 순서가 바꿔서 if문을 고정된 날짜 length인 10일때
+            //dateData에 넣어주고 나머지는 temperatureData에 넣어주게 바꿈.
+            for(var j=0;j<tempData.length;j++){
+                if(tempData[j].length===10){
+                    dateData[didx++]=tempData[j];
                 }
                 else{
-                    dateData[didx++]=tempData[j];
-                    console.log("짝수:"+tempData[j]);
+                    temperatureData[tidx++]=tempData[j];
                 }
             }
             console.log(temperatureData);
