@@ -62,12 +62,12 @@
             var tidx=0;
             for(var j=0;j<tempData.length;j++){
                 if(j%2===0){
-                    dateData[didx++]=tempData[j];
-                    console.log("짝수:"+tempData[j]);
-                }
-                else{
                     temperatureData[tidx++]=tempData[j];
                     console.log("홀수:"+tempData[j]);
+                }
+                else{
+                    dateData[didx++]=tempData[j];
+                    console.log("짝수:"+tempData[j]);
                 }
             }
             console.log(temperatureData);

@@ -185,6 +185,11 @@ public class DemoData {
                 .imgName("test" + 31 + ".jpg").build();
         memberImageRepository.save(memberImageSong);
     }
+
+    //실질적으로 밀접 접촉자에게 문자가는 것을 보여주기 위한
+    //조성욱, 송인걸, 유영균 데이터 삽입 메소드이다.
+    //여기서는 송인걸을 확진자로 두고 나머지 두명은 밀접 접촉자로 분류한다.
+    //출입로그에서 검색할 땐 <확진 번호:33 시간 간격: 1~3초로 두고 한다>
     @Test
     void contactTestData(){
         Long bno = 0L;
@@ -210,7 +215,7 @@ public class DemoData {
 
 
         //송인걸 데이터 삽입
-        //오늘 기준 경로는 D동->P동->G동->제2기숙사이며
+        //오늘 D동->P동->G동->제2기숙사이며
         //온도는 랜덤으로 한다.
         //날짜는 오늘 (데이터를 삽입하는 날)
 
@@ -235,7 +240,7 @@ public class DemoData {
         }
 
         //송인걸 데이터 삽입
-        //오늘 기준 경로는 산융->D동->A동->TIP
+        //전날 기준 경로는 산융->D동->A동->TIP
         //온도는 랜덤으로 한다.
         //날짜는 오늘 (데이터를 삽입하는 날 전날)
 
