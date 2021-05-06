@@ -43,19 +43,19 @@ public class AdminController {
         return "admin/login";
     }
 
-    @GetMapping("/admin/login/result")
+    @RequestMapping("/admin/login/result")
     public String showLoginResult() {
         return "redirect:/";
     }
 
-    @GetMapping("/admin/login/denied")
+    @RequestMapping("/admin/login/denied")
     public String showLoginDenied(Model model) {
         model.addAttribute("alert", "로그인에 실패했습니다!");
         model.addAttribute("redirect", "/admin/login");
         return "redirectWithAlert";
     }
 
-    @GetMapping("/admin/logout/result")
+    @RequestMapping("/admin/logout/result")
     public String showLogout() {
         return "redirect:/";
     }

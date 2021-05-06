@@ -36,10 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //                .antMatchers("/user/*").hasAnyRole("MEMBER", "ADMIN")
                     .antMatchers("/**").permitAll()
                 .and()
-                .csrf()
-                    .ignoringAntMatchers("/uploadAjax")
-                    .ignoringAntMatchers("/status/sendSms")
-                .and()
                     .formLogin()
                     .loginPage("/admin/login")
                     .defaultSuccessUrl("/admin/login/result")
@@ -49,6 +45,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
                     .logoutSuccessUrl("/admin/logout/result")
                     .invalidateHttpSession(true)
+                .and()
+                    .csrf()
+                    .ignoringAntMatchers("/uploadAjax")
+                    .ignoringAntMatchers("/status/sendSms")
                 .and()
                 .exceptionHandling().accessDeniedPage("/admin/login/denied");
     }
