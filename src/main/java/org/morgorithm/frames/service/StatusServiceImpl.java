@@ -456,7 +456,11 @@ public class StatusServiceImpl implements StatusService {
         conditionBuilder.and(qStatus.statusnum.between(latestStatusNum, infiniteStatusNum));
 
         status = statusRepository.findTopByOrderByStatusnumDesc();
-        latestStatusNum = status.getStatusnum();
+        System.out.println("test:"+status.getStatusnum());
+        if(status.getStatusnum()!=null)
+             latestStatusNum = status.getStatusnum();
+        else
+            latestStatusNum=0L;
         System.out.println("***********************************");
         System.out.println("print:" + status.toString());
         System.out.println("***********************************");
@@ -473,9 +477,10 @@ public class StatusServiceImpl implements StatusService {
         Pageable pageable = requestDTO.getPageable(Sort.by("regDate").descending());
         //여기서는 from과 to와 관계 없이 모든 데이터를 가져와야 한다.
         //getSearch함수에서 from과 to가 null일 때 조건문이 발동하게 만든다.
-        LocalDateTime from=null;
-        LocalDateTime to=null;
-        BooleanBuilder booleanBuilder = getSearch(requestDTO,from,to);
+//        LocalDateTime from=null;
+//        LocalDateTime to=null;
+//        BooleanBuilder booleanBuilder = getSearch(requestDTO,from,to);
+        BooleanBuilder booleanBuilder = getSearch(requestDTO);
 
         Page<Status> result = statusRepository.findAll(booleanBuilder, pageable);
 
@@ -586,7 +591,8 @@ public class StatusServiceImpl implements StatusService {
             to=LocalDateTime.parse(t,formatter2);
             System.out.println("FROM:"+from.toString()+", TO"+to.toString());*/
 
-            BooleanBuilder booleanBuilder = getSearch(requestDTO,from,to);
+//            BooleanBuilder booleanBuilder = getSearch(requestDTO,from,to);
+            BooleanBuilder booleanBuilder = getSearch(requestDTO);
             Page<Status> result = statusRepository.findAll(booleanBuilder, pageable);
             for(Status p:result){
                 totalStatusList.add(p);
@@ -724,6 +730,159 @@ public class StatusServiceImpl implements StatusService {
         //탐색해야할 날짜가 10일보다 작으면 total를 반환하고 그것을 초과하면 10일 반환
         return total<=10?total:10;
     }
+
+    private BooleanBuilder getSearch(PageRequestDTO requestDTO) {
+
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        //데이터 유효성 10일로 설정
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime dataDue = LocalDateTime.now().minusDays(10L);
+
+
+        System.out.println("now:" + now);
+        System.out.println("minus one:" + dataDue);
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+        QStatus qStatus = QStatus.status;
+        String keyword = requestDTO.getKeyword();
+
+        BooleanExpression expression = qStatus.statusnum.gt(0L);// gno > 0 조건만 생성
+        booleanBuilder.and(expression);
+
+        //검색 조건을 작성하기
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+
+        if (requestDTO.isEmpty()) { //검색 조건이 없는 경우
+            //데이터 유효성 10일
+            conditionBuilder.and(qStatus.regDate.between(dataDue, now));
+            booleanBuilder.and(conditionBuilder);
+            return booleanBuilder;
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime from = null;
+        LocalDateTime to = null;
+
+        if (requestDTO.getFrom() != null && requestDTO.getFrom().length() != 0)
+            from = LocalDateTime.parse(requestDTO.getFrom(), formatter);
+        if (requestDTO.getTo() != null && requestDTO.getTo().length() != 0)
+            to = LocalDateTime.parse(requestDTO.getTo(), formatter);
+
+
+        /*
+        System.out.println("####################");
+        System.out.println("parse from:"+from);
+        System.out.println("####################");
+        System.out.println("####################");
+        System.out.println("parse to:"+to);
+        System.out.println("####################");
+*/
+
+
+        //d->date
+        if (from != null && to != null) {
+            conditionBuilder.and(qStatus.regDate.between(from, to));
+        }
+
+        if (requestDTO.getKeyword() != null && requestDTO.getKeyword().length() != 0) {
+            conditionBuilder.and(qStatus.facility.bno.eq(Long.valueOf(requestDTO.getKeyword())));
+        }
+        if (requestDTO.getMno() != null && requestDTO.getMno().length() != 0) {
+//            List<Object> result = statusRepository.getMemberFacility(Long.valueOf(requestDTO.getMno()));
+            BooleanBuilder buildingCondition = new BooleanBuilder();
+//            for (Object a : result) {
+//                //확진자가 다녀갔던 건물들을 리스트에 넣는다.
+//                buildingCondition.or(qStatus.facility.bno.eq(((Facility) a).getBno()));
+//                bnoList.add(((Facility) a).getBno());
+//                System.out.println("mno bno!!!:" + ((Facility) a).getBno());
+//            }
+            conditionBuilder.and(buildingCondition);
+            conditionBuilder.and(qStatus.member.mno.eq(Long.valueOf(requestDTO.getMno())));
+
+
+            if (requestDTO.getCloseContact() != null && requestDTO.getCloseContact().length() != 0) { // TODO
+                List<Long> bnoList = new ArrayList<>();
+                if (requestDTO.getKeyword() != null && requestDTO.getKeyword().length() != 0) {
+                    bnoList.add(Long.parseLong(requestDTO.getKeyword()));
+                }
+                else {
+                    List<Object> result2 = null;
+                    if (from != null & to != null) {
+                        result2 = statusRepository.getMemberFacility(Long.valueOf(requestDTO.getMno()), from, to); // from to 주어짐
+                    }
+                    else {
+                        result2 = statusRepository.getMemberFacility(Long.valueOf(requestDTO.getMno()));
+                    }
+                    for (Object a : result2) {
+                        //확진자가 다녀갔던 건물들을 리스트에 넣는다.
+                        bnoList.add(((Facility) a).getBno());
+                        System.out.println("mno bno!!!:" + ((Facility) a).getBno());
+                    }
+                }
+
+                System.out.println("test:" + requestDTO.getCloseContact());
+                List<Object[]> result = null;
+                if (requestDTO.getKeyword() != null && requestDTO.getKeyword().length() != 0) { // bno 주어짐
+                    if (from != null & to != null) {
+                        result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()), Long.valueOf(requestDTO.getKeyword()), from, to); // from to 주어짐
+                    }
+                    else {
+                        result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()), Long.valueOf(requestDTO.getKeyword()));
+                    }
+                }
+                else { // bno 안주어짐
+                    if (from != null & to != null) {
+                        result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()), from, to); // from to 주어짐
+                    }
+                    else {
+                        result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()));
+                    }
+                }
+
+                StringTokenizer st = new StringTokenizer(requestDTO.getCloseContact(), ":"); // ':'는 구분문자
+
+                String min = st.nextToken(); // 각 토큰 출력
+                String sec = st.nextToken();
+                BooleanBuilder connectCondition = new BooleanBuilder();
+                //입장과 퇴장을 각각 조건을 해줘야 함으로 for문의 조건 2로 함
+
+                for (Object[] a : result) {
+                    BooleanBuilder closeContactCondition1 = new BooleanBuilder();
+                    LocalDateTime tempFrom;
+                    LocalDateTime tempTo;
+                    LocalDateTime regDate = (LocalDateTime) a[0];
+                    boolean state = (Boolean) a[1];
+                    tempFrom = regDate.minusMinutes(Long.valueOf(min)).minusSeconds(Long.valueOf(sec));
+
+                    tempTo = ((LocalDateTime) a[0]).plusMinutes(Long.valueOf(min)).plusSeconds(Long.valueOf(sec));
+                    System.out.println("*******");
+                    System.out.println("확진자  Original Time: " + ((LocalDateTime) a[0]).toString());
+                    System.out.println("확진자  minus Time: " + tempFrom);
+                    System.out.println("확진자  plus Time: " + tempTo);
+                    System.out.println("확진자  State: " + state);
+                    //여기서는 flag가 true니까 확진자와 같이 입장한 사람들 질의
+                    closeContactCondition1.and(qStatus.facility.bno.in(bnoList));
+                    closeContactCondition1.and(qStatus.regDate.between(tempFrom, tempTo));
+                    closeContactCondition1.and(qStatus.state.eq(state));
+                    connectCondition.or(closeContactCondition1);
+
+
+                }
+
+                conditionBuilder.or(connectCondition);
+            }
+
+        }
+
+        //모든 조건 통합
+        booleanBuilder.and(conditionBuilder);
+        System.out.println(booleanBuilder.toString());
+
+        return booleanBuilder;
+    }
+
     private BooleanBuilder getSearch(PageRequestDTO requestDTO,LocalDateTime from, LocalDateTime to) {
         String hhMMSSFrom=" 00:00:00";
         String hhMMSSTo=" 23:59:59";
@@ -787,14 +946,14 @@ public class StatusServiceImpl implements StatusService {
         }
         if (requestDTO.getMno() != null && requestDTO.getMno().length() != 0) {
 //            List<Object> result = statusRepository.getMemberFacility(Long.valueOf(requestDTO.getMno()));
-            BooleanBuilder buildingCondition = new BooleanBuilder();
+//            BooleanBuilder buildingCondition = new BooleanBuilder();
 //            for (Object a : result) {
 //                //확진자가 다녀갔던 건물들을 리스트에 넣는다.
 //                buildingCondition.or(qStatus.facility.bno.eq(((Facility) a).getBno()));
 //                bnoList.add(((Facility) a).getBno());
 //                System.out.println("mno bno!!!:" + ((Facility) a).getBno());
 //            }
-            conditionBuilder.and(buildingCondition);
+//            conditionBuilder.and(buildingCondition);
             conditionBuilder.and(qStatus.member.mno.eq(Long.valueOf(requestDTO.getMno())));
 
             int dateLength = countConfirmedDays(Long.valueOf(requestDTO.getMno()));
@@ -897,24 +1056,20 @@ public class StatusServiceImpl implements StatusService {
                         closeContactCondition1.and(qStatus.regDate.between(tempFrom, tempTo));
                         closeContactCondition1.and(qStatus.state.eq(state));
                         connectCondition.or(closeContactCondition1);
-
-
                     }
-
-                  //  conditionBuilder.or(connectCondition);
                 }
 
             }
-            connectCondition.or(qStatus.member.mno.eq(Long.valueOf(requestDTO.getMno())));
+            conditionBuilder.and(connectCondition);
         }
 
 
         //모든 조건 통합
-       // booleanBuilder.and(conditionBuilder);
-        System.out.print("connectCondition to string: ");
-        System.out.println(connectCondition.toString());
+        booleanBuilder.and(conditionBuilder);
+        System.out.print("booleanBuilder to string: ");
+        System.out.println(booleanBuilder.toString());
 
-        return connectCondition;
+        return booleanBuilder;
     }
 
 
