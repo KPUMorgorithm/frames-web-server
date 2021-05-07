@@ -650,7 +650,7 @@ public class StatusServiceImpl implements StatusService {
             //테스트 용 번호
             //*******************
             //*******************
-            params.put("to", "01030588541");
+            //params.put("to", "01030588541");
             //*******************
             //*******************
             //테스트 용 번호
@@ -664,7 +664,7 @@ public class StatusServiceImpl implements StatusService {
             //실제 데모용
             //*******************
             //*******************
-            // params.put("to", phoneNum);
+             params.put("to", phoneNum);
             //*******************
             //*******************
             //실제 데모용
