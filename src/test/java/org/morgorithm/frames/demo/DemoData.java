@@ -1,6 +1,7 @@
 package org.morgorithm.frames.demo;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.entity.Member;
 import org.morgorithm.frames.entity.MemberImage;
@@ -9,8 +10,12 @@ import org.morgorithm.frames.repository.MemberImageRepository;
 import org.morgorithm.frames.repository.MemberRepository;
 import org.morgorithm.frames.repository.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -18,7 +23,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.IntStream;
 
-@SpringBootTest
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class DemoData {
     @Autowired
     private StatusRepository statusRepository;
