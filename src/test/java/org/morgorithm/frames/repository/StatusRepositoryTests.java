@@ -50,7 +50,7 @@ public class StatusRepositoryTests {
         Arrays.fill(barr,0);
 
         //memeber 의 수 곱하기 5만큼 status를 만들어냄
-        IntStream.rangeClosed(1,cnt*5).forEach(i->{
+        IntStream.rangeClosed(1,cnt*2).forEach(i->{
             List<Status> data=new ArrayList<>();
             Long mno=Long.valueOf((int)(Math.random()*cnt)+1);
             Member member=Member.builder().mno(mno).build();

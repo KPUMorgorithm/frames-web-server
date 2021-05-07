@@ -32,16 +32,16 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Query("select distinct s.facility from Status s where s.member.mno=:mno and (s.regDate >= :timeFrom AND s.regDate < :timeTo)") // unique 값들만 받아오도록 수정
     List<Object> getMemberFacility(Long mno, @Param("timeFrom") LocalDateTime fromTime, @Param("timeTo") LocalDateTime timeTo);
 
-    @Query("select s.regDate, s.state from Status s where s.member.mno=:mno")
+    @Query("select s.regDate, s.state, s.facility.bno from Status s where s.member.mno=:mno")
     List<Object[]> getRegDateAndState(Long mno);
 
-    @Query("select s.regDate, s.state from Status s where s.member.mno=:mno and (s.regDate >= :timeFrom AND s.regDate < :timeTo)")
+    @Query("select s.regDate, s.state, s.facility.bno from Status s where s.member.mno=:mno and (s.regDate >= :timeFrom AND s.regDate < :timeTo)")
     List<Object[]> getRegDateAndState(Long mno, @Param("timeFrom") LocalDateTime fromTime, @Param("timeTo") LocalDateTime timeTo);
 
-    @Query("select s.regDate, s.state from Status s where s.member.mno=:mno and s.facility.bno = :bno")
+    @Query("select s.regDate, s.state, s.facility.bno from Status s where s.member.mno=:mno and s.facility.bno = :bno")
     List<Object[]> getRegDateAndState(Long mno, Long bno);
 
-    @Query("select s.regDate, s.state from Status s where s.member.mno=:mno and (s.regDate >= :timeFrom AND s.regDate < :timeTo) and s.facility.bno = :bno")
+    @Query("select s.regDate, s.state, s.facility.bno from Status s where s.member.mno=:mno and (s.regDate >= :timeFrom AND s.regDate < :timeTo) and s.facility.bno = :bno")
     List<Object[]> getRegDateAndState(Long mno, Long bno, @Param("timeFrom") LocalDateTime fromTime, @Param("timeTo") LocalDateTime timeTo);
 
     @Query("select s.member.mno from Status s")
@@ -59,6 +59,8 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Query("select s.regDate, s.temperature from Status s where s.member.mno=:mno order by s.regDate ASC, s.temperature ASC")
     List<Object[]> getMemberDailyTemperatureStatus(Long mno);
 
+    @Query(value = "select s from Status s where s.statusnum > :lastStatusNum order by s.statusnum desc")
+    List<Status> findRecentStatusList(Long lastStatusNum);
 
     Status findTopByOrderByStatusnumDesc();
 

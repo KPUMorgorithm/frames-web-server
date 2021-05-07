@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-check">
                                 <input type="checkbox" id="include-contact-check" class="form-check-input" th:checked="${!#strings.isEmpty(pageRequestDTO.closeContact)}" onchange="onCheckContact();">
-                                <label class="form-check-label" for="include-contact-check">접촉의심자 포함</label>
+                                <label class="form-check-label" for="include-contact-check">동시출입자 포함</label>
                             </div>
                             <div id="contactDiv" class="filter-group" th:classappend="${#strings.isEmpty(pageRequestDTO.closeContact)} ? 'd-none' : ''">
                                 <label>시간간격(분:초)</label>

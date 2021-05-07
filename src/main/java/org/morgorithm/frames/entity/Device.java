@@ -15,7 +15,7 @@ public class Device {
     @Id
     private UUID deviceId;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "bno", insertable=false, updatable=false)
     private Facility facility;
 
