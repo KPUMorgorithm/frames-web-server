@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.IntStream;
-
+/*
 @SpringBootTest
 public class DemoData {
     @Autowired
@@ -25,7 +25,7 @@ public class DemoData {
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
-    private MemberImageRepository memberImageRepository;
+   private MemberImageRepository memberImageRepository;*/
 
 
     /*
@@ -38,6 +38,7 @@ public class DemoData {
     //dashboard의 실시간 출입현황 테스트용으로 사용할 수 없음 왜냐면 저건 현재 시간 기준으로 polling하기 때문
     //30개의 더미 멤버들에 대해선 3일 동안의 데이터를 넣지만 3개의 유의미한 멤버에 대해서는 7일 동안의 데이터를 넣는다
     //이유는 멤버 상세정보에 들어갔을 때 온도 변화 그래프를 좀 더 데이터를 넣어주고 데모 때 보여주기 위함이다.
+   /*
     @Test
     public void insertStatusData() {
         List<Status> totalData = new ArrayList<>();
@@ -130,15 +131,15 @@ public class DemoData {
 
 
         for (Status s : totalData) {
-/*
+
             System.out.println("mno:" + s.getMember());
             System.out.println("building:" + s.getFacility());
             System.out.println("status:" + s.getState());
             System.out.println("temperature" + s.getTemperature());*/
-            statusRepository.save(s);
-        }
-    }
-
+       //     statusRepository.save(s);
+    //    }
+  //  }*/
+/*
     //30명의 더미 멤버와 조성욱, 유영균, 송인걸 3명멤버 등록 (총 33명 등록)
     @Commit
     @Transactional
@@ -183,8 +184,8 @@ public class DemoData {
                 .member(memberJo)
                 .imgName("test" + 31 + ".jpg").build();
         memberImageRepository.save(memberImageSong);
-    }
-
+    }*/
+/*
     //실질적으로 밀접 접촉자에게 문자가는 것을 보여주기 위한
     //조성욱, 송인걸, 유영균 데이터 삽입 메소드이다.
     //여기서는 송인걸을 확진자로 두고 나머지 두명은 밀접 접촉자로 분류한다.
@@ -446,7 +447,7 @@ public class DemoData {
         cnt-=3;
         Long bno = 0L;
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100000; i++) {
             double rangeMin = 34.5;
             double rangeMax = 37.6;
             Random r = new Random();
@@ -476,3 +477,4 @@ public class DemoData {
 
 
 
+*/

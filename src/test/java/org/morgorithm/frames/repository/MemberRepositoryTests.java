@@ -1,5 +1,5 @@
 package org.morgorithm.frames.repository;
-
+/*
 import org.junit.jupiter.api.Test;
 import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.entity.Member;
@@ -103,7 +103,7 @@ public class MemberRepositoryTests {
         for(Object[] arr:result){
             System.out.println(Arrays.toString(arr));
         }
-    }
+    }*/
    /* @Test
     public void testGetListPage(){
         PageRequest pageRequest= PageRequest.of(0,10, Sort.by(Sort.Direction.DESC,"mno"));
@@ -114,7 +114,7 @@ public class MemberRepositoryTests {
         }
     }*/
 
-
+/*
 
     @Test
     public void testReorderGeneratedType(){
@@ -126,3 +126,4 @@ public class MemberRepositoryTests {
 
 
 }
+*/

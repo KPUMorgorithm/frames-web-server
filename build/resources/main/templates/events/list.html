@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=true">
+<!--datetimepicker bootstrap-->
+
+
+<th:block th:replace="~{/layout/adminLTE :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+        <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+        <!--   <script src="/js/event.js"></script> -->
+
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/event.css}">
+            <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/modal.scss}">
+            <title>CSS GRID DASHBOARD</title>
+        </head>
+
+
+        <main>
+            <div class="main__container">
+                <!-- MAIN TITLE STARTS HERE -->
+
+                <div class="main__title">
+                    <img src="assets/hello.svg" alt=""/>
+                    <div class="main__greeting">
+                        <h1>Events</h1>
+                        <p>Real-Time Monitoring</p>
+                    </div>
+                </div>
+
+                <!-- MAIN TITLE ENDS HERE -->
+
+                <!-- MAIN CARDS STARTS HERE -->
+                <div class="main__cards">
+                    <div class="card">
+                        <i
+                                class="fa fa-user-o fa-2x text-lightblue"
+                                aria-hidden="true"
+                        ></i>
+                        <div class="card_inner">
+                            <p class="text-primary-p">Total Member</p>
+                            <span class="font-bold text-title" id="totalMember"></span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <i class="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
+                        <div class="card_inner">
+                            <p class="text-primary-p">Today's Date</p>
+                            <span class="font-bold text-title" id="date">[[${result.todayDate}]]</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <i
+                                class="fa fa-video-camera fa-2x text-yellow"
+                                aria-hidden="true"
+                        ></i>
+                        <div class="card_inner">
+                            <p class="text-primary-p">Members in the Campus</p>
+                            <span class="font-bold text-title" id="memberIn"></span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <i class="fa fa-building fa-2x"></i>
+                        <div class="card_inner">
+                            <p class="text-primary-p">Facilities being Checked</p>
+                            <span class="font-bold text-title" id="facility"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- MAIN CARDS ENDS HERE -->
+
+                <!-- CHARTS STARTS HERE -->
+                <div class="charts">
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Daily Reports</h1>
+                                <p>KPU</p>
+                            </div>
+                        </div>
+                        <div id="container"></div>
+                        <div id="apex1"></div>
+                    </div>
+
+                    <div class="charts__right">
+                        <div class="charts__right__title">
+                            <div>
+                                <h1>Stats Reports</h1>
+                                <p>Korea Polytechnic University</p>
+                            </div>
+
+                        </div>
+
+                        <div class="charts__right__cards">
+                            <div class="card3">
+                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down4">Total</h1>
+                                <p style="font-size:40px" id="total"></p>
+                            </div>
+
+                            <div class="card4">
+
+                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down">
+                                    Danger</h1>
+                                <p style="font-size:40px" id="danger"></p>
+                            </div>
+
+                            <div class="card2">
+                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down3">Normal</h1>
+                                <p style="font-size:40px" id="normal"></p>
+                            </div>
+
+                            <div class="card1" style="background-color: #FFD119; color: #fd7e14">
+                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down2">Warning</h1>
+                                <p style="font-size:40px" id="warning"></p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- CHARTS ENDS HERE -->
+            </div>
+        </main>
+        <!-- Buttons -->
+
+
+        <!-- Modal Danger -->
+        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:900px; overflow-y: scroll;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sno</th>
+                                <th scope="col">Mno</th>
+                                <th scope="col">Building</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">Temperature</th>
+                                <th scope="col">Access Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="dto : ${dangerList}">
+                                <th scope="row">
+                                </th>
+                                <td>[[${dto.getStatusnum}]]</td>
+                                <td>[[${dto.getMember.getMno}]]</td>
+                                <td>[[${dto.getFacility.getBno}]]</td>
+                                <td>[[${dto.getRegDate}]]</td>
+                                <td>[[${dto.getTemperature}]]</td>
+                                <td th:text="${dto.getState} ? 'Enter':'Leave'"></td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Warning -->
+        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down2" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:900px; overflow-y: scroll;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sno</th>
+                                <th scope="col">Mno</th>
+                                <th scope="col">Building</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">Temperature</th>
+                                <th scope="col">Access Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="dto : ${warningList}">
+                                <th scope="row">
+                                </th>
+                                <td>[[${dto.getStatusnum}]]</td>
+                                <td>[[${dto.getMember.getMno}]]</td>
+                                <td>[[${dto.getFacility.getBno}]]</td>
+                                <td>[[${dto.getRegDate}]]</td>
+                                <td>[[${dto.getTemperature}]]</td>
+                                <td th:text="${dto.getState} ? 'Enter':'Leave'"></td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Warning -->
+        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down3" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:900px; overflow-y: scroll;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sno</th>
+                                <th scope="col">Mno</th>
+                                <th scope="col">Building</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">Temperature</th>
+                                <th scope="col">Access Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="dto : ${normalList}">
+                                <th scope="row">
+                                </th>
+                                <td>[[${dto.statusnum}]]</td>
+                                <td>[[${dto.member.mno}]]</td>
+                                <td>[[${dto.facility.bno}]]</td>
+                                <td>[[${dto.regDate}]]</td>
+                                <td>[[${dto.temperature}]]</td>
+                                <td th:text="${dto.state} ? 'Enter':'Leave'"></td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Warning -->
+        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down4" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:900px; overflow-y: scroll;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sno</th>
+                                <th scope="col">Mno</th>
+                                <th scope="col">Building</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">Temperature</th>
+                                <th scope="col">Access Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="dto : ${totalList}">
+                                <th scope="row">
+                                </th>
+                                <td>[[${dto.statusnum}]]</td>
+                                <td>[[${dto.member.mno}]]</td>
+                                <td>[[${dto.facility.bno}]]</td>
+                                <td>[[${dto.regDate}]]</td>
+                                <td>[[${dto.temperature}]]</td>
+                                <td th:text="${dto.state} ? 'Enter':'Leave'"></td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+        </html>
+        <script th:inline="javascript">
+
+
+            // This is for able to see chart. We are using Apex Chart. U can check the documentation of Apex Charts too..
+            var stompClient = null;
+            var username = null;
+            var totalDanger;
+            var totalNormal;
+            var totalWarning;
+            var set1;
+
+            var totalMember = $('#totalMember');
+            var memberIn = $('#memberIn');
+            var facility = $('#facility');
+            var numDanger = $('#danger');
+            var numNormal = $('#normal');
+            var numWarning = $('#warning');
+            var numTotal = $('#total');
+            'use strict';
+            var connectingElement = document.querySelector('.connecting');
+
+            function connect() {
+
+
+                console.log("connect!!!!*****");
+                //sockjs not defined 문제는 해당 <script>를 포함 안 시켜서 그런다
+                var socket = new SockJS('/ws');
+
+                stompClient = Stomp.over(socket);
+
+                stompClient.connect({}, onConnected, onError);
+
+            }
+
+
+            function onConnected() {
+                // Subscribe to the Public Topic
+                stompClient.subscribe('/topic/public2', onMessageReceived);
+
+                // Tell your username to the server
+
+
+                sendMessage();
+            }
+
+
+            function onError(error) {
+                console.log("error");
+                connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
+                connectingElement.style.color = 'red';
+            }
+
+
+            function sendMessage() {
+
+                var chatMessage = {
+                    sender: "username",
+                    content: "messageInput.value",
+                    type: 'CHAT'
+                };
+                stompClient.send("/app/status.sendMessage2", {}, JSON.stringify(chatMessage));
+
+                console.log("message send 메시지 전송!!");
+                setTimeout(sendMessage, 3000);
+
+            }
+
+
+            function onMessageReceived(payload) {
+                var message = JSON.parse(payload.body);
+
+                totalDanger = message.dangerScanNum;
+                totalWarning = message.warningScanNum;
+                totalNormal = message.normalScanNum;
+
+
+                totalMember.text(message.totalMember.toString());
+                memberIn.text(message.inMember.toString());
+                facility.text(message.numOfFacility.toString());
+
+                numDanger.text(message.dangerScanNum.toString());
+                numNormal.text(message.normalScanNum.toString());
+                numWarning.text(message.warningScanNum.toString());
+                numTotal.text(message.totalScanNum.toString());
+
+                set1 = [{
+                    "name": "Danger",
+                    "color": "#fe460e",
+                    "y": totalDanger
+                }, {
+
+                    "name": "Warning",
+                    "y": totalWarning,
+                    "color": "#ffa600"
+                }, {
+
+                    "name": "Normal",
+                    "y": totalNormal,
+                    "color": "#01ff4a"
+                }]
+
+                console.log("####value:" + totalDanger);
+                console.log("####value:" + totalNormal);
+                console.log("####value:" + totalWarning);
+            }
+
+            //이걸 풀어야 websocket 시작
+            connect();
+
+            /*
+            console.log("####value:"+totalDanger);
+            console.log("####value:"+totalNormal);
+            console.log("####value:"+totalWarning);*/
+
+            $(function () {
+                $(document).ready(function () {
+                    Highcharts.setOptions({
+                        global: {
+                            useUTC: false
+                        }
+                    });
+
+
+                    $('#container').highcharts({
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie',
+                            events: {
+                                load: function () {
+                                    // set up the updating of the chart each second
+                                    var series1 = this.series[0];
+
+
+                                    setInterval(function () {
+                                        series1.setData(set1);
+                                    }, 1000);
+                                }
+                            }
+                        },
+                        title: {
+                            text: 'Real-Time Events'
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        accessibility: {
+                            point: {
+                                valueSuffix: '%'
+                            }
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Events',
+                            colorByPoint: true,
+                            data: [{
+                                name: 'Danger',
+                                y: 30,
+                            }, {
+                                name: 'Warning',
+                                y: 30
+                            }, {
+                                name: 'Normal',
+                                y: 30,
+                                sliced: true,
+                                selected: true
+                            }]
+                        }]
+                    });
+                });
+            });
+        </script>
+    </th:block>
+
+</th:block>
