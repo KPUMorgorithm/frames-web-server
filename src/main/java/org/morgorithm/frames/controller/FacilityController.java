@@ -30,6 +30,7 @@ public class FacilityController {
         System.out.println("FacilityController");
         return dto;
     }
+
     @MessageMapping("/status.sendMessage2")
     @SendTo("/topic/public2")
     public EventDTO sendMessage2(@Payload EventDTO eventDTO){
