@@ -1,5 +1,5 @@
 package org.morgorithm.frames.repository;
-/*
+
 import org.junit.jupiter.api.Test;
 import org.morgorithm.frames.entity.Facility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.IntStream;
-
+/*
 @SpringBootTest
 public class FacilityRepositoryTests {
     @Autowired
@@ -39,5 +39,4 @@ public class FacilityRepositoryTests {
     }
 
 
-}
-*/
+}*/

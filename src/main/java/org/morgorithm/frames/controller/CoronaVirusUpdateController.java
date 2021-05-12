@@ -23,9 +23,12 @@ public class CoronaVirusUpdateController {
 
 
 
-
-
     @GetMapping("/")
+    public String showHomePage() {
+        return "redirect:/dashboard";
+    }
+
+    @GetMapping("/dashboard")
     public String getData(Model model){
         model.addAttribute("dates",coronaVirusDataService.getDateList());
         model.addAttribute("dailyDeath",coronaVirusDataService.getDeathList());

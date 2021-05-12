@@ -1,5 +1,5 @@
 package org.morgorithm.frames.repository;
-/*
+
 import org.junit.jupiter.api.Test;
 import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.entity.Member;
@@ -16,7 +16,7 @@ import java.util.UUID;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-public class MemberRepositoryTests {
+public class MemberRepositoryTests {/*
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
@@ -103,7 +103,7 @@ public class MemberRepositoryTests {
         for(Object[] arr:result){
             System.out.println(Arrays.toString(arr));
         }
-    }*/
+    }
    /* @Test
     public void testGetListPage(){
         PageRequest pageRequest= PageRequest.of(0,10, Sort.by(Sort.Direction.DESC,"mno"));
@@ -114,16 +114,15 @@ public class MemberRepositoryTests {
         }
     }*/
 
-/*
 
+/*
     @Test
     public void testReorderGeneratedType(){
         memberRepository.setSafeUpdate();
         memberRepository.initialCnt();
         memberRepository.reorderKeyId();
-    }
+    }*/
 
 
 
 }
-*/

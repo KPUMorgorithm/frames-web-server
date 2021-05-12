@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.IntStream;
 
-/*
+
 @SpringBootTest
 public class StatusRepositoryTests {
     @Autowired
@@ -30,7 +30,7 @@ public class StatusRepositoryTests {
         for(Object[] a:result){
             System.out.println(Arrays.toString(a));
         }
-    }*/
+    }
 
     /*
     데이터베이스에 테스트 데이터를 넣는 것이다. 무작위 mno를 추출해서 무작위 건물을 순서대로 in 하고 out하는 것을
@@ -40,9 +40,7 @@ public class StatusRepositoryTests {
     //Status 테이블에 테스트 데이터 넣을 때는 BaseEntity 클래스에서 @CreatedDate 주석 처리해야함!!
     // 이것은 만들어지는 시간을 기록하기 때문이다 여기서는 내가 임의로 랜덤 시간을 배정한다.
     //dashboard의 실시간 출입현황 테스트용으로 사용할 수 없음 왜냐면 저건 현재 시간 기준으로 polling하기 때문
-
-    /*
-    @Test
+   /* @Test
     public void insertStatusData(){
         List<Status> totalData=new ArrayList<>();
         int cnt=(int)(memberRepository.count());
@@ -384,6 +382,5 @@ public class StatusRepositoryTests {
 
 
 
-    }
+    }*/
 }
-*/

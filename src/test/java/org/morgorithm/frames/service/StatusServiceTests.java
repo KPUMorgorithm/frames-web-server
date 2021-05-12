@@ -26,15 +26,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-/*
+
 @SpringBootTest
 public class StatusServiceTests {
-
+/*
     @Autowired
     private StatusService service;
     @Autowired
-    private StatusRepository statusRepository;*/
-/*
+    private StatusRepository statusRepository;
+
 
     @Test
     void testGetFacilityStatus() {
@@ -50,7 +50,7 @@ public class StatusServiceTests {
         for (String str : realTimeStatusDTO.getBName()) {
             System.out.print(str + " ");
         }
-    }*/
+    }
 
   /*  @Test
     public void testSearch(){
@@ -83,11 +83,11 @@ public class StatusServiceTests {
 
 
     }*/
-/*
+
     //문자 보낼때 주의사항 일단 확진자에게 문자가 가면 안 된다.
     //특정 밀접 접촉자에게 메시지를 보낼때 밀접 접촉 횟수만큼 보내지 않게 조심하기
     //특정 밀접 접촉자가 여러 번 겹쳤을 경우 그것을 리스트화해서 한 번에 보낸다.
-    @Test
+    /*@Test
     public void testSend() {
         String api_key = "NCSJBLIL70QSO6P9";
         //사이트에서 발급 받은 API KEY
@@ -212,6 +212,5 @@ public class StatusServiceTests {
             System.out.println(e+" ");
         }
     }
-
-}
 */
+}

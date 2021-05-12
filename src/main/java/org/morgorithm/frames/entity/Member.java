@@ -16,7 +16,9 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Getter
 @ToString
-public class Member {
+public class
+
+Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mno;
