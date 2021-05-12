@@ -1,2 +1,7 @@
 Manifest-Version: 1.0
+Main-Class: org.springframework.boot.loader.WarLauncher
+Start-Class: org.morgorithm.frames.FramesApplication
+Spring-Boot-Version: 2.4.2
+Spring-Boot-Classes: WEB-INF/classes/
+Spring-Boot-Lib: WEB-INF/lib/
 

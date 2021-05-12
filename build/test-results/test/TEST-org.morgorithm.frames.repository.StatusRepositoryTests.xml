@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.morgorithm.frames.repository.StatusRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-12T03:48:53" hostname="DESKTOP-KCDHFKO" time="0.18">
+  <properties/>
+  <testcase name="testGetFacilityInInfo()" classname="org.morgorithm.frames.repository.StatusRepositoryTests" time="0.18"/>
+  <system-out><![CDATA[2021-05-12 12:48:53.685  INFO 119320 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.morgorithm.frames.repository.StatusRepositoryTests], using SpringBootContextLoader
+2021-05-12 12:48:53.688  INFO 119320 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-05-12 12:48:53.688  INFO 119320 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: StatusRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-05-12 12:48:53.717  INFO 119320 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.morgorithm.frames.FramesApplication for test class org.morgorithm.frames.repository.StatusRepositoryTests
+2021-05-12 12:48:53.722  INFO 119320 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-05-12 12:48:53.723  INFO 119320 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@26982790, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@52aae671, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@e1e3eb8, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@10c8b01d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@778ba133, org.springframework.test.context.support.DirtiesContextTestExecutionListener@721758dd, org.springframework.test.context.transaction.TransactionalTestExecutionListener@d8343d9, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@581e522c, org.springframework.test.context.event.EventPublishingTestExecutionListener@72b6f225, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3aaf8d1e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2d259c19, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@78024a3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@42e2d9ac, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4636b93, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5a7fa52]
+[Facility(bno=1, building=building1), 2, 1, true]
+[Facility(bno=1, building=building1), 1, 1, false]
+[Facility(bno=2, building=building2), 1, 2, false]
+[Facility(bno=2, building=building2), 1, 2, true]
+[Facility(bno=3, building=building3), 4, 3, false]
+[Facility(bno=3, building=building3), 1, 3, true]
+[Facility(bno=4, building=building4), 1, 4, true]
+[Facility(bno=4, building=building4), 2, 4, false]
+[Facility(bno=5, building=building5), 3, 5, true]
+[Facility(bno=5, building=building5), 2, 5, false]
+[Facility(bno=6, building=building6), 1, 6, false]
+[Facility(bno=6, building=building6), 1, 6, true]
+[Facility(bno=7, building=building7), 1, 7, true]
+[Facility(bno=8, building=building8), 3, 8, true]
+[Facility(bno=8, building=building8), 1, 8, false]
+[Facility(bno=9, building=building9), 2, 9, true]
+[Facility(bno=9, building=building9), 1, 9, false]
+[Facility(bno=10, building=building10), 4, 10, true]
+[Facility(bno=10, building=building10), 5, 10, false]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
