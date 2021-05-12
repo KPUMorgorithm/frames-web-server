@@ -1,0 +1,113 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+        <img th:src="@{/images/logo.png}" alt="logo" style="opacity: .8">
+        <span class="brand-text font-weight-light">FRAMES</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <th:block sec:authorize="isAuthenticated()">
+                <div class="image">
+                    <img th:src="@{/images/user.png}" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-inline" sec:authentication="name"></a>
+                    <a th:href="@{/admin/logout}" class="right badge badge-danger">로그아웃</a>
+                </div>
+            </th:block>
+            <th:block sec:authorize="isAnonymous()">
+                <div class="info">
+                    <a th:href="@{/admin/login}" class="d-block">로그인이 필요합니다</a>
+                </div>
+            </th:block>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+
+                <th:block sec:authorize="isAnonymous()">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/login}" class="nav-link">
+                            <i class="nav-icon fas fa-key"></i>
+                            <p>
+                                로그인
+                            </p>
+                        </a>
+                    </li>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a th:href="@{/}" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                대시보드
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">멤버관리</li>
+                    <li class="nav-item">
+                        <a th:href="@{/member/register}" class="nav-link">
+                            <i class="nav-icon fas fa-plus-square"></i>
+                            <p>
+                                멤버등록
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/member/list}" class="nav-link">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>
+                                멤버목록
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">출입관리</li>
+                    <li class="nav-item">
+                        <a th:href="@{/status/list}" class="nav-link">
+                            <i class="nav-icon far fa-clipboard"></i>
+                            <p>
+                                출입로그
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/events/list}" class="nav-link">
+                            <i class="nav-icon fas fa-eye"></i>
+                            <p>
+                                실시간현황
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/map/tracker}" class="nav-link">
+                            <i class="nav-icon fas fa-map-marked-alt"></i>
+                            <p>
+                                트래커
+                            </p>
+                        </a>
+                    </li>
+                </th:block>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
