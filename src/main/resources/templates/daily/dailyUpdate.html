@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" th:with="preloader=true,requireLogin=true">
 
-<th:block th:replace="~{/layout/adminLTE :: setContent(~{this::content} )}">
+<th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>

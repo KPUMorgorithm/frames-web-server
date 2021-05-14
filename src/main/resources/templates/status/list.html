@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
 </head>
 
-<th:block th:replace="~{/layout/adminLTE :: setContent(~{this::content} )}">
+<th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -43,7 +43,7 @@
                     <div class="table-filter">
                         <div class="table-filter-group">
                             <div class="filter-group">
-                                <label>건물번호</label>
+                                <label>시설번호</label>
                                 <input name="keyword" id="filterBuildingNo" th:value="${pageRequestDTO.keyword}" type="text" class="form-control">
                             </div>
                             <div class="filter-group">

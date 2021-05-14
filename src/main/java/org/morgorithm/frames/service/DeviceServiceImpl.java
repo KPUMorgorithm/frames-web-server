@@ -19,7 +19,7 @@ public class DeviceServiceImpl implements DeviceService{
     private DeviceRepository deviceRepository;
     private FacilityRepository facilityRepository;
 
-    // 1. 건물 + 기기 등록
+    // 1. 시설 + 기기 등록
     @Transactional
     public Facility addFacility(UUID deviceId, String facilityName, Boolean state) {
         Facility facility = Facility.builder()
