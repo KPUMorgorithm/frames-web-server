@@ -163,8 +163,8 @@ function onMessageReceived(payload) {
         else
             s="퇴장";
         console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-        var messageText = document.createTextNode("건물:"+bName[i]+" 아이디:"+mno[i]+" 온도:"+tem[i]+" 시간:"+regDate[i]+" "+s);
-        console.log("############test:"+"건물:"+bName[i]+" 아이디:"+mno[i]+" 온도:"+tem[i]+" 시간:"+regDate[i]+" "+s);
+        var messageText = document.createTextNode("시설:"+bName[i]+" 아이디:"+mno[i]+" 온도:"+tem[i]+" 시간:"+regDate[i]+" "+s);
+        console.log("############test:"+"시설:"+bName[i]+" 아이디:"+mno[i]+" 온도:"+tem[i]+" 시간:"+regDate[i]+" "+s);
         textElement.appendChild(messageText);
 
       //  messageElement.appendChild(horizontalElement);
@@ -243,7 +243,7 @@ $(function () {
                 }
             },
             title: {
-                text: '건물 출입 현황',
+                text: '시설 출입 현황',
                 style: {
                     color: '#800000',
                     fontWeight: 'bold'
