@@ -38,7 +38,7 @@ public class DemoData {
     //dashboard의 실시간 출입현황 테스트용으로 사용할 수 없음 왜냐면 저건 현재 시간 기준으로 polling하기 때문
     //30개의 더미 멤버들에 대해선 3일 동안의 데이터를 넣지만 3개의 유의미한 멤버에 대해서는 7일 동안의 데이터를 넣는다
     //이유는 멤버 상세정보에 들어갔을 때 온도 변화 그래프를 좀 더 데이터를 넣어주고 데모 때 보여주기 위함이다.
-   /* @Test
+    @Test
     public void insertStatusData() {
         List<Status> totalData = new ArrayList<>();
         int cnt = (int) (memberRepository.count());
@@ -129,13 +129,13 @@ public class DemoData {
         });
 
 
-        for (Status s : totalData) {*/
-/*
+        for (Status s : totalData) {
+
             System.out.println("mno:" + s.getMember());
             System.out.println("building:" + s.getFacility());
             System.out.println("status:" + s.getState());
-            System.out.println("temperature" + s.getTemperature());*/
-         /*   statusRepository.save(s);
+            System.out.println("temperature" + s.getTemperature());
+            statusRepository.save(s);
         }
     }
 
@@ -446,7 +446,7 @@ public class DemoData {
         cnt-=3;
         Long bno = 0L;
 
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             double rangeMin = 34.5;
             double rangeMax = 37.6;
             Random r = new Random();
@@ -470,7 +470,7 @@ public class DemoData {
         }
 
 
-    }*/
+    }
 
 }
 
