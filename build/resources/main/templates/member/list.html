@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=true">
 
-<th:block th:replace="~{/layout/adminLTE :: setContent(~{this::content} )}">
+<th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
         <h1 class="mt-4">Member List Page</h1>

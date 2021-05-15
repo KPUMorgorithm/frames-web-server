@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=false">
 
-<th:block th:replace="~{/layout/adminLTE :: setContent(~{this::content} )}">
+<th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
         <section class="content">
