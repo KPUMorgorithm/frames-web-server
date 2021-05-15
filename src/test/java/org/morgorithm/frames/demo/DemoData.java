@@ -1,6 +1,7 @@
 package org.morgorithm.frames.demo;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.entity.Member;
 import org.morgorithm.frames.entity.MemberImage;
@@ -9,8 +10,12 @@ import org.morgorithm.frames.repository.MemberImageRepository;
 import org.morgorithm.frames.repository.MemberRepository;
 import org.morgorithm.frames.repository.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -18,7 +23,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.IntStream;
 
-@SpringBootTest
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class DemoData {
     @Autowired
     private StatusRepository statusRepository;
@@ -29,7 +36,7 @@ public class DemoData {
 
 
     /*
-   데이터베이스에 테스트 데이터를 넣는 것이다. 무작위 mno를 추출해서 무작위 건물을 순서대로 in 하고 out하는 것을
+   데이터베이스에 테스트 데이터를 넣는 것이다. 무작위 mno를 추출해서 무작위 시설을 순서대로 in 하고 out하는 것을
    구현한다. out를 먼저하고 in를 먼저 할 수는 없다.
     */
     //********************참고 사항*****
@@ -47,14 +54,14 @@ public class DemoData {
         Arrays.fill(arr, false);
         Arrays.fill(barr, 0);
 
-        //각 member에 대해서 현재 날짜 기준으로 3일간 4~6건물을 랜덤 온도로 돌아다니게끔 넣는다.
+        //각 member에 대해서 현재 날짜 기준으로 3일간 4~6시설을 랜덤 온도로 돌아다니게끔 넣는다.
         IntStream.rangeClosed(1, cnt - 3).forEach(i -> {
             List<Status> data = new ArrayList<>();
             Long mno = Long.valueOf(i);
             Member member = Member.builder().mno(mno).build();
 
             Long bno = 0L;
-            //한 멤버가 4~6개의 건물을 왔다갔다 한다.
+            //한 멤버가 4~6개의 시설을 왔다갔다 한다.
             int min = 4;
             int max = 6;
             int randomBuilding = (int) Math.floor(Math.random() * (max - min + 1) + min);
