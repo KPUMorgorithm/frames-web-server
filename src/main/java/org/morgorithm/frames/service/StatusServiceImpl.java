@@ -172,7 +172,7 @@ public class StatusServiceImpl implements StatusService {
         //전체 멤버 수
         eventDTO.setTotalMember(memberRepository.getMemberNum());
 
-        //전체 건물 수
+        //전체 시설 수
         eventDTO.setNumOfFacility(facilityRepository.getFacilityNum());
 
         //오늘 날짜
@@ -575,14 +575,14 @@ public class StatusServiceImpl implements StatusService {
 
 
         for(Status p: totalStatusList){
-            System.out.println("건물: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
+            System.out.println("시설: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
         }
         //확진자 동선과 접촉자 동선을 confirmedPath와 contactPath로 분류
         for (Status p : totalStatusList) {
             if (p.getMember().getMno().equals(Long.valueOf(requestDTO.getMno()))) {
-                confirmedPath.add("건물: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
+                confirmedPath.add("시설: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
             } else {
-                contactPath.add("건물: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
+                contactPath.add("시설: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
                 mnos.add(p.getMember().getMno());
             }
         }
@@ -620,7 +620,7 @@ public class StatusServiceImpl implements StatusService {
             for (Status p : totalStatusList) {
                 if (p.getMember().getMno().equals(Long.valueOf(requestDTO.getMno()))) {
                     String dateTime = p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                    s += "건물: " + p.getFacility().getBuilding() + "\n" +
+                    s += "시설: " + p.getFacility().getBuilding() + "\n" +
                             "시간: " + dateTime + "\n" +
                             "출입여부: " + (p.getState() ? "입장\n\n" : "퇴장\n\n");
                 }
@@ -632,7 +632,7 @@ public class StatusServiceImpl implements StatusService {
             for (Status p : totalStatusList) {
                 if (mno == p.getMember().getMno()) {
                     String dateTime = p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                    s += "건물: " + p.getFacility().getBuilding() + "\n" +
+                    s += "시설: " + p.getFacility().getBuilding() + "\n" +
                             "시간: " + dateTime + "\n" +
                             "출입여부: " + (p.getState() ? "입장\n\n" : "퇴장\n\n");
                     phoneNum = p.getMember().getPhone();
@@ -650,7 +650,11 @@ public class StatusServiceImpl implements StatusService {
             //테스트 용 번호
             //*******************
             //*******************
+
            // params.put("to", "01030588541");
+
+            //params.put("to", "01030588541");
+
             //*******************
             //*******************
             //테스트 용 번호
@@ -766,7 +770,7 @@ public class StatusServiceImpl implements StatusService {
 //            List<Object> result = statusRepository.getMemberFacility(Long.valueOf(requestDTO.getMno()));
             BooleanBuilder buildingCondition = new BooleanBuilder();
 //            for (Object a : result) {
-//                //확진자가 다녀갔던 건물들을 리스트에 넣는다.
+//                //확진자가 다녀갔던 시설들을 리스트에 넣는다.
 //                buildingCondition.or(qStatus.facility.bno.eq(((Facility) a).getBno()));
 //                bnoList.add(((Facility) a).getBno());
 //                System.out.println("mno bno!!!:" + ((Facility) a).getBno());
@@ -789,7 +793,7 @@ public class StatusServiceImpl implements StatusService {
 //                        result2 = statusRepository.getMemberFacility(Long.valueOf(requestDTO.getMno()));
 //                    }
 //                    for (Object a : result2) {
-//                        //확진자가 다녀갔던 건물들을 리스트에 넣는다.
+//                        //확진자가 다녀갔던 시설들을 리스트에 넣는다.
 //                        bnoList.add(((Facility) a).getBno());
 //                        System.out.println("mno bno!!!:" + ((Facility) a).getBno());
 //                    }
