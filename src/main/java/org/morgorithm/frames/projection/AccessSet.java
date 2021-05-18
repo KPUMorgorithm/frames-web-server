@@ -1,8 +1,4 @@
-package org.morgorithm.frames.vo;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+package org.morgorithm.frames.projection;
 
 import java.time.LocalDateTime;
 
