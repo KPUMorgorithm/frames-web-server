@@ -1,27 +1,32 @@
 package org.morgorithm.frames.repository;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.entity.Member;
 import org.morgorithm.frames.entity.Status;
+import org.morgorithm.frames.projection.AccessSet;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.IntStream;
 
 
-@SpringBootTest
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class StatusRepositoryTests {
     @Autowired
     private StatusRepository statusRepository;
     @Autowired
     private MemberRepository memberRepository;
+    @Autowired
+    private FacilityRepository facilityRepository;
 
     @Test
     public void testGetFacilityInInfo(){
@@ -30,6 +35,66 @@ public class StatusRepositoryTests {
         for(Object[] a:result){
             System.out.println(Arrays.toString(a));
         }
+    }
+
+    @Test
+    public void accessSetTest() {
+        List<AccessSet> accessSets = statusRepository.getAllAccessSet();
+        List<Object[]> aa = statusRepository.getStatusOverlapped(accessSets.get(0));
+        System.out.println(aa.toString());
+//        accessSets.forEach(accessSet -> {
+//            System.out.println(accessSet.asString());
+//        });
+    }
+
+    @Test
+    public void insertReliableStatusData(){ // 좀 더 정확한 출입로그 생성 (퇴장은 반드시 입장이 있어야 가능, 동시에 두 건물에 존재하는 것 불가능)
+        List<Member> members = memberRepository.findAll();
+        LinkedList<Long> bnos = new LinkedList<>(facilityRepository.getAllBnos());
+        List<Status> statusList = new ArrayList<>();
+        Random random = new Random();
+        long timeBasis = System.currentTimeMillis();
+        for (Member member : members) {
+            long timeDelta = (long) (Math.random() * 600 * 1000); // 시간 델타 0 ~ 500 초
+            int willEnterFacilityCount = 1 + (int) (Math.random() * 5); // 입장할 건물 수  1~5개
+            for (int i=0; i<willEnterFacilityCount; i++) {
+                Collections.shuffle(bnos);
+                Facility facility = facilityRepository.findById(bnos.getFirst().longValue()).get(); // 건물 랜덤
+                double temperature = 36.5 + random.nextGaussian() * 2; // 32.5 ~ 40.5
+                Status statusIn = Status.builder()
+                        .facility(facility)
+                        .state(Status.ENTER)
+                        .member(member)
+                        .temperature(temperature)
+                        .build();
+
+                statusIn.setRegDate(new Date(timeBasis + timeDelta).toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+                statusList.add(statusIn);
+
+                long timeIn = (long) (60000 + Math.random() * 300000); // 재실 시간 60초 ~ 360초
+
+                if (Math.random() < 0.05) { // 5% 확률로 건물에서 안나옴
+                    break;
+                }
+                Status statusOut = Status.builder()
+                        .facility(facility)
+                        .state(Status.LEAVE)
+                        .member(member)
+                        .temperature(temperature + random.nextGaussian()) // +- 1
+                        .build();
+
+                timeDelta += timeIn;
+                statusOut.setRegDate(new Date(timeBasis + timeDelta).toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+                statusList.add(statusOut);
+
+                timeDelta += 10000 + (long) (Math.random() * 100000); // 시간 델타 10 ~ 109 초
+            }
+        }
+
+        statusList.sort(Comparator.comparing(Status::getRegDate));
+        statusList.forEach(status -> {
+            statusRepository.save(status);
+        });
     }
 
     /*
