@@ -70,8 +70,8 @@ org/morgorithm/frames/configuration/LocalDateTimeAttributeConverter.java
 org/morgorithm/frames/dto/TrackerInfoDTO.java
  org.morgorithm.frames.dto.TrackerInfoDTO
  org.morgorithm.frames.dto.TrackerInfoDTO$TrackerInfoDTOBuilder
-org/morgorithm/frames/configuration/WebSocketConfig.java
- org.morgorithm.frames.configuration.WebSocketConfig
+org/morgorithm/frames/service/MemberServiceImpl.java
+ org.morgorithm.frames.service.MemberServiceImpl
 org/morgorithm/frames/FramesApplication.java
  org.morgorithm.frames.FramesApplication
 org/morgorithm/frames/scheduler/RegisterURLScheduler.java
@@ -143,5 +143,21 @@ org/morgorithm/frames/dto/UploadResultDTO.java
  org.morgorithm.frames.dto.UploadResultDTO
 org/morgorithm/frames/entity/QMember.java
  org.morgorithm.frames.entity.QMember
-org/morgorithm/frames/service/MemberServiceImpl.java
- org.morgorithm.frames.service.MemberServiceImpl
+org/morgorithm/frames/configuration/WebSocketConfig.java
+ org.morgorithm.frames.configuration.WebSocketConfig
+org/morgorithm/frames/service/SmsServiceImpl.java
+ org.morgorithm.frames.service.SmsServiceImpl
+org/morgorithm/frames/dto/SmsDTO.java
+ org.morgorithm.frames.dto.SmsDTO
+ org.morgorithm.frames.dto.SmsDTO$SmsDTOBuilder
+org/morgorithm/frames/controller/SmsController.java
+ org.morgorithm.frames.controller.SmsController
+org/morgorithm/frames/service/SmsService.java
+ org.morgorithm.frames.service.SmsService
+org/morgorithm/frames/repository/SmsRepository.java
+ org.morgorithm.frames.repository.SmsRepository
+org/morgorithm/frames/entity/Sms.java
+ org.morgorithm.frames.entity.Sms
+ org.morgorithm.frames.entity.Sms$SmsBuilder
+org/morgorithm/frames/entity/QSms.java
+ org.morgorithm.frames.entity.QSms
