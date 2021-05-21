@@ -8,7 +8,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Test;
-//import org.morgorithm.frames.dto.PageRequestDTO;
+import org.morgorithm.frames.dto.PageRequestDTO;
 import org.morgorithm.frames.dto.PageResultDTO;
 import org.morgorithm.frames.dto.RealTimeStatusDTO;
 import org.morgorithm.frames.dto.StatusDTO;
@@ -29,7 +29,7 @@ import java.util.List;
 
 @SpringBootTest
 public class StatusServiceTests {
-/*
+
     @Autowired
     private StatusService service;
     @Autowired
@@ -52,7 +52,7 @@ public class StatusServiceTests {
         }
     }
 
-  /*  @Test
+   @Test
     public void testSearch(){
         PageRequestDTO pageRequestDTO=PageRequestDTO.builder()
                 .page(1)
@@ -82,12 +82,12 @@ public class StatusServiceTests {
         }
 
 
-    }*/
+    }
 
     //문자 보낼때 주의사항 일단 확진자에게 문자가 가면 안 된다.
     //특정 밀접 접촉자에게 메시지를 보낼때 밀접 접촉 횟수만큼 보내지 않게 조심하기
     //특정 밀접 접촉자가 여러 번 겹쳤을 경우 그것을 리스트화해서 한 번에 보낸다.
-    /*@Test
+    @Test
     public void testSend() {
         String api_key = "NCSJBLIL70QSO6P9";
         //사이트에서 발급 받은 API KEY
@@ -212,5 +212,5 @@ public class StatusServiceTests {
             System.out.println(e+" ");
         }
     }
-*/
+
 }
