@@ -27,7 +27,7 @@ function connect() {
 
 
     console.log("connect!!!!*****");
-    var socket = new SockJS('/ws');
+    var socket = new SockJS('/ws',null, { timeout: 15000});
     chatPage.classList.remove('hidden');
     stompClient = Stomp.over(socket);
 
