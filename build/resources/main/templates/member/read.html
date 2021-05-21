@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=true">
+
+<th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+
+        <h1 class="mt-4">Member Read Page</h1>
+
+        <div class="form-group">
+            <label >Mno</label>
+            <input type="text" class="form-control" name="mno" th:value="${dto.mno}" readonly >
+        </div>
+
+        <div class="form-group">
+            <label >Name</label>
+            <input type="text" class="form-control" name="name" th:value="${dto.name}" readonly >
+        </div>
+        <div class="form-group">
+            <label >Phone</label>
+            <textarea class="form-control" rows="5" name="phone" readonly>[[${dto.phone}]]</textarea>
+        </div>
+        <div class="form-group">
+            <label >Image</label>
+            <th:block th:each="img: ${dto.imageDTOList}">
+                <img th:src="@{${'/image/'+img.path+'/'+img.uuid+'_'+img.imgName}}">
+            </th:block>
+            <input type="text" class="form-control" name="imgCnt" th:value="${dto.imageDTOList.size()}" readonly>
+        </div>
+
+
+        <a th:href="@{/member/modify(mno = ${dto.mno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+            <button type="button" class="btn btn-primary">Modify</button>
+        </a>
+
+        <a th:href="@{/member/list(page=${requestDTO.page} , type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+            <button type="button" class="btn btn-info">List</button>
+        </a>
+
+        <div id="container"></div>
+        <script th:inline="javascript">
+            const classList = [[${mdto}]];
+
+            var dateData=[];
+            var temperatureData=[];
+            var tempData=[];
+            var i = 0;
+            console.log(classList);
+            classList.forEach(function(element){
+                Object.keys(element).forEach(function(key) {
+                    tempData[i++] = element[key];
+                });
+            })
+
+            /*Object.keys(list).forEach(function(key) {
+
+                tempData[i] = list[key];
+                dateData[i++]=key;
+            });*/
+            console.log("tempData:"+tempData);
+            var didx=0;
+            var tidx=0;
+            for(var j=0;j<tempData.length;j++){
+                console.log("test:"+tempData[j].length);
+            }
+            //tempData는 날짜와 그 날짜의 제일 높은 온도를 가지고 있는데
+            //자꾸 그 순서가 바꿔서 if문을 고정된 날짜 length인 10일때
+            //dateData에 넣어주고 나머지는 temperatureData에 넣어주게 바꿈.
+            for(var j=0;j<tempData.length;j++){
+                if(tempData[j].length===10){
+                    dateData[didx++]=tempData[j];
+                }
+                else{
+                    temperatureData[tidx++]=tempData[j];
+                }
+            }
+            console.log(temperatureData);
+            console.log(dateData);
+            Highcharts.chart('container', {
+
+                title: {
+                    text: 'Temperature Status',
+                    style: {
+                        color: '#FF4500',
+                        fontWeight: 'bold'
+                    }
+                },
+                subtitle: {
+                    text: 'Highest Temperature in Each Day ',
+                    style: {
+                        color: '#FFA07A',
+                        fontWeight: 'bold'
+                    }
+
+                },
+
+                xAxis: {
+                    // categories: category
+                    categories: dateData,
+                    labels: {
+                        style: {
+                            color: 'red'
+                        }
+                    },
+
+                    title: {
+                        text: 'Date'
+                    }
+
+                },
+                yAxis:[{
+                    labels:{
+                        style: {
+                            color: "#9400D3"
+                        }
+                    },
+                    title: {
+                        text: 'Temperature',
+                        style: {
+                            color: "#9370DB"
+                        }
+                    }
+                }],
+
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                    },
+
+                },
+
+                series: [{
+                    name: '온도',
+                    data: temperatureData,
+                    color: '#C71585'
+                }],
+                //highchart.com 안나오게 하기
+                credits:{
+                    enabled:false
+                },
+
+
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+
+            });
+        </script>
+    </th:block>
+
+</th:block>

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.IntStream;
-
+/*
 @SpringBootTest
 public class FacilityRepositoryTests {
     @Autowired
@@ -39,4 +39,4 @@ public class FacilityRepositoryTests {
     }
 
 
-}
+}*/

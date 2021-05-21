@@ -16,7 +16,7 @@ import java.util.UUID;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-public class MemberRepositoryTests {
+public class MemberRepositoryTests {/*
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
@@ -115,13 +115,13 @@ public class MemberRepositoryTests {
     }*/
 
 
-
+/*
     @Test
     public void testReorderGeneratedType(){
         memberRepository.setSafeUpdate();
         memberRepository.initialCnt();
         memberRepository.reorderKeyId();
-    }
+    }*/
 
 
 

@@ -385,8 +385,8 @@ public class StatusServiceImpl implements StatusService {
         if (statusList.size() > 0)
             latestStatusNum = statusList.get(0).getStatusnum();
 
-//        System.out.println("test getFacilityStatus result.size():" + result.size());
-//        System.out.println(statusList);
+        System.out.println("test getFacilityStatus result.size():" + result.size());
+        System.out.println(statusList);
 
         for (int i = 0; i < result.size(); i++) {
             // System.out.println("test getFacilityStatus inside for loop"+result.size());
@@ -650,7 +650,9 @@ public class StatusServiceImpl implements StatusService {
             //테스트 용 번호
             //*******************
             //*******************
+
             //params.put("to", "01030588541");
+
             //*******************
             //*******************
             //테스트 용 번호

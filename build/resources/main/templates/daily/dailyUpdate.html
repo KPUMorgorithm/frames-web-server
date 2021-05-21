@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:with="preloader=true,requireLogin=true">
+
+<th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/main.css}">
+
+        <div class="container">
+
+            <div id="container"
+                 style=" float: left; width: 50%; height: 400px; margin: 0 auto">
+
+            </div>
+            <div id="container2"
+                 style=" float: left; width: 50%; height: 400px; margin: 0 auto">
+
+            </div>
+            <div id="buildingStatus" style="min-width: 310px; height: 400px; margin: 0 auto">
+
+
+            </div>
+
+            <table id="datatable" style="float: left; width: 36%;">
+                <thead>
+                <tr style="color:white; background-color:#009879">
+                    <th></th>
+                    <th scope="col">In</th>
+                    <th scope="col">Out</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+                <tr>
+                    <th style="font-weight: bold; color: #009879;"></th>
+                    <td style="color: #2ECC40;"></td>
+                    <td style="color: #FF4136;"></td>
+                </tr>
+                </tbody>
+            </table>
+            <!--실시간 업데이트!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+            <div id="chat-page" class="hidden" style="float: right; width: 60%; border: 1px solid #85C1E9;">
+                <div class="chat-container" style="height: 430px" >
+                    <div class="chat-header">
+                        <h2 style="color:#1B4F72; font-size:20px">실시간 출입 현황</h2>
+                    </div>
+                    <div class="connecting">
+                        연결중...
+                    </div>
+                    <ul id="messageArea" style="height: 360px; width: 89%;">
+
+                    </ul>
+                </div>
+            </div>
+            </span>
+
+
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+            <script src="js/facilityStatus.js"></script>
+
+
+
+
+        </div>
+
+        <script th:inline="javascript">
+
+            const listDates=[[${dates}]];
+            const listTotalConfirmed=[[${totalConfirmed}]];
+            const listIncreaseFromYesterday=[[${increaseFromYesterday}]];
+            const listDailyCure=[[${dailyCure}]];
+            const listDailyExam=[[${dailyExam}]];
+            const totalClear=[[${totalClear}]];
+            const listDailyDeath=[[${dailyDeath}]]
+
+
+
+            Highcharts.chart('container', {
+
+                title: {
+                    text: '일일 확진자와 사망자 수',
+                    style: {
+                        color: '#1E90FF',
+                        fontWeight: 'bold'
+                    }
+                },
+                subtitle: {
+                    text: '전체 확진자 수: '+listTotalConfirmed,
+                    style: {
+                        color: '#4169E1'
+                    }
+                },
+
+                xAxis: {
+                    // categories: category
+                    categories: listDates,
+                    labels: {
+                        style: {
+                            color: '#FF4500'
+                        }
+                    },
+
+                    title: {
+                        text: '날짜',
+                        style: {
+                            color: '#CD5C5C'
+                        }
+                    }
+
+                },
+                yAxis:[{
+                    labels:{
+                        style: {
+                            color: "#00bfff"
+                        }
+                    },
+                    title: {
+                        text: '일일 확진자 수',
+                        style: {
+                            color: "#00bfff"
+                        }
+                    }
+                },{ // Primary yAxis
+                    labels: {
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        }
+                    },
+                    title: {
+                        text: '일일 사망자 수',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        }
+                    },
+                    opposite: true
+
+                }],
+
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                    },
+
+                },
+
+                series: [{
+                    name: '일일 확진자 수',
+                    data: listIncreaseFromYesterday
+                },{
+                    name: '사망자 수',
+                    yAxis:1,
+                    data: listDailyDeath
+                },],
+                //highchart.com 안나오게 하기
+                credits:{
+                    enabled:false
+                },
+
+
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+
+            });
+
+            Highcharts.chart('container2', {
+
+                title: {
+                    text: '일일 격리해제와 검사 수',
+                    style: {
+                        color: '#2E8B57',
+                        fontWeight: 'bold'
+                    }
+                },
+                subtitle: {
+                    text: '전체 격리해제 수: '+totalClear,
+                    style: {
+                        color: "#4e6500"
+                    }
+                },
+
+                xAxis: {
+                    // categories: category
+                    categories: listDates,
+                    labels: {
+                        style: {
+                            color: '#FF4500'
+                        }
+                    },
+
+                    title: {
+                        text: '날짜',
+                        style: {
+                            color: '#CD5C5C'
+                        }
+                    }
+
+                },
+                yAxis:[{
+                    labels:{
+                        style: {
+                            color: "#00ca00"
+                        }
+                    },
+                    title: {
+                        text: '일일 격리해제 증가량',
+                        style: {
+                            color: "#00ca00"
+                        }
+                    }
+                },{ // Primary yAxis
+                    labels: {
+                        style: {
+                            color: "#746493"
+                        }
+                    },
+                    title: {
+                        text: '일일 검사 증가량',
+                        style: {
+                            color: "#746493"
+                        }
+                    },
+                    opposite: true
+
+                }],
+
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                    },
+
+                },
+
+                series: [{
+                    name: '격리해제',
+                   data: listDailyCure,
+                    color: '#00ca00'
+                },{
+                    name: '검사',
+                    yAxis:1,
+                    data: listDailyExam,
+                    color: '#746493'
+                },],
+                //highchart.com 안나오게 하기
+                credits:{
+                    enabled:false
+                },
+
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+
+            });
+
+        </script>
+
+
+    </th:block>
+
+</th:block>

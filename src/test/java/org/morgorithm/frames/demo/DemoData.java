@@ -137,11 +137,11 @@ public class DemoData {
 
 
         for (Status s : totalData) {
-/*
+
             System.out.println("mno:" + s.getMember());
             System.out.println("building:" + s.getFacility());
             System.out.println("status:" + s.getState());
-            System.out.println("temperature" + s.getTemperature());*/
+            System.out.println("temperature" + s.getTemperature());
             statusRepository.save(s);
         }
     }
@@ -443,6 +443,10 @@ public class DemoData {
 
     }
 
+    @Test
+    void test(){
+        System.out.println("test");
+    }
     //dashboard와 실시간 현황 테스트용이다
     @Test
     void realtimeTestData() throws InterruptedException {
@@ -453,7 +457,7 @@ public class DemoData {
         cnt-=3;
         Long bno = 0L;
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             double rangeMin = 34.5;
             double rangeMax = 37.6;
             Random r = new Random();
@@ -478,8 +482,8 @@ public class DemoData {
 
 
     }
-}
 
+}
 
 
 

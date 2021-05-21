@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=false">
+<head>
+    <title>로그인</title>
+</head>
+
+<th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
+    <th:block th:fragment="content">
+        <th:block th:replace="admin/loginForm"></th:block>
+
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var error = /*[[${error}]]*/ "";
+            if (error != null && error != "") {
+                alert(error);
+            }
+            /*]]>*/
+        </script>
+    </th:block>
+</th:block>

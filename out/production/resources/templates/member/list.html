@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=true">
+
+<th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+        <h1 class="mt-4">Member List Page</h1>
+
+        <form action="/member/list" method="get" id="searchForm">
+            <div class="input-group">
+                <input type="hidden" name="page" value = "1">
+                <div class="input-group-prepend">
+                    <select class="custom-select" name="type">
+                        <option th:selected="${pageRequestDTO.type == null}">-------</option>
+
+                        <!--option value=""안에 있는 것이 pageRequestDTO.type의 값으로 들어감-->
+                        <option value="n" th:selected="${pageRequestDTO.type =='n'}" >이름</option>
+                        <option value="p" th:selected="${pageRequestDTO.type =='p'}"  >전화번호</option>
+                    </select>
+                </div>
+                <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
+                <div class="input-group-append" id="button-addon4">
+                    <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
+                    <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
+                </div>
+            </div>
+        </form>
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="dto : ${result.dtoList}" >
+                <th scope="row">
+                    <a th:href="@{/member/read(mno = ${dto.mno},
+                    page= ${result.page},
+                    type=${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword})}">
+                        [[${dto.mno}]]
+                    </a>
+                </th>
+                <td>[[${dto.name}]]</td>
+                <td>[[${dto.phone}]]</td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+        <ul class="pagination h-100 justify-content-center align-items-center">
+
+            <li class="page-item " th:if="${result.prev}">
+                <a class="page-link" th:href="@{/member/list(page= ${result.start -1},
+                    type=${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">Previous</a>
+            </li>
+
+            <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
+                <a class="page-link" th:href="@{/member/list(page = ${page} ,
+                   type=${pageRequestDTO.type} ,
+                   keyword = ${pageRequestDTO.keyword}  )}">
+                    [[${page}]]
+                </a>
+            </li>
+
+            <li class="page-item" th:if="${result.next}">
+                <a class="page-link" th:href="@{/member/list(page= ${result.end + 1} ,
+                    type=${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword} )}">Next</a>
+            </li>
+        </ul>
+        <script th:inline="javascript">
+
+            var searchForm = $("#searchForm");
+
+            $('.btn-search').click(function(e){
+
+                searchForm.submit();
+
+            });
+
+            $('.btn-clear').click(function(e){
+
+                searchForm.empty().submit();
+
+            });
+
+
+        </script>
+
+    </th:block>
+
+</th:block>

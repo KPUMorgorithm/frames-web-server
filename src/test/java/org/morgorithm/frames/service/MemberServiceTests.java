@@ -34,7 +34,7 @@ public class MemberServiceTests {
 //
 //        resultDTO.getPageList().forEach(i->System.out.println(i));
 //    }
-
+/*
     @Test
     public void testSearch(){
         PageRequestDTO pageRequestDTO=PageRequestDTO.builder()
@@ -65,5 +65,5 @@ public class MemberServiceTests {
         System.out.println("===================================");*/
         //   resultDTO.getPageList().forEach(i->System.out.println(i));
 
-    }
+    //}
 }
