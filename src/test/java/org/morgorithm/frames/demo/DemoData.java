@@ -443,6 +443,10 @@ public class DemoData {
 
     }
 
+    @Test
+    void test(){
+        System.out.println("test");
+    }
     //dashboard와 실시간 현황 테스트용이다
     @Test
     void realtimeTestData() throws InterruptedException {
