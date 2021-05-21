@@ -13,4 +13,7 @@ public interface FacilityRepository extends JpaRepository<Facility,Long> {
     List<Object[]> getFacilityNames();
     @Query("select count(f) from Facility f")
     List<Object[]> getFacilityBno();
+
+    @Query("select distinct f.bno from Facility f")
+    List<Long> getAllBnos();
 }

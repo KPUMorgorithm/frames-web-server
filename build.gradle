@@ -47,7 +47,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+
     exclude '**/*'
+
 }
 def querydslDir = "$buildDir/generated/querydsl"
 

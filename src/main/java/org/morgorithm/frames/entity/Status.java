@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @ToString(exclude={"member","facility"})
 
 public class Status extends BaseEntity{
+    public static final boolean ENTER = false;
+    public static final boolean LEAVE = true;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long statusnum;

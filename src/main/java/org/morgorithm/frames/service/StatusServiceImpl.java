@@ -651,8 +651,6 @@ public class StatusServiceImpl implements StatusService {
             //*******************
             //*******************
 
-           // params.put("to", "01030588541");
-
             //params.put("to", "01030588541");
 
             //*******************
