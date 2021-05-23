@@ -16,7 +16,7 @@ public class SmsServiceImpl implements SmsService{
 
     @Override
     public void saveSmsInfo(SmsDTO smsDTO) {
-        Sms sms=Sms.builder().sender(smsDTO.getSender()).content(smsDTO.getContent()).receivedDate(smsDTO.getReceivedDate()).build();
+        Sms sms=Sms.builder().sender(smsDTO.getSender()).content(smsDTO.getContent()).receivedDate(smsDTO.getReceivedDate()).status(true).build();
         smsRepository.save(sms);
     }
 
