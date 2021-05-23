@@ -17,6 +17,7 @@ public class Sms {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rno;
+    private Boolean status;
     private String sender;
     private String receivedDate;
     private String content;
