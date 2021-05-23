@@ -26,6 +26,9 @@ public interface MemberRepository extends JpaRepository<Member,Long>, QuerydslPr
     @Query("select m from Member m")
     Page<Object> getMemberList(Pageable pageable);
 
+    @Query("select m.name, m.mno from Member m where m.phone=:p")
+    List<Object[]> getNameByPhone(String p);
+
     @Query("select count(m) from Member m")
     int getMemberNum();
 
