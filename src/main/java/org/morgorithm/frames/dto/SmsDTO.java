@@ -13,4 +13,5 @@ public class SmsDTO {
     String content;
     String sender;
     String receivedDate;
+    Boolean status;
 }

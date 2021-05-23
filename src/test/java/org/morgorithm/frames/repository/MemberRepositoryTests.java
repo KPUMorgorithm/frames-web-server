@@ -7,6 +7,9 @@ import org.morgorithm.frames.entity.MemberImage;
 import org.morgorithm.frames.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +19,7 @@ import java.util.UUID;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-public class MemberRepositoryTests {/*
+public class MemberRepositoryTests {
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
@@ -104,7 +107,7 @@ public class MemberRepositoryTests {/*
             System.out.println(Arrays.toString(arr));
         }
     }
-   /* @Test
+    @Test
     public void testGetListPage(){
         PageRequest pageRequest= PageRequest.of(0,10, Sort.by(Sort.Direction.DESC,"mno"));
         Page<Object[]> result=memberRepository.getListPage(pageRequest);
@@ -112,16 +115,16 @@ public class MemberRepositoryTests {/*
         for(Object[] arr:result){
             System.out.println(Arrays.toString(arr));
         }
-    }*/
+    }
 
 
-/*
+
     @Test
     public void testReorderGeneratedType(){
         memberRepository.setSafeUpdate();
         memberRepository.initialCnt();
         memberRepository.reorderKeyId();
-    }*/
+    }
 
 
 
