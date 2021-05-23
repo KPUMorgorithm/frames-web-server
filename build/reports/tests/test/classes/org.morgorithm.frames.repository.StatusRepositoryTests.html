@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - StatusRepositoryTests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>StatusRepositoryTests</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.morgorithm.frames.repository.html">org.morgorithm.frames.repository</a> &gt; StatusRepositoryTests</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">2.469s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">insertStatusData()</td>
+<td class="success">2.469s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>23:37:51.402 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+23:37:51.438 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+23:37:51.514 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [org.morgorithm.frames.repository.StatusRepositoryTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+23:37:51.545 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.morgorithm.frames.repository.StatusRepositoryTests], using SpringBootContextLoader
+23:37:51.557 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: class path resource [org/morgorithm/frames/repository/StatusRepositoryTests-context.xml] does not exist
+23:37:51.558 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: class path resource [org/morgorithm/frames/repository/StatusRepositoryTestsContext.groovy] does not exist
+23:37:51.558 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+23:37:51.560 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [org.morgorithm.frames.repository.StatusRepositoryTests]: StatusRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:37:51.673 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [org.morgorithm.frames.repository.StatusRepositoryTests]
+23:37:51.923 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\nick1\kpu\frames-web-server\build\classes\java\main\org\morgorithm\frames\FramesApplication.class]
+23:37:51.930 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration org.morgorithm.frames.FramesApplication for test class org.morgorithm.frames.repository.StatusRepositoryTests
+23:37:52.321 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [org.morgorithm.frames.repository.StatusRepositoryTests]: using defaults.
+23:37:52.322 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+23:37:52.369 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1a369bcf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@67c73216, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@44758635, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7c10e8df, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@52d6fc71, org.springframework.test.context.support.DirtiesContextTestExecutionListener@c5f33bf, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6473582f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f5e126e, org.springframework.test.context.event.EventPublishingTestExecutionListener@7a0e5080, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@f3956b5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7175d55d, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1e57747f, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@16d5bd65, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@531cddf4, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@c1c25f7]
+23:37:52.378 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@4c847c67 testClass = StatusRepositoryTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@52dbfe58 testClass = StatusRepositoryTests, locations = '{}', classes = '{class org.morgorithm.frames.FramesApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@4bae66ca, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@12c4c091, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@628adcec, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@5430d2b6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4e345ac2, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@8dd133d], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+23:37:52.455 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.2)
+
+2021-05-21 23:37:53.096  WARN 184388 --- [    Test worker] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/nick1/.gradle/caches/modules-2/files-2.1/org.json/json/20210307/528c8df3757e8bcf151817b1d7b9b434f6aa08d5/json-20210307.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/nick1/.gradle/caches/modules-2/files-2.1/com.vaadin.external.google/android-json/0.0.20131108.vaadin1/fa26d351fe62a6a17f5cda1287c1c6110dec413f/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2021-05-21 23:37:53.139  INFO 184388 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : Starting StatusRepositoryTests using Java 11.0.9 on DESKTOP-KCDHFKO with PID 184388 (started by nick1 in C:\Users\nick1\kpu\frames-web-server)
+2021-05-21 23:37:53.142  INFO 184388 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : No active profile set, falling back to default profiles: default
+2021-05-21 23:37:58.641  INFO 184388 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-21 23:37:59.080  INFO 184388 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 417 ms. Found 7 JPA repository interfaces.
+2021-05-21 23:38:00.160  INFO 184388 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#34a91d26' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-21 23:38:00.194  INFO 184388 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#63ab6fc5' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-21 23:38:00.214  INFO 184388 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-21 23:38:00.214  INFO 184388 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-21 23:38:01.338  INFO 184388 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-21 23:38:01.520  INFO 184388 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.27.Final
+2021-05-21 23:38:02.167  INFO 184388 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-21 23:38:02.606  INFO 184388 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-21 23:38:03.380  INFO 184388 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-21 23:38:03.505  INFO 184388 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-21 23:38:06.068  INFO 184388 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-21 23:38:06.091  INFO 184388 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-21 23:38:07.377  WARN 184388 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-21 23:38:09.722  INFO 184388 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2021-05-21 23:38:09.758  INFO 184388 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+confiureMessageBroker 연동!!**
+2021-05-21 23:38:09.764  INFO 184388 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2021-05-21 23:38:10.995  INFO 184388 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/css/**'] with []
+2021-05-21 23:38:10.995  INFO 184388 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-05-21 23:38:10.995  INFO 184388 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/img/**'] with []
+2021-05-21 23:38:10.995  INFO 184388 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/lib/**'] with []
+2021-05-21 23:38:11.482  INFO 184388 --- [    Test worker] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+end point 연결!!!***
+2021-05-21 23:38:12.074  INFO 184388 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2021-05-21 23:38:12.468  INFO 184388 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2e6268a2, org.springframework.security.web.context.SecurityContextPersistenceFilter@1586871b, org.springframework.security.web.header.HeaderWriterFilter@1b0e25ec, org.springframework.web.filter.CorsFilter@7e47dcbe, org.springframework.security.web.authentication.logout.LogoutFilter@17855de, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@59f4a728, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7652941d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@c35a442, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7c2d018, org.springframework.security.web.session.SessionManagementFilter@46b8a9b9, org.springframework.security.web.access.ExceptionTranslationFilter@454bdb05, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d91b9ad]
+2021-05-21 23:38:15.760  INFO 184388 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2021-05-21 23:38:15.760  INFO 184388 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@39c27c37]]
+2021-05-21 23:38:15.761  INFO 184388 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2021-05-21 23:38:15.783  INFO 184388 --- [    Test worker] o.m.f.repository.StatusRepositoryTests   : Started StatusRepositoryTests in 23.313 seconds (JVM running for 28.071)
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 8
+Random amount of hours: 2
+Random amount of minutes: -33
+Date 8 days in future: 2021/05/14 01:05:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 4
+Random amount of hours: 0
+Random amount of minutes: -47
+Date 4 days in future: 2021/05/17 22:51:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 6
+Random amount of hours: -3
+Random amount of minutes: 25
+Date 6 days in future: 2021/05/15 21:03:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 9
+Random amount of hours: 1
+Random amount of minutes: -11
+Date 9 days in future: 2021/05/13 00:27:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 1
+Random amount of hours: 2
+Random amount of minutes: -2
+Date 1 days in future: 2021/05/21 01:36:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 1
+Random amount of hours: -2
+Random amount of minutes: 20
+Date 1 days in future: 2021/05/20 21:58:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 8
+Random amount of hours: 2
+Random amount of minutes: -58
+Date 8 days in future: 2021/05/14 00:40:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 9
+Random amount of hours: 1
+Random amount of minutes: -3
+Date 9 days in future: 2021/05/13 00:35:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 3
+Random amount of hours: 1
+Random amount of minutes: -18
+Date 3 days in future: 2021/05/19 00:20:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 5
+Random amount of hours: 0
+Random amount of minutes: -55
+Date 5 days in future: 2021/05/16 22:43:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 1
+Random amount of hours: 0
+Random amount of minutes: -10
+Date 1 days in future: 2021/05/20 23:28:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 1
+Random amount of hours: 1
+Random amount of minutes: -53
+Date 1 days in future: 2021/05/20 23:45:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 4
+Random amount of hours: 0
+Random amount of minutes: 24
+Date 4 days in future: 2021/05/18 00:02:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 1
+Random amount of hours: -1
+Random amount of minutes: -19
+Date 1 days in future: 2021/05/20 22:19:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 2
+Random amount of hours: 2
+Random amount of minutes: 50
+Date 2 days in future: 2021/05/20 02:28:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 3
+Random amount of hours: -3
+Random amount of minutes: -23
+Date 3 days in future: 2021/05/18 20:15:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 3
+Random amount of hours: 2
+Random amount of minutes: -50
+Date 3 days in future: 2021/05/19 00:48:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 9
+Random amount of hours: 2
+Random amount of minutes: -29
+Date 9 days in future: 2021/05/13 01:09:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 7
+Random amount of hours: 2
+Random amount of minutes: 8
+Date 7 days in future: 2021/05/15 01:46:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 5
+Random amount of hours: 0
+Random amount of minutes: -20
+Date 5 days in future: 2021/05/16 23:18:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 2
+Random amount of hours: 2
+Random amount of minutes: 33
+Date 2 days in future: 2021/05/20 02:11:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 2
+Random amount of hours: -3
+Random amount of minutes: -22
+Date 2 days in future: 2021/05/19 20:16:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 6
+Random amount of hours: 2
+Random amount of minutes: 21
+Date 6 days in future: 2021/05/16 01:59:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 5
+Random amount of hours: 2
+Random amount of minutes: -53
+Date 5 days in future: 2021/05/17 00:45:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 8
+Random amount of hours: -3
+Random amount of minutes: 28
+Date 8 days in future: 2021/05/13 21:06:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 3
+Random amount of hours: -3
+Random amount of minutes: -27
+Date 3 days in future: 2021/05/18 20:11:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 7
+Random amount of hours: -1
+Random amount of minutes: -14
+Date 7 days in future: 2021/05/14 22:24:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 6
+Random amount of hours: -3
+Random amount of minutes: 18
+Date 6 days in future: 2021/05/15 20:56:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 8
+Random amount of hours: 0
+Random amount of minutes: -54
+Date 8 days in future: 2021/05/13 22:44:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 2
+Random amount of hours: 1
+Random amount of minutes: -23
+Date 2 days in future: 2021/05/20 00:15:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 7
+Random amount of hours: 0
+Random amount of minutes: 49
+Date 7 days in future: 2021/05/15 00:27:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 2
+Random amount of hours: -3
+Random amount of minutes: -14
+Date 2 days in future: 2021/05/19 20:24:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 3
+Random amount of hours: 1
+Random amount of minutes: 18
+Date 3 days in future: 2021/05/19 00:56:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 9
+Random amount of hours: 0
+Random amount of minutes: 48
+Date 9 days in future: 2021/05/13 00:26:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 9
+Random amount of hours: 2
+Random amount of minutes: -37
+Date 9 days in future: 2021/05/13 01:01:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 2
+Random amount of hours: -1
+Random amount of minutes: -29
+Date 2 days in future: 2021/05/19 22:09:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 8
+Random amount of hours: -1
+Random amount of minutes: 8
+Date 8 days in future: 2021/05/13 22:46:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 2
+Random amount of hours: 1
+Random amount of minutes: -4
+Date 2 days in future: 2021/05/20 00:34:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 0
+Random amount of hours: -3
+Random amount of minutes: 43
+Date 0 days in future: 2021/05/21 21:21:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 2
+Random amount of hours: -2
+Random amount of minutes: -21
+Date 2 days in future: 2021/05/19 21:17:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 4
+Random amount of hours: -1
+Random amount of minutes: 9
+Date 4 days in future: 2021/05/17 22:47:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 3
+Random amount of hours: -2
+Random amount of minutes: -30
+Date 3 days in future: 2021/05/18 21:08:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 8
+Random amount of hours: 3
+Random amount of minutes: -19
+Date 8 days in future: 2021/05/14 02:19:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 5
+Random amount of hours: -1
+Random amount of minutes: -24
+Date 5 days in future: 2021/05/16 22:14:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 6
+Random amount of hours: 2
+Random amount of minutes: 34
+Date 6 days in future: 2021/05/16 02:12:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 4
+Random amount of hours: -3
+Random amount of minutes: -55
+Date 4 days in future: 2021/05/17 19:43:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 0
+Random amount of hours: 1
+Random amount of minutes: 0
+Date 0 days in future: 2021/05/22 00:38:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 5
+Random amount of hours: -3
+Random amount of minutes: -21
+Date 5 days in future: 2021/05/16 20:17:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 6
+Random amount of hours: -3
+Random amount of minutes: -47
+Date 6 days in future: 2021/05/15 19:51:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 9
+Random amount of hours: 1
+Random amount of minutes: -24
+Date 9 days in future: 2021/05/13 00:14:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 7
+Random amount of hours: 2
+Random amount of minutes: 45
+Date 7 days in future: 2021/05/15 02:23:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 5
+Random amount of hours: 0
+Random amount of minutes: 14
+Date 5 days in future: 2021/05/16 23:52:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 4
+Random amount of hours: 0
+Random amount of minutes: 1
+Date 4 days in future: 2021/05/17 23:39:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 3
+Random amount of hours: 3
+Random amount of minutes: -5
+Date 3 days in future: 2021/05/19 02:33:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 9
+Random amount of hours: -3
+Random amount of minutes: 22
+Date 9 days in future: 2021/05/12 21:00:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 4
+Random amount of hours: 1
+Random amount of minutes: -57
+Date 4 days in future: 2021/05/17 23:41:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 6
+Random amount of hours: 3
+Random amount of minutes: 55
+Date 6 days in future: 2021/05/16 03:33:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 9
+Random amount of hours: -3
+Random amount of minutes: 8
+Date 9 days in future: 2021/05/12 20:46:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 6
+Random amount of hours: 3
+Random amount of minutes: 0
+Date 6 days in future: 2021/05/16 02:38:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 5
+Random amount of hours: -2
+Random amount of minutes: 60
+Date 5 days in future: 2021/05/16 22:38:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 0
+Random amount of hours: 0
+Random amount of minutes: 41
+Date 0 days in future: 2021/05/22 00:19:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 8
+Random amount of hours: 2
+Random amount of minutes: -45
+Date 8 days in future: 2021/05/14 00:53:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 3
+Random amount of hours: -3
+Random amount of minutes: -49
+Date 3 days in future: 2021/05/18 19:49:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 5
+Random amount of hours: -1
+Random amount of minutes: -32
+Date 5 days in future: 2021/05/16 22:06:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 1
+Random amount of hours: 1
+Random amount of minutes: 47
+Date 1 days in future: 2021/05/21 01:25:16
+
+Current Date: 2021/05/21 23:38:16
+Random amount of days: 6
+Random amount of hours: -3
+Random amount of minutes: 58
+Date 6 days in future: 2021/05/15 21:36:16
+
+mno:Member(mno=21, name=null, phone=null)
+building:Facility(bno=8, building=building8)
+status:true
+temperature37.1
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.7
+mno:Member(mno=18, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.5
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.3
+mno:Member(mno=8, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.1
+mno:Member(mno=22, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature37.2
+mno:Member(mno=6, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.2
+mno:Member(mno=24, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature37.2
+mno:Member(mno=33, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature36.6
+mno:Member(mno=25, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature36.8
+mno:Member(mno=8, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature35.9
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.2
+mno:Member(mno=4, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.3
+mno:Member(mno=17, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.1
+mno:Member(mno=8, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature35.1
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature37.0
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature35.3
+mno:Member(mno=5, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.0
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature36.1
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.3
+mno:Member(mno=8, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature37.0
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.4
+mno:Member(mno=9, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.0
+mno:Member(mno=31, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:true
+temperature37.3
+mno:Member(mno=18, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.9
+mno:Member(mno=32, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature35.4
+mno:Member(mno=16, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.8
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature35.9
+mno:Member(mno=9, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature37.3
+mno:Member(mno=9, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.4
+mno:Member(mno=22, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature36.7
+mno:Member(mno=22, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.2
+mno:Member(mno=22, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature35.7
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature36.4
+mno:Member(mno=25, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.9
+mno:Member(mno=4, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:false
+temperature36.6
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:true
+temperature35.8
+mno:Member(mno=2, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature35.5
+mno:Member(mno=3, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.6
+mno:Member(mno=33, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:false
+temperature35.5
+mno:Member(mno=17, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature35.7
+mno:Member(mno=14, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature36.2
+mno:Member(mno=9, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature37.1
+mno:Member(mno=26, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.7
+mno:Member(mno=27, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:true
+temperature36.6
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=3, building=building3)
+status:false
+temperature37.2
+mno:Member(mno=32, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature36.9
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature37.2
+mno:Member(mno=3, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:false
+temperature36.1
+mno:Member(mno=10, name=null, phone=null)
+building:Facility(bno=4, building=building4)
+status:true
+temperature36.4
+mno:Member(mno=9, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:true
+temperature36.2
+mno:Member(mno=1, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature35.5
+mno:Member(mno=13, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.9
+mno:Member(mno=12, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature36.0
+mno:Member(mno=7, name=null, phone=null)
+building:Facility(bno=6, building=building6)
+status:false
+temperature35.4
+mno:Member(mno=25, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature35.2
+mno:Member(mno=18, name=null, phone=null)
+building:Facility(bno=2, building=building2)
+status:true
+temperature36.7
+mno:Member(mno=32, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature36.4
+mno:Member(mno=27, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.1
+mno:Member(mno=19, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature36.6
+mno:Member(mno=2, name=null, phone=null)
+building:Facility(bno=7, building=building7)
+status:false
+temperature35.2
+mno:Member(mno=13, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:false
+temperature35.8
+mno:Member(mno=33, name=null, phone=null)
+building:Facility(bno=9, building=building9)
+status:true
+temperature35.9
+mno:Member(mno=22, name=null, phone=null)
+building:Facility(bno=1, building=building1)
+status:true
+temperature36.4
+mno:Member(mno=17, name=null, phone=null)
+building:Facility(bno=5, building=building5)
+status:true
+temperature36.8
+mno:Member(mno=6, name=null, phone=null)
+building:Facility(bno=10, building=building10)
+status:false
+temperature36.3
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.7.1</a> at 2021. 5. 21. 오후 11:38:18</p>
+</div>
+</div>
+</body>
+</html>

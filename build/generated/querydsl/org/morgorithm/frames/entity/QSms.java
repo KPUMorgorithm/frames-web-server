@@ -27,6 +27,8 @@ public class QSms extends EntityPathBase<Sms> {
 
     public final StringPath sender = createString("sender");
 
+    public final BooleanPath status = createBoolean("status");
+
     public QSms(String variable) {
         super(Sms.class, forVariable(variable));
     }
