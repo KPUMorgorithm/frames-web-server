@@ -142,8 +142,8 @@ org/morgorithm/frames/dto/UploadResultDTO.java
  org.morgorithm.frames.dto.UploadResultDTO
 org/morgorithm/frames/entity/QMember.java
  org.morgorithm.frames.entity.QMember
-org/morgorithm/frames/service/SmsPathRequest.java
- org.morgorithm.frames.service.SmsPathRequest
+org/morgorithm/frames/configuration/WebSocketConfig.java
+ org.morgorithm.frames.configuration.WebSocketConfig
 org/morgorithm/frames/repository/MemberRepository.java
  org.morgorithm.frames.repository.MemberRepository
 org/morgorithm/frames/dto/SmsDTO.java
@@ -161,5 +161,5 @@ org/morgorithm/frames/service/SmsServiceImpl.java
  org.morgorithm.frames.service.SmsServiceImpl
 org/morgorithm/frames/repository/SmsRepository.java
  org.morgorithm.frames.repository.SmsRepository
-org/morgorithm/frames/configuration/WebSocketConfig.java
- org.morgorithm.frames.configuration.WebSocketConfig
+org/morgorithm/frames/service/SmsPathRequest.java
+ org.morgorithm.frames.service.SmsPathRequest
