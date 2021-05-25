@@ -135,19 +135,26 @@ public class SmsPathRequest {
 
 
         params.put("type", "LMS");
+
         String s = "";
-        //여럿한테 보낼때
-        s += "한국산업기술대학교 코로나 비상대책본부에서 문자드립니다.\n" +
-                "해당 수신자의 과거 7일간의 동선을 알려드립니다.\n\n";
+        if(mapInfoList.size()==0){
+            s += "한국산업기술대학교 코로나 비상대책본부에서 문자드립니다.\n" +
+                    "해당 수신자의 과거 7일간의 동선 데이터가 없음을 알려드립니다.\n";
+        }else{
+            //여럿한테 보낼때
+            s += "한국산업기술대학교 코로나 비상대책본부에서 문자드립니다.\n" +
+                    "해당 수신자의 과거 7일간의 동선을 알려드립니다.\n\n";
 
-        for (Status p : mapInfoList) {
+            for (Status p : mapInfoList) {
 
-            String dateTime = p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-            s += "시설: " + p.getFacility().getBuilding() + "\n" +
-                    "시간: " + dateTime + "\n" +
-                    "출입여부: " + (p.getState() ? "입장\n\n" : "퇴장\n\n");
+                String dateTime = p.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                s += "시설: " + p.getFacility().getBuilding() + "\n" +
+                        "시간: " + dateTime + "\n" +
+                        "출입여부: " + (p.getState() ? "입장\n\n" : "퇴장\n\n");
 
+            }
         }
+
 
 
         System.out.println("phoneNum:" + phoneNum);
