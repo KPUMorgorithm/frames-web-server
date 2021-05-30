@@ -87,7 +87,7 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
 
 
     // --------------------시공간 질의------------------------
-    @Query(value = "select s1.member_mno memberId, s1.facility_bno facilityId, s1.temperature statusEnterId, s2.temperature statusLeaveId, s1.statusnum temperatureEnter, s2.statusnum temperatureLeave, s1.regdate timeEnter, s2.regdate timeLeave " +
+    @Query(value = "select s1.member_mno memberId, m.name memberName, s1.facility_bno facilityId, f.building facilityName, s1.temperature temperatureEnter, s2.temperature temperatureLeave, s1.statusnum statusEnterId, s2.statusnum statusLeaveId, s1.regdate timeEnter, s2.regdate timeLeave " +
             "from status s1 " +
             "left join status s2 " +
             "on s2.statusnum = (" +
@@ -99,10 +99,15 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
             "order by abs(datediff(s1.regdate, s3.regdate)) asc " +
             "limit 1 " +
             ") " +
-            "where s1.state = 0", nativeQuery = true)
+            "left join member m " +
+            "on m.mno = s1.member_mno " +
+            "left join facility f " +
+            "on f.bno = s1.facility_bno " +
+            "where s1.state = 0 " +
+            "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAllAccessSet();
 
-    @Query(value = "select s1.member_mno memberId, s1.facility_bno facilityId, s1.temperature statusEnterId, s2.temperature statusLeaveId, s1.statusnum temperatureEnter, s2.statusnum temperatureLeave, s1.regdate timeEnter, s2.regdate timeLeave " +
+    @Query(value = "select s1.member_mno memberId, m.name memberName, s1.facility_bno facilityId, f.building facilityName, s1.temperature temperatureEnter, s2.temperature temperatureLeave, s1.statusnum statusEnterId, s2.statusnum statusLeaveId, s1.regdate timeEnter, s2.regdate timeLeave " +
             "from status s1 " +
             "left join status s2 " +
             "on s2.statusnum = (" +
@@ -114,8 +119,13 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
             "order by abs(datediff(s1.regdate, s3.regdate)) asc " +
             "limit 1 " +
             ") " +
-            "where s1.state = 0 and s1.member_mno = :memberId", nativeQuery = true)
-    List<AccessSet> getAccessSetByMemberId(Long memberId);
+            "left join member m " +
+            "on m.mno = s1.member_mno " +
+            "left join facility f " +
+            "on f.bno = s1.facility_bno " +
+            "where s1.state = 0 and s1.member_mno = :memberId "  +
+            "order by timeEnter asc", nativeQuery = true)
+    List<AccessSet> getAccessSetByMemberId(@Param("memberId") Long memberId);
 
     @Query(value = "select * from status s where s.facility_bno = #{accessSet.facilityId} and s.regdate between #{accessSet.timeEnter} and #{accessSet.timeLeave}", nativeQuery = true)
     List<Object[]> getStatusOverlapped(@Param("accessSet") AccessSet accessSet); // TODO: 고쳐야함

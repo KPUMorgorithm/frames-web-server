@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=true">
+<!--datetimepicker bootstrap-->
+
+<head>
+    <title>출입로그</title>
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/status/list.css}">
+    <script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
+    <style>
+        .mno {
+            background-color: #dccceb !important;
+        }
+    </style>
+</head>
+
+<th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">출입로그</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">status-list</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+
+    <th:block th:fragment="content">
+
+        <!-- TABLE 멤버id, 시설id, 입장로그번호, 퇴장로그번호, 입장시간, 퇴장시간 -->
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">이름(멤버ID)</th>
+                <th scope="col">시설(시설ID)</th>
+                <th scope="col">입장시간</th>
+                <th scope="col">퇴장시간</th>
+                <th scope="col">입장체온</th>
+                <th scope="col">퇴장체온</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="accessSet, index : ${accessSets}">
+                <input class="mno" type="hidden" th:value="${accessSet.memberId}"/>
+                <td>[[${index.count}]]</td>
+                <td th:text="|${accessSet.memberName}(${accessSet.memberId})|"></td>
+                <td th:text="|${accessSet.facilityName}(${accessSet.facilityId})|"></td>
+                <td th:text="${#temporals.format(accessSet.timeEnter, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td th:text="${#temporals.format(accessSet.timeLeave, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td th:text="|${accessSet.temperatureEnter}|"></td>
+                <td th:text="|${accessSet.temperatureLeave}|"></td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
+
+<!--        <ul class="pagination h-100 justify-content-center align-items-center">-->
+
+<!--            <li class="page-item " th:if="${result.prev}">-->
+<!--                <a class="page-link" th:href="@{/status/list(page= ${result.start -1},-->
+<!--                    from=${pageRequestDTO.from},-->
+<!--                    to=${pageRequestDTO.to},-->
+<!--                    keyword = ${pageRequestDTO.keyword},-->
+<!--                    mno = ${pageRequestDTO.mno},-->
+<!--                    closeContact=${pageRequestDTO.closeContact})}" tabindex="-1">Previous</a>-->
+<!--            </li>-->
+
+<!--            <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">-->
+<!--                <a class="page-link" th:href="@{/status/list(page = ${page} ,-->
+<!--                    from=${pageRequestDTO.from},-->
+<!--                    to=${pageRequestDTO.to},-->
+<!--                    keyword = ${pageRequestDTO.keyword},-->
+<!--                    mno = ${pageRequestDTO.mno},-->
+<!--                    closeContact=${pageRequestDTO.closeContact})}">-->
+<!--                    [[${page}]]-->
+<!--                </a>-->
+<!--            </li>-->
+
+<!--            <li class="page-item" th:if="${result.next}">-->
+<!--                <a class="page-link" th:href="@{/status/list(page= ${result.end + 1} ,-->
+<!--                    from=${pageRequestDTO.from},-->
+<!--                    to=${pageRequestDTO.to},-->
+<!--                    keyword = ${pageRequestDTO.keyword},-->
+<!--                    mno = ${pageRequestDTO.mno},-->
+<!--                    closeContact=${pageRequestDTO.closeContact})}">Next</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+
+        <script th:inline="javascript">
+
+            (function() {
+                "use strict";
+                window.addEventListener("load", function() {
+                    const mno = getUrlParam("mno");
+                    if (mno != undefined) {
+                        const childs = [].slice.call(document.getElementsByClassName("mno"));
+                        childs.filter(e => e.value == mno).map(e => {
+                            e.parentElement.classList.add("mno");
+                        });
+                    }
+                }, false);
+            }());
+
+            function getUrlParam(name) {
+                var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                return (results && results[1]) || undefined;
+            }
+
+            $('.btn-search').click(function (e) {
+                if (!searchForm.querySelector("#include-contact-check").checked || searchForm.mno.value == '') {
+                    searchForm.closeContact.value = '';
+                }
+                searchForm.submit();
+            });
+
+            $('.btn-clear').click(function (e) {
+                window.location.href="/st"
+            });
+
+
+        </script>
+
+    </th:block>
+
+</th:block>
