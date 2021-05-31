@@ -27,10 +27,7 @@ function connect() {
 
 
     console.log("connect!!!!*****");
-    var socket = new SockJS('/ws');
-
-
-
+    var socket = new SockJS('/ws', null, {transports: ["xhr-streaming", "xhr-polling"]});
 
 
     chatPage.classList.remove('hidden');
