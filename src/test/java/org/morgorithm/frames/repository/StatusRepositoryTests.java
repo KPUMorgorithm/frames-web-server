@@ -39,9 +39,9 @@ public class StatusRepositoryTests {
 
     @Test
     public void accessSetTest() {
-        List<AccessSet> accessSets = statusRepository.getAllAccessSet();
-        List<Object[]> aa = statusRepository.getStatusOverlapped(accessSets.get(0));
-        System.out.println(aa.toString());
+//        List<AccessSet> accessSets = statusRepository.getAllAccessSet();
+//        List<Object[]> aa = statusRepository.getStatusOverlapped(accessSets.get(0));
+//        System.out.println(aa.toString());
 //        accessSets.forEach(accessSet -> {
 //            System.out.println(accessSet.asString());
 //        });
