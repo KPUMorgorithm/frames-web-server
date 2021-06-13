@@ -1,6 +1,7 @@
 package org.morgorithm.frames.dto;
 
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Data
-
+@ToString
 public class PageResultDTO<DTO, EN> {
     private List<DTO> dtoList;
     private int totalPage;
