@@ -4,9 +4,7 @@
 
 <head>
     <title>출입로그</title>
-    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/bootstrap-datetimepicker.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/status/list.css}">
-    <script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
     <style>
         .mno {
             background-color: #dccceb !important;
@@ -33,6 +31,97 @@
 
     <th:block th:fragment="content">
 
+        <div class="modal fade" id="member-modal" tabindex="-1" aria-labelledby="member-modal-title" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="member-modal-title">멤버 조회</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <input class="form-control" id="member-search" placeholder="이름을 입력하세요 ex) 홍길동">
+                        </div>
+
+                        <div class="overflow-auto" style="height: 640px">
+                            <table id="member-table" class="table table-striped table-hover">
+                                <thead>
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col style="width:30%">
+                                    <col style="width:50%">
+                                </colgroup>
+
+                                <tr>
+                                    <th>멤버번호</th>
+                                    <th>이름</th>
+                                    <th>전화번호</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr class="memberRow" th:each="member: ${members}">
+                                    <td>[[${member.mno}]]</td>
+                                    <td>[[${member.name}]]</td>
+                                    <td>[[${member.phone}]]</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="facility-modal" tabindex="-1" aria-labelledby="facility-modal-title" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="facility-modal-title">시설 조회</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <input class="form-control" id="quick-search" placeholder="이름을 입력하세요 ex) 홍길동">
+                        </div>
+
+                        <div class="overflow-auto" style="height: 640px">
+                            <table id="facility-table" class="table table-striped table-hover">
+                                <thead>
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col style="width:80%">
+                                </colgroup>
+
+                                <tr>
+                                    <th>시설번호</th>
+                                    <th>이름</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr class="facilityRow" th:each="facility: ${facilities}">
+                                    <td>[[${facility.bno}]]</td>
+                                    <td>[[${facility.building}]]</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <form action="/st" method="get" id="searchForm">
             <div class="input-group">
                 <input type="hidden" name="page" value="1">
@@ -40,27 +129,28 @@
                     <div class="table-filter">
                         <div class="table-filter-group">
                             <div class="filter-group">
-                                <label>시설번호</label>
-                                <input name="keyword" id="filterBuildingNo" th:value="${pageRequestDTO.keyword}" type="text" class="form-control">
+                                <label style="width: 80px">시설번호</label>
+                                <div class="input-group d-inline">
+                                    <input name="keyword" id="filterBuildingNo" th:value="${pageRequestDTO.keyword}" type="text" class="form-control" style="width: 200px">
+                                    <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#facility-modal">검색</button>
+                                </div>
                             </div>
                             <div class="filter-group">
-                                <label>멤버번호</label>
-                                <input name="mno" id="filterMemberNo" th:value="${pageRequestDTO.mno}" type="text" class="form-control">
-                            </div>
-                            <div id="contactDiv" class="filter-group" th:classappend="${#strings.isEmpty(pageRequestDTO.closeContact)} ? 'd-none' : ''">
-                                <label>시간간격(분:초)</label>
-                                <input name="closeContact" id="closeContactcloseContact" class="form-control" value="00:00" th:value="${pageRequestDTO.closeContact}"
-                                       type="text" placeholder="00:00 (분:초)">
+                                <label style="width: 80px">멤버번호</label>
+                                <div class="input-group d-inline">
+                                    <input name="mno" id="filterMemberNo" th:value="${pageRequestDTO.mno}" type="text" class="form-control" style="width: 200px">
+                                    <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#member-modal">검색</button>
+                                </div>
                             </div>
                         </div>
                         <div class="table-filter-group">
                             <div class="filter-group">
-                                <label>날짜(from)</label>
-                                <input name="from" id="filterDateFrom" type="date" th:value="${pageRequestDTO.from}" class="form-control">
+                                <label style="width: 80px">날짜(from)</label>
+                                <input name="from" id="filterDateFrom" type="date" th:value="${pageRequestDTO.from}" class="form-control" style="width: 200px">
                             </div>
                             <div class="filter-group">
-                                <label>날짜(to)</label>
-                                <input name="to" id="filterDateTo" type="date" th:value="${pageRequestDTO.to}" class="form-control">
+                                <label style="width: 80px; margin-left: 58px">날짜(to)</label>
+                                <input name="to" id="filterDateTo" type="date" th:value="${pageRequestDTO.to}" class="form-control" style="width: 200px">
                             </div>
                         </div>
                     </div>
@@ -130,6 +220,50 @@
             </li>
         </ul>
 
+        <script>
+            const memberRows = [].slice.call(document.querySelectorAll(".memberRow"));
+
+            $('#member-search').on('propertychange change keyup paste input', function () {
+                let qsVal = $('#member-search').val().toLowerCase();
+                memberRows.forEach(el => {
+                    if (el.cells[1].innerText.toLowerCase().startsWith(qsVal) || qsVal.length == 0) {
+                        el.classList.remove("d-none");
+                    }
+                    else {
+                        el.classList.add("d-none");
+                    }
+                });
+            })
+
+            $('.memberRow').on('click', function () {
+                const mno = $(this)[0].cells[0].innerText;
+                $('#member-modal').modal('toggle');
+                $('#filterMemberNo').val(mno);
+            });
+        </script>
+
+        <script>
+            const facilityRows = [].slice.call(document.querySelectorAll(".facilityRow"));
+
+            $('#facility').on('propertychange change keyup paste input', function () {
+                let qsVal = $('#facility-search').val().toLowerCase();
+                facilityRows.forEach(el => {
+                    if (el.cells[1].innerText.toLowerCase().startsWith(qsVal) || qsVal.length == 0) {
+                        el.classList.remove("d-none");
+                    }
+                    else {
+                        el.classList.add("d-none");
+                    }
+                });
+            })
+
+            $('.facilityRow').on('click', function () {
+                const bno = $(this)[0].cells[0].innerText;
+                $('#facility-modal').modal('toggle');
+                $('#filterBuildingNo').val(bno);
+            });
+        </script>
+
         <script th:inline="javascript">
 
             (function() {
@@ -157,7 +291,6 @@
             $('.btn-clear').click(function (e) {
                 window.location.href="/st"
             });
-
 
         </script>
 

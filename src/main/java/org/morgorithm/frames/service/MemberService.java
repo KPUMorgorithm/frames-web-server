@@ -23,6 +23,7 @@ public interface MemberService {
     ModelMapper modelMapper= ModelMapperUtil.getModelMapper();
 //    PageResultDTO<MemberDTO, Object[]> getList(PageRequestDTO requestDTO);
     PageResultDTO<MemberDTO, Member> getMemberList(PageRequestDTO requestDTO);
+    List<MemberDTO> getAllMembers();
     Long register(MemberDTO memberDTO);
     MemberDTO read(Long mno);
     void remove(Long gno);

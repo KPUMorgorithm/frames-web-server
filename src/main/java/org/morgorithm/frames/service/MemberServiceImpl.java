@@ -192,6 +192,13 @@ public class MemberServiceImpl implements MemberService {
 //        return new PageResultDTO<>(result,fn);
 //    }
 
+    public List<MemberDTO> getAllMembers() {
+        List<Member> members = memberRepository.findAll();
+        Function<Member, MemberDTO> fn=(entity->memberEntityToDto(entity));
+        return members.stream().map(fn).collect(Collectors.toList());
+
+    }
+
     public PageResultDTO<MemberDTO, Member> getMemberList(PageRequestDTO requestDTO){
         Pageable pageable=requestDTO.getPageable(Sort.by("mno").descending());
         BooleanBuilder booleanBuilder=getSearch(requestDTO);

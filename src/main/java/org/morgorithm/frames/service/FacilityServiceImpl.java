@@ -2,11 +2,14 @@ package org.morgorithm.frames.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.morgorithm.frames.configuration.ModelMapperUtil;
+import org.morgorithm.frames.dto.FacilityDTO;
 import org.morgorithm.frames.repository.FacilityRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -23,5 +26,10 @@ public class FacilityServiceImpl implements FacilityService{
             bname[fidx++]=(String)a[0];
         }
         return bname;
+    }
+
+    @Override
+    public List<FacilityDTO> getAllFacilities() {
+        return facilityRepository.findAll().stream().map(facility -> ModelMapperUtil.getModelMapper().map(facility, FacilityDTO.class)).collect(Collectors.toList());
     }
 }
