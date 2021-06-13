@@ -5,8 +5,10 @@ import lombok.extern.log4j.Log4j2;
 import org.morgorithm.frames.dto.PageRequestDTO;
 import org.morgorithm.frames.dto.PageResultDTO;
 import org.morgorithm.frames.projection.AccessSet;
+import org.morgorithm.frames.repository.MemberRepository;
 import org.morgorithm.frames.service.AccessSetService;
 import org.morgorithm.frames.service.FacilityService;
+import org.morgorithm.frames.service.MemberService;
 import org.morgorithm.frames.service.StatusService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -24,7 +26,7 @@ import java.util.List;
 @Controller
 @Log4j2
 public class STAnalysisController {
-        private final StatusService statusService;
+        private final MemberService memberService;
         private final FacilityService facilityService;
         private final AccessSetService accessSetService;
 
@@ -38,6 +40,8 @@ public class STAnalysisController {
 
         Page<AccessSet> page = new PageImpl<>(accessSets.subList(start, end), pageable, accessSets.size());
         PageResultDTO<AccessSet, AccessSet> pageResultDTO = new PageResultDTO<>(page, e -> e);
+        model.addAttribute("members", memberService.getAllMembers());
+        model.addAttribute("facilities", facilityService.getAllFacilities());
         model.addAttribute("accessSets", accessSets);
         model.addAttribute("result", pageResultDTO);
         model.addAttribute("pageRequestDTO", pageRequestDTO);
