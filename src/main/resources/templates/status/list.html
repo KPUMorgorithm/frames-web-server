@@ -95,7 +95,7 @@
             <tbody>
 
             <tr th:each="dto, index : ${result.dtoList}">
-                <td>[[${index.count}]]</td>
+                <td>[[(${pageRequestDTO.page}-1)*10+${index.count}]]</td>
                 <td>[[${dto.statusnum}]]</td>
                 <td th:text="|${dto.member.name}(${dto.member.mno})|"></td>
                 <td th:text="|${dto.facility.building}(${dto.facility.bno})|"></td>
