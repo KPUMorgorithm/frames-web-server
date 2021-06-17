@@ -243,7 +243,10 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAccessSetByMemberIdAndFacilityId(@Param("memberId") Long memberId, @Param("facilityId") Long facilityId, String timeStart, String timeEnd);
 
-    @Query(value = "select * from status s where s.facility_bno = #{accessSet.facilityId} and s.regdate between #{accessSet.timeEnter} and #{accessSet.timeLeave}", nativeQuery = true)
-    List<Object[]> getStatusOverlapped(@Param("accessSet") AccessSet accessSet); // TODO: 고쳐야함
+//    @Query(value = "select s from Status s where s.facility.bno = #{accessSet.facilityId} " +
+//            "and s.regDate between #{accessSet.timeEnter} and #{accessSet.timeLeave}")
+//    List<Status> getStatusOverlapped(@Param("accessSet") AccessSet accessSet); // TODO: 고쳐야함
+
+    List<Status> findAllByRegDateBetweenAndFacilityBno(LocalDateTime start, LocalDateTime end, Long facilityBno);
     // -----------------------------------------------------
 }
