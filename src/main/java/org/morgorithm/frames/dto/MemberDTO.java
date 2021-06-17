@@ -15,5 +15,5 @@ public class MemberDTO {
     private String name;
     private String phone;
     @Builder.Default //디폴트로 초기화되어 있는 것
-    private List<MemberImageDTO> imageDTOList=new ArrayList<>();
+    private List<MemberImageDTO> imageDTOList = new ArrayList<>();
 }

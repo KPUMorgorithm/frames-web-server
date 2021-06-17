@@ -2,6 +2,7 @@ package org.morgorithm.frames.dto;
 
 import lombok.*;
 import org.morgorithm.frames.entity.Admin;
+
 import java.time.LocalDateTime;
 
 @Getter

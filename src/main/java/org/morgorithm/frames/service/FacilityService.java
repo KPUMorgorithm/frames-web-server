@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface FacilityService {
     String[] getFacilityNames();
+
     List<FacilityDTO> getAllFacilities();
 }

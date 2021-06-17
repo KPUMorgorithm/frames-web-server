@@ -11,14 +11,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @EnableJpaAuditing
 public class FramesApplication extends SpringBootServletInitializer {
-
     public static void main(String[] args) {
         SpringApplication.run(FramesApplication.class, args);
     }
+
     @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(FramesApplication.class);
     }
-
-
 }

@@ -21,8 +21,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         System.out.println("end point 연결!!!***");
-        registry.addEndpoint("/ws").setAllowedOriginPatterns("*").withSockJS().setClientLibraryUrl( "https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js" );
-
+        registry.addEndpoint("/ws").setAllowedOriginPatterns("*").withSockJS().setClientLibraryUrl("https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js");
     }
 
     //한 클라이언트에서 다른 클라이언트로 메시지를 라우팅 하는 데 사용될 메시지 브로커를 구성한다.
@@ -36,7 +35,4 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         //메시지 브로커는 특정 주제를 구독 한 연결된 모든 클라이언트에게 메시지를 broadcast한다.
         registry.enableSimpleBroker("/topic");
     }
-
-
-
 }

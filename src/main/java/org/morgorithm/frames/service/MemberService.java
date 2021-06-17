@@ -4,36 +4,38 @@ import lombok.Builder;
 import org.modelmapper.ModelMapper;
 import org.morgorithm.frames.configuration.ModelMapperUtil;
 import org.morgorithm.frames.dto.MemberDTO;
-import org.morgorithm.frames.dto.MemberImageDTO;
 import org.morgorithm.frames.dto.PageRequestDTO;
 import org.morgorithm.frames.dto.PageResultDTO;
 import org.morgorithm.frames.entity.Member;
-import org.morgorithm.frames.entity.MemberImage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public interface MemberService {
     @Builder.Default
-    ModelMapper modelMapper= ModelMapperUtil.getModelMapper();
-//    PageResultDTO<MemberDTO, Object[]> getList(PageRequestDTO requestDTO);
+    ModelMapper modelMapper = ModelMapperUtil.getModelMapper();
+
+    //    PageResultDTO<MemberDTO, Object[]> getList(PageRequestDTO requestDTO);
     PageResultDTO<MemberDTO, Member> getMemberList(PageRequestDTO requestDTO);
+
     List<MemberDTO> getAllMembers();
+
     Long register(MemberDTO memberDTO);
+
     MemberDTO read(Long mno);
+
     void remove(Long gno);
+
     void modify(MemberDTO dto);
+
     Member registerWithoutImage(MemberDTO memberDTO);
+
     void uploadAndSaveMemberImages(Member member, String imgurl[]) throws IOException;
+
     Long register(MemberDTO memberDTO, String imgurl[]) throws IOException;
 
-    default MemberDTO memberEntityToDto(Member entity){
-        MemberDTO dto=modelMapper.map(entity,MemberDTO.class);
+    default MemberDTO memberEntityToDto(Member entity) {
+        MemberDTO dto = modelMapper.map(entity, MemberDTO.class);
         /*MemberDTO dto=MemberDTO.builder()
                 .mno(entity.getMno())
                 .name(entity.getName())
@@ -60,7 +62,6 @@ public interface MemberService {
 //
 //        return memberDTO;
 //    }
-
 
     //여기에 멤버DTO가 들어올 것이다
     //즉 웹에서 정보가 들어옴
@@ -98,5 +99,4 @@ public interface MemberService {
 //                .build();*/
 //        return entity;
 //    }
-
 }

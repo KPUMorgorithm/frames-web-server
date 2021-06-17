@@ -1,9 +1,7 @@
 package org.morgorithm.frames.repository;
 
-
 import org.morgorithm.frames.entity.Status;
 import org.morgorithm.frames.projection.AccessSet;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -14,10 +12,9 @@ import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPredicateExecutor<Status> {
+public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslPredicateExecutor<Status> {
     @Query("select s.state from Status s where s.member.mno=:mno")
     List<Object> getFacilityState(Long mno);
-
 
     @Query("select s.facility, count(s.state), s.facility.bno, s.state from Status s  group by s.facility, s.state")
     List<Object[]> getFacilityInInfo();
@@ -25,11 +22,12 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Query("select s.facility, count(s.state), s.facility.bno, s.state, s.regDate from Status s WHERE (s.regDate >= :timeFrom AND s.regDate < :timeTo) group by s.facility, s.state order by s.facility.bno")
     List<Object[]> getFacilityInInfoOneDay(@Param("timeFrom") LocalDateTime fromTime, @Param("timeTo") LocalDateTime timeTo);
 
-
-    @Query("select distinct s.facility from Status s where s.member.mno=:mno") // unique 값들만 받아오도록 수정
+    @Query("select distinct s.facility from Status s where s.member.mno=:mno")
+        // unique 값들만 받아오도록 수정
     List<Object> getMemberFacility(Long mno);
 
-    @Query("select distinct s.facility from Status s where s.member.mno=:mno and (s.regDate >= :timeFrom AND s.regDate < :timeTo)") // unique 값들만 받아오도록 수정
+    @Query("select distinct s.facility from Status s where s.member.mno=:mno and (s.regDate >= :timeFrom AND s.regDate < :timeTo)")
+        // unique 값들만 받아오도록 수정
     List<Object> getMemberFacility(Long mno, @Param("timeFrom") LocalDateTime fromTime, @Param("timeTo") LocalDateTime timeTo);
 
     @Query("select s.regDate, s.state, s.facility.bno from Status s where s.member.mno=:mno")
@@ -66,26 +64,23 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
 
     @Modifying
     @Transactional
-    @Query(value="SET SQL_SAFE_UPDATES = 0", nativeQuery = true)
+    @Query(value = "SET SQL_SAFE_UPDATES = 0", nativeQuery = true)
     void setSafeUpdate();
 
-
     @Modifying
     @Transactional
-    @Query(value="set @cnt=0", nativeQuery = true)
+    @Query(value = "set @cnt=0", nativeQuery = true)
     void initialCnt();
 
-
     @Modifying
     @Transactional
-    @Query(value="update status set status.statusnum=@cnt\\:=@cnt+1",nativeQuery = true)
+    @Query(value = "update status set status.statusnum=@cnt\\:=@cnt+1", nativeQuery = true)
     void reorderKeyId();
 
     @Modifying
     @Transactional
-    @Query(value="ALTER TABLE status AUTO_INCREMENT = 1", nativeQuery = true)
+    @Query(value = "ALTER TABLE status AUTO_INCREMENT = 1", nativeQuery = true)
     void initialAutoIncrementToTheLatest();
-
 
     // --------------------시공간 질의------------------------
     @Query(value = "select s1.member_mno memberId, m.name memberName, s1.facility_bno facilityId, f.building facilityName, s1.temperature temperatureEnter, s2.temperature temperatureLeave, s1.statusnum statusEnterId, s2.statusnum statusLeaveId, s1.regdate timeEnter, s2.regdate timeLeave " +
@@ -168,7 +163,6 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAccessSetByMemberIdAndFacilityId(@Param("memberId") Long memberId, @Param("facilityId") Long facilityId);
 
-
     @Query(value = "select s1.member_mno memberId, m.name memberName, s1.facility_bno facilityId, f.building facilityName, s1.temperature temperatureEnter, s2.temperature temperatureLeave, s1.statusnum statusEnterId, s2.statusnum statusLeaveId, s1.regdate timeEnter, s2.regdate timeLeave " +
             "from status s1 " +
             "left join status s2 " +
@@ -208,7 +202,6 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
             "where s1.state = 0 and s1.member_mno = :memberId and (s1.regdate between :timeStart and :timeEnd or s2.regdate between :timeStart and :timeEnd) " +
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAccessSetByMemberId(@Param("memberId") Long memberId, String timeStart, String timeEnd);
-
 
     @Query(value = "select s1.member_mno memberId, m.name memberName, s1.facility_bno facilityId, f.building facilityName, s1.temperature temperatureEnter, s2.temperature temperatureLeave, s1.statusnum statusEnterId, s2.statusnum statusLeaveId, s1.regdate timeEnter, s2.regdate timeLeave " +
             "from status s1 " +
@@ -253,5 +246,4 @@ public interface StatusRepository extends JpaRepository<Status,Long>, QuerydslPr
     @Query(value = "select * from status s where s.facility_bno = #{accessSet.facilityId} and s.regdate between #{accessSet.timeEnter} and #{accessSet.timeLeave}", nativeQuery = true)
     List<Object[]> getStatusOverlapped(@Param("accessSet") AccessSet accessSet); // TODO: 고쳐야함
     // -----------------------------------------------------
-
 }

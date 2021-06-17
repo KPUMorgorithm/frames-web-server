@@ -1,21 +1,13 @@
 package org.morgorithm.frames.service;
 
-import com.querydsl.core.BooleanBuilder;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.morgorithm.frames.dto.PageRequestDTO;
-import org.morgorithm.frames.dto.PageResultDTO;
-import org.morgorithm.frames.dto.StatusDTO;
-import org.morgorithm.frames.entity.Status;
 import org.morgorithm.frames.projection.AccessSet;
 import org.morgorithm.frames.repository.StatusRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.function.Function;
 
 @Service
 @Log4j2
@@ -32,38 +24,31 @@ public class AccessSetService {
 //        Pageable pageable = requestDTO.getPageable(Sort.by("regDate"));
         if (requestDTO.getMno() != null && requestDTO.getMno().length() > 0) {
             if (requestDTO.getFrom() != null && requestDTO.getFrom().length() > 0
-                    && requestDTO.getTo() != null  && requestDTO.getTo().length() > 0) {
+                    && requestDTO.getTo() != null && requestDTO.getTo().length() > 0) {
                 if (requestDTO.getKeyword() != null && requestDTO.getKeyword().length() > 0) {
                     result = statusRepository.getAccessSetByMemberIdAndFacilityId(Long.parseLong(requestDTO.getMno()), Long.parseLong(requestDTO.getKeyword()), requestDTO.getFrom(), requestDTO.getTo());
-                }
-                else {
+                } else {
                     result = statusRepository.getAccessSetByMemberId(Long.parseLong(requestDTO.getMno()), requestDTO.getFrom(), requestDTO.getTo());
                 }
-            }
-            else {
+            } else {
                 if (requestDTO.getKeyword() != null && requestDTO.getKeyword().length() > 0) {
                     result = statusRepository.getAccessSetByMemberIdAndFacilityId(Long.parseLong(requestDTO.getMno()), Long.parseLong(requestDTO.getKeyword()));
-                }
-                else {
+                } else {
                     result = statusRepository.getAccessSetByMemberId(Long.parseLong(requestDTO.getMno()));
                 }
             }
-        }
-        else {
+        } else {
             if (requestDTO.getFrom() != null && requestDTO.getFrom().length() > 0
-                    && requestDTO.getTo() != null  && requestDTO.getTo().length() > 0) {
+                    && requestDTO.getTo() != null && requestDTO.getTo().length() > 0) {
                 if (requestDTO.getKeyword() != null && requestDTO.getKeyword().length() > 0) {
                     result = statusRepository.getAccessSetByFacilityId(Long.parseLong(requestDTO.getKeyword()), requestDTO.getFrom(), requestDTO.getTo());
-                }
-                else {
+                } else {
                     result = statusRepository.getAllAccessSet(requestDTO.getFrom(), requestDTO.getTo());
                 }
-            }
-            else {
+            } else {
                 if (requestDTO.getKeyword() != null && requestDTO.getKeyword().length() > 0) {
                     result = statusRepository.getAccessSetByFacilityId(Long.parseLong(requestDTO.getKeyword()));
-                }
-                else {
+                } else {
                     result = statusRepository.getAllAccessSet();
                 }
             }

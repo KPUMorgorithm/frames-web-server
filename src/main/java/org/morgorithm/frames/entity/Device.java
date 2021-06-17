@@ -14,14 +14,11 @@ import java.util.UUID;
 public class Device {
     @Id
     private UUID deviceId;
-
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name = "bno", insertable=false, updatable=false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "bno", insertable = false, updatable = false)
     private Facility facility;
-
     @Column
     private Long bno;
-
     @Column
     private Boolean state; // true : 입구, false : 출구
 }

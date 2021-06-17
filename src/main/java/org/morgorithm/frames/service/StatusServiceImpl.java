@@ -7,12 +7,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
-import org.apache.commons.collections.IteratorUtils;
-import org.apache.tomcat.jni.Local;
 import org.json.simple.JSONObject;
 import org.morgorithm.frames.dto.*;
 import org.morgorithm.frames.entity.Facility;
-import org.morgorithm.frames.entity.Member;
 import org.morgorithm.frames.entity.QStatus;
 import org.morgorithm.frames.entity.Status;
 import org.morgorithm.frames.repository.FacilityRepository;
@@ -22,9 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -35,106 +30,46 @@ import java.util.function.Function;
 @Log4j2
 @RequiredArgsConstructor
 public class StatusServiceImpl implements StatusService {
-
     static final int BUILDING_NUM = 10;
     private final StatusRepository statusRepository;
     private final MemberRepository memberRepository;
     private final FacilityRepository facilityRepository;
     private int flag = 1;
-
     private Long latestStatusNum = 0L; // 마지막으로 읽어온 로그 넘버
-    class Pair implements Comparable<Pair>{
 
-        private LocalDateTime ldt;
-        private double temperature;
-        public Pair(LocalDateTime x, double y){
-            this.ldt=x;
-            this.temperature=y;
-        }
-
-        public LocalDateTime getX(){
-            return ldt;
-        }
-
-        public double getY(){
-            return temperature;
-        }
-
-        @Override
-        public int compareTo(Pair o) {
-            boolean isAfter= this.ldt.isAfter(o.getX());
-
-
-            if(isAfter){
-                return 1;
-            }else if(this.ldt.isEqual(o.getX())){
-                if(this.temperature>o.temperature)
-                    return 1;
-            }
-            return -1;
-        }
-    }
-    class Data implements Comparable<Data>{
-
-        private String ldt;
-        private double temperature;
-        public Data(String x, double y){
-            this.ldt=x;
-            this.temperature=y;
-        }
-
-        public String getX(){
-            return ldt;
-        }
-
-        public double getY(){
-            return temperature;
-        }
-
-        @Override
-        public int compareTo(Data o) {
-            if(this.ldt.compareTo(o.ldt)>0?true:false){
-                return 1;
-            }else if(this.ldt.equals(o.ldt)){
-                if(this.temperature>o.temperature)
-                    return 1;
-            }
-            return -1;
-        }
-    }
     @Override
     public List<Data> getList(Long mno) {
         List<Object[]> result = statusRepository.getMemberDailyTemperatureStatus(mno);
         HashMap<String, Double> dailyStatus = new HashMap<String, Double>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM-dd");
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss");
-        String hhMMSS=" 00:00:00";
-        List<Pair> pairList=new ArrayList<>();
-        List<Data> dataList=new ArrayList<>();
+        String hhMMSS = " 00:00:00";
+        List<Pair> pairList = new ArrayList<>();
+        List<Data> dataList = new ArrayList<>();
         LocalDateTime stringToLdt;
         for (Object[] a : result) {
            /* System.out.println(Arrays.toString(a));
             System.out.println("temperature"+a[1]);
             System.out.println("regDate:"+a[0]);*/
-            if(a[0]!=null){
-                String temp=((LocalDateTime) a[0]).format(formatter);
-                temp+=hhMMSS;
-                stringToLdt=LocalDateTime.parse(temp, formatter2);
-                Pair pair=new Pair(stringToLdt,(double)a[1]);
+            if (a[0] != null) {
+                String temp = ((LocalDateTime) a[0]).format(formatter);
+                temp += hhMMSS;
+                stringToLdt = LocalDateTime.parse(temp, formatter2);
+                Pair pair = new Pair(stringToLdt, (double) a[1]);
                 pairList.add(pair);
-               // dailyStatus.put(temp.format(formatter), (double) a[1]);
+                // dailyStatus.put(temp.format(formatter), (double) a[1]);
             }
         }
         Collections.sort(pairList);
-        for(Pair p:pairList){
-          //  System.out.println("date:"+p.getX()+", temperature:"+p.getY());
+        for (Pair p : pairList) {
+            //  System.out.println("date:"+p.getX()+", temperature:"+p.getY());
             dailyStatus.put(p.getX().format(formatter), p.getY());
         }
 /*
         dailyStatus.forEach((key, value)
                 -> System.out.println("key: " + key + ", value: " + value));*/
         dailyStatus.forEach((key, value)
-                -> dataList.add(new Data(key,value)));
+                -> dataList.add(new Data(key, value)));
         Collections.sort(dataList);
        /* for(Data p:dataList){
             System.out.println("date:"+p.getX()+", temperature:"+p.getY());
@@ -148,7 +83,6 @@ public class StatusServiceImpl implements StatusService {
         EventDTO eventDTO = new EventDTO();
         PageRequestDTO requestDTO = new PageRequestDTO();
         Pageable pageable = requestDTO.getPageable(Sort.by("regDate").descending());
-
 
         //위험군 온도 숫자 초기화
         BooleanBuilder booleanBuilder1 = getDangerEventCondition();
@@ -229,7 +163,6 @@ public class StatusServiceImpl implements StatusService {
         LocalDateTime to = LocalDateTime.now();
         QStatus qStatus = QStatus.status;
 
-
         //검색 조건을 작성하기
         BooleanBuilder conditionBuilder = new BooleanBuilder();
 
@@ -237,8 +170,6 @@ public class StatusServiceImpl implements StatusService {
         conditionBuilder.and(qStatus.regDate.between(from, to));
 
         return conditionBuilder;
-
-
     }
 
     @Override
@@ -248,7 +179,6 @@ public class StatusServiceImpl implements StatusService {
         LocalDateTime to = LocalDateTime.now();
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         QStatus qStatus = QStatus.status;
-
 
         BooleanExpression expression = qStatus.statusnum.gt(0L);// gno > 0 조건만 생성
 
@@ -260,7 +190,6 @@ public class StatusServiceImpl implements StatusService {
         //범위:오늘동안
         conditionBuilder.and(qStatus.regDate.between(from, to));
 
-
         booleanBuilder.and(conditionBuilder);
         Iterable<Status> result = statusRepository.findAll(booleanBuilder);
         List<Status> totalList = Lists.newArrayList(result);
@@ -268,18 +197,15 @@ public class StatusServiceImpl implements StatusService {
         return totalList;
     }
 
-
     BooleanBuilder getDangerEventCondition() {
 
         //오늘 날짜
         LocalDateTime from = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime to = LocalDateTime.now();
 
-
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
         QStatus qStatus = QStatus.status;
-
 
         BooleanExpression expression = qStatus.statusnum.gt(0L);// gno > 0 조건만 생성
 
@@ -295,7 +221,6 @@ public class StatusServiceImpl implements StatusService {
 
         booleanBuilder.and(conditionBuilder);
 
-
         return booleanBuilder;
     }
 
@@ -305,11 +230,9 @@ public class StatusServiceImpl implements StatusService {
         LocalDateTime from = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime to = LocalDateTime.now();
 
-
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
         QStatus qStatus = QStatus.status;
-
 
         BooleanExpression expression = qStatus.statusnum.gt(0L);// gno > 0 조건만 생성
 
@@ -325,7 +248,6 @@ public class StatusServiceImpl implements StatusService {
 
         booleanBuilder.and(conditionBuilder);
 
-
         return booleanBuilder;
     }
 
@@ -335,11 +257,9 @@ public class StatusServiceImpl implements StatusService {
         LocalDateTime from = LocalDateTime.now().minusDays(1L).with(LocalTime.of(23, 59));
         LocalDateTime to = LocalDateTime.now();
 
-
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
         QStatus qStatus = QStatus.status;
-
 
         BooleanExpression expression = qStatus.statusnum.gt(0L);// gno > 0 조건만 생성
 
@@ -354,7 +274,6 @@ public class StatusServiceImpl implements StatusService {
         conditionBuilder.and(qStatus.temperature.between(36.9, 37.2));
 
         booleanBuilder.and(conditionBuilder);
-
 
         return booleanBuilder;
     }
@@ -427,7 +346,6 @@ public class StatusServiceImpl implements StatusService {
         }
         System.out.println("latestStatusNum after:" + latestStatusNum);
 
-
         conditionBuilder.and(qStatus.statusnum.between(latestStatusNum, infiniteStatusNum));
 
         status = statusRepository.findTopByOrderByStatusnumDesc();
@@ -442,7 +360,6 @@ public class StatusServiceImpl implements StatusService {
         }
 
         return conditionBuilder;
-
     }
 
     @Override
@@ -457,7 +374,6 @@ public class StatusServiceImpl implements StatusService {
 
         Page<Status> result = statusRepository.findAll(booleanBuilder, pageable);
 
-
         Function<Status, StatusDTO> fn = (entity -> statusEntityToDto(entity));
 
         return new PageResultDTO<>(result, fn);
@@ -469,7 +385,7 @@ public class StatusServiceImpl implements StatusService {
         List<String> dates = new ArrayList<>();
         List<String> bName = new ArrayList<>();
         List<Long> bno = new ArrayList<>();
-        List<Boolean> state=new ArrayList<>();
+        List<Boolean> state = new ArrayList<>();
         int len;
         int bidx = 0;
         BooleanBuilder conditionBuilder = new BooleanBuilder();
@@ -485,26 +401,26 @@ public class StatusServiceImpl implements StatusService {
             bName.add((String) a[0]);
         for (Object[] a : bnoResult)
             bno.add((Long) a[0]);
-        len=bName.size();
+        len = bName.size();
         if (date != null) {
             date += hhmmss;
             //LocalDateTime으로 파싱
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
             LocalDateTime from = LocalDateTime.parse(date, formatter);
-            LocalDateTime to = from.with(LocalTime.of(23,59));
+            LocalDateTime to = from.with(LocalTime.of(23, 59));
             // 하룻동안
             from = from.with(LocalTime.of(00, 00));
-            System.out.println("from:"+from );
-            System.out.println("to:"+to );
+            System.out.println("from:" + from);
+            System.out.println("to:" + to);
             conditionBuilder.and(qStatus.regDate.between(from, to));
             conditionBuilder.and(qStatus.member.mno.eq(trackerInfoDTO.getMno()));
             Iterable<Status> result = statusRepository.findAll(conditionBuilder);
-            Iterable<Status> stateResult=statusRepository.findAll(conditionBuilder);
+            Iterable<Status> stateResult = statusRepository.findAll(conditionBuilder);
             List<Status> mapInfoList = Lists.newArrayList(result);
-            List<Status> stateInfoList=Lists.newArrayList(stateResult);
-          //  System.out.println("*********************");
-          //  System.out.println("info:" + mapInfoList.toString());
-            for(Status s:stateInfoList){
+            List<Status> stateInfoList = Lists.newArrayList(stateResult);
+            //  System.out.println("*********************");
+            //  System.out.println("info:" + mapInfoList.toString());
+            for (Status s : stateInfoList) {
                 state.add(s.getState());
             }
             for (Status s : mapInfoList) {
@@ -515,34 +431,31 @@ public class StatusServiceImpl implements StatusService {
             }
             infoDTO.setTrackingBno(bnos);
             infoDTO.setDates(dates);
-            len=mapInfoList.size();
+            len = mapInfoList.size();
             infoDTO.setEntranceStatus(state);
         }
         infoDTO.setLength(len);
-        System.out.println("length:"+len);
+        System.out.println("length:" + len);
         infoDTO.setBName(bName);
         infoDTO.setBno(bno);
 
-
         return infoDTO;
     }
-
 
     @Override
     public void sendSms(PageRequestDTO requestDTO) {
         List<String> confirmedPath = new ArrayList<>();
         List<String> contactPath = new ArrayList<>();
-        List<Status> totalStatusList=new ArrayList<>();
-        LocalDateTime from=null;
-        LocalDateTime to=null;
-        String hhMMSSFrom=" 00:00:00";
-        String hhMMSSTo=" 23:59:59";
+        List<Status> totalStatusList = new ArrayList<>();
+        LocalDateTime from = null;
+        LocalDateTime to = null;
+        String hhMMSSFrom = " 00:00:00";
+        String hhMMSSTo = " 23:59:59";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         HashSet<Long> mnos = new HashSet<>();
-        int pageIdx=0;
-
+        int pageIdx = 0;
 
         //배열 초기화
         requestDTO.setSize(100000);
@@ -565,16 +478,14 @@ public class StatusServiceImpl implements StatusService {
             System.out.println("FROM:"+from.toString()+", TO"+to.toString());*/
 
 //            BooleanBuilder booleanBuilder = getSearch(requestDTO,from,to);
-            BooleanBuilder booleanBuilder = getSearch(requestDTO);
-            Page<Status> result = statusRepository.findAll(booleanBuilder, pageable);
-            for(Status p:result){
-                totalStatusList.add(p);
-            }
-      //  }
+        BooleanBuilder booleanBuilder = getSearch(requestDTO);
+        Page<Status> result = statusRepository.findAll(booleanBuilder, pageable);
+        for (Status p : result) {
+            totalStatusList.add(p);
+        }
+        //  }
 
-
-
-        for(Status p: totalStatusList){
+        for (Status p : totalStatusList) {
             System.out.println("시설: " + p.getFacility().getBuilding() + " 출입여부: " + (p.getState() ? "입장" : "퇴장") + " 시간: " + p.getRegDate());
         }
         //확진자 동선과 접촉자 동선을 confirmedPath와 contactPath로 분류
@@ -593,7 +504,6 @@ public class StatusServiceImpl implements StatusService {
             System.out.println(s);
         }*/
 
-
         System.out.println("Sending SNS Message");
         String api_key = "NCSJBLIL70QSO6P9";
         //사이트에서 발급 받은 API KEY
@@ -603,9 +513,7 @@ public class StatusServiceImpl implements StatusService {
 
         HashMap<String, String> params = new HashMap<String, String>();
 
-
         params.put("from", "01096588541");
-
 
         params.put("type", "LMS");
         String s = "";
@@ -666,18 +574,16 @@ public class StatusServiceImpl implements StatusService {
             //실제 데모용
             //*******************
             //*******************
-             params.put("to", phoneNum);
+            params.put("to", phoneNum);
             //*******************
             //*******************
             //실제 데모용
             //*******************
             //*******************
 
-
             try {
                 JSONObject obj = (JSONObject) coolsms.send(params);
                 System.out.println(obj.toString());
-
             } catch (CoolsmsException e) {
                 System.out.println(e.getMessage());
                 System.out.println(e.getCode());
@@ -685,25 +591,24 @@ public class StatusServiceImpl implements StatusService {
             s = "";
             phoneNum = "";
         }
-
-
     }
-    int countConfirmedDays(Long mno){
+
+    int countConfirmedDays(Long mno) {
         List<Object> result2 = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        HashMap<String, String> distinct=new HashMap<>();
+        HashMap<String, String> distinct = new HashMap<>();
         int total;
 
         result2 = statusRepository.getAllRegDate(mno);
 
         for (Object a : result2) {
-            LocalDateTime localDateTime=(LocalDateTime)a;
-            String s=localDateTime.format(formatter);
-            distinct.put(s,s);
+            LocalDateTime localDateTime = (LocalDateTime) a;
+            String s = localDateTime.format(formatter);
+            distinct.put(s, s);
         }
-        total=distinct.size();
+        total = distinct.size();
         //탐색해야할 날짜가 10일보다 작으면 total를 반환하고 그것을 초과하면 10일 반환
-        return total<=10?total:10;
+        return total <= 10 ? total : 10;
     }
 
     private BooleanBuilder getSearch(PageRequestDTO requestDTO) {
@@ -713,7 +618,6 @@ public class StatusServiceImpl implements StatusService {
         //데이터 유효성 10일로 설정
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime dataDue = LocalDateTime.now().minusDays(10L);
-
 
         System.out.println("now:" + now);
         System.out.println("minus one:" + dataDue);
@@ -755,7 +659,6 @@ public class StatusServiceImpl implements StatusService {
         System.out.println("####################");
 */
 
-
         //d->date
         if (from != null && to != null) {
             conditionBuilder.and(qStatus.regDate.between(from, to));
@@ -775,7 +678,6 @@ public class StatusServiceImpl implements StatusService {
 //            }
             conditionBuilder.and(buildingCondition);
             conditionBuilder.and(qStatus.member.mno.eq(Long.valueOf(requestDTO.getMno())));
-
 
             if (requestDTO.getCloseContact() != null && requestDTO.getCloseContact().length() != 0) { // TODO
 //                List<Long> bnoList = new ArrayList<>();
@@ -802,16 +704,13 @@ public class StatusServiceImpl implements StatusService {
                 if (requestDTO.getKeyword() != null && requestDTO.getKeyword().length() != 0) { // bno 주어짐
                     if (from != null & to != null) {
                         result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()), Long.valueOf(requestDTO.getKeyword()), from, to); // from to 주어짐
-                    }
-                    else {
+                    } else {
                         result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()), Long.valueOf(requestDTO.getKeyword()));
                     }
-                }
-                else { // bno 안주어짐
+                } else { // bno 안주어짐
                     if (from != null & to != null) {
                         result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()), from, to); // from to 주어짐
-                    }
-                    else {
+                    } else {
                         result = statusRepository.getRegDateAndState(Long.valueOf(requestDTO.getMno()));
                     }
                 }
@@ -844,13 +743,10 @@ public class StatusServiceImpl implements StatusService {
                     closeContactCondition1.and(qStatus.regDate.between(tempFrom, tempTo));
                     closeContactCondition1.and(qStatus.state.eq(state));
                     connectCondition.or(closeContactCondition1);
-
-
                 }
 
                 conditionBuilder.or(connectCondition);
             }
-
         }
 
         //모든 조건 통합
@@ -858,5 +754,65 @@ public class StatusServiceImpl implements StatusService {
         System.out.println(booleanBuilder.toString());
 
         return booleanBuilder;
+    }
+
+    class Pair implements Comparable<Pair> {
+        private LocalDateTime ldt;
+        private double temperature;
+
+        public Pair(LocalDateTime x, double y) {
+            this.ldt = x;
+            this.temperature = y;
+        }
+
+        public LocalDateTime getX() {
+            return ldt;
+        }
+
+        public double getY() {
+            return temperature;
+        }
+
+        @Override
+        public int compareTo(Pair o) {
+            boolean isAfter = this.ldt.isAfter(o.getX());
+
+            if (isAfter) {
+                return 1;
+            } else if (this.ldt.isEqual(o.getX())) {
+                if (this.temperature > o.temperature)
+                    return 1;
+            }
+            return -1;
+        }
+    }
+
+    class Data implements Comparable<Data> {
+        private String ldt;
+        private double temperature;
+
+        public Data(String x, double y) {
+            this.ldt = x;
+            this.temperature = y;
+        }
+
+        public String getX() {
+            return ldt;
+        }
+
+        public double getY() {
+            return temperature;
+        }
+
+        @Override
+        public int compareTo(Data o) {
+            if (this.ldt.compareTo(o.ldt) > 0 ? true : false) {
+                return 1;
+            } else if (this.ldt.equals(o.ldt)) {
+                if (this.temperature > o.temperature)
+                    return 1;
+            }
+            return -1;
+        }
     }
 }

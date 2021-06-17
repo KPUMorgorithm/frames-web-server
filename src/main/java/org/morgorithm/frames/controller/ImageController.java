@@ -1,7 +1,6 @@
 package org.morgorithm.frames.controller;
 
 import org.apache.commons.io.IOUtils;
-import org.morgorithm.frames.dto.MemberDTO;
 import org.morgorithm.frames.util.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

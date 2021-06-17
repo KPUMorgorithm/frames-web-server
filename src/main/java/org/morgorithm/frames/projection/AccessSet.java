@@ -17,14 +17,23 @@ public interface AccessSet {
 //    private LocalDateTime timeLeave;
 
     Long getMemberId();
+
     String getMemberName();
+
     Long getFacilityId();
+
     String getFacilityName();
+
     Long getStatusEnterId();
+
     Long getStatusLeaveId();
+
     Double getTemperatureEnter();
+
     Double getTemperatureLeave();
+
     LocalDateTime getTimeEnter();
+
     LocalDateTime getTimeLeave();
 
     default String asString() {

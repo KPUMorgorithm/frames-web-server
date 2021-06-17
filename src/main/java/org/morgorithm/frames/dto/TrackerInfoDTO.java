@@ -3,8 +3,6 @@ package org.morgorithm.frames.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.query.criteria.internal.expression.function.AggregationFunction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +19,11 @@ public class TrackerInfoDTO {
     private List<String> bName;
     private List<Long> trackingBno;
     private List<Boolean> entranceStatus;
-    public TrackerInfoDTO(){
-        mno=null;
-        date=null;
-        bno=new ArrayList<>();
-        dates=new ArrayList<>();
 
+    public TrackerInfoDTO() {
+        mno = null;
+        date = null;
+        bno = new ArrayList<>();
+        dates = new ArrayList<>();
     }
 }

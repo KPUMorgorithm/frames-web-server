@@ -7,23 +7,23 @@ import org.morgorithm.frames.dto.FacilityDTO;
 import org.morgorithm.frames.repository.FacilityRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class FacilityServiceImpl implements FacilityService{
+public class FacilityServiceImpl implements FacilityService {
     static final int BUILDING_NUM = 10;
     private final FacilityRepository facilityRepository;
+
     @Override
     public String[] getFacilityNames() {
-        String[] bname=new String[BUILDING_NUM];
-        int fidx=0;
-        List<Object[]> result=facilityRepository.getFacilityNames();
-        for(Object[] a:result){
-            bname[fidx++]=(String)a[0];
+        String[] bname = new String[BUILDING_NUM];
+        int fidx = 0;
+        List<Object[]> result = facilityRepository.getFacilityNames();
+        for (Object[] a : result) {
+            bname[fidx++] = (String) a[0];
         }
         return bname;
     }

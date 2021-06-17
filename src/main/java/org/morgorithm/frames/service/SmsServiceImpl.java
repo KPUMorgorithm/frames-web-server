@@ -1,6 +1,5 @@
 package org.morgorithm.frames.service;
 
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.morgorithm.frames.dto.SmsDTO;
@@ -11,12 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class SmsServiceImpl implements SmsService{
+public class SmsServiceImpl implements SmsService {
     private final SmsRepository smsRepository;
 
     @Override
     public void saveSmsInfo(SmsDTO smsDTO) {
-        Sms sms=Sms.builder().sender(smsDTO.getSender()).content(smsDTO.getContent()).receivedDate(smsDTO.getReceivedDate()).status(true).build();
+        Sms sms = Sms.builder().sender(smsDTO.getSender()).content(smsDTO.getContent()).receivedDate(smsDTO.getReceivedDate()).status(true).build();
         smsRepository.save(sms);
     }
 
