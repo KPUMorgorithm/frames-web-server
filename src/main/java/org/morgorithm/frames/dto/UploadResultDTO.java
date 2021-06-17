@@ -14,7 +14,6 @@ public class UploadResultDTO implements Serializable {
     private String uuid;
     private String folderPath;
 
-    //Jackson 라이브러리 책 402pg 참고
     public String getImageURL() {
         return URLEncoder.encode(folderPath + "/" + uuid + "_" + fileName, StandardCharsets.UTF_8);
     }
