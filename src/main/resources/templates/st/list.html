@@ -87,7 +87,7 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <input class="form-control" id="quick-search" placeholder="이름을 입력하세요 ex) 홍길동">
+                            <input class="form-control" id="facility-search" placeholder="시설명을 입력하세요 ex) E동">
                         </div>
 
                         <div class="overflow-auto" style="height: 640px">
@@ -108,6 +108,46 @@
                                 <tr class="facilityRow" th:each="facility: ${facilities}">
                                     <td>[[${facility.bno}]]</td>
                                     <td>[[${facility.building}]]</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div aria-hidden="true" aria-labelledby="overlapped-members-modal-title" class="modal fade" id="overlapped-members-modal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="overlapped-members-modal-title">접촉가능자 목록</h5>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="overflow-auto" style="height: 640px">
+                            <table class="table table-striped table-hover" id="overlapped-members-table">
+                                <thead>
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col style="width:30%">
+                                    <col style="width:50%">
+                                </colgroup>
+
+                                <tr>
+                                    <th>멤버번호</th>
+                                    <th>이름</th>
+                                    <th>전화번호</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <!-- TODO: 선택된 로그와 같은 시간, 공간에 있었던 멤버 목록 조회 -->
                                 </tr>
                                 </tbody>
                             </table>

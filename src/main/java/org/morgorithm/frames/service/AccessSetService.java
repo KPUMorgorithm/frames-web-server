@@ -3,6 +3,7 @@ package org.morgorithm.frames.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.morgorithm.frames.dto.PageRequestDTO;
+import org.morgorithm.frames.entity.Status;
 import org.morgorithm.frames.projection.AccessSet;
 import org.morgorithm.frames.repository.StatusRepository;
 import org.springframework.stereotype.Service;
@@ -57,9 +58,10 @@ public class AccessSetService {
     }
 
     // 2. 같은 공간에 있었던 멤버 목록 질의
-//    public List<Status> getStatusOverlapped(AccessSet accessSet) {
-//        return statusRepository.getStatusOverlapped(accessSet);
-//    }
+    public List<Status> getStatusOverlapped(AccessSet accessSet) {
+        List<Status> list = statusRepository.findAllByRegDateBetweenAndFacilityBno(accessSet.getTimeEnter(), accessSet.getTimeLeave(), accessSet.getFacilityId());
+        return list;
+    }
 
     // 3. 같은 공간에 있었던 시간 (초 단위) 질의
 }
