@@ -9,20 +9,15 @@
 
         <div class="container">
 
-            <div id="container"
-                 style=" float: left; width: 50%; height: 400px; margin: 0 auto">
-
-            </div>
-            <div id="container2"
-                 style=" float: left; width: 50%; height: 400px; margin: 0 auto">
-
-            </div>
-            <div id="buildingStatus" style="min-width: 310px; height: 400px; margin: 0 auto">
-
-
+            <div style="display: flex">
+                <div id="container" style="width: 50%; height: 400px; margin: 0 auto"></div>
+                <div id="container2" style="width: 50%; height: 400px; margin: 0 auto"></div>
             </div>
 
-            <table id="datatable" style="float: left; width: 36%;">
+            <div id="buildingStatus" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+            <div style="display: flex">
+                <table id="datatable" style="width: 40%;">
                 <thead>
                 <tr style="color:white; background-color:#009879">
                     <th></th>
@@ -84,28 +79,25 @@
                     <td style="color: #FF4136;"></td>
                 </tr>
                 </tbody>
-            </table>
-            <!--실시간 업데이트!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-            <div class="hidden" id="chat-page" style="float: right; width: 60%; border: 1px solid #85C1E9;">
-                <div class="chat-container" style="height: 430px">
-                    <div class="chat-header">
-                        <h2 style="color:#1B4F72; font-size:20px">실시간 출입 현황</h2>
-                    </div>
-                    <div class="connecting">
-                        연결중...
-                    </div>
-                    <ul id="messageArea" style="height: 360px; width: 89%;">
+                </table>
+                <div class="hidden" id="chat-page" style="width: 60%;">
+                    <div class="chat-container" style="height: 430px">
+                        <div class="chat-header">
+                            <h2 style="color:#1B4F72; font-size:20px">실시간 출입 현황</h2>
+                        </div>
+                        <div class="connecting">
+                            연결중...
+                        </div>
+                        <ul id="messageArea" style="height: 360px;">
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            </span>
-
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
             <script src="js/facilityStatus.js"></script>
-
 
         </div>
 
