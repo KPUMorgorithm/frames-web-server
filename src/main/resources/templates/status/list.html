@@ -10,23 +10,24 @@
 </head>
 
 <th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">출입로그</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">status-list</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
 
     <th:block th:fragment="content">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">출입로그</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">status-list</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
         <div aria-hidden="true" aria-labelledby="member-modal-title" class="modal fade" id="member-modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -73,7 +74,6 @@
                 </div>
             </div>
         </div>
-
         <div aria-hidden="true" aria-labelledby="facility-modal-title" class="modal fade" id="facility-modal"
              tabindex="-1">
             <div class="modal-dialog">
@@ -119,17 +119,19 @@
             </div>
         </div>
 
-        <form action="/status/list" id="searchForm" method="get">
-            <div class="input-group">
-                <input name="page" type="hidden" value="1">
+        <section class="content">
+            <div class="container-fluid">
+                <form action="/status/list" id="searchForm" method="get">
+                    <div class="input-group">
+                        <input name="page" type="hidden" value="1">
 
-                <!--th:value는 input에 ${}값을 넣어준다 keyword로 String형태로 들어가니 주의하기-->
-                <!--  <input type="hidden" class="form-control-keyword" name="keyword" th:value="${pageRequestDTO.keyword}">
-                  <input type="hidden" class="form-control-from" name="from" th:value="${pageRequestDTO.from}">
-                  <input type="hidden" class="form-control-to" name="to" th:value="${pageRequestDTO.to}">-->
+                        <!--th:value는 input에 ${}값을 넣어준다 keyword로 String형태로 들어가니 주의하기-->
+                        <!--  <input type="hidden" class="form-control-keyword" name="keyword" th:value="${pageRequestDTO.keyword}">
+                          <input type="hidden" class="form-control-from" name="from" th:value="${pageRequestDTO.from}">
+                          <input type="hidden" class="form-control-to" name="to" th:value="${pageRequestDTO.to}">-->
 
 
-                <span class="container" id="date-span-id" style="margin:0px; text-align: left;">
+                        <span class="container" id="date-span-id" style="margin:0px; text-align: left;">
 
                     <!-- table-filter -->
                     <div class="table-filter">
@@ -186,70 +188,71 @@
                     <button class="btn btn-outline-secondary sendSmsBtn" id="sendSMS"
                             type="button">Send Message</button>
                 </span>
-            </div>
-        </form>
+                    </div>
+                </form>
 
-        <!-- TABLE -->
-        <table class="table table-striped table-hover">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Sno</th>
-                <th scope="col">Mno</th>
-                <th scope="col">Building</th>
-                <th scope="col">DateTime</th>
-                <th scope="col">Temperature</th>
-                <th scope="col">Access Status</th>
-            </tr>
-            </thead>
-            <tbody>
+                <!-- TABLE -->
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">로그번호</th>
+                        <th scope="col">이름(멤버ID)</th>
+                        <th scope="col">시설(시설ID)</th>
+                        <th scope="col">기록일</th>
+                        <th scope="col">체온</th>
+                        <th scope="col">입퇴장 구분</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-            <tr th:each="dto, index : ${result.dtoList}">
-                <td>[[(${pageRequestDTO.page}-1)*10+${index.count}]]</td>
-                <td>[[${dto.statusnum}]]</td>
-                <td th:text="|${dto.member.name}(${dto.member.mno})|"></td>
-                <td th:text="|${dto.facility.building}(${dto.facility.bno})|"></td>
-                <td th:text="${#temporals.format(dto.regDate, 'yyyy-MM-dd HH:mm:ss')}">[[${dto.regDate}]]</td>
-                <td>[[${dto.temperature}]]</td>
-                <td th:text="${dto.state} ? 'Enter':'Leave'"></td>
+                    <tr th:each="dto, index : ${result.dtoList}">
+                        <td>[[(${pageRequestDTO.page}-1)*10+${index.count}]]</td>
+                        <td>[[${dto.statusnum}]]</td>
+                        <td th:text="|${dto.member.name}(${dto.member.mno})|"></td>
+                        <td th:text="|${dto.facility.building}(${dto.facility.bno})|"></td>
+                        <td th:text="${#temporals.format(dto.regDate, 'yyyy-MM-dd HH:mm:ss')}">[[${dto.regDate}]]</td>
+                        <td>[[${dto.temperature}]]</td>
+                        <td th:text="${dto.state} ? '입장':'퇴장'"></td>
 
-            </tr>
+                    </tr>
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
 
+                <ul class="pagination h-100 justify-content-center align-items-center">
 
-        <ul class="pagination h-100 justify-content-center align-items-center">
-
-            <li class="page-item " th:if="${result.prev}">
-                <a class="page-link" tabindex="-1" th:href="@{/status/list(page= ${result.start -1},
+                    <li class="page-item " th:if="${result.prev}">
+                        <a class="page-link" tabindex="-1" th:href="@{/status/list(page= ${result.start -1},
                     from=${pageRequestDTO.from},
                     to=${pageRequestDTO.to},
                     keyword = ${pageRequestDTO.keyword},
                     mno = ${pageRequestDTO.mno},
                     closeContact=${pageRequestDTO.closeContact})}">Previous</a>
-            </li>
+                    </li>
 
-            <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
-                <a class="page-link" th:href="@{/status/list(page = ${page} ,
+                    <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
+                        <a class="page-link" th:href="@{/status/list(page = ${page} ,
                     from=${pageRequestDTO.from},
                     to=${pageRequestDTO.to},
                     keyword = ${pageRequestDTO.keyword},
                     mno = ${pageRequestDTO.mno},
                     closeContact=${pageRequestDTO.closeContact})}">
-                    [[${page}]]
-                </a>
-            </li>
+                            [[${page}]]
+                        </a>
+                    </li>
 
-            <li class="page-item" th:if="${result.next}">
-                <a class="page-link" th:href="@{/status/list(page= ${result.end + 1} ,
+                    <li class="page-item" th:if="${result.next}">
+                        <a class="page-link" th:href="@{/status/list(page= ${result.end + 1} ,
                     from=${pageRequestDTO.from},
                     to=${pageRequestDTO.to},
                     keyword = ${pageRequestDTO.keyword},
                     mno = ${pageRequestDTO.mno},
                     closeContact=${pageRequestDTO.closeContact})}">Next</a>
-            </li>
-        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
         <script>
             const memberRows = [].slice.call(document.querySelectorAll(".memberRow"));
