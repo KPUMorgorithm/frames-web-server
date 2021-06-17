@@ -1,46 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" th:with="requireLogin=true" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>멤버수정</title>
+    <style>
+        .member_image {
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+</head>
 
 <th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">멤버수정</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">member-modify</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
 
-        <h1 class="mt-4">Member Modify Page</h1>
+        <section class="content">
+            <div class="container-fluid">
+                <form action="/member/modify" method="post">
+                    <!--            <input type="hidden" th:name="${ _csrf.parameterName }" th:value="${ _csrf.token }">-->
+                    <!--페이지 번호  -->
+                    <input name="page" th:value="${requestDTO.page}" type="hidden">
+                    <input name="type" th:value="${requestDTO.type}" type="hidden">
+                    <input name="keyword" th:value="${requestDTO.keyword}" type="hidden">
 
-        <form action="/member/modify" method="post">
-            <!--            <input type="hidden" th:name="${ _csrf.parameterName }" th:value="${ _csrf.token }">-->
-            <!--페이지 번호  -->
-            <input name="page" th:value="${requestDTO.page}" type="hidden">
-            <input name="type" th:value="${requestDTO.type}" type="hidden">
-            <input name="keyword" th:value="${requestDTO.keyword}" type="hidden">
+                    <div class="form-group">
+                        <label>멤버번호</label>
+                        <input class="form-control" name="mno" readonly th:value="${dto.mno}" type="text">
+                    </div>
 
+                    <div class="form-group">
+                        <label>이름</label>
+                        <input class="form-control" name="name" th:value="${dto.name}" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>전화번호</label>
+                        <textarea class="form-control" name="phone" rows="5">[[${dto.phone}]]</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>이미지 <span class="badge bg-danger" th:text="${dto.imageDTOList.size()}">0</span></label>
+                        <div>
+                            <th:block th:each="img: ${dto.imageDTOList}">
+                                <img class="member_image" th:src="@{${'/image/'+img.path+'/'+img.uuid+'_'+img.imgName}}">
+                            </th:block>
+                        </div>
+                    </div>
+                </form>
 
-            <div class="form-group">
-                <label>Mno</label>
-                <input class="form-control" name="mno" readonly th:value="${dto.mno}" type="text">
+                <button class="btn btn-primary modifyBtn" type="button">수정</button>
+
+                <button class="btn btn-info listBtn" type="button">목록</button>
+
+                <button class="btn btn-danger removeBtn" type="button">삭제</button>
             </div>
-
-            <div class="form-group">
-                <label>Name</label>
-                <input class="form-control" name="name" th:value="${dto.name}" type="text">
-            </div>
-            <div class="form-group">
-                <label>Phone</label>
-                <textarea class="form-control" name="phone" rows="5">[[${dto.phone}]]</textarea>
-            </div>
-            <div class="form-group">
-                <label>Image Count</label>
-                <input class="form-control" name="imgCnt" readonly th:value="${dto.imageDTOList.size()}" type="text">
-            </div>
-
-
-        </form>
-
-        <button class="btn btn-primary modifyBtn" type="button">Modify</button>
-
-        <button class="btn btn-info listBtn" type="button">List</button>
-
-        <button class="btn btn-danger removeBtn" type="button">Remove</button>
+        </section>
 
         <script th:inline="javascript">
 
