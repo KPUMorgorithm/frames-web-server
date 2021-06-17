@@ -22,7 +22,6 @@ public class AccessSetService {
             return statusRepository.getAllAccessSet();
         }
         List<AccessSet> result = null;
-//        Pageable pageable = requestDTO.getPageable(Sort.by("regDate"));
         if (requestDTO.getMno() != null && requestDTO.getMno().length() > 0) {
             if (requestDTO.getFrom() != null && requestDTO.getFrom().length() > 0
                     && requestDTO.getTo() != null && requestDTO.getTo().length() > 0) {
