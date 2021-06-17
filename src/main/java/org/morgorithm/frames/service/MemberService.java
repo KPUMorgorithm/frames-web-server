@@ -4,6 +4,7 @@ import lombok.Builder;
 import org.modelmapper.ModelMapper;
 import org.morgorithm.frames.configuration.ModelMapperUtil;
 import org.morgorithm.frames.dto.MemberDTO;
+import org.morgorithm.frames.dto.MemberImageDTO;
 import org.morgorithm.frames.dto.PageRequestDTO;
 import org.morgorithm.frames.dto.PageResultDTO;
 import org.morgorithm.frames.entity.Member;
