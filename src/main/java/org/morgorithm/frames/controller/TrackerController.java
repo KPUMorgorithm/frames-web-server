@@ -18,10 +18,7 @@ public class TrackerController {
 
     @GetMapping("/tracker")
     public void register(TrackerInfoDTO trackerInfoDTO, Model model) {
-        // System.out.println("***************test trackerinfo******"+statusService.getMapInfo(trackerInfoDTO));
         model.addAttribute("result", statusService.getMapInfo(trackerInfoDTO));
-        // model.addAttribute("bName",statusService.getMapInfo(trackerInfoDTO).getBName());
-
         model.addAttribute("bName", statusService.getMapInfo(trackerInfoDTO).getBName());
     }
 }
