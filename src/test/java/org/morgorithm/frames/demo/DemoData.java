@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,7 @@ public class DemoData {
     //30개의 더미 멤버들에 대해선 3일 동안의 데이터를 넣지만 3개의 유의미한 멤버에 대해서는 7일 동안의 데이터를 넣는다
     //이유는 멤버 상세정보에 들어갔을 때 온도 변화 그래프를 좀 더 데이터를 넣어주고 데모 때 보여주기 위함이다.
     @Test
+    @Rollback(false)
     public void insertStatusData() {
         List<Status> totalData = new ArrayList<>();
         int cnt = (int) (memberRepository.count());
@@ -149,6 +151,7 @@ public class DemoData {
     //30명의 더미 멤버와 조성욱, 유영균, 송인걸 3명멤버 등록 (총 33명 등록)
     @Commit
     @Transactional
+    @Rollback(false)
     @Test
     public void insertMembers() {
         IntStream.rangeClosed(1, 30).forEach(i -> {
@@ -197,6 +200,7 @@ public class DemoData {
     //여기서는 송인걸을 확진자로 두고 나머지 두명은 밀접 접촉자로 분류한다.
     //출입로그에서 검색할 땐 <확진 번호:33 시간 간격: 1~3초로 두고 한다>
     @Test
+    @Rollback(false)
     void contactTestData() {
         Long bno = 0L;
         List<Long> bnoList = new ArrayList<>();
@@ -443,12 +447,9 @@ public class DemoData {
 
     }
 
-    @Test
-    void test(){
-        System.out.println("test");
-    }
     //dashboard와 실시간 현황 테스트용이다
     @Test
+    @Rollback(false)
     void realtimeTestData() throws InterruptedException {
 
 
