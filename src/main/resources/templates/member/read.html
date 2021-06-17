@@ -1,43 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" th:with="requireLogin=true" xmlns:th="http://www.thymeleaf.org">
-
+<head>
+    <title>멤버조회</title>
+    <style>
+        .member_image {
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+</head>
 <th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
 
-        <h1 class="mt-4">Member Read Page</h1>
-
-        <div class="form-group">
-            <label>Mno</label>
-            <input class="form-control" name="mno" readonly th:value="${dto.mno}" type="text">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">멤버조회</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">member</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
 
-        <div class="form-group">
-            <label>Name</label>
-            <input class="form-control" name="name" readonly th:value="${dto.name}" type="text">
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <textarea class="form-control" name="phone" readonly rows="5">[[${dto.phone}]]</textarea>
-        </div>
-        <div class="form-group">
-            <label>Image</label>
-            <th:block th:each="img: ${dto.imageDTOList}">
-                <img th:src="@{${'/image/'+img.path+'/'+img.uuid+'_'+img.imgName}}">
-            </th:block>
-            <input class="form-control" name="imgCnt" readonly th:value="${dto.imageDTOList.size()}" type="text">
-        </div>
+        <section class="content">
+            <div class="container">
+                <div class="form-group">
+                    <label>멤버번호</label>
+                    <input class="form-control" name="mno" readonly th:value="${dto.mno}" type="text">
+                </div>
+
+                <div class="form-group">
+                    <label>이름</label>
+                    <input class="form-control" name="name" readonly th:value="${dto.name}" type="text">
+                </div>
+                <div class="form-group">
+                    <label>전화번호</label>
+                    <textarea class="form-control" name="phone" readonly rows="5">[[${dto.phone}]]</textarea>
+                </div>
+                <div class="form-group">
+                    <label>이미지 <span class="badge bg-danger" th:text="${dto.imageDTOList.size()}">0</span></label>
+                    <div>
+                        <th:block th:each="img: ${dto.imageDTOList}">
+                            <img class="member_image" th:src="@{${'/image/'+img.path+'/'+img.uuid+'_'+img.imgName}}">
+                        </th:block>
+                    </div>
+                </div>
 
 
-        <a th:href="@{/member/modify(mno = ${dto.mno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
-            <button class="btn btn-primary" type="button">Modify</button>
-        </a>
+                <a th:href="@{/member/modify(mno = ${dto.mno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+                    <button class="btn btn-primary" type="button">수정</button>
+                </a>
 
-        <a th:href="@{/member/list(page=${requestDTO.page} , type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
-            <button class="btn btn-info" type="button">List</button>
-        </a>
+                <a th:href="@{/member/list(page=${requestDTO.page} , type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+                    <button class="btn btn-info" type="button">목록</button>
+                </a>
 
-        <div id="container"></div>
+                <div id="container"></div>
+            </div>
+        </section>
+
+
         <script th:inline="javascript">
             const classList = [[${mdto}]];
 
