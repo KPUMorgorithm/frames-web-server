@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @ToString(exclude = {"member", "facility"})
-
 public class Status extends BaseEntity {
     public static final boolean ENTER = true;
     public static final boolean LEAVE = false;
