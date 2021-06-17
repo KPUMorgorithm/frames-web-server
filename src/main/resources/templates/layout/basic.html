@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<link rel="stylesheet" href="../../static/css/main.css">
+<link href="../../static/css/main.css" rel="stylesheet">
 <th:block th:fragment="setContent(content)">
     <head>
 
         <head>
 
             <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <meta name="description" content="">
-            <meta name="author" content="">
+            <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+            <meta content="" name="description">
+            <meta content="" name="author">
 
             <title>Simple Sidebar - Start Bootstrap Template</title>
 
             <title>Simple Sidebar - Start Bootstrap Template</title>
 
             <!-- Bootstrap core CSS -->
-            <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+            <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 
             <!-- Custom styles for this template -->
-            <link th:href="@{/css/simple-sidebar.css}" rel="stylesheet">
+            <link rel="stylesheet" th:href="@{/css/simple-sidebar.css}">
 
             <!-- Bootstrap core JavaScript -->
             <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
             <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
             <!--coronaVirus highchart graph-->
-            <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet" />
+            <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css"/>
             <script src="https://code.highcharts.com/highcharts.js"></script>
             <script src="https://code.highcharts.com/modules/series-label.js"></script>
             <script src="https://code.highcharts.com/modules/exporting.js"></script>
             <script src="https://code.highcharts.com/modules/export-data.js"></script>
             <script src="https://code.highcharts.com/modules/accessibility.js"></script>
             <!--buildingStatus highchart graph-->
-            <link th:href="@{/css/buildingStatus.css}" type="text/css" rel="stylesheet" />
+            <link rel="stylesheet" th:href="@{/css/buildingStatus.css}" type="text/css"/>
             <script src="https://code.highcharts.com/highcharts.js"></script>
             <script src="https://code.highcharts.com/modules/data.js"></script>
             <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -49,14 +49,14 @@
 
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading">FRAMES </div>
+            <div class="sidebar-heading">FRAMES</div>
             <div class="list-group list-group-flush">
-                <a href="/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                <a href="/member/register" class="list-group-item list-group-item-action bg-light">Register</a>
-                <a href="/member/list" class="list-group-item list-group-item-action bg-light">Members</a>
-                <a href="/status/list" class="list-group-item list-group-item-action bg-light">Search</a>
-                <a href="/events/list" class="list-group-item list-group-item-action bg-light">Events</a>
-                <a href="/map/tracker" class="list-group-item list-group-item-action bg-light">Tracker</a>
+                <a class="list-group-item list-group-item-action bg-light" href="/">Dashboard</a>
+                <a class="list-group-item list-group-item-action bg-light" href="/member/register">Register</a>
+                <a class="list-group-item list-group-item-action bg-light" href="/member/list">Members</a>
+                <a class="list-group-item list-group-item-action bg-light" href="/status/list">Search</a>
+                <a class="list-group-item list-group-item-action bg-light" href="/events/list">Events</a>
+                <a class="list-group-item list-group-item-action bg-light" href="/map/tracker">Tracker</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -67,7 +67,9 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                        class="navbar-toggler" data-target="#navbarSupportedContent"
+                        data-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -80,10 +82,11 @@
                             <a class="nav-link" href="#">Link</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                               href="#" id="navbarDropdown" role="button">
                                 Dropdown
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <div class="dropdown-divider"></div>
@@ -96,7 +99,7 @@
 
             <div class="container-fluid">
 
-                <th:block th:replace = "${content}"></th:block>
+                <th:block th:replace="${content}"></th:block>
 
             </div>
 
@@ -107,11 +110,9 @@
     <!-- /#wrapper -->
 
 
-
-
     <!-- Menu Toggle Script -->
     <script>
-        $("#menu-toggle").click(function(e) {
+        $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });

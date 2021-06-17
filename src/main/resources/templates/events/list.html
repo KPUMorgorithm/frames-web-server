@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=true">
+<html lang="en" th:with="requireLogin=true" xmlns:th="http://www.thymeleaf.org">
 <!--datetimepicker bootstrap-->
 
 
@@ -19,9 +19,9 @@
         <html lang="en">
         <head>
             <meta charset="UTF-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/event.css}">
-            <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/modal.scss}">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+            <link media="screen" rel="stylesheet" th:href="@{/css/event.css}" type="text/css">
+            <link media="screen" rel="stylesheet" th:href="@{/css/modal.scss}" type="text/css">
             <title>CSS GRID DASHBOARD</title>
         </head>
 
@@ -31,7 +31,7 @@
                 <!-- MAIN TITLE STARTS HERE -->
 
                 <div class="main__title">
-                    <img src="assets/hello.svg" alt=""/>
+                    <img alt="" src="assets/hello.svg"/>
                     <div class="main__greeting">
                         <h1>Events</h1>
                         <p>Real-Time Monitoring</p>
@@ -44,8 +44,8 @@
                 <div class="main__cards">
                     <div class="card">
                         <i
-                                class="fa fa-user-o fa-2x text-lightblue"
                                 aria-hidden="true"
+                                class="fa fa-user-o fa-2x text-lightblue"
                         ></i>
                         <div class="card_inner">
                             <p class="text-primary-p">Total Member</p>
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="card">
-                        <i class="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
+                        <i aria-hidden="true" class="fa fa-calendar fa-2x text-red"></i>
                         <div class="card_inner">
                             <p class="text-primary-p">Today's Date</p>
                             <span class="font-bold text-title" id="date">[[${result.todayDate}]]</span>
@@ -63,8 +63,8 @@
 
                     <div class="card">
                         <i
-                                class="fa fa-video-camera fa-2x text-yellow"
                                 aria-hidden="true"
+                                class="fa fa-video-camera fa-2x text-yellow"
                         ></i>
                         <div class="card_inner">
                             <p class="text-primary-p">Members in the Campus</p>
@@ -106,25 +106,28 @@
 
                         <div class="charts__right__cards">
                             <div class="card3">
-                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down4">Total</h1>
-                                <p style="font-size:40px" id="total"></p>
+                                <h1 data-target="#modal-fullscreen-xs-down4" data-toggle="modal" type="button">
+                                    Total</h1>
+                                <p id="total" style="font-size:40px"></p>
                             </div>
 
                             <div class="card4">
 
-                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down">
+                                <h1 data-target="#modal-fullscreen-xs-down" data-toggle="modal" type="button">
                                     Danger</h1>
-                                <p style="font-size:40px" id="danger"></p>
+                                <p id="danger" style="font-size:40px"></p>
                             </div>
 
                             <div class="card2">
-                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down3">Normal</h1>
-                                <p style="font-size:40px" id="normal"></p>
+                                <h1 data-target="#modal-fullscreen-xs-down3" data-toggle="modal" type="button">
+                                    Normal</h1>
+                                <p id="normal" style="font-size:40px"></p>
                             </div>
 
                             <div class="card1" style="background-color: #FFD119; color: #fd7e14">
-                                <h1 type="button" data-toggle="modal" data-target="#modal-fullscreen-xs-down2">Warning</h1>
-                                <p style="font-size:40px" id="warning"></p>
+                                <h1 data-target="#modal-fullscreen-xs-down2" data-toggle="modal" type="button">
+                                    Warning</h1>
+                                <p id="warning" style="font-size:40px"></p>
                             </div>
                         </div>
 
@@ -138,16 +141,16 @@
 
 
         <!-- Modal Danger -->
-        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down" tabindex="-1" role="dialog"
-             aria-labelledby="myModalLabel" aria-hidden="true">
+        <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down"
+             role="dialog" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content" style="width:900px; overflow-y: scroll;">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;</button>
 
                     </div>
                     <div class="modal-body">
-                        <table class="table table-striped" >
+                        <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -179,7 +182,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
 
                     </div>
                 </div>
@@ -187,16 +190,16 @@
         </div>
 
         <!-- Modal Warning -->
-        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down2" tabindex="-1" role="dialog"
-             aria-labelledby="myModalLabel" aria-hidden="true">
+        <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down2"
+             role="dialog" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content" style="width:900px; overflow-y: scroll;">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;</button>
 
                     </div>
                     <div class="modal-body">
-                        <table class="table table-striped" >
+                        <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -228,23 +231,23 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
 
                     </div>
                 </div>
             </div>
         </div>
         <!-- Modal Warning -->
-        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down3" tabindex="-1" role="dialog"
-             aria-labelledby="myModalLabel" aria-hidden="true">
+        <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down3"
+             role="dialog" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content" style="width:900px; overflow-y: scroll;">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;</button>
 
                     </div>
                     <div class="modal-body">
-                        <table class="table table-striped" >
+                        <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -276,23 +279,23 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
 
                     </div>
                 </div>
             </div>
         </div>
         <!-- Modal Warning -->
-        <div class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down4" tabindex="-1" role="dialog"
-             aria-labelledby="myModalLabel" aria-hidden="true">
+        <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade modal-fullscreen-xs-down" id="modal-fullscreen-xs-down4"
+             role="dialog" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content" style="width:900px; overflow-y: scroll;">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;</button>
 
                     </div>
                     <div class="modal-body">
-                        <table class="table table-striped" >
+                        <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -324,7 +327,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
 
                     </div>
                 </div>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:with="preloader=true,requireLogin=true">
+<html lang="ko" th:with="preloader=true,requireLogin=true" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
-        <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/main.css}">
+        <link media="screen" rel="stylesheet" th:href="@{/css/main.css}" type="text/css">
 
         <div class="container">
 
@@ -86,8 +86,8 @@
                 </tbody>
             </table>
             <!--실시간 업데이트!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-            <div id="chat-page" class="hidden" style="float: right; width: 60%; border: 1px solid #85C1E9;">
-                <div class="chat-container" style="height: 430px" >
+            <div class="hidden" id="chat-page" style="float: right; width: 60%; border: 1px solid #85C1E9;">
+                <div class="chat-container" style="height: 430px">
                     <div class="chat-header">
                         <h2 style="color:#1B4F72; font-size:20px">실시간 출입 현황</h2>
                     </div>
@@ -102,26 +102,22 @@
             </span>
 
 
-
             <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
             <script src="js/facilityStatus.js"></script>
-
-
 
 
         </div>
 
         <script th:inline="javascript">
 
-            const listDates=[[${dates}]];
-            const listTotalConfirmed=[[${totalConfirmed}]];
-            const listIncreaseFromYesterday=[[${increaseFromYesterday}]];
-            const listDailyCure=[[${dailyCure}]];
-            const listDailyExam=[[${dailyExam}]];
-            const totalClear=[[${totalClear}]];
-            const listDailyDeath=[[${dailyDeath}]]
-
+            const listDates = [[${dates}]];
+            const listTotalConfirmed = [[${totalConfirmed}]];
+            const listIncreaseFromYesterday = [[${increaseFromYesterday}]];
+            const listDailyCure = [[${dailyCure}]];
+            const listDailyExam = [[${dailyExam}]];
+            const totalClear = [[${totalClear}]];
+            const listDailyDeath = [[${dailyDeath}]]
 
 
             Highcharts.chart('container', {
@@ -134,7 +130,7 @@
                     }
                 },
                 subtitle: {
-                    text: '전체 확진자 수: '+listTotalConfirmed,
+                    text: '전체 확진자 수: ' + listTotalConfirmed,
                     style: {
                         color: '#4169E1'
                     }
@@ -157,8 +153,8 @@
                     }
 
                 },
-                yAxis:[{
-                    labels:{
+                yAxis: [{
+                    labels: {
                         style: {
                             color: "#00bfff"
                         }
@@ -169,7 +165,7 @@
                             color: "#00bfff"
                         }
                     }
-                },{ // Primary yAxis
+                }, { // Primary yAxis
                     labels: {
                         style: {
                             color: Highcharts.getOptions().colors[1]
@@ -203,14 +199,14 @@
                 series: [{
                     name: '일일 확진자 수',
                     data: listIncreaseFromYesterday
-                },{
+                }, {
                     name: '사망자 수',
-                    yAxis:1,
+                    yAxis: 1,
                     data: listDailyDeath
                 },],
                 //highchart.com 안나오게 하기
-                credits:{
-                    enabled:false
+                credits: {
+                    enabled: false
                 },
 
 
@@ -241,7 +237,7 @@
                     }
                 },
                 subtitle: {
-                    text: '전체 격리해제 수: '+totalClear,
+                    text: '전체 격리해제 수: ' + totalClear,
                     style: {
                         color: "#4e6500"
                     }
@@ -264,8 +260,8 @@
                     }
 
                 },
-                yAxis:[{
-                    labels:{
+                yAxis: [{
+                    labels: {
                         style: {
                             color: "#00ca00"
                         }
@@ -276,7 +272,7 @@
                             color: "#00ca00"
                         }
                     }
-                },{ // Primary yAxis
+                }, { // Primary yAxis
                     labels: {
                         style: {
                             color: "#746493"
@@ -309,17 +305,17 @@
 
                 series: [{
                     name: '격리해제',
-                   data: listDailyCure,
+                    data: listDailyCure,
                     color: '#00ca00'
-                },{
+                }, {
                     name: '검사',
-                    yAxis:1,
+                    yAxis: 1,
                     data: listDailyExam,
                     color: '#746493'
                 },],
                 //highchart.com 안나오게 하기
-                credits:{
-                    enabled:false
+                credits: {
+                    enabled: false
                 },
 
                 responsive: {

@@ -1,4 +1,3 @@
-
 var arrIn;
 var arrOut;
 var arrBno;
@@ -6,8 +5,8 @@ var arrBName;
 var table;
 var statusList;
 var compareTemp;
-var cmp1=1;
-var cmp2=2;
+var cmp1 = 1;
+var cmp2 = 2;
 
 'use strict';
 
@@ -23,6 +22,7 @@ var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
+
 function connect() {
 
 
@@ -76,35 +76,33 @@ function onMessageReceived(payload) {
     var messageElement = document.createElement('li');
 
 
-
-
     arrIn = message.in;
     arrOut = message.out;
     arrBno = message.bno;
     arrBName = message.bname;
-    statusList=message.statusList;
+    statusList = message.statusList;
 
-    if(statusList.length!==0)
-        cmp1=JSON.stringify(statusList);
-    var t=cmp1===cmp2;
-    console.log("**************equal?"+t);
-    if(cmp1===cmp2)
+    if (statusList.length !== 0)
+        cmp1 = JSON.stringify(statusList);
+    var t = cmp1 === cmp2;
+    console.log("**************equal?" + t);
+    if (cmp1 === cmp2)
         return;
 
     console.log("**************not equal");
-    compareTemp=message.statusList;
-    cmp1=JSON.stringify(statusList);
-    cmp2=JSON.stringify(compareTemp);
+    compareTemp = message.statusList;
+    cmp1 = JSON.stringify(statusList);
+    cmp2 = JSON.stringify(compareTemp);
 
-   // compareTemp=message.statusList;
-    var bName=[];
-    var mno=[];
-    var tem=[];
-    var regDate=[];
-    var entranceState=[];
+    // compareTemp=message.statusList;
+    var bName = [];
+    var mno = [];
+    var tem = [];
+    var regDate = [];
+    var entranceState = [];
 
-    for(var i=0;i<statusList.length;i++){
-        var object=statusList[i];
+    for (var i = 0; i < statusList.length; i++) {
+        var object = statusList[i];
         bName.push(object.facility.building);
         mno.push(object.member.mno);
         tem.push(object.temperature);
@@ -118,58 +116,50 @@ function onMessageReceived(payload) {
     console.log(regDate);
     console.log(entranceState);
 
-  // var test2=tes10.mno;
-
-
-
-
-
-
+    // var test2=tes10.mno;
 
 
     //var avatarElement = document.createElement('i');
-   // var avatarText = document.createTextNode(message.sender[0]);
-   // avatarElement.appendChild(avatarText);
-   // avatarElement.style['background-color'] = getAvatarColor(message.sender);
+    // var avatarText = document.createTextNode(message.sender[0]);
+    // avatarElement.appendChild(avatarText);
+    // avatarElement.style['background-color'] = getAvatarColor(message.sender);
 
-  //  messageElement.appendChild(avatarElement);
+    //  messageElement.appendChild(avatarElement);
 
-  //  var usernameElement = document.createElement('span');
-  //  var usernameText = document.createTextNode(message.sender);
- //   usernameElement.appendChild(usernameText);
-  //  messageElement.appendChild(usernameElement);
-
-
+    //  var usernameElement = document.createElement('span');
+    //  var usernameText = document.createTextNode(message.sender);
+    //   usernameElement.appendChild(usernameText);
+    //  messageElement.appendChild(usernameElement);
 
 
     //실질적인 메시지 내용이 들어감
-    for(var i=0;i<bName.length;i++){
+    for (var i = 0; i < bName.length; i++) {
         var textElement = document.createElement('p');
 
 
-        if(tem[i]>=37.3){
-            textElement.style.color="#ff0000";
-            textElement.className ="list-group-item list-group-item-danger";
-        }else if(tem[i]<=37.2 && tem[i]>=36.9){
-            textElement.style.color="#feb301";
-            textElement.className ="list-group-item list-group-item-warning";
-        }else{
-            textElement.style.color="#007f00";
-            textElement.className ="list-group-item list-group-item-success";
+        if (tem[i] >= 37.3) {
+            textElement.style.color = "#ff0000";
+            textElement.className = "list-group-item list-group-item-danger";
+        } else if (tem[i] <= 37.2 && tem[i] >= 36.9) {
+            textElement.style.color = "#feb301";
+            textElement.className = "list-group-item list-group-item-warning";
+        } else {
+            textElement.style.color = "#007f00";
+            textElement.className = "list-group-item list-group-item-success";
         }
 
 
         var s;
-        if(entranceState[i])
-            s="입장";
+        if (entranceState[i])
+            s = "입장";
         else
-            s="퇴장";
+            s = "퇴장";
         console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-        var messageText = document.createTextNode("시설:"+bName[i]+" 아이디:"+mno[i]+" 온도:"+tem[i]+" 시간:"+regDate[i]+" "+s);
-        console.log("############test:"+"시설:"+bName[i]+" 아이디:"+mno[i]+" 온도:"+tem[i]+" 시간:"+regDate[i]+" "+s);
+        var messageText = document.createTextNode("시설:" + bName[i] + " 아이디:" + mno[i] + " 온도:" + tem[i] + " 시간:" + regDate[i] + " " + s);
+        console.log("############test:" + "시설:" + bName[i] + " 아이디:" + mno[i] + " 온도:" + tem[i] + " 시간:" + regDate[i] + " " + s);
         textElement.appendChild(messageText);
 
-      //  messageElement.appendChild(horizontalElement);
+        //  messageElement.appendChild(horizontalElement);
         messageElement.appendChild(textElement);
 
         messageArea.appendChild(messageElement);
@@ -181,24 +171,16 @@ function onMessageReceived(payload) {
     //test section ***************************
 
 
+    const table = document.getElementById('datatable');
 
-
-
-
-
-
-
-
-
-    const table=document.getElementById('datatable');
-
-    for(let j=0;j<10;j++){
-        table.rows[j+1].cells[0].innerHTML=arrBName[j];
-        table.rows[j+1].cells[1].innerHTML=arrIn[j];
-        table.rows[j+1].cells[2].innerHTML=arrOut[j];
+    for (let j = 0; j < 10; j++) {
+        table.rows[j + 1].cells[0].innerHTML = arrBName[j];
+        table.rows[j + 1].cells[1].innerHTML = arrIn[j];
+        table.rows[j + 1].cells[2].innerHTML = arrOut[j];
     }
 
 }
+
 //test function getAvatarColor
 function getAvatarColor(messageSender) {
     var hash = 0;
@@ -231,8 +213,8 @@ $(function () {
 
                         // set up the updating of the chart each second
                         var series = this.series[0];
-                        var series2=this.series[1];
-                        var cate=this.xAxis[0];
+                        var series2 = this.series[1];
+                        var cate = this.xAxis[0];
                         setInterval(function () {
                             series.setData(arrIn);
                             series.setName("In");
@@ -267,21 +249,21 @@ $(function () {
             exporting: {
                 enabled: false
             },
-            credits:{
-                enabled:false
+            credits: {
+                enabled: false
             },
 
             series: [{
-                data: [0,0,0,0,0,0,0,0,0,0],color:'#f89203',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], color: '#f89203',
                 name: 'In',
                 dataLabels: {
                     enabled: true,
                     color: '#e10000',
                     //inside: true
                 }
-            },{
+            }, {
 
-                data: [0,0,0,0,0,0,0,0,0,0],color: '#0078e2',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], color: '#0078e2',
                 name: 'Out',
                 dataLabels: {
                     enabled: true,

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=true">
+<html lang="en" th:with="requireLogin=true" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
         <h1 class="mt-4">Member List Page</h1>
 
-        <form action="/member/list" method="get" id="searchForm">
+        <form action="/member/list" id="searchForm" method="get">
             <div class="input-group">
-                <input type="hidden" name="page" value = "1">
+                <input name="page" type="hidden" value="1">
                 <div class="input-group-prepend">
                     <select class="custom-select" name="type">
                         <option th:selected="${pageRequestDTO.type == null}">-------</option>
 
                         <!--option value=""안에 있는 것이 pageRequestDTO.type의 값으로 들어감-->
-                        <option value="n" th:selected="${pageRequestDTO.type =='n'}" >이름</option>
-                        <option value="p" th:selected="${pageRequestDTO.type =='p'}"  >전화번호</option>
+                        <option th:selected="${pageRequestDTO.type =='n'}" value="n">이름</option>
+                        <option th:selected="${pageRequestDTO.type =='p'}" value="p">전화번호</option>
                     </select>
                 </div>
                 <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
@@ -37,7 +37,7 @@
             </thead>
             <tbody>
 
-            <tr th:each="dto : ${result.dtoList}" >
+            <tr th:each="dto : ${result.dtoList}">
                 <th scope="row">
                     <a th:href="@{/member/read(mno = ${dto.mno},
                     page= ${result.page},
@@ -57,9 +57,9 @@
         <ul class="pagination h-100 justify-content-center align-items-center">
 
             <li class="page-item " th:if="${result.prev}">
-                <a class="page-link" th:href="@{/member/list(page= ${result.start -1},
+                <a class="page-link" tabindex="-1" th:href="@{/member/list(page= ${result.start -1},
                     type=${pageRequestDTO.type} ,
-                    keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">Previous</a>
+                    keyword = ${pageRequestDTO.keyword} ) }">Previous</a>
             </li>
 
             <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
@@ -80,13 +80,13 @@
 
             var searchForm = $("#searchForm");
 
-            $('.btn-search').click(function(e){
+            $('.btn-search').click(function (e) {
 
                 searchForm.submit();
 
             });
 
-            $('.btn-clear').click(function(e){
+            $('.btn-clear').click(function (e) {
 
                 searchForm.empty().submit();
 
