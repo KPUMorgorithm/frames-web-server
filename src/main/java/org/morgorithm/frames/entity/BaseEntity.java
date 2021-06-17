@@ -16,14 +16,11 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(value = {AuditingEntityListener.class})
 @Getter
-//setter와 Builder는 테스트 데이터 용으로 넣었다.
 @Setter
 @DynamicInsert
 abstract class BaseEntity {
     @CreatedDate
     @Convert(converter = LocalDateTimeAttributeConverter.class)
-    //@CreatedDate
-    //testData를 만들기 위해서 CreatDate 주석처리 해놓음
     @Column(name = "regdate", updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime regDate;
 }

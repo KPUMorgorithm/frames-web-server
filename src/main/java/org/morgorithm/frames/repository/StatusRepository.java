@@ -23,11 +23,9 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
     List<Object[]> getFacilityInInfoOneDay(@Param("timeFrom") LocalDateTime fromTime, @Param("timeTo") LocalDateTime timeTo);
 
     @Query("select distinct s.facility from Status s where s.member.mno=:mno")
-        // unique 값들만 받아오도록 수정
     List<Object> getMemberFacility(Long mno);
 
     @Query("select distinct s.facility from Status s where s.member.mno=:mno and (s.regDate >= :timeFrom AND s.regDate < :timeTo)")
-        // unique 값들만 받아오도록 수정
     List<Object> getMemberFacility(Long mno, @Param("timeFrom") LocalDateTime fromTime, @Param("timeTo") LocalDateTime timeTo);
 
     @Query("select s.regDate, s.state, s.facility.bno from Status s where s.member.mno=:mno")

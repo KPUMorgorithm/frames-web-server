@@ -52,9 +52,7 @@ public class SmsPathRequest {
     }
 
     void sendSmsAuthentication(String phoneNum, String content) {
-        //  System.out.println("phoneNum:" + phoneNum);
         String pn = phoneNum.substring(0, 3) + "-" + phoneNum.substring(3, 7) + "-" + phoneNum.substring(7, phoneNum.length());
-        //  System.out.println("pn:" + pn);
         List<Object[]> result = null;
         result = memberRepository.getNameByPhone(pn);
 
@@ -63,7 +61,6 @@ public class SmsPathRequest {
             //구성원 이름이랑 sender 이름이 같을 때
             System.out.println("name:" + name + " content:" + content);
             if (name.equals(content)) {
-                // System.out.println("name과 content가 같음");
                 System.out.println("mno:" + ((Long) a[1]));
                 sendSms((Long) a[1], phoneNum);
             }

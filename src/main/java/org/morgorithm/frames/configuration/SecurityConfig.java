@@ -32,7 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                //                .antMatchers("/user/info").hasRole("MEMBER")
                 .antMatchers("/api/test").hasAnyRole("MEMBER", "ADMIN")
                 .antMatchers("/**").permitAll()
                 .and()
@@ -48,8 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .cors()
-//                    .ignoringAntMatchers("/uploadAjax")
-//                    .ignoringAntMatchers("/status/sendSms")
                 .and()
                 .exceptionHandling().accessDeniedPage("/error");
         ;

@@ -18,10 +18,4 @@ public class SmsServiceImpl implements SmsService {
         Sms sms = Sms.builder().sender(smsDTO.getSender()).content(smsDTO.getContent()).receivedDate(smsDTO.getReceivedDate()).status(true).build();
         smsRepository.save(sms);
     }
-
-   /* public void testInsert(String n, String j) {
-        Test test=Test.builder().name(n).job(j).build();
-        System.out.println("*******name:"+n+" job:"+j);
-        testRepository.save(test);
-    }*/
 }
