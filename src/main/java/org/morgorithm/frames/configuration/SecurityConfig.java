@@ -48,8 +48,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .cors()
-//                    .ignoringAntMatchers("/uploadAjax")
-//                    .ignoringAntMatchers("/status/sendSms")
                 .and()
                 .exceptionHandling().accessDeniedPage("/error");
         ;
