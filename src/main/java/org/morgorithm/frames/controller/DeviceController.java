@@ -17,11 +17,11 @@ public class DeviceController {
 
     @PostMapping(value = "/facility", produces = "text/plain")
     public String addFacility(@RequestParam String deviceId, @RequestParam String facilityName, @RequestParam Boolean state) {
-        return ""+deviceService.addFacility(UUID.fromString(deviceId), facilityName, state).getBno();
+        return "" + deviceService.addFacility(UUID.fromString(deviceId), facilityName, state).getBno();
     }
 
     @PostMapping(value = "/device", produces = "text/plain")
     public String addDevice(@RequestParam String deviceId, @RequestParam Long bno, @RequestParam Boolean state) {
-        return ""+deviceService.addDevice(UUID.fromString(deviceId), bno, state).getBno();
+        return "" + deviceService.addDevice(UUID.fromString(deviceId), bno, state).getBno();
     }
 }

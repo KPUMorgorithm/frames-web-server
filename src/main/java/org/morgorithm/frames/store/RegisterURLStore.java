@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
@@ -13,32 +12,32 @@ import java.util.Random;
 @Getter
 @Log4j2
 public class RegisterURLStore {
-    private HashMap<String, Integer> remain = new HashMap<>();
-    private HashMap<String, String> to = new HashMap<>();
     private static RegisterURLStore instance;
-
+    private final HashMap<String, Integer> remain = new HashMap<>();
+    private final HashMap<String, String> to = new HashMap<>();
     @Value("org.zerock.upload.path")
     private String uploadPath;
+
+    private RegisterURLStore() {
+    }
 
     public static RegisterURLStore getInstance() {
         if (instance == null) instance = new RegisterURLStore();
         return instance;
     }
 
-    private RegisterURLStore() { }
-
     public void tick() {
-        for (String url: new HashSet<>(remain.keySet())) {
+        for (String url : new HashSet<>(remain.keySet())) {
             int val = remain.get(url);
             if (val <= 0) {
                 log.info("remove url: " + url);
                 remain.remove(url);
                 to.remove(url);
-                File img = new File(uploadPath, "register"+File.separator+url+".jpg");
+                File img = new File(uploadPath, "register" + File.separator + url + ".jpg");
                 img.deleteOnExit();
                 continue;
             }
-            remain.put(url, val-1);
+            remain.put(url, val - 1);
         }
     }
 
@@ -56,7 +55,7 @@ public class RegisterURLStore {
     }
 
     public void storeURL(String url, String source, int seconds) {
-        log.info("new url: " + url + " -> "+source);
+        log.info("new url: " + url + " -> " + source);
         remain.put(url, seconds);
         to.put(url, source);
     }

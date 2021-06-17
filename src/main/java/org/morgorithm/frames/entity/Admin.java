@@ -21,16 +21,12 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(length = 30, nullable = false)
     private String username;
-
     @Column(length = 100, nullable = false)
     private String password;
-
     @CreatedDate
     private LocalDateTime createdDate;
-
     @LastModifiedDate
     private LocalDateTime lastModifiedDate;
 }

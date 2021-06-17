@@ -8,16 +8,15 @@ import org.morgorithm.frames.entity.Status;
 
 import java.util.List;
 
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class RealTimeStatusDTO {
-    int in[];
-    int out[];
-    int bno[];
+    int[] in;
+    int[] out;
+    int[] bno;
     int total;
-    String bName[];
+    String[] bName;
     List<Status> statusList;
 }

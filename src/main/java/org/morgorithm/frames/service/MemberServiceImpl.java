@@ -4,7 +4,6 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.modelmapper.ModelMapper;
 import org.morgorithm.frames.configuration.ModelMapperUtil;
 import org.morgorithm.frames.dto.MemberDTO;
 import org.morgorithm.frames.dto.MemberImageDTO;
@@ -27,7 +26,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -39,7 +40,6 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
     private final MemberImageRepository memberImageRepository;
     private final StatusRepository statusRepository;
-
     @Value("${org.zerock.upload.path}")
     private String uploadPath;
 
@@ -48,32 +48,30 @@ public class MemberServiceImpl implements MemberService {
 
         //member은 foreign 키로 memberimage와 status가 참조하고 있기 때문에 먼저 지워주고 member을 마지막에 지워야 함
         List<Object[]> result = memberRepository.getMemberWithAll(mno);
-        List<Object[]> statusResult=memberRepository.getMemberWithStatus(mno);
+        List<Object[]> statusResult = memberRepository.getMemberWithStatus(mno);
 
-        Member member=(Member)result.get(0)[0];
+        Member member = (Member) result.get(0)[0];
 
-        result.forEach(arr->{
-            MemberImage memberImage=(MemberImage)arr[1];
+        result.forEach(arr -> {
+            MemberImage memberImage = (MemberImage) arr[1];
             memberImageRepository.delete(memberImage);
         });
 
-        statusResult.forEach(arr->{
-            Status status=(Status)arr[1];
-            if(status!=null)
-             statusRepository.delete(status);
+        statusResult.forEach(arr -> {
+            Status status = (Status) arr[1];
+            if (status != null)
+                statusRepository.delete(status);
         });
 
-
         memberRepository.delete(member);
-
 
         //Auto-Increment 재정렬
         memberRepository.setSafeUpdate();
         memberRepository.initialCnt();
         memberRepository.reorderKeyId();
         memberRepository.initialAutoIncrementToTheLatest();
-
     }
+
     @Override
     public MemberDTO read(Long mno) {
         Member member = memberRepository.findById(mno).orElse(null);
@@ -91,9 +89,9 @@ public class MemberServiceImpl implements MemberService {
     public void modify(MemberDTO dto) {
 
         //업데이트 하는 항목은 '제목', '내용'
-       // System.out.println("test ID*************************************::"+dto.getMno());
+        // System.out.println("test ID*************************************::"+dto.getMno());
         Optional<Member> result = memberRepository.findById(dto.getMno());
-        if(result.isPresent()){
+        if (result.isPresent()) {
 
             Member entity = result.get();
 
@@ -101,7 +99,6 @@ public class MemberServiceImpl implements MemberService {
             entity.changePhone(dto.getPhone());
 
             memberRepository.save(entity);
-
         }
     }
 
@@ -116,18 +113,18 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void uploadAndSaveMemberImages(Member member, String imgurl[]) throws IOException {
-        for (int i=0; i<imgurl.length; i++) {
+        for (int i = 0; i < imgurl.length; i++) {
             String url = imgurl[i];
 //            System.out.println("1  --  "+url);
             byte bytes[] = FileUtils.urlToByte(url);
             String pathDetail = FileUtils.generatedImagePath(uploadPath);
             String ext = FileUtils.getFileExtension(url);
             String uuid = UUID.randomUUID().toString();
-            String filename = i+"."+ext;
+            String filename = i + "." + ext;
 //            System.out.println(uploadPath);
 //            System.out.println(pathDetail);
 //            System.out.println(uploadPath + File.separator + pathDetail);
-            File image = new File(uploadPath + File.separator + pathDetail, uuid+"_"+filename);
+            File image = new File(uploadPath + File.separator + pathDetail, uuid + "_" + filename);
 //            System.out.println(image.getAbsolutePath());
 //            System.out.println(image.getPath());
             FileUtils.downloadFromByte(image.getAbsolutePath(), bytes);
@@ -194,23 +191,22 @@ public class MemberServiceImpl implements MemberService {
 
     public List<MemberDTO> getAllMembers() {
         List<Member> members = memberRepository.findAll();
-        Function<Member, MemberDTO> fn=(entity->memberEntityToDto(entity));
+        Function<Member, MemberDTO> fn = (entity -> memberEntityToDto(entity));
         return members.stream().map(fn).collect(Collectors.toList());
-
     }
 
-    public PageResultDTO<MemberDTO, Member> getMemberList(PageRequestDTO requestDTO){
-        Pageable pageable=requestDTO.getPageable(Sort.by("mno").descending());
-        BooleanBuilder booleanBuilder=getSearch(requestDTO);
+    public PageResultDTO<MemberDTO, Member> getMemberList(PageRequestDTO requestDTO) {
+        Pageable pageable = requestDTO.getPageable(Sort.by("mno").descending());
+        BooleanBuilder booleanBuilder = getSearch(requestDTO);
 
-        Page<Member> result=memberRepository.findAll(booleanBuilder,pageable);
+        Page<Member> result = memberRepository.findAll(booleanBuilder, pageable);
 
-        Function<Member, MemberDTO> fn=(entity->memberEntityToDto(entity));
+        Function<Member, MemberDTO> fn = (entity -> memberEntityToDto(entity));
 
         return new PageResultDTO<>(result, fn);
     }
 
-    private BooleanBuilder getSearch(PageRequestDTO requestDTO){
+    private BooleanBuilder getSearch(PageRequestDTO requestDTO) {
 
         String type = requestDTO.getType();
 
@@ -224,18 +220,17 @@ public class MemberServiceImpl implements MemberService {
 
         booleanBuilder.and(expression);
 
-        if(type == null || type.trim().length() == 0){ //검색 조건이 없는 경우
+        if (type == null || type.trim().length() == 0) { //검색 조건이 없는 경우
             return booleanBuilder;
         }
-
 
         //검색 조건을 작성하기
         BooleanBuilder conditionBuilder = new BooleanBuilder();
 
-        if(type.contains("n")){
+        if (type.contains("n")) {
             conditionBuilder.or(qMember.name.contains(keyword));
         }
-        if(type.contains("p")){
+        if (type.contains("p")) {
             conditionBuilder.or(qMember.phone.contains(keyword));
         }
 
@@ -244,6 +239,4 @@ public class MemberServiceImpl implements MemberService {
 
         return booleanBuilder;
     }
-
-
 }

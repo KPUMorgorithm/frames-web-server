@@ -3,11 +3,8 @@ package org.morgorithm.frames.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.morgorithm.frames.dto.PageRequestDTO;
-import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.entity.Status;
 import org.morgorithm.frames.service.StatusService;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +20,7 @@ public class EventController {
     private final StatusService statusService;
 
     @GetMapping("/list")
-    public String register(PageRequestDTO pageRequestDTO,Model model){
+    public String register(PageRequestDTO pageRequestDTO, Model model) {
         model.addAttribute("result", statusService.getEventInfo());
 
         model.addAttribute("result2", statusService.getStatusList(pageRequestDTO));
@@ -32,9 +29,8 @@ public class EventController {
         model.addAttribute("warningList", statusService.getWarningStatus());
         model.addAttribute("normalList", statusService.getNormalStatus());
         model.addAttribute("totalList", statusService.getTotalStatus());
-        List<Status> s=statusService.getDangerStatus();
+        List<Status> s = statusService.getDangerStatus();
 
         return "events/list";
     }
-
 }

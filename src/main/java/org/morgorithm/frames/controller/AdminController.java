@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 //admin
 @Controller
 @AllArgsConstructor
@@ -26,8 +27,7 @@ public class AdminController {
     public String execSignup(AdminDto adminDto) {
         try {
             adminService.loadUserByUsername(adminDto.getUsername());
-        }
-        catch (UsernameNotFoundException e) { // 중복없음
+        } catch (UsernameNotFoundException e) { // 중복없음
             if (!adminDto.getPassword().equals(adminDto.getPasswordRpt())) { // 비밀번호 확인 실패
                 return "redirect:/admin/signup?error=비밀번호가%20일치하지%20않습니다.";
             }

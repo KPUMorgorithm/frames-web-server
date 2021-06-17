@@ -14,6 +14,6 @@ public class URLMappingController {
         if (source == null) {
             return "redirect:/error";
         }
-        return "redirect:"+source;
+        return "redirect:" + source;
     }
 }

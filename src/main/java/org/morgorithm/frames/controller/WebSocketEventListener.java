@@ -1,9 +1,6 @@
 package org.morgorithm.frames.controller;
 
-
-
 import org.morgorithm.frames.dto.RealTimeStatusDTO;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-
 //event listener를 이용해서 소켓 연결(socket connect) 그리고 소켓 연결 끊기(disconnect)
 //이벤트를 수신하여 사용자가 채팅방을 참여(JOIN)하거나 떠날때(LEAVE)의 이벤트를 logging 하거나 broadcast할 수 있다.
 
@@ -23,7 +19,6 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 @Component
 public class WebSocketEventListener {
     private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
-
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
@@ -43,7 +38,6 @@ public class WebSocketEventListener {
         logger.info("Received a new web socket connection");
     }
 
-
     @EventListener
     //두번째 메서드인 SessionDisconnect 이벤트에서는
     // //웹 소켓 세션에서 사용자 이름을 추출하고 연결된 모든 클라이언트에게
@@ -53,10 +47,9 @@ public class WebSocketEventListener {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
         String username = (String) headerAccessor.getSessionAttributes().get("bno");
-        if(username != null) {
+        if (username != null) {
             logger.info("User Disconnected : " + username);
-            RealTimeStatusDTO realTimeStatusDTO =new RealTimeStatusDTO();
-
+            RealTimeStatusDTO realTimeStatusDTO = new RealTimeStatusDTO();
 
             messagingTemplate.convertAndSend("/topic/public", realTimeStatusDTO);
         }

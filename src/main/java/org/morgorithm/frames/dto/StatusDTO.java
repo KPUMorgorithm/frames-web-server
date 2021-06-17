@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import org.morgorithm.frames.entity.Facility;
 import org.morgorithm.frames.entity.Member;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Data

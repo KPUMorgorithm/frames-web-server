@@ -6,27 +6,35 @@ import org.morgorithm.frames.configuration.ModelMapperUtil;
 import org.morgorithm.frames.dto.*;
 import org.morgorithm.frames.entity.Status;
 
-import javax.sound.midi.Track;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public interface StatusService {
     @Builder.Default
-    ModelMapper modelMapper= ModelMapperUtil.getModelMapper();
-    RealTimeStatusDTO getFacilityStatus();
-    PageResultDTO<StatusDTO, Status> getStatusList(PageRequestDTO requestDTO);
-    TrackerInfoDTO getMapInfo(TrackerInfoDTO trackerInfoDTO);
-    void sendSms(PageRequestDTO requestDTO);
-    EventDTO getEventInfo();
-    List<Status> getDangerStatus();
-    List<Status> getWarningStatus();
-    List<Status> getNormalStatus();
-    List<Status> getTotalStatus();
-    List<StatusServiceImpl.Data> getList(Long mno);
-    default Status statusDtoToEntity(StatusDTO dto){
+    ModelMapper modelMapper = ModelMapperUtil.getModelMapper();
 
-        Status entity=modelMapper.map(dto,Status.class);
+    RealTimeStatusDTO getFacilityStatus();
+
+    PageResultDTO<StatusDTO, Status> getStatusList(PageRequestDTO requestDTO);
+
+    TrackerInfoDTO getMapInfo(TrackerInfoDTO trackerInfoDTO);
+
+    void sendSms(PageRequestDTO requestDTO);
+
+    EventDTO getEventInfo();
+
+    List<Status> getDangerStatus();
+
+    List<Status> getWarningStatus();
+
+    List<Status> getNormalStatus();
+
+    List<Status> getTotalStatus();
+
+    List<StatusServiceImpl.Data> getList(Long mno);
+
+    default Status statusDtoToEntity(StatusDTO dto) {
+
+        Status entity = modelMapper.map(dto, Status.class);
         /*Status entity=Status.builder()
                 .statusnum(dto.getStatusnum())
                 .member(dto.getMember())
@@ -36,9 +44,10 @@ public interface StatusService {
                 .build();*/
         return entity;
     }
-    default StatusDTO statusEntityToDto(Status entity){
 
-        StatusDTO dto=modelMapper.map(entity,StatusDTO.class);
+    default StatusDTO statusEntityToDto(Status entity) {
+
+        StatusDTO dto = modelMapper.map(entity, StatusDTO.class);
         /*StatusDTO dto=StatusDTO.builder()
                 .statusnum(entity.getStatusnum())
                 .member(entity.getMember())

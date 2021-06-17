@@ -15,7 +15,7 @@ import java.util.UUID;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class DeviceServiceImpl implements DeviceService{
+public class DeviceServiceImpl implements DeviceService {
     private DeviceRepository deviceRepository;
     private FacilityRepository facilityRepository;
 

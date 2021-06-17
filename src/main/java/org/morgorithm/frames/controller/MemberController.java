@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 @RequiredArgsConstructor
 @RequestMapping("/member")
@@ -23,7 +22,7 @@ public class MemberController {
     private final StatusService statusService;
 
     @GetMapping("/register")
-    public String register(Model model, @RequestParam(required = false) String url){
+    public String register(Model model, @RequestParam(required = false) String url) {
         if (url != null) {
             model.addAttribute("url", url);
 //            return "member/register_api";
@@ -43,7 +42,7 @@ public class MemberController {
                 .phone(phone)
                 .build();
 
-        Long mno=memberService.register(memberDTO, imgurl);
+        Long mno = memberService.register(memberDTO, imgurl);
 
         return "redirect:/";
     }
@@ -62,8 +61,8 @@ public class MemberController {
         log.info("list............." + pageRequestDTO);
 
         model.addAttribute("result", memberService.getMemberList(pageRequestDTO));
-
     }
+
     @GetMapping({"/read", "/modify"})
     public void read(Long mno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
 
@@ -72,11 +71,11 @@ public class MemberController {
         MemberDTO dto = memberService.read(mno);
         System.out.println(dto.toString());
         model.addAttribute("dto", dto);
-        model.addAttribute("mdto",statusService.getList(mno));
+        model.addAttribute("mdto", statusService.getList(mno));
     }
+
     @PostMapping("/remove")
     public String remove(long mno, RedirectAttributes redirectAttributes) {
-
 
         log.info("mno: " + mno);
 
@@ -85,14 +84,12 @@ public class MemberController {
         redirectAttributes.addFlashAttribute("msg", mno);
 
         return "redirect:/member/list";
-
     }
 
     @PostMapping("/modify")
     public String modify(MemberDTO dto,
                          @ModelAttribute("requestDTO") PageRequestDTO requestDTO,
                          RedirectAttributes redirectAttributes) {
-
 
         log.info("post modify.........................................");
         log.info("dto: " + dto);
@@ -105,6 +102,5 @@ public class MemberController {
         redirectAttributes.addAttribute("keyword", requestDTO.getKeyword());
 
         return "redirect:/member/read";
-
     }
 }
