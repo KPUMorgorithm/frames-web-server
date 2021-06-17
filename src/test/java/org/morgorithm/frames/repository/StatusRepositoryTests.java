@@ -9,8 +9,10 @@ import org.morgorithm.frames.projection.AccessSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -48,6 +50,35 @@ public class StatusRepositoryTests {
     }
 
     @Test
+    @Rollback(false)
+    public void insertEnterData() {
+        Member member = memberRepository.findById(1L).get();
+        Facility facility = facilityRepository.findById(1L).get();
+        Status status = Status.builder()
+                .facility(facility)
+                .state(Status.ENTER)
+                .member(member)
+                .temperature(36.5)
+                .build();
+        statusRepository.save(status);
+    }
+
+    @Test
+    @Rollback(false)
+    public void insertLeaveData() {
+        Member member = memberRepository.findById(1L).get();
+        Facility facility = facilityRepository.findById(1L).get();
+        Status status = Status.builder()
+                .facility(facility)
+                .state(Status.LEAVE)
+                .member(member)
+                .temperature(38.5)
+                .build();
+        statusRepository.save(status);
+    }
+
+    @Test
+    @Rollback(false)
     public void insertReliableStatusData(){ // 좀 더 정확한 출입로그 생성 (퇴장은 반드시 입장이 있어야 가능, 동시에 두 건물에 존재하는 것 불가능)
         List<Member> members = memberRepository.findAll();
         LinkedList<Long> bnos = new LinkedList<>(facilityRepository.getAllBnos());
@@ -106,6 +137,7 @@ public class StatusRepositoryTests {
     // 이것은 만들어지는 시간을 기록하기 때문이다 여기서는 내가 임의로 랜덤 시간을 배정한다.
     //dashboard의 실시간 출입현황 테스트용으로 사용할 수 없음 왜냐면 저건 현재 시간 기준으로 polling하기 때문
     @Test
+    @Rollback(false)
     public void insertStatusData(){
         List<Status> totalData=new ArrayList<>();
         int cnt=(int)(memberRepository.count());
@@ -196,6 +228,7 @@ public class StatusRepositoryTests {
     }
 
     @Test
+    @Rollback(false)
     void dummyData(){
         Member member=Member.builder().mno(5L).build();
         Facility facility= Facility.builder().bno(2L).building("building"+2L).build();
@@ -225,6 +258,7 @@ public class StatusRepositoryTests {
     //dashboard의 실시간 출입현황 테스트용이다
     //
     @Test
+    @Rollback(false)
     void testAddTestDataForRealTimeStatusUpdate() throws InterruptedException {
         int cnt=(int)(memberRepository.count());
         Long bno=0L;
@@ -255,6 +289,7 @@ public class StatusRepositoryTests {
     }
     //dashboard의 실시간 출입현황 테스트용으로 사용할 수 없음 왜냐면 저건 현재 시간 기준으로 polling하기 때문
     @Test
+    @Rollback(false)
     void testEventNowBooleanBuilderInsertDummyData(){
         List<Status> totalData=new ArrayList<>();
         int cnt=(int)(memberRepository.count());
@@ -359,6 +394,7 @@ public class StatusRepositoryTests {
 
     //데이터 유효기간 2주 검사 더미 데이터 삽입
     @Test
+    @Rollback(false)
     void makeDummyDataFromTweoWeeksBefore(){
         int cnt=(int)(memberRepository.count());
         Long bno=0L;
