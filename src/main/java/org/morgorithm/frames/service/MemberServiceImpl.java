@@ -201,7 +201,14 @@ public class MemberServiceImpl implements MemberService {
 
         Page<Member> result = memberRepository.findAll(booleanBuilder, pageable);
 
-        Function<Member, MemberDTO> fn = (entity -> memberEntityToDto(entity));
+        Function<Member, MemberDTO> fn = (entity -> {
+            List<MemberImage> memberImages = memberImageRepository.findByMemberMno(entity.getMno());
+            MemberDTO dto = memberEntityToDto(entity);
+            dto.setImageDTOList(memberImages.stream()
+                    .map(mi -> ModelMapperUtil.getModelMapper().map(mi, MemberImageDTO.class))
+                    .collect(Collectors.toList()));
+            return dto;
+        });
 
         return new PageResultDTO<>(result, fn);
     }

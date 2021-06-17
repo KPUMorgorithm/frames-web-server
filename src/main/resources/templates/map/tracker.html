@@ -1,14 +1,13 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=true">
-
+<html lang="en" th:with="requireLogin=true" xmlns:th="http://www.thymeleaf.org">
 
 
 <th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
         <script>
-            $( function() {
-                $( "#datepicker" ).datepicker();
-            } );
+            $(function () {
+                $("#datepicker").datepicker();
+            });
         </script>
         <html>
         <head>
@@ -35,13 +34,13 @@
         </head>
         <body>
 
-        <form action="/map/tracker" method="get" id="searchForm">
+        <form action="/map/tracker" id="searchForm" method="get">
         <span>
              <p>
-                 <b>Date: </b> <input type="text" id="datepicker" name="date"th:value="${trackerInfoDTO.date}">
+                 <b>Date: </b> <input id="datepicker" name="date" th:value="${trackerInfoDTO.date}" type="text">
                  <b>Member ID: </b><input name="mno" th:value="${trackerInfoDTO.mno}"></input>
-                 <button class="btn btn-outline-secondary btn-search" type="button" th:href="@{/map/tracker(date=${trackerInfoDTO.date},
-                 mno = ${trackerInfoDTO.mno})}">Search</button>
+                 <button class="btn btn-outline-secondary btn-search" th:href="@{/map/tracker(date=${trackerInfoDTO.date},
+                 mno = ${trackerInfoDTO.mno})}" type="button">Search</button>
              </p>
 
 
@@ -52,26 +51,20 @@
         <!-- 지도를 표시할 div 입니다 -->
         <div id="map"></div>
 
-        <script type="text/javascript"
-                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=27318fd9ee3426317ec44ef5a3995084"></script>
+        <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=27318fd9ee3426317ec44ef5a3995084"
+                type="text/javascript"></script>
         <script th:inline="javascript">
             var searchForm = $("#searchForm");
-            var bnoLength=[[${result.length}]];
-            var resultBno=[[${result.bno}]];
-            var bNames=[[${bName}]];
-            var trackingBno=[[${result.trackingBno}]];
-            var dates=[[${result.dates}]];
-            var state=[[${result.entranceStatus}]];
+            var bnoLength = [[${result.length}]];
+            var resultBno = [[${result.bno}]];
+            var bNames = [[${bName}]];
+            var trackingBno = [[${result.trackingBno}]];
+            var dates = [[${result.dates}]];
+            var state = [[${result.entranceStatus}]];
 
 
-
-
-
-
-
-
-            var buildingLat=[37.340451559678414,37.3403622339662,37.340025850128924,37.33971081625848,37.33971260779223,37.340246171837386,37.33943912861469,37.338637482492715,37.34144799913755,37.341106606280135];
-            var buildingLng=[126.73296906647658,126.73331357367792,126.73398057213083,126.7341255651304,126.73492396209339,126.73479231012293,126.73552019703162,126.73463433858562,126.73232792966488,126.73276925866197];
+            var buildingLat = [37.340451559678414, 37.3403622339662, 37.340025850128924, 37.33971081625848, 37.33971260779223, 37.340246171837386, 37.33943912861469, 37.338637482492715, 37.34144799913755, 37.341106606280135];
+            var buildingLng = [126.73296906647658, 126.73331357367792, 126.73398057213083, 126.7341255651304, 126.73492396209339, 126.73479231012293, 126.73552019703162, 126.73463433858562, 126.73232792966488, 126.73276925866197];
 
 
             $('.btn-search').click(function (e) {
@@ -93,19 +86,19 @@
 
             var positions = [];
             //positions[0]["content"]+="<div>테스트</div>"
-            console.log("bnoLength:"+bnoLength);
-            for(var i=0;i<10;i++){
-                positions.push({"content":'', "latlng":null});
+            console.log("bnoLength:" + bnoLength);
+            for (var i = 0; i < 10; i++) {
+                positions.push({"content": '', "latlng": null});
             }
-            if(state!==null){
-                for(var i=0;i<bnoLength;i++){
-                    positions[trackingBno[i]-1]["content"]="<div>";
-                    positions[trackingBno[i]-1]["content"]+=bNames[trackingBno[i]-1];
-                    positions[trackingBno[i]-1]["content"]+="</div>";
+            if (state !== null) {
+                for (var i = 0; i < bnoLength; i++) {
+                    positions[trackingBno[i] - 1]["content"] = "<div>";
+                    positions[trackingBno[i] - 1]["content"] += bNames[trackingBno[i] - 1];
+                    positions[trackingBno[i] - 1]["content"] += "</div>";
                 }
             }
 
-            for(var i=0;i<bnoLength;i++){
+            for (var i = 0; i < bnoLength; i++) {
                 /*
                 if(state!==null){
                     console.log("status"+state);
@@ -124,21 +117,21 @@
                         positions[trackingBno[i]-1]["content"]+="퇴장</div>"
                     }
                 }else{*/
-                    positions[i]["content"]="<div>"
-                    positions[i]["content"]+=bNames[i];
-                    positions[i]["content"]+="</div>";
-               // }
-                if(trackingBno===null)
-                    positions[i]["latlng"]=new kakao.maps.LatLng(buildingLat[i], buildingLng[i] );
+                positions[i]["content"] = "<div>"
+                positions[i]["content"] += bNames[i];
+                positions[i]["content"] += "</div>";
+                // }
+                if (trackingBno === null)
+                    positions[i]["latlng"] = new kakao.maps.LatLng(buildingLat[i], buildingLng[i]);
                 else
-                    positions[i]["latlng"]=new kakao.maps.LatLng(buildingLat[trackingBno[i]-1], buildingLng[trackingBno[i]-1] );
+                    positions[i]["latlng"] = new kakao.maps.LatLng(buildingLat[trackingBno[i] - 1], buildingLng[trackingBno[i] - 1]);
             }
-            if(state!==null){
-                console.log("test"+positions[0]["content"]);
-                console.log("test"+positions[9]["content"]);
-                console.log("positions.lenth:"+positions.length);
+            if (state !== null) {
+                console.log("test" + positions[0]["content"]);
+                console.log("test" + positions[9]["content"]);
+                console.log("positions.lenth:" + positions.length);
             }
-            console.log("test"+positions[0]["content"]);
+            console.log("test" + positions[0]["content"]);
             for (var i = 0; i < bnoLength; i++) {
                 // 마커를 생성합니다
                 var marker = new kakao.maps.Marker({
@@ -148,7 +141,7 @@
 
                 // 마커에 표시할 인포윈도우를 생성합니다
                 var infowindow = new kakao.maps.InfoWindow({
-                    content:  trackingBno!==null ? positions[trackingBno[i]-1].content : positions[i].content // 인포윈도우에 표시할 내용
+                    content: trackingBno !== null ? positions[trackingBno[i] - 1].content : positions[i].content // 인포윈도우에 표시할 내용
                 });
 
                 // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
@@ -174,14 +167,10 @@
             }
 
             // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
-            var linePath=[];
-            for(var i=0;i<dates.length;i++){
-                linePath.push(new kakao.maps.LatLng(buildingLat[trackingBno[i]-1],buildingLng[trackingBno[i]-1]));
+            var linePath = [];
+            for (var i = 0; i < dates.length; i++) {
+                linePath.push(new kakao.maps.LatLng(buildingLat[trackingBno[i] - 1], buildingLng[trackingBno[i] - 1]));
             }
-
-
-
-
 
 
             // 지도에 표시할 선을 생성합니다

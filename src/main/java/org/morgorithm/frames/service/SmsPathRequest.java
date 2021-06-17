@@ -36,7 +36,7 @@ public class SmsPathRequest {
 
     @Scheduled(cron = "*/5 * * * * *")
     public void sendPathSms() {
-        System.out.println("send Path Sms Call");
+//        System.out.println("send Path Sms Call");
         List<Object[]> result = smsRepository.getAllList();
 
         for (Object[] a : result) {

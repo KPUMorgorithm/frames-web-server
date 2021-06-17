@@ -99,7 +99,7 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
             "on m.mno = s1.member_mno " +
             "left join facility f " +
             "on f.bno = s1.facility_bno " +
-            "where s1.state = 0 " +
+            "where s1.state = 1 " +
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAllAccessSet();
 
@@ -119,7 +119,7 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
             "on m.mno = s1.member_mno " +
             "left join facility f " +
             "on f.bno = s1.facility_bno " +
-            "where s1.state = 0 and s1.member_mno = :memberId " +
+            "where s1.state = 1 and s1.member_mno = :memberId " +
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAccessSetByMemberId(@Param("memberId") Long memberId);
 
@@ -139,7 +139,7 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
             "on m.mno = s1.member_mno " +
             "left join facility f " +
             "on f.bno = s1.facility_bno " +
-            "where s1.state = 0 and s1.facility_bno = :facilityId " +
+            "where s1.state = 1 and s1.facility_bno = :facilityId " +
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAccessSetByFacilityId(@Param("facilityId") Long facilityId);
 
@@ -159,7 +159,7 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
             "on m.mno = s1.member_mno " +
             "left join facility f " +
             "on f.bno = s1.facility_bno " +
-            "where s1.state = 0 and s1.member_mno = :memberId and s1.facility_bno = :facilityId " +
+            "where s1.state = 1 and s1.member_mno = :memberId and s1.facility_bno = :facilityId " +
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAccessSetByMemberIdAndFacilityId(@Param("memberId") Long memberId, @Param("facilityId") Long facilityId);
 
@@ -179,7 +179,7 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
             "on m.mno = s1.member_mno " +
             "left join facility f " +
             "on f.bno = s1.facility_bno " +
-            "where s1.state = 0 and (s1.regdate between :timeStart and :timeEnd or s2.regdate between :timeStart and :timeEnd) " +
+            "where s1.state = 1 and (s1.regdate between :timeStart and :timeEnd or s2.regdate between :timeStart and :timeEnd) " +
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAllAccessSet(String timeStart, String timeEnd);
 
@@ -199,7 +199,7 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
             "on m.mno = s1.member_mno " +
             "left join facility f " +
             "on f.bno = s1.facility_bno " +
-            "where s1.state = 0 and s1.member_mno = :memberId and (s1.regdate between :timeStart and :timeEnd or s2.regdate between :timeStart and :timeEnd) " +
+            "where s1.state = 1 and s1.member_mno = :memberId and (s1.regdate between :timeStart and :timeEnd or s2.regdate between :timeStart and :timeEnd) " +
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAccessSetByMemberId(@Param("memberId") Long memberId, String timeStart, String timeEnd);
 
@@ -219,7 +219,7 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
             "on m.mno = s1.member_mno " +
             "left join facility f " +
             "on f.bno = s1.facility_bno " +
-            "where s1.state = 0 and s1.facility_bno = :facilityId and (s1.regdate between :timeStart and :timeEnd or s2.regdate between :timeStart and :timeEnd) " +
+            "where s1.state = 1 and s1.facility_bno = :facilityId and (s1.regdate between :timeStart and :timeEnd or s2.regdate between :timeStart and :timeEnd) " +
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAccessSetByFacilityId(@Param("facilityId") Long facilityId, String timeStart, String timeEnd);
 
@@ -239,7 +239,7 @@ public interface StatusRepository extends JpaRepository<Status, Long>, QuerydslP
             "on m.mno = s1.member_mno " +
             "left join facility f " +
             "on f.bno = s1.facility_bno " +
-            "where s1.state = 0 and s1.member_mno = :memberId and s1.facility_bno = :facilityId and (s1.regdate between :timeStart and :timeEnd or s2.regdate between :timeStart and :timeEnd) " +
+            "where s1.state = 1 and s1.member_mno = :memberId and s1.facility_bno = :facilityId and (s1.regdate between :timeStart and :timeEnd or s2.regdate between :timeStart and :timeEnd) " +
             "order by timeEnter asc", nativeQuery = true)
     List<AccessSet> getAccessSetByMemberIdAndFacilityId(@Param("memberId") Long memberId, @Param("facilityId") Long facilityId, String timeStart, String timeEnd);
 

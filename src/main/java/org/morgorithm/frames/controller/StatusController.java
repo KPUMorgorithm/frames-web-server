@@ -31,8 +31,7 @@ public class StatusController {
         }
         model.addAttribute("result", statusService.getStatusList(pageRequestDTOClone));
         model.addAttribute("members", memberService.getAllMembers());
-        System.out.println("All to String:" + pageRequestDTO.toString());
-        model.addAttribute("buildingName", facilityService.getFacilityNames());
+        model.addAttribute("facilities", facilityService.getAllFacilities());
         return "status/list";
     }
 

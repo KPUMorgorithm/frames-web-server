@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:with="requireLogin=false">
+<html lang="ko" th:with="requireLogin=false" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <form th:action="@{/api/register}" enctype="multipart/form-data" th:method="post">
-        <input type="file" name="frame">
-        <input type="submit">
-    </form>
+<form enctype="multipart/form-data" th:action="@{/api/register}" th:method="post">
+    <input name="frame" type="file">
+    <input type="submit">
+</form>
 </body>
 </html>

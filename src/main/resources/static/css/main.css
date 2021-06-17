@@ -133,16 +133,13 @@ button.accent {
 }
 
 .chat-container {
-    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-
 
     margin-left: 10px;
     margin-top: 10px;
     height: 480px;
     max-height: 480px;
-    width: 850px;
 }
 
 #chat-page ul {

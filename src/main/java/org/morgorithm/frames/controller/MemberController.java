@@ -59,7 +59,6 @@ public class MemberController {
     public void list(PageRequestDTO pageRequestDTO, Model model) {
 
         log.info("list............." + pageRequestDTO);
-
         model.addAttribute("result", memberService.getMemberList(pageRequestDTO));
     }
 

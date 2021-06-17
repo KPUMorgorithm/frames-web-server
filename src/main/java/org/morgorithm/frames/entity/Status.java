@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @ToString(exclude = {"member", "facility"})
 
 public class Status extends BaseEntity {
-    public static final boolean ENTER = false;
-    public static final boolean LEAVE = true;
+    public static final boolean ENTER = true;
+    public static final boolean LEAVE = false;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long statusnum;
