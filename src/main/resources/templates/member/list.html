@@ -1,100 +1,135 @@
 <!DOCTYPE html>
 <html lang="en" th:with="requireLogin=true" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>멤버목록</title>
+    <style>
+        .clickable-row {
+            cursor: pointer;
+        }
 
+        .clickable-row:hover {
+            background: rgba(191, 159, 255, 0.5) !important;
+        }
+
+        .member_image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        td {
+            vertical-align: middle !important;
+        }
+    </style>
+</head>
 <th:block th:replace="~{layout/adminLTE :: setContent(~{this::content} )}">
-
     <th:block th:fragment="content">
-        <h1 class="mt-4">Member List Page</h1>
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">멤버목록</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">member-list</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
 
-        <form action="/member/list" id="searchForm" method="get">
-            <div class="input-group">
-                <input name="page" type="hidden" value="1">
-                <div class="input-group-prepend">
-                    <select class="custom-select" name="type">
-                        <option th:selected="${pageRequestDTO.type == null}">-------</option>
+        <section class="content">
+            <div class="container">
+                <form action="/member/list" id="searchForm" method="get">
+                    <div class="input-group">
+                        <input name="page" type="hidden" value="1">
+                        <div class="input-group-prepend">
+                            <select class="custom-select" name="type">
+                                <option th:selected="${pageRequestDTO.type == null}">-------</option>
 
-                        <!--option value=""안에 있는 것이 pageRequestDTO.type의 값으로 들어감-->
-                        <option th:selected="${pageRequestDTO.type =='n'}" value="n">이름</option>
-                        <option th:selected="${pageRequestDTO.type =='p'}" value="p">전화번호</option>
-                    </select>
-                </div>
-                <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
-                <div class="input-group-append" id="button-addon4">
-                    <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
-                    <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
-                </div>
-            </div>
-        </form>
+                                <!--option value=""안에 있는 것이 pageRequestDTO.type의 값으로 들어감-->
+                                <option th:selected="${pageRequestDTO.type =='n'}" value="n">이름</option>
+                                <option th:selected="${pageRequestDTO.type =='p'}" value="p">전화번호</option>
+                            </select>
+                        </div>
+                        <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
+                        <div class="input-group-append" id="button-addon4">
+                            <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
+                            <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
+                        </div>
+                    </div>
+                </form>
+
+                <table class="table table-striped" style="table-layout: fixed">
+                    <thead>
+                    <tr>
+                        <th scope="col" width="7%">mno</th>
+                        <th scope="col">이미지</th>
+                        <th scope="col" width="20%">이름</th>
+                        <th scope="col" width="25%">전화번호</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="dto : ${result.dtoList}" class="clickable-row"
+                        th:attr="data-href='/member/read?mno='+${dto.mno}">
+                        <td>[[${dto.mno}]]</td>
+                        <td>
+                            <th:block th:if="${dto.imageDTOList != null && #lists.size(dto.imageDTOList) > 0}"
+                                      th:with="imgs = ${dto.imageDTOList}">
+                                <img class="member_image"
+                                     th:each="img:${imgs}"
+                                     th:src="@{${'/image/'+img.path+'/'+img.uuid+'_'+img.imgName}}">
+                            </th:block>
+                        </td>
+                        <td>[[${dto.name}]]</td>
+                        <td>[[${dto.phone}]]</td>
+                    </tr>
+
+                    </tbody>
+                </table>
 
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            <tr th:each="dto : ${result.dtoList}">
-                <th scope="row">
-                    <a th:href="@{/member/read(mno = ${dto.mno},
-                    page= ${result.page},
-                    type=${pageRequestDTO.type} ,
-                    keyword = ${pageRequestDTO.keyword})}">
-                        [[${dto.mno}]]
-                    </a>
-                </th>
-                <td>[[${dto.name}]]</td>
-                <td>[[${dto.phone}]]</td>
-            </tr>
-
-            </tbody>
-        </table>
-
-
-        <ul class="pagination h-100 justify-content-center align-items-center">
-
-            <li class="page-item " th:if="${result.prev}">
-                <a class="page-link" tabindex="-1" th:href="@{/member/list(page= ${result.start -1},
+                <ul class="pagination h-100 justify-content-center align-items-center">
+                    <li class="page-item " th:if="${result.prev}">
+                        <a class="page-link" tabindex="-1" th:href="@{/member/list(page= ${result.start -1},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword} ) }">Previous</a>
-            </li>
+                    </li>
 
-            <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
-                <a class="page-link" th:href="@{/member/list(page = ${page} ,
+                    <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
+                        <a class="page-link" th:href="@{/member/list(page = ${page} ,
                    type=${pageRequestDTO.type} ,
                    keyword = ${pageRequestDTO.keyword}  )}">
-                    [[${page}]]
-                </a>
-            </li>
+                            [[${page}]]
+                        </a>
+                    </li>
 
-            <li class="page-item" th:if="${result.next}">
-                <a class="page-link" th:href="@{/member/list(page= ${result.end + 1} ,
+                    <li class="page-item" th:if="${result.next}">
+                        <a class="page-link" th:href="@{/member/list(page= ${result.end + 1} ,
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword} )}">Next</a>
-            </li>
-        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
         <script th:inline="javascript">
+            jQuery(document).ready(function($) {
+                $(".clickable-row").click(function() {
+                    window.location = $(this).data("href");
+                });
+            });
 
             var searchForm = $("#searchForm");
-
             $('.btn-search').click(function (e) {
-
                 searchForm.submit();
-
             });
-
             $('.btn-clear').click(function (e) {
-
                 searchForm.empty().submit();
-
             });
-
-
         </script>
-
     </th:block>
-
 </th:block>
