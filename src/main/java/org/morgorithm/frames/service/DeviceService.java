@@ -4,12 +4,11 @@ import org.morgorithm.frames.entity.Device;
 import org.morgorithm.frames.entity.Facility;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface DeviceService {
-    Facility addFacility(UUID deviceId, String facilityName, Boolean state);
+    Facility addFacility(String deviceId, String facilityName, Boolean state);
 
-    Device addDevice(UUID deviceId, Long bno, Boolean state);
+    Facility addDevice(String deviceId, Long bno, Boolean state);
 
     List<Device> getDevicesByFacility(Long bno);
 }

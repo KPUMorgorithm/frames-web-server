@@ -3,7 +3,6 @@ package org.morgorithm.frames.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Builder
@@ -13,7 +12,7 @@ import java.util.UUID;
 @ToString(exclude = {"facility"})
 public class Device {
     @Id
-    private UUID deviceId;
+    private String deviceId;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bno", insertable = false, updatable = false)
     private Facility facility;
