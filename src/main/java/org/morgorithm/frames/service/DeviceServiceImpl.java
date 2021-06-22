@@ -16,12 +16,12 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class DeviceServiceImpl implements DeviceService {
-    private DeviceRepository deviceRepository;
-    private FacilityRepository facilityRepository;
+    private final DeviceRepository deviceRepository;
+    private final FacilityRepository facilityRepository;
 
     // 1. 시설 + 기기 등록
     @Transactional
-    public Facility addFacility(UUID deviceId, String facilityName, Boolean state) {
+    public Facility addFacility(String deviceId, String facilityName, Boolean state) {
         Facility facility = Facility.builder()
                 .building(facilityName)
                 .build();
@@ -41,7 +41,7 @@ public class DeviceServiceImpl implements DeviceService {
 
     // 3. 출구 기기 등록
     @Transactional
-    public Device addDevice(UUID deviceId, Long bno, Boolean state) {
+    public Facility addDevice(String deviceId, Long bno, Boolean state) {
         Device device = Device.builder()
                 .deviceId(deviceId)
                 .bno(bno)
@@ -49,7 +49,8 @@ public class DeviceServiceImpl implements DeviceService {
                 .build();
 
         device = deviceRepository.save(device);
-        return device;
+        Facility facility = facilityRepository.findById(bno).get();
+        return facility;
     }
 
     @Transactional
