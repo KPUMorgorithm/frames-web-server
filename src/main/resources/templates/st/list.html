@@ -145,10 +145,8 @@
                                 </tr>
                                 </thead>
 
-                                <tbody>
-                                <tr>
+                                <tbody id="overlapped-members">
                                     <!-- TODO: 선택된 로그와 같은 시간, 공간에 있었던 멤버 목록 조회 -->
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -163,7 +161,7 @@
 
         <section class="content">
             <div class="container-fluid">
-                <form action="/st" id="searchForm" method="get">
+                <form action="/st/list" id="searchForm" method="get">
                     <div class="input-group">
                         <input name="page" type="hidden" value="1">
                         <span class="container" id="date-span-id" style="margin:0px; text-align: left;">
@@ -224,8 +222,19 @@
                     </thead>
                     <tbody>
 
-                    <tr th:each="accessSet, index : ${result.getDtoList()}">
+                    <tr th:each="accessSet, index : ${result.getDtoList()}" onclick="onClickAccessSet(this);">
                         <input class="mno" th:value="${accessSet.memberId}" type="hidden"/>
+                        <input class="memberId" th:value="${accessSet.memberId}" type="hidden"/>
+                        <input class="memberName" th:value="${accessSet.memberName}" type="hidden"/>
+                        <input class="facilityId" th:value="${accessSet.facilityId}" type="hidden"/>
+                        <input class="facilityName" th:value="${accessSet.facilityName}" type="hidden"/>
+                        <input class="statusEnterId" th:value="${accessSet.statusEnterId}" type="hidden"/>
+                        <input class="statusLeaveId" th:value="${accessSet.statusLeaveId}" type="hidden"/>
+                        <input class="temperatureEnter" th:value="${accessSet.temperatureEnter}" type="hidden"/>
+                        <input class="temperatureLeave" th:value="${accessSet.temperatureLeave}" type="hidden"/>
+                        <input class="timeEnter" th:value="${accessSet.timeEnter}" type="hidden"/>
+                        <input class="timeLeave" th:value="${accessSet.timeLeave}" type="hidden"/>
+
                         <td>[[(${pageRequestDTO.page}-1)*10+${index.count}]]</td>
                         <td th:text="|${accessSet.memberName}(${accessSet.memberId})|"></td>
                         <td th:text="|${accessSet.facilityName}(${accessSet.facilityId})|"></td>
@@ -269,6 +278,57 @@
                 </ul>
             </div>
         </section>
+
+        <script>
+            function onClickAccessSet(element) {
+                const memberId = element.querySelector(".memberId").value;
+                const memberName = element.querySelector(".memberName").value;
+                const facilityId = element.querySelector(".facilityId").value;
+                const facilityName = element.querySelector(".facilityName").value;
+                const statusEnterId = element.querySelector(".statusEnterId").value;
+                const statusLeaveId = element.querySelector(".statusLeaveId").value;
+                const temperatureEnter = element.querySelector(".temperatureEnter").value;
+                const temperatureLeave = element.querySelector(".temperatureLeave").value;
+                const timeEnter = element.querySelector(".timeEnter").value;
+                const timeLeave = element.querySelector(".timeLeave").value;
+
+                const data = {
+                    memberId,
+                    memberName,
+                    facilityId,
+                    facilityName,
+                    statusEnterId,
+                    statusLeaveId,
+                    temperatureEnter,
+                    temperatureLeave,
+                    timeEnter,
+                    timeLeave
+                }
+
+                console.log(data);
+
+                $.ajax({
+                    url: '/st/overlapped',
+                    data: data,
+                    type: 'GET',
+                    success: function (result) {
+                        console.log(result);
+
+                        const overlappedMembers = $("#overlapped-members");
+                        overlappedMembers.empty();
+                        result.map(member => {
+                            const memberElement = $(`<tr class='overlapped-member'><td>${member.mno}</td><td>${member.name}</td><td>${member.phone}</td></tr>`);
+                            overlappedMembers.append(memberElement);
+                        })
+
+                        $('#overlapped-members-modal').modal('show');
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus);
+                    }
+                });
+            }
+        </script>
 
         <script>
             const memberRows = [].slice.call(document.querySelectorAll(".memberRow"));
@@ -337,7 +397,7 @@
             });
 
             $('.btn-clear').click(function (e) {
-                window.location.href = "/st"
+                window.location.href = "/st/list"
             });
 
         </script>
