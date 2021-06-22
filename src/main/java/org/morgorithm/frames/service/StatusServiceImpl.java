@@ -30,7 +30,6 @@ import java.util.function.Function;
 @Log4j2
 @RequiredArgsConstructor
 public class StatusServiceImpl implements StatusService {
-    static final int BUILDING_NUM = 10;
     private final StatusRepository statusRepository;
     private final MemberRepository memberRepository;
     private final FacilityRepository facilityRepository;
@@ -283,6 +282,9 @@ public class StatusServiceImpl implements StatusService {
         int fidx = 0;
         List<Object[]> facilityNames = facilityRepository.getFacilityNames();
         RealTimeStatusDTO realTimeStatusDTO = new RealTimeStatusDTO();
+
+        final int BUILDING_NUM = facilityNames.size();
+
         int[] in = new int[BUILDING_NUM];
         int[] out = new int[BUILDING_NUM];
         String[] bName = new String[BUILDING_NUM];

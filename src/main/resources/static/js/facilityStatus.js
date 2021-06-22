@@ -173,7 +173,7 @@ function onMessageReceived(payload) {
 
     const table = document.getElementById('datatable');
 
-    for (let j = 0; j < 10; j++) {
+    for (let j = 0; j < arrBName.length; j++) {
         table.rows[j + 1].cells[0].innerHTML = arrBName[j];
         table.rows[j + 1].cells[1].innerHTML = arrIn[j];
         table.rows[j + 1].cells[2].innerHTML = arrOut[j];

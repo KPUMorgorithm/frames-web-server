@@ -34,7 +34,7 @@ public class ImageController {
         return new ResponseEntity<>(imageByteArray, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/image/{url}", produces = MediaType.IMAGE_JPEG_VALUE)
+    @GetMapping(value = "/api/image/{url}", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getRegisterImage(
             @PathVariable String url) throws IOException {
         String path = FileUtils.createDirIfNotExists(uploadPath + File.separator + "register");
