@@ -3,7 +3,6 @@ package org.morgorithm.frames.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Builder
