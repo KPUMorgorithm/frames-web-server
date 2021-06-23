@@ -401,7 +401,7 @@ public class StatusServiceImpl implements StatusService {
         if (date != null) {
             date += hhmmss;
             //LocalDateTime으로 파싱
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             LocalDateTime from = LocalDateTime.parse(date, formatter);
             LocalDateTime to = from.with(LocalTime.of(23, 59));
             // 하룻동안
@@ -421,7 +421,7 @@ public class StatusServiceImpl implements StatusService {
             }
             for (Status s : mapInfoList) {
                 bnos.add(s.getFacility().getBno());
-                dates.add(s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss")));
+                dates.add(s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 // System.out.println("bnos:"+s.getFacility().getBno());
                 //  System.out.println("date:"+s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss")));
             }
