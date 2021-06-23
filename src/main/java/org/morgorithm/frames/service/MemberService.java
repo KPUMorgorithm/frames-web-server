@@ -33,6 +33,8 @@ public interface MemberService {
 
     Long register(MemberDTO memberDTO, String imgurl[]) throws IOException;
 
+    void syncFaceClassificationServer() throws IOException;
+
     default MemberDTO memberEntityToDto(Member entity) {
         MemberDTO dto = modelMapper.map(entity, MemberDTO.class);
         /*MemberDTO dto=MemberDTO.builder()
