@@ -9,7 +9,6 @@ import org.morgorithm.frames.entity.Status;
 import java.util.List;
 
 public interface StatusService {
-    @Builder.Default
     ModelMapper modelMapper = ModelMapperUtil.getModelMapper();
 
     RealTimeStatusDTO getFacilityStatus();
