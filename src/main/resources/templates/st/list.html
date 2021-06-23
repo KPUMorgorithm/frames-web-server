@@ -251,7 +251,7 @@
                 <ul class="pagination h-100 justify-content-center align-items-center">
 
                     <li class="page-item " th:if="${result.prev}">
-                        <a class="page-link" tabindex="-1" th:href="@{/st(page= ${result.start -1},
+                        <a class="page-link" tabindex="-1" th:href="@{/st/list(page= ${result.start -1},
                     from=${pageRequestDTO.from},
                     to=${pageRequestDTO.to},
                     keyword = ${pageRequestDTO.keyword},
@@ -259,7 +259,7 @@
                     </li>
 
                     <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
-                        <a class="page-link" th:href="@{/st(page = ${page} ,
+                        <a class="page-link" th:href="@{/st/list(page = ${page} ,
                     from=${pageRequestDTO.from},
                     to=${pageRequestDTO.to},
                     keyword = ${pageRequestDTO.keyword},
@@ -269,7 +269,7 @@
                     </li>
 
                     <li class="page-item" th:if="${result.next}">
-                        <a class="page-link" th:href="@{/st(page= ${result.end + 1} ,
+                        <a class="page-link" th:href="@{/st/list(page= ${result.end + 1} ,
                     from=${pageRequestDTO.from},
                     to=${pageRequestDTO.to},
                     keyword = ${pageRequestDTO.keyword},
