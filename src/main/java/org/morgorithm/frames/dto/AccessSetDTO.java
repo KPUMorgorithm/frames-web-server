@@ -6,6 +6,7 @@ import org.morgorithm.frames.projection.AccessSet;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 @Data
 @AllArgsConstructor
@@ -23,14 +24,24 @@ public class AccessSetDTO implements AccessSet {
 
     @Override
     public LocalDateTime getTimeEnter() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
-        return LocalDateTime.parse(timeEnter, formatter);
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            return LocalDateTime.parse(timeEnter, formatter);
+        }
+        catch (DateTimeParseException e) {
+            return LocalDateTime.now();
+        }
     }
 
     @Override
     public LocalDateTime getTimeLeave() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
-        return LocalDateTime.parse(timeLeave, formatter);
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            return LocalDateTime.parse(timeLeave, formatter);
+        }
+        catch (DateTimeParseException e) {
+            return LocalDateTime.now();
+        }
     }
 
 

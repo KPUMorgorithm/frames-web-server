@@ -279,23 +279,25 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public RealTimeStatusDTO getFacilityStatus() {
-        int fidx = 0;
-        List<Object[]> facilityNames = facilityRepository.getFacilityNames();
         RealTimeStatusDTO realTimeStatusDTO = new RealTimeStatusDTO();
 
-        final int BUILDING_NUM = facilityNames.size();
+        List<Facility> facilities = facilityRepository.findAll();
+        int maxBno = facilities.stream().map(Facility::getBno).max(Long::compareTo).get().intValue();
+
+        final int BUILDING_NUM = facilities.size();
 
         int[] in = new int[BUILDING_NUM];
         int[] out = new int[BUILDING_NUM];
+        int[] bno = new int[maxBno+1];
         String[] bName = new String[BUILDING_NUM];
 
-        //초기화
-        for (int i = 0; i < BUILDING_NUM; i++) {
+        // 초기화
+        for (int i = 0; i < facilities.size(); i++) {
+            Facility facility = facilities.get(i);
             in[i] = 0;
             out[i] = 0;
-        }
-        for (Object[] a : facilityNames) {
-            bName[fidx++] = (String) a[0];
+            bno[facility.getBno().intValue()] = i;
+            bName[i] = facility.getBuilding();
         }
 
         int total = 0;
@@ -306,24 +308,16 @@ public class StatusServiceImpl implements StatusService {
         if (statusList.size() > 0)
             latestStatusNum = statusList.get(0).getStatusnum();
 
-        System.out.println("test getFacilityStatus result.size():" + result.size());
-        System.out.println(statusList);
+//        System.out.println("test getFacilityStatus result.size():" + result.size());
+//        System.out.println(statusList);
 
         for (int i = 0; i < result.size(); i++) {
-            // System.out.println("test getFacilityStatus inside for loop"+result.size());
-            //bno를 index 삼어서 in과 out배열의 인덱스로 씀
-            int idx = ((Long) (result.get(i)[2])).intValue();
-            /*
-            System.out.println("index:"+(idx-1));
-            System.out.println("bno:"+((Long) (result.get(i)[2])).intValue());
-            System.out.println("result.get(i):"+Arrays.toString(result.get(i)));
-            System.out.println("result state:"+(Boolean)result.get(i)[3]);*/
+            int _bno = ((Long) result.get(i)[2]).intValue();
+            int index = bno[_bno];
             if ((Boolean) result.get(i)[3]) {
-                in[(idx - 1)] = ((Long) (result.get(i)[1])).intValue();
-                Facility facility = (Facility) result.get(i)[0];
-                bName[(idx - 1)] = facility.getBuilding();
+                in[index] = ((Long) (result.get(i)[1])).intValue();
             } else
-                out[(idx - 1)] = ((Long) (result.get(i)[1])).intValue();
+                out[index] = ((Long) (result.get(i)[1])).intValue();
             total += ((Long) (result.get(i)[1])).intValue();
         }
         realTimeStatusDTO = realTimeStatusDTO.builder().in(in).out(out).total(total).bName(bName).statusList(statusList).build();
