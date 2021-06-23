@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface MemberService {
-    @Builder.Default
     ModelMapper modelMapper = ModelMapperUtil.getModelMapper();
 
     //    PageResultDTO<MemberDTO, Object[]> getList(PageRequestDTO requestDTO);
