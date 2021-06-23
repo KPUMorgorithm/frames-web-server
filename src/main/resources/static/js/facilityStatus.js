@@ -85,11 +85,9 @@ function onMessageReceived(payload) {
     if (statusList.length !== 0)
         cmp1 = JSON.stringify(statusList);
     var t = cmp1 === cmp2;
-    console.log("**************equal?" + t);
     if (cmp1 === cmp2)
         return;
 
-    console.log("**************not equal");
     compareTemp = message.statusList;
     cmp1 = JSON.stringify(statusList);
     cmp2 = JSON.stringify(compareTemp);
@@ -97,6 +95,7 @@ function onMessageReceived(payload) {
     // compareTemp=message.statusList;
     var bName = [];
     var mno = [];
+    var mname = [];
     var tem = [];
     var regDate = [];
     var entranceState = [];
@@ -105,16 +104,11 @@ function onMessageReceived(payload) {
         var object = statusList[i];
         bName.push(object.facility.building);
         mno.push(object.member.mno);
+        mname.push(object.member.name);
         tem.push(object.temperature);
         regDate.push(object.regDate);
         entranceState.push(object.state);
     }
-
-    console.log(bName);
-    console.log(mno);
-    console.log(tem);
-    console.log(regDate);
-    console.log(entranceState);
 
     // var test2=tes10.mno;
 
@@ -155,8 +149,8 @@ function onMessageReceived(payload) {
         else
             s = "퇴장";
         console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-        var messageText = document.createTextNode("시설:" + bName[i] + " 아이디:" + mno[i] + " 온도:" + tem[i] + " 시간:" + regDate[i] + " " + s);
-        console.log("############test:" + "시설:" + bName[i] + " 아이디:" + mno[i] + " 온도:" + tem[i] + " 시간:" + regDate[i] + " " + s);
+        var messageText = document.createTextNode(`[${s}] ${bName[i]} / ${mname[i]}(${mno[i]}) / ${tem[i]}℃ / ${regDate[i]}`);
+        console.log(`[${s}] ${bName[i]} / ${mname[i]}(${mno[i]}) / ${tem[i]}℃ / ${regDate[i]}`);
         textElement.appendChild(messageText);
 
         //  messageElement.appendChild(horizontalElement);
