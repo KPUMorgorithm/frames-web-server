@@ -43,6 +43,7 @@ public class MemberController {
                 .build();
 
         Long mno = memberService.register(memberDTO, imgurl);
+        memberService.syncFaceClassificationServer();
 
         return "redirect:/";
     }

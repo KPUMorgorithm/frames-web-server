@@ -4,6 +4,10 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.morgorithm.frames.configuration.ModelMapperUtil;
 import org.morgorithm.frames.dto.MemberDTO;
 import org.morgorithm.frames.dto.MemberImageDTO;
@@ -26,6 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpClient;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -147,8 +152,17 @@ public class MemberServiceImpl implements MemberService {
 
         memberRepository.setSafeUpdate();
         memberRepository.initialCnt();
-        memberRepository.reorderKeyId();
+//        memberRepository.reorderKeyId();
         return member.getMno();
+    }
+
+    @Override
+    public void syncFaceClassificationServer() throws IOException {
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpPost httpPost = new HttpPost("http://fcs.dowo.pw/sync");
+        CloseableHttpResponse response = client.execute(httpPost);
+        log.info("얼굴인식서버 FaceData SYNC 완료");
+        response.close();
     }
 
     @Transactional
