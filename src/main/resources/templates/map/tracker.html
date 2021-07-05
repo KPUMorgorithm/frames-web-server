@@ -146,9 +146,8 @@
         var dates = [[${result.dates}]];
         var state = [[${result.entranceStatus}]];
 
-
-        var buildingLat = [37.340451559678414, 37.3403622339662, 37.340025850128924, 37.33971081625848, 37.33971260779223, 37.340246171837386, 37.33943912861469, 37.338637482492715, 37.34144799913755, 37.341106606280135];
-        var buildingLng = [126.73296906647658, 126.73331357367792, 126.73398057213083, 126.7341255651304, 126.73492396209339, 126.73479231012293, 126.73552019703162, 126.73463433858562, 126.73232792966488, 126.73276925866197];
+        var buildingLat = [37.340392700347856, 37.340316992115, 37.339971636615026, 37.339679248826315, 37.33966775898154, 37.340194312542195, 37.33936705323829, 37.34157599867022, 37.34112695570915, 37.34061153901412,37.33863530586803];
+        var buildingLng = [126.73283949790697, 126.73322909658563, 126.73391305400244, 126.73411157035065, 126.73501439847898, 126.73476992262974, 126.73552327097035, 126.73215255585146, 126.73280304174777, 126.73398979131457,126.73466820031602];
 
 
         $('.btn-search').click(function (e) {
@@ -170,10 +169,11 @@
 
         var positions = [];
         //positions[0]["content"]+="<div>테스트</div>"
-        console.log("bnoLength:" + bnoLength);
-        for (var i = 0; i < 10; i++) {
+        //console.log("bnoLength:" + bnoLength);
+        for (var i = 0; i < bnoLength; i++) {
             positions.push({"content": '', "latlng": null});
         }
+        console.log("positions:"+positions);
         if (state !== null) {
             for (var i = 0; i < bnoLength; i++) {
                 positions[trackingBno[i] - 1]["content"] = "<div>";
@@ -181,32 +181,14 @@
                 positions[trackingBno[i] - 1]["content"] += "</div>";
             }
         }
-
+        console.log("bnoLength:"+bnoLength);
         for (var i = 0; i < bnoLength; i++) {
-            /*
-            if(state!==null){
-                console.log("status"+state);
-
-                console.log("content:"+positions[trackingBno[i]-1]["content"]);
-                if(state[i]===true){
-                    console.log("true!! && trackingBno:"+trackingBno[i]);
-                    positions[trackingBno[i]-1]["content"]+="<div>"
-                    positions[trackingBno[i]-1]["content"]+=dates[i];
-                    positions[trackingBno[i]-1]["content"]+="입장</div>"
-                }
-                else {
-                    console.log("false!! && trackingBno:"+trackingBno[i]);
-                    positions[trackingBno[i]-1]["content"]+="<div>"
-                    positions[trackingBno[i]-1]["content"]+=dates[i];
-                    positions[trackingBno[i]-1]["content"]+="퇴장</div>"
-                }
-            }else{*/
             positions[i]["content"] = "<div>"
             positions[i]["content"] += bNames[i];
             positions[i]["content"] += "</div>";
-            // }
-            if (trackingBno === null)
+            if (trackingBno === null){
                 positions[i]["latlng"] = new kakao.maps.LatLng(buildingLat[i], buildingLng[i]);
+            }
             else
                 positions[i]["latlng"] = new kakao.maps.LatLng(buildingLat[trackingBno[i] - 1], buildingLng[trackingBno[i] - 1]);
         }
@@ -215,7 +197,7 @@
             console.log("test" + positions[9]["content"]);
             console.log("positions.lenth:" + positions.length);
         }
-        console.log("test" + positions[0]["content"]);
+        console.log("bnoLength:"+bnoLength);
         for (var i = 0; i < bnoLength; i++) {
             // 마커를 생성합니다
             var marker = new kakao.maps.Marker({
