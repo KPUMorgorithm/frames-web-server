@@ -73,7 +73,7 @@ public class MemberServiceImpl implements MemberService {
         //Auto-Increment 재정렬
         memberRepository.setSafeUpdate();
         memberRepository.initialCnt();
-        memberRepository.reorderKeyId();
+//        memberRepository.reorderKeyId();
         memberRepository.initialAutoIncrementToTheLatest();
     }
 
@@ -179,7 +179,7 @@ public class MemberServiceImpl implements MemberService {
         //Auto-Increment 재정렬
         memberRepository.setSafeUpdate();
         memberRepository.initialCnt();
-        memberRepository.reorderKeyId();
+//        memberRepository.reorderKeyId();
         return member.getMno();
     }
 //
