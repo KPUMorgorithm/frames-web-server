@@ -308,8 +308,8 @@ public class StatusServiceImpl implements StatusService {
         if (statusList.size() > 0)
             latestStatusNum = statusList.get(0).getStatusnum();
 
-//        System.out.println("test getFacilityStatus result.size():" + result.size());
-//        System.out.println(statusList);
+       // System.out.println("test getFacilityStatus result.size():" + result.size());
+        //System.out.println(statusList);
 
         for (int i = 0; i < result.size(); i++) {
             int _bno = ((Long) result.get(i)[2]).intValue();
@@ -336,11 +336,11 @@ public class StatusServiceImpl implements StatusService {
 
             // status=statusRepository.findTopByOrderByStatusnumDesc();
             //  latestStatusNum=status.getStatusnum();
-            System.out.println("latestStatusNum before:" + latestStatusNum);
+            //System.out.println("latestStatusNum before:" + latestStatusNum);
             latestStatusNum += 1;
             flag = 0;
         }
-        System.out.println("latestStatusNum after:" + latestStatusNum);
+        //System.out.println("latestStatusNum after:" + latestStatusNum);
 
         conditionBuilder.and(qStatus.statusnum.between(latestStatusNum, infiniteStatusNum));
 
@@ -408,21 +408,23 @@ public class StatusServiceImpl implements StatusService {
             from = from.with(LocalTime.of(00, 00));
             System.out.println("from:" + from);
             System.out.println("to:" + to);
+            System.out.println("trackerInfoDTO.getMno:"+trackerInfoDTO.getMno());
             conditionBuilder.and(qStatus.regDate.between(from, to));
             conditionBuilder.and(qStatus.member.mno.eq(trackerInfoDTO.getMno()));
+            //********
+            //result의 결과를 봐야 함
+            //********
             Iterable<Status> result = statusRepository.findAll(conditionBuilder);
             Iterable<Status> stateResult = statusRepository.findAll(conditionBuilder);
             List<Status> mapInfoList = Lists.newArrayList(result);
             List<Status> stateInfoList = Lists.newArrayList(stateResult);
-            //  System.out.println("*********************");
-            //  System.out.println("info:" + mapInfoList.toString());
             for (Status s : stateInfoList) {
                 state.add(s.getState());
             }
             for (Status s : mapInfoList) {
                 bnos.add(s.getFacility().getBno());
                 dates.add(s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-                // System.out.println("bnos:"+s.getFacility().getBno());
+                System.out.println("bnos:"+s.getFacility().getBno());
                 //  System.out.println("date:"+s.getRegDate().format(DateTimeFormatter.ofPattern("yyyy MM-dd HH:mm:ss")));
             }
             infoDTO.setTrackingBno(bnos);
