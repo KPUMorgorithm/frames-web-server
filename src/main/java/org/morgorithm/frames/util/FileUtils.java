@@ -84,6 +84,9 @@ public class FileUtils {
             ext = url.substring("data:image/".length(), url.indexOf(";base64"));
             if (ext.equals("jpeg")) ext = "jpg";
         } else {
+            if (url.contains("/api/image")) {
+                return "jpg";
+            }
             ext = url.substring(url.lastIndexOf(".") + 1);
         }
         return ext;

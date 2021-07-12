@@ -29,7 +29,13 @@ public class AccessSetDTO implements AccessSet {
             return LocalDateTime.parse(timeEnter, formatter);
         }
         catch (DateTimeParseException e) {
-            return LocalDateTime.now();
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
+                return LocalDateTime.parse(timeEnter, formatter);
+            }
+            catch (DateTimeParseException e2) {
+                return LocalDateTime.now();
+            }
         }
     }
 
@@ -40,7 +46,13 @@ public class AccessSetDTO implements AccessSet {
             return LocalDateTime.parse(timeLeave, formatter);
         }
         catch (DateTimeParseException e) {
-            return LocalDateTime.now();
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
+                return LocalDateTime.parse(timeLeave, formatter);
+            }
+            catch (DateTimeParseException e2) {
+                return LocalDateTime.now();
+            }
         }
     }
 
