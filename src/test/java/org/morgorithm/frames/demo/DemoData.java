@@ -24,9 +24,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.IntStream;
 
-@RunWith(SpringRunner.class)
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@DataJpaTest
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class DemoData {
     @Autowired
     private StatusRepository statusRepository;
@@ -200,7 +201,7 @@ public class DemoData {
     //여기서는 송인걸을 확진자로 두고 나머지 두명은 밀접 접촉자로 분류한다.
     //출입로그에서 검색할 땐 <확진 번호:33 시간 간격: 1~3초로 두고 한다>
     @Test
-    @Rollback(false)
+    //@Rollback(false)
     void contactTestData() {
         Long bno = 0L;
         List<Long> bnoList = new ArrayList<>();
@@ -449,7 +450,6 @@ public class DemoData {
 
     //dashboard와 실시간 현황 테스트용이다
     @Test
-    @Rollback(false)
     void realtimeTestData() throws InterruptedException {
 
 
