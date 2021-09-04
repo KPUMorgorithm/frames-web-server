@@ -168,34 +168,23 @@
         // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다
 
         var positions = [];
-        //positions[0]["content"]+="<div>테스트</div>"
-        //console.log("bnoLength:" + bnoLength);
         for (var i = 0; i < bnoLength; i++) {
-            positions.push({"content": '', "latlng": null});
+            positions.push({"content": null, "latlng": null});
         }
-        console.log("positions:"+positions);
         if (state !== null) {
             for (var i = 0; i < bnoLength; i++) {
-                positions[trackingBno[i] - 1]["content"] = "<div>";
-                positions[trackingBno[i] - 1]["content"] += bNames[trackingBno[i] - 1];
-                positions[trackingBno[i] - 1]["content"] += "</div>";
+                console.log("bNames[trackingBno[i]-1]:"+ bNames[trackingBno[i] - 1]);
+                positions[i]["content"] = "<div>";
+                positions[i]["content"] += bNames[trackingBno[i] - 1];
+                positions[i]["content"] += "</div>";
             }
         }
         console.log("bnoLength:"+bnoLength);
         for (var i = 0; i < bnoLength; i++) {
             positions[i]["content"] = "<div>"
-            positions[i]["content"] += bNames[i];
+            positions[i]["content"] += bNames[trackingBno[i] - 1];
             positions[i]["content"] += "</div>";
-            if (trackingBno === null){
-                positions[i]["latlng"] = new kakao.maps.LatLng(buildingLat[i], buildingLng[i]);
-            }
-            else
-                positions[i]["latlng"] = new kakao.maps.LatLng(buildingLat[trackingBno[i] - 1], buildingLng[trackingBno[i] - 1]);
-        }
-        if (state !== null) {
-            console.log("test" + positions[0]["content"]);
-            console.log("test" + positions[9]["content"]);
-            console.log("positions.lenth:" + positions.length);
+            positions[i]["latlng"] = new kakao.maps.LatLng(buildingLat[trackingBno[i] - 1], buildingLng[trackingBno[i] - 1]);
         }
         console.log("bnoLength:"+bnoLength);
         for (var i = 0; i < bnoLength; i++) {
@@ -206,8 +195,9 @@
             });
 
             // 마커에 표시할 인포윈도우를 생성합니다
+            console.log("position content:"+positions[i].content);
             var infowindow = new kakao.maps.InfoWindow({
-                content: trackingBno !== null ? positions[trackingBno[i] - 1].content : positions[i].content // 인포윈도우에 표시할 내용
+                content: trackingBno !== null ? positions[i].content : positions[i].content // 인포윈도우에 표시할 내용
             });
 
             // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
